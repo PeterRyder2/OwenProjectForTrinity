@@ -1,0 +1,47 @@
+@import "../../../../variables";
+
+.container{
+    padding: 3px;
+    vertical-align: middle;
+    display: inline-flex;
+}
+
+.checkbox{
+    background: $light;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    border: 1px solid $main-one-accent-one;
+    transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.checkbox.checked{
+    background-color: $accent-one;
+}
+
+.path{
+    stroke-dashoffset: 22.91026;
+    stroke-dasharray: 22.91026;
+    stroke-width: 2.66667px;
+}
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: 22.91026;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.path.checked{
+    stroke-dashoffset: 0;
+    animation: dash 180ms linear;
+}
+
+.label {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 5px;
+}

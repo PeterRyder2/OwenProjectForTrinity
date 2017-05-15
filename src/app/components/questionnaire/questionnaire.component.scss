@@ -1,0 +1,63 @@
+@import "../../../variables";
+
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: calc(100vh - 100px - #{$navbar-height});
+}
+
+.container > * {
+    width: 50%;
+}
+
+.question-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.question{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.navigate{
+    margin: 0 10px;
+}
+
+.point.container{
+    display: flex;
+    flex-direction: row;
+}
+
+.point{
+    margin: 0 5px;
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    background-color: $main-one-accent-two;
+    display: inline-block;
+    transition: 1s;
+    cursor: pointer;
+}
+
+.point-active{
+    transform: scale(2);
+}
+
+.bottom{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.bottom > * {
+    flex-grow: 1;
+    width: 45%;
+}

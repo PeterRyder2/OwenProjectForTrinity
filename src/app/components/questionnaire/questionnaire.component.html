@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="question-container">
+    <snscg-question class="question" [question]="activeQuestion" [progress]="progress"></snscg-question>
+  </div>
+  <div class="bottom">
+    <button standard (click)="prevQuestion()" *ngIf="questionnaire.backEnabled && activeQuestionIndex > 0" class="navigate">
+      {{_languageService.questionnaire.back}}
+    </button>
+
+    <button standard (click)="nextQuestion()" [disabled]="questionnaire.forceResponse && !activeQuestion.answered" class="navigate">
+      {{_languageService.questionnaire.continue}}
+    </button>
+  </div>
+</div>

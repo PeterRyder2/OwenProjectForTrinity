@@ -1,0 +1,13 @@
+@import '../../../../variables';
+
+.container{
+    height: 6px;
+    background: $main-one-accent-two;
+    border-radius: 3px;
+}
+
+.container > * {
+    height: 6px;
+    background: $accent-one;
+    border-radius: 3px;
+}

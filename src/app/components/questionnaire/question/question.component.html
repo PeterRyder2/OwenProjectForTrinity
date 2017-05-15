@@ -1,0 +1,10 @@
+<div class="question">{{question.question}}</div>
+<snscg-progressbar [value]="progress"></snscg-progressbar>
+<div class="answer-container">
+  <div *ngFor="let answer of question.answers; let i = index">
+    <snscg-checkbox class="answer" [checked]="answer.selected" (toggleSelect)="onSelection(i, $event)">
+      {{answer.answer}}
+    </snscg-checkbox>
+
+  </div>
+</div>
