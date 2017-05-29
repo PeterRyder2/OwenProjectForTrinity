@@ -10,12 +10,12 @@ export class SettingsService {
   get language() { return this._language };
   set language(value: Language) {
     this._language = value;
-    this.LanguageChangedEvent.next(value);
+    this.languageChangedEvent.next(value);
     this.save();
   };
 
-  private LanguageChangedEvent = new Subject<Language>();
-  onLanguageChanged = this.LanguageChangedEvent.asObservable();
+  private languageChangedEvent = new Subject<Language>();
+  onLanguageChanged = this.languageChangedEvent.asObservable();
 
   constructor() {
     if (!this.load()) {

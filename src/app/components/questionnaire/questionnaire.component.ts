@@ -30,7 +30,7 @@ export class QuestionnaireComponent implements OnInit {
           },
           {
             answer: 'Never',
-            score: 2
+            score: 2,
           }
         ]
       }, {

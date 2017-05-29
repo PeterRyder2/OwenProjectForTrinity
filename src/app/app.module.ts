@@ -20,6 +20,9 @@ import { DividerComponent } from './components/layout/divider/divider.component'
 import { PointDisplayComponent } from './components/layout/point-display/point-display.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProgressbarComponent } from './components/layout/progressbar/progressbar.component';
+import { ConfigService } from './services/config.service';
+import { AudioService } from './services/audio.service';
+import { DttApiService } from './services/dtt-api.service';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,10 @@ import { ProgressbarComponent } from './components/layout/progressbar/progressba
   ],
   providers: [
     LanguageService,
-    SettingsService
+    SettingsService,
+    ConfigService,
+    AudioService,
+    DttApiService
   ],
   bootstrap: [AppComponent]
 })

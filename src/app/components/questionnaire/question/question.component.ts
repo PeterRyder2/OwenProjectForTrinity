@@ -37,7 +37,7 @@ interface QuestionExt extends IQuestion {
   answers: [
     {
       answer: string;
-      correct?: boolean;
+      score: number;
       selected: boolean;
     }
   ]
