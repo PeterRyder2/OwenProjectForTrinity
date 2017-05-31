@@ -8,25 +8,6 @@ import { IQuestion } from '../../../intefaces/IQuestion.interface';
 })
 export class CognitionTestComponent implements OnInit {
 
-  question: IQuestion = {
-    question: 'was hat marc gegessen',
-    type: true,
-    answers: [
-      {
-        answer: 'Curry'
-      },
-      {
-        answer: 'Huhn'
-      },
-      {
-        answer: 'Sushi'
-      },
-      {
-        answer: 'Eisenbahn'
-      }
-    ]
-  }
-
   constructor() { }
 
   ngOnInit() {

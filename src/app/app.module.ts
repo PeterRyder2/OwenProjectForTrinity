@@ -13,7 +13,6 @@ import { VisionTestComponent } from './components/-tests/vision-test/vision-test
 import { DigitTripleTestComponent } from './components/-tests/digit-triple-test/digit-triple-test.component';
 import { CheckboxComponent } from './components/layout/checkbox/checkbox.component';
 import { CognitionTestComponent } from './components/-tests/cognition-test/cognition-test.component';
-import { YesOrNoQuestionComponent } from './components/-tests/cognition-test/yes-or-no-question/yes-or-no-question.component';
 import { QuestionComponent } from './components/questionnaire/question/question.component';
 import { QuestionnaireComponent } from './components/questionnaire/questionnaire.component';
 import { DividerComponent } from './components/layout/divider/divider.component';
@@ -34,7 +33,6 @@ import { DttApiService } from './services/dtt-api.service';
     CheckboxComponent,
     CognitionTestComponent,
     QuestionnaireComponent,
-    YesOrNoQuestionComponent,
     QuestionComponent,
     DividerComponent,
     PointDisplayComponent,
