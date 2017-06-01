@@ -7,6 +7,7 @@ export class LangaugeFile {
         visionTest: string;
         cognitionTest: string;
         questionnaire: string;
+        audioTestingRealm: string;
     };
     digitTripleTest: {
         start: string;

@@ -5,6 +5,7 @@ import { VisionTestComponent } from './components/-tests/vision-test/vision-test
 import { CognitionTestComponent } from "app/components/-tests/cognition-test/cognition-test.component";
 import { DigitTripleTestComponent } from './components/-tests/digit-triple-test/digit-triple-test.component';
 import { QuestionnaireComponent } from './components/questionnaire/questionnaire.component';
+import { AudioTestingRealmComponent } from './components/audio-testing-realm/audio-testing-realm.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'Questionnaire',
     component: QuestionnaireComponent
+  },
+  {
+    path: 'AudioTestingRealm',
+    component: AudioTestingRealmComponent
   }
 ];
 

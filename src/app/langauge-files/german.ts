@@ -8,7 +8,8 @@ export const german: LangaugeFile = {
         digitTripleTest: 'Ziffern Triple Test',
         visionTest: 'Sehtest',
         cognitionTest: 'Gedächnistest',
-        questionnaire: 'Fragebogen'
+        questionnaire: 'Fragebogen',
+        audioTestingRealm: 'Audio Testreich'
     },
     digitTripleTest: {
         start: 'Beginnen',

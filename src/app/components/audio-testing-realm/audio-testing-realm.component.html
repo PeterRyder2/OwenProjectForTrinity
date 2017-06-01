@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="grid">
+    <input #fileUpload class="hide" type="file" (change)="addFile($event)" accept="audio/*">
+    <button standard (click)="fileUpload.click()">Load File</button>
+    <div>
+      <button standard (click)="this.play()"><i class="material-icons">play_arrow</i></button>
+      <button standard (click)="this.pause()"><i class="material-icons">pause</i></button>
+      <button standard (click)="this.stop()"><i class="material-icons">stop</i></button>
+    </div>
+    <input #vol type="range" min="0" max="1000" value="1000" steps="40" (change)="this.setVolume(vol.value / 1000)" />
+  </div>
+</div>

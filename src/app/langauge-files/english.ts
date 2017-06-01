@@ -8,7 +8,8 @@ export const english: LangaugeFile = {
         digitTripleTest: 'Digit Triple test',
         visionTest: 'Vision test',
         cognitionTest: 'Cognition test',
-        questionnaire: 'Questionnaire'
+        questionnaire: 'Questionnaire',
+        audioTestingRealm: 'Audio Testing Realm'
     },
     digitTripleTest: {
         start: 'Start',

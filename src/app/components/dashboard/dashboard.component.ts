@@ -17,20 +17,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
   }
 
-  routeToNtt() {
-    this._router.navigate(['DigitTripleTest']);
+  routeTo(route: string) {
+    this._router.navigate([route]);
   }
-
-  routeToVisonTest() {
-    this._router.navigate(['VisionTest']);
-  }
-
-  routeToCognitionTest() {
-    this._router.navigate(['CognitionTest']);
-  }
-
-  routeToQuestionnaire() {
-    this._router.navigate(['Questionnaire']);
-  }
-
 }

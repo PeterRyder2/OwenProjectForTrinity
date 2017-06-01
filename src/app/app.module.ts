@@ -22,6 +22,7 @@ import { ProgressbarComponent } from './components/layout/progressbar/progressba
 import { ConfigService } from './services/config.service';
 import { AudioService } from './services/audio.service';
 import { DttApiService } from './services/dtt-api.service';
+import { AudioTestingRealmComponent } from './components/audio-testing-realm/audio-testing-realm.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { DttApiService } from './services/dtt-api.service';
     DividerComponent,
     PointDisplayComponent,
     NavbarComponent,
-    ProgressbarComponent
+    ProgressbarComponent,
+    AudioTestingRealmComponent
   ],
   imports: [
     BrowserModule,

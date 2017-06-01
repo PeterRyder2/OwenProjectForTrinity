@@ -5,7 +5,7 @@
             "name": "Launch Chrome against localhost, with sourcemaps",
             "type": "chrome",
             "request": "launch",
-            "url": "http://localhost:4200",
+            "url": "http://192.168.99.158:4200",
             "sourceMaps": true,
             "webRoot": "${workspaceRoot}"
             //"sourceMapPathOverrides": {
@@ -24,10 +24,10 @@
             "request": "attach",
             "port": 9222,
             "sourceMaps": true,
-            "webRoot": "${workspaceRoot}",
-            "sourceMapPathOverrides": {
-                "webpack:///*": "/*"
-            }
+            "webRoot": "${workspaceRoot}"
+            // "sourceMapPathOverrides": {
+            //     "webpack:///*": "/*"
+            // }
         }
     ]
 }

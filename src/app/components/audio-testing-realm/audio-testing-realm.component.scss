@@ -1,0 +1,27 @@
+.container{
+    margin-top: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid{
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+}
+
+.grid > *{
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+}
+
+.grid > * > *{
+    flex-grow: 1;
+    width: 30%;
+}
+
+.hide{
+    visibility: hidden !important;
+}

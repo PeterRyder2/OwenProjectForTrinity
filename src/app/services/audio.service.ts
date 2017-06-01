@@ -1,51 +1,74 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
+import { Util } from '../lib/util';
 
 @Injectable()
 export class AudioService {
 
-  private mainSourceEnded = new Subject();
-  onMainSourceEnded = this.mainSourceEnded.asObservable();
+	private mainSourceEnded = new Subject();
+	onMainSourceEnded = this.mainSourceEnded.asObservable();
 
-  context: AudioContext;
-  mainSource: AudioBufferSourceNode;
+	private context: AudioContext;
+	private mainSource: AudioBufferSourceNode;
+	private mainBuffer: AudioBuffer;
+	private gain: GainNode;
 
-  constructor() {
-    this.context = new AudioContext();
-    this.initMainSource();
-  }
+	private mainStarted: number = 0;
+	private timePlayed = 0;
 
-  private initMainSource() {
-    this.mainSource = this.context.createBufferSource();
-    this.mainSource.onended = () => {
-      this.mainSourceEnded.next();
-      this.initMainSource();
-    }
-  }
+	get volume() { return this.gain.gain.value }
+	set volume(value: number) { this.gain.gain.value = value; }
 
-  async play(data: ArrayBuffer | string) {
-    if (typeof data === 'string') {
-      data = this.str2ab(data);
-    }
+	constructor() {
+		this.context = new AudioContext();
+		this.gain = this.context.createGain();
+		this.gain.connect(this.context.destination);
+	}
 
-    let buffer = await this.context.decodeAudioData(data)
-    this.mainSource.buffer = buffer;
-    this.mainSource.connect(this.context.destination);
-    this.mainSource.start(this.context.currentTime);
-  }
+	private initNewMainSource() {
+		if (this.mainSource) {
+			this.mainSource.stop();
+			this.mainSource.disconnect();
+			this.mainSource.removeEventListener("ended", this.mainEndedListner);
+		}
+		this.mainSource = this.context.createBufferSource();
+		this.mainSource.connect(this.gain);
+		if (!this.mainBuffer) throw new Error("You need to pass a buffer when none is set")
+		this.mainSource.buffer = this.mainBuffer;
 
-  stop() {
-    if (this.mainSource.buffer)
-      this.mainSource.stop();
-  }
+		this.mainSource.addEventListener("ended", this.mainEndedListner);
+	}
 
-  str2ab(str: string) {
+	mainEndedListner() {
+		this.mainSourceEnded.next();
+	}
 
-    let view = new Uint8Array(str.length);
-    for (var i = 0; i < str.length; i++) {
-      view[i] = str.charCodeAt(i);
-    }
-    return view.buffer;
-  }
+	async loadBuffer(data: ArrayBuffer | string) {
+		if (data) {
+			if (typeof data === 'string') {
+				data = Util.string2ArrayBuffer(data);
+			}
+			this.mainBuffer = await this.context.decodeAudioData(data)
+		}
+	}
+
+	async play(data?: ArrayBuffer | string) {
+		this.initNewMainSource();
+		this.mainSource.start(this.mainStarted = this.context.currentTime, this.timePlayed);
+	}
+
+	pause() {
+		if (this.mainSource.buffer) {
+			this.mainSource.stop();
+			this.timePlayed += this.context.currentTime - this.mainStarted;
+		}
+	}
+
+	stop() {
+		if (this.mainSource.buffer) {
+			this.mainSource.stop();
+			this.mainStarted = 0;
+		}
+	}
 
 }
