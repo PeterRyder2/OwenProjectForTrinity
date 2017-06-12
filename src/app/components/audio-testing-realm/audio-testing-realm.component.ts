@@ -20,8 +20,8 @@ export class AudioTestingRealmComponent implements OnInit {
     let file = e.target.files[0] as File;
     this.activeAudioFile = file;
     let reader = new FileReader();
-    reader.onload = (file: any) => {
-      this.activeAudioBuffer = file.target.result as ArrayBuffer;
+    reader.onload = (loadedFile: any) => {
+      this.activeAudioBuffer = loadedFile.target.result as ArrayBuffer;
       this.audio.loadBuffer(this.activeAudioBuffer);
     };
     reader.readAsArrayBuffer(file);

@@ -1,44 +1,52 @@
-<div class="container">
-  <div class="grid">
-    <div>
-      <div class="display">{{enteredNumber}}</div>
-    </div>
-    <snscg-progressbar [value]="this.triplesTyped / this.triplesCount"></snscg-progressbar>
-    <div>
-      <button [disabled]="state != 3" standard [class.active]="activeKey == '7'" (click)="addNumber('7')">7</button>
-      <button [disabled]="state != 3" standard [class.active]="activeKey == '8'" (click)="addNumber('8')">8</button>
-      <button [disabled]="state != 3" standard [class.active]="activeKey == '9'" (click)="addNumber('9')">9</button>
-    </div>
-    <div>
-      <button [disabled]="state != 3" standard [class.active]="activeKey == '4'" (click)="addNumber('4')">4</button>
-      <button [disabled]="state != 3" standard [class.active]="activeKey == '5'" (click)="addNumber('5')">5</button>
-      <button [disabled]="state != 3" standard [class.active]="activeKey == '6'" (click)="addNumber('6')">6</button>
-    </div>
-    <div>
-      <button [disabled]="state != 3" standard [class.active]="activeKey == '1'" (click)="addNumber('1')">1</button>
-      <button [disabled]="state != 3" standard [class.active]="activeKey == '2'" (click)="addNumber('2')">2</button>
-      <button [disabled]="state != 3" standard [class.active]="activeKey == '3'" (click)="addNumber('3')">3</button>
-    </div>
-    <div>
-      <button [disabled]="state != 3" standard [class.active]="activeKey == '*'" (click)="addNumber('*')">*</button>
-      <button [disabled]="state != 3" standard [class.active]="activeKey == '0'" (click)="addNumber('0')">0</button>
-      <button [disabled]="state != 3" standard [class.active]="activeKey.match('Delete|Backspace')" (click)="removeLastNumber()"><i class="material-icons">backspace</i></button>
-    </div>
-    <div>
-      <div *ngIf="state == 0; then startBtn; else cancelBtn"></div>
-      <ng-template #startBtn>
-        <button standard [class.active]="activeKey == 'Enter'" (click)="start()">
+<div class="container" [ngSwitch]="this.state">
+  <ng-container *ngSwitchCase="'void'">
+    //TODO
+  </ng-container>
+  <ng-container *ngSwitchCase="'ended'">
+    //TODO
+  </ng-container>
+  <ng-container *ngSwitchDefault>
+    <div class="grid">
+      <div>
+        <div class="display">{{enteredNumber}}</div>
+      </div>
+      <snscg-progressbar [value]="this.progress"></snscg-progressbar>
+      <div>
+        <button [disabled]="state != 3" standard [class.active]="activeKey == '7'" (click)="addNumber('7')">7</button>
+        <button [disabled]="state != 3" standard [class.active]="activeKey == '8'" (click)="addNumber('8')">8</button>
+        <button [disabled]="state != 3" standard [class.active]="activeKey == '9'" (click)="addNumber('9')">9</button>
+      </div>
+      <div>
+        <button [disabled]="state != 3" standard [class.active]="activeKey == '4'" (click)="addNumber('4')">4</button>
+        <button [disabled]="state != 3" standard [class.active]="activeKey == '5'" (click)="addNumber('5')">5</button>
+        <button [disabled]="state != 3" standard [class.active]="activeKey == '6'" (click)="addNumber('6')">6</button>
+      </div>
+      <div>
+        <button [disabled]="state != 3" standard [class.active]="activeKey == '1'" (click)="addNumber('1')">1</button>
+        <button [disabled]="state != 3" standard [class.active]="activeKey == '2'" (click)="addNumber('2')">2</button>
+        <button [disabled]="state != 3" standard [class.active]="activeKey == '3'" (click)="addNumber('3')">3</button>
+      </div>
+      <div>
+        <button [disabled]="state != 3" standard [class.active]="activeKey == '*'" (click)="addNumber('*')">*</button>
+        <button [disabled]="state != 3" standard [class.active]="activeKey == '0'" (click)="addNumber('0')">0</button>
+        <button [disabled]="state != 3" standard [class.active]="activeKey.match('Delete|Backspace')" (click)="removeLastNumber()"><i class="material-icons">backspace</i></button>
+      </div>
+      <div>
+        <div *ngIf="state == 0; then startBtn; else cancelBtn"></div>
+        <ng-template #startBtn>
+          <button standard [class.active]="activeKey == 'Enter'" (click)="start()">
           {{_languageService.digitTripleTest.start}}
           </button>
-      </ng-template>
-      <ng-template #cancelBtn>
-        <button standard (click)="cancel()">
+        </ng-template>
+        <ng-template #cancelBtn>
+          <button standard (click)="cancel()">
           {{_languageService.digitTripleTest.cancel}}
         </button>
-        <button standard [class.active]="activeKey == 'Enter'" (click)="continue()" [disabled]="state !== 3">
+          <button standard [class.active]="activeKey == 'Enter'" (click)="continue()" [disabled]="state !== 3">
           {{_languageService.digitTripleTest.continue}}
         </button>
-      </ng-template>
+        </ng-template>
+      </div>
     </div>
-  </div>
+  </ng-container>
 </div>

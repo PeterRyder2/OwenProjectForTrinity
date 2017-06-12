@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from "@angular/http";
+import { Http } from '@angular/http';
 import { ConfigService } from './config.service';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
@@ -13,12 +13,12 @@ export class DttApiService {
     this.url = config.apiAdress;
   }
 
-  initialize() {
-    return this.http.get(`${this.url}/d3/init`).map(res => res.json() as IStartResonse).toPromise();
+  initialize(input: { language: string, name: string }) {
+    return this.http.post(`${this.url}/d3/init`, input).map(res => res.json() as ITripleResonse).toPromise();
   }
 
-  next(id: string, selectedTriple: string) {
-    return this.http.post(`${this.url}/d3/next`, { id: id, triple: selectedTriple }).map(res => res.text()).toPromise();
+  next(input: { id: string, selectedTriple: string }) {
+    return this.http.post(`${this.url}/d3/next`, input).map(res => res.json() as ITripleResonse).toPromise();
   }
 
   finish(id: string) {
@@ -31,8 +31,10 @@ export class DttApiService {
 
 }
 
-interface IStartResonse {
+export interface ITripleResonse {
   Id: string;
-  TriplesCount: number;
-  TripleBuffer: string;
+  End: boolean;
+  Progress: number;
+  AvgSnr: Number;
+  TripleBuffer?: string;
 }

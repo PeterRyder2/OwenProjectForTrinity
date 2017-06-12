@@ -11,14 +11,13 @@ import { AudioService } from '../../../services/audio.service';
 })
 export class DigitTripleTestComponent implements OnInit, OnDestroy {
 
-  activeKey: string = '';
+  activeKey = '';
 
   state: DigitTripleTestState = DigitTripleTestState.void;
-  enteredNumber: string = '';
+  enteredNumber = '';
 
   id: string;
-  triplesTyped: number = 0;
-  triplesCount: number = 0;
+  progress = 0;
 
   constructor(public _languageService: LanguageService, private api: DttApiService, private audio: AudioService, private zone: NgZone) { }
 
@@ -31,7 +30,7 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     window.removeEventListener('keydown',
-      this.keyDownEventListener)
+      this.keyDownEventListener);
     window.addEventListener('keyup',
       this.keyUpEventListener);
     if (this.id) {
@@ -41,25 +40,24 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy {
 
   async start() {
     this.state = DigitTripleTestState.started;
-    let res = await this.api.initialize();
+    let res = await this.api.initialize({
+      language: 'de',
+      name: 'Hannes'
+    });
     this.id = res.Id;
-    this.triplesCount = res.TriplesCount;
     this.present(res.TripleBuffer);
     this.audio.onMainSourceEnded.subscribe(() => {
       this.zone.run(() => { this.state = DigitTripleTestState.input; });
-    })
+    });
   }
 
   async continue() {
     if (this.enteredNumber.length == 3) {
-      this.triplesTyped++;
       let selectedTriple = this.enteredNumber;
       this.enteredNumber = '';
-      let res = await this.api.next(this.id, selectedTriple);
-      this.present(res);
-    }
-    else {
-
+      let res = await this.api.next({ id: this.id, selectedTriple: selectedTriple });
+      this.progress = res.Progress;
+      this.present(res.TripleBuffer);
     }
   }
 
@@ -76,7 +74,6 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy {
     this.enteredNumber = '';
 
     this.id = '';
-    this.triplesTyped = 0;
   }
 
   present(data: ArrayBuffer | string) {
