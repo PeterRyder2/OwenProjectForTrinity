@@ -17,10 +17,10 @@ export class LanguageService extends LangaugeFile {
   loadLanguage() {
     switch (this._settings.language) {
       case Language.German:
-        this.setLanguage(german)
+        this.setLanguage(german);
         break;
       case Language.English:
-        this.setLanguage(english)
+        this.setLanguage(english);
         break;
 
       default:
@@ -29,6 +29,7 @@ export class LanguageService extends LangaugeFile {
   }
 
   private setLanguage(file: LangaugeFile) {
+    // tslint:disable-next-line:forin
     for (let key in file) {
       this[key] = file[key];
     }

@@ -24,4 +24,4 @@ export const english: LangaugeFile = {
         continue: 'Continue',
         back: 'Back'
     }
-}
+};

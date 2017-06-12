@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Language } from '../enums/languages.enum';
 import { LanguageService } from './language.service';
-import { Subject } from "rxjs/Subject";
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class SettingsService {
 
   private _language = Language.German;
-  get language() { return this._language };
+  get language() { return this._language; };
   set language(value: Language) {
     this._language = value;
     this.languageChangedEvent.next(value);
@@ -40,7 +40,7 @@ export class SettingsService {
   private save() {
     let settings: ISettings = {
       language: this.language
-    }
+    };
 
     localStorage.setItem('settings', JSON.stringify(settings));
   }
@@ -49,6 +49,7 @@ export class SettingsService {
     let savedSettings = localStorage.getItem('settings');
     if (savedSettings) {
       let settings: ISettings = JSON.parse(savedSettings);
+      // tslint:disable-next-line:forin
       for (let key in settings) {
         this[key] = settings[key];
       }

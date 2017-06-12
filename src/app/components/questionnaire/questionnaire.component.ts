@@ -225,7 +225,7 @@ export class QuestionnaireComponent implements OnInit {
   };
 
   activeQuestion: IQuestion;
-  activeQuestionIndex: number = 0;
+  activeQuestionIndex = 0;
   progress = 0;
 
   constructor(public _languageService: LanguageService) { }
@@ -236,7 +236,7 @@ export class QuestionnaireComponent implements OnInit {
 
   prevQuestion() {
     let index = this.activeQuestionIndex <= 0 ? 0 : this.activeQuestionIndex - 1;
-    this.selectQuestion(index)
+    this.selectQuestion(index);
   }
 
   nextQuestion() {
@@ -244,15 +244,15 @@ export class QuestionnaireComponent implements OnInit {
 
     } else {
       let index = this.activeQuestionIndex + 1;
-      this.selectQuestion(index)
+      this.selectQuestion(index);
     }
   }
 
   selectQuestion(index: number) {
     this.activeQuestionIndex = index;
     this.activeQuestion = this.questionnaire.questions[this.activeQuestionIndex];
-    this.progress = this.activeQuestionIndex / (this.questionnaire.questions.length - 1)
-    console.log(this.progress)
+    this.progress = this.activeQuestionIndex / (this.questionnaire.questions.length - 1);
+    console.log(this.progress);
   }
 
 }

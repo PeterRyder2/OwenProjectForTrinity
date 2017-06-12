@@ -7,5 +7,5 @@ export interface IQuestion {
             answer: string;
             score?: number;
         }
-    ]
+    ];
 }

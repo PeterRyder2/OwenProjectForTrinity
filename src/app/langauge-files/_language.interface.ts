@@ -1,7 +1,7 @@
 export class LangaugeFile {
     navbar: {
         dashboard: string;
-    }
+    };
     names: {
         digitTripleTest: string;
         visionTest: string;
@@ -21,5 +21,5 @@ export class LangaugeFile {
     questionnaire: {
         continue: string;
         back: string;
-    }
+    };
 }

@@ -24,4 +24,4 @@ export const german: LangaugeFile = {
         continue: 'Weiter',
         back: 'Zurück'
     }
-}
+};
