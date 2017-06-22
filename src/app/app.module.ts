@@ -23,6 +23,7 @@ import { ConfigService } from './services/config.service';
 import { AudioService } from './services/audio.service';
 import { DttApiService } from './services/dtt-api.service';
 import { AudioTestingRealmComponent } from './components/audio-testing-realm/audio-testing-realm.component';
+import { CognitionApiService } from './services/cognition-api.service';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { AudioTestingRealmComponent } from './components/audio-testing-realm/aud
     SettingsService,
     ConfigService,
     AudioService,
-    DttApiService
+    DttApiService,
+    CognitionApiService
   ],
   bootstrap: [AppComponent]
 })
