@@ -16,8 +16,14 @@ export class AudioService {
     private mainStarted = 0;
     private timePlayed = 0;
 
-    get volume() { return this.gain.gain.value; }
-    set volume(value: number) { this.gain.gain.value = value; }
+    private _volume = 1;
+    get volume() { return this.volume; }
+    set volume(value: number) { this._volume = this.gain.gain.value = value; }
+
+    private _muted = false;
+    get muted() {
+        return this._muted;
+    };
 
     constructor() {
         this.context = new AudioContext();
@@ -70,6 +76,15 @@ export class AudioService {
             this.mainSource.stop();
             this.mainStarted = 0;
         }
+    }
+
+    toggleMute() {
+        this._muted = !this._muted;
+        if (this._muted)
+            this.gain.gain.value = 0;
+        else
+            this.volume = this._volume;
+        return this._muted;
     }
 
 }
