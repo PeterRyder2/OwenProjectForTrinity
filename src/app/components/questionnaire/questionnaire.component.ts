@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IQuestionnaire } from '../../intefaces/IQuestionnaire.interface';
 import { IQuestion } from '../../intefaces/IQuestion.interface';
 import { LanguageService } from '../../services/language.service';
@@ -224,6 +224,8 @@ export class QuestionnaireComponent implements OnInit {
     ]
   };
 
+  @Output() finished = new EventEmitter();
+
   activeQuestion: IQuestion;
   activeQuestionIndex = 0;
   progress = 0;
@@ -241,7 +243,7 @@ export class QuestionnaireComponent implements OnInit {
 
   nextQuestion() {
     if (this.activeQuestionIndex >= this.questionnaire.questions.length - 1) {
-
+      this.finished.emit();
     } else {
       let index = this.activeQuestionIndex + 1;
       this.selectQuestion(index);
