@@ -61,7 +61,7 @@ export class CognitionTestComponent implements OnInit, OnDestroy {
     if (this.words.present.length == 0) {
       this.state = State.presentingQuestion;
     } else {
-      setTimeout(() => { this.presentWords(); }, 10);
+      setTimeout(() => { this.presentWords(); }, 2000);
     }
   }
 
