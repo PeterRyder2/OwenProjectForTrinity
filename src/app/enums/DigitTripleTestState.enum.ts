@@ -4,6 +4,8 @@ export enum DigitTripleTestState {
     presentation,
     input,
     validation,
+    finishing,
+    result,
     ended,
     canceled
 }

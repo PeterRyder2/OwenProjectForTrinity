@@ -21,12 +21,12 @@ export class DttApiService {
     return this.http.post(`${this.url}/d3/next`, input).map(res => res.json() as ITripleResonse).toPromise();
   }
 
-  finish(id: string) {
-    return this.http.post(`${this.url}/d3/finish`, { id: id }).map(res => res.json()).toPromise();
+  finish(input: { id: string, annotation: string }) {
+    return this.http.post(`${this.url}/d3/finish`, input).map(res => res.json() as { Snr: number }).toPromise();
   }
 
-  end(id: string) {
-    return this.http.post(`${this.url}/d3/end`, { id: id }).map(res => res.text()).toPromise();
+  end(input: { id: string }) {
+    return this.http.post(`${this.url}/d3/end`, input).map(res => res.text()).toPromise();
   }
 
 }
