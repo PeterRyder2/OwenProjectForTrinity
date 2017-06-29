@@ -1,11 +1,11 @@
+import { IAnswer } from './IAnswer.inteface';
+import { QuestionType } from '../enums/QuestionType.enum';
+
 export interface IQuestion {
     question: string;
     answered?: boolean;
-    type?: boolean;
-    answers: [
-        {
-            answer: string;
-            score?: number;
-        }
-    ];
+    type: QuestionType;
+    answers?: IAnswer[];
+    answerTemplateNr?: number;
+    jumpTo?: number;
 }

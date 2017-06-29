@@ -1,4 +1,5 @@
 export enum QuestionType {
-    simple,
-    multiple
+    single,
+    multiple,
+    jump
 }

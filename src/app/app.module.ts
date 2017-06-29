@@ -24,6 +24,9 @@ import { AudioService } from './services/audio.service';
 import { DttApiService } from './services/dtt-api.service';
 import { AudioTestingRealmComponent } from './components/audio-testing-realm/audio-testing-realm.component';
 import { CognitionApiService } from './services/cognition-api.service';
+import { HDDAComponent } from './components/hearing/hdda/hdda.component';
+import { VF14Component } from './components/vision/vf14/vf14.component';
+import { IQCODEComponent } from './components/cognition/iqcode/iqcode.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,10 @@ import { CognitionApiService } from './services/cognition-api.service';
     PointDisplayComponent,
     NavbarComponent,
     ProgressbarComponent,
-    AudioTestingRealmComponent
+    AudioTestingRealmComponent,
+    HDDAComponent,
+    IQCODEComponent,
+    VF14Component
   ],
   imports: [
     BrowserModule,

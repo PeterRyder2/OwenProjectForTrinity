@@ -6,6 +6,9 @@ import { CognitionTestComponent } from 'app/components/-tests/cognition-test/cog
 import { DigitTripleTestComponent } from './components/-tests/digit-triple-test/digit-triple-test.component';
 import { QuestionnaireComponent } from './components/questionnaire/questionnaire.component';
 import { AudioTestingRealmComponent } from './components/audio-testing-realm/audio-testing-realm.component';
+import { HDDAComponent } from './components/hearing/hdda/hdda.component';
+import { VF14Component } from './components/vision/vf14/vf14.component';
+import { IQCODEComponent } from './components/cognition/iqcode/iqcode.component';
 
 const routes: Routes = [
   {
@@ -30,8 +33,16 @@ const routes: Routes = [
     component: CognitionTestComponent
   },
   {
-    path: 'Questionnaire',
-    component: QuestionnaireComponent
+    path: 'HDDA',
+    component: HDDAComponent
+  },
+  {
+    path: 'VF14',
+    component: VF14Component
+  },
+  {
+    path: 'IQCODE',
+    component: IQCODEComponent
   },
   {
     path: 'AudioTestingRealm',
