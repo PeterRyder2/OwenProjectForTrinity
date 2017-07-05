@@ -84,6 +84,7 @@ export class IQCODEComponent implements OnInit {
         answerTemplateNr: 0
       },
       {
+        // tslint:disable-next-line:max-line-length
         question: 'Handling other everyday arithmetic problems e.g. knowing how much food to buy, knowing how long between visits from family or friends',
         type: QuestionType.single,
         answerTemplateNr: 0
