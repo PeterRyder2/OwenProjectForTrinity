@@ -43,6 +43,9 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy {
     if (this.id && this.state <= State.finishing) {
       this.api.finish({ id: this.id, annotation: 'test got destroyed' });
     }
+    if (this.state) {
+      this.audio.stop();
+    }
   }
 
   init() {

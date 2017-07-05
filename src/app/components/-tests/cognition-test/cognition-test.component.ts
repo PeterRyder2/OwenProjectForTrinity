@@ -102,6 +102,10 @@ export class CognitionTestComponent implements OnInit, OnDestroy {
     if (this.id && this.state <= State.ended) {
       this.api.finish({ id: this.id, wordRes: null, annotation: 'test got destroyed' });
     }
+    if (this.words) {
+      this.words.present = [];
+      this.audio.stop();
+    }
   }
 
   keyDownEventListener = (e: KeyboardEvent) => {
