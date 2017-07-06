@@ -1,7 +1,9 @@
 <div class="container" [ngSwitch]="this.state">
   <ng-container *ngSwitchCase="0">
     <div class="grid">
-      <input standard type="text" [(ngModel)]="this.name">
+      Please enter your name before you start the test:
+      <p> </p>
+      <input placeholder="Name" standard type="text" [(ngModel)]="this.name">
       <button [disabled]="this.name == ''" standard [class.active]="activeKey == 'Enter'" (click)="init()">
         {{_languageService.digitTripleTest.continue}}
       </button>

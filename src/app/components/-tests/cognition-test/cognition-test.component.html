@@ -7,7 +7,7 @@
 <div class="container" [ngSwitch]="this.state">
     <div class="grid">
         <ng-container *ngSwitchCase="0">
-            <input placeholder="name" standard type="text" [(ngModel)]="this.name">
+            <input placeholder="Name" standard type="text" [(ngModel)]="this.name">
             <button [disabled]="this.name == ''" standard [class.active]="activeKey == 'Enter'" (click)="init()">
                 {{_languageService.digitTripleTest.continue}}
             </button>
