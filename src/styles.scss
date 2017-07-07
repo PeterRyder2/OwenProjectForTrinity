@@ -52,7 +52,8 @@ button[standard]:not([disabled]):hover, button[standard]:not([disabled]).active{
     box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
     z-index: 100;
 }
-
+button[standard]{background-color: #d3d3d3;}
+button[standard]:disabled:hover, button[standard]:disabled{background-color: transparent;}
 section{
     display: flex;
     align-content: center;
