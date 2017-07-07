@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(public _languageService: LanguageService, private _settings: SettingsService, private _router: Router) { }
+  constructor(public _languageService: LanguageService, public _settings: SettingsService, private _router: Router) { }
 
   ngOnInit() {
   }
