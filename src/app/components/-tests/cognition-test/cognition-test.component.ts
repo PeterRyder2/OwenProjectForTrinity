@@ -34,6 +34,12 @@ export class CognitionTestComponent implements OnInit, OnDestroy {
   constructor(public _languageService: LanguageService, private api: CognitionApiService, public audio: AudioService) { }
 
   ngOnInit() {
+    /** start of workaround to remove name prompt | need to be removed in --prod*/
+    this.state = 1;
+    this.name = 'TestNameOfUser';
+    this.init();
+    /** end of workaround to remove name prompt | need to be removed in --prod */
+
     window.addEventListener('keydown',
       this.keyDownEventListener);
     window.addEventListener('keyup',
