@@ -29,6 +29,12 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy {
   constructor(public _languageService: LanguageService, private api: DttApiService, private audio: AudioService, private zone: NgZone) { }
 
   ngOnInit() {
+    /** start of workaround to remove name prompt | need to be removed in --prod*/
+    this.state = 1;
+    this.name = 'TestNameOfUser';
+    this.init();
+    /** end of workaround to remove name prompt | need to be removed in --prod */
+
     window.addEventListener('keydown',
       this.keyDownEventListener);
     window.addEventListener('keyup',

@@ -55,7 +55,7 @@ export class CognitionTestComponent implements OnInit, OnDestroy {
       test: res.TestWords.concat(res.PresentWords)
     };
     this.state = 1;
-    setTimeout(() => { this.presentWords(); }, 3500);
+    setTimeout(() => { this.presentWords(); }, 2500);
   }
 
   async presentWords() {

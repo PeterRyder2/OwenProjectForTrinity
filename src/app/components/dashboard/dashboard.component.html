@@ -1,21 +1,25 @@
-<div>
+<div class="container">
     <h2></h2>
     <button standard (click)="routeTo('DigitTripleTest')">{{_languageService.names.digitTripleTest}}</button>
     <button standard (click)="routeTo('HDDA')">HDDA</button>
 </div>
-<div>
+<div class="container">
     <h2></h2>
     <button standard (click)="routeTo('CognitionTest')">{{_languageService.names.cognitionTest}}</button>
     <button standard (click)="routeTo('IQCODE')">IQCODE</button>
 </div>
-<div>
+<div class="container">
     <h2></h2>
     <button standard (click)="routeTo('VisionTest')">{{_languageService.names.visionTest}}</button>
     <button standard (click)="routeTo('VF14')">VF14</button>
 </div>
-<div>
+<div class="container marginTop">
     <h2></h2>
     <button standard (click)="routeTo('AudioTestingRealm')">{{_languageService.names.audioTestingRealm}}</button>
+    <button standard></button>
+</div>
+<div class="container">
+    <h2></h2>
     <button standard (click)="_settings.language = 1">English</button>
     <button standard (click)="_settings.language = 0">German</button>
 </div>

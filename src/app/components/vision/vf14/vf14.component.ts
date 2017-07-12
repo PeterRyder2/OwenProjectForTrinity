@@ -12,9 +12,10 @@ export class VF14Component implements OnInit {
   questionnaire: IQuestionnaire = {
     id: 'VF-14',
     title: 'Visual Function Index',
-    forceResponse: false,
+    forceResponse: true,
     questions: [
       {
+        // tslint:disable-next-line:max-line-length
         question: 'Do you have any difficulty, even with glasses, reading small print, such as labels on medicine bottles, a telephone book, food labels?',
         answerTemplateNr: 0,
         type: QuestionType.single
@@ -25,6 +26,7 @@ export class VF14Component implements OnInit {
         type: QuestionType.single
       },
       {
+        // tslint:disable-next-line:max-line-length
         question: 'Do you have any difficulty, even with glasses, reading a large-print book or large-print newspaper or numbers on a telephone?',
         answerTemplateNr: 0,
         type: QuestionType.single

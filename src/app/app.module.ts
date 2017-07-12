@@ -27,6 +27,7 @@ import { CognitionApiService } from './services/cognition-api.service';
 import { HDDAComponent } from './components/hearing/hdda/hdda.component';
 import { VF14Component } from './components/vision/vf14/vf14.component';
 import { IQCODEComponent } from './components/cognition/iqcode/iqcode.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { IQCODEComponent } from './components/cognition/iqcode/iqcode.component'
     DividerComponent,
     PointDisplayComponent,
     NavbarComponent,
+    FooterComponent,
     ProgressbarComponent,
     AudioTestingRealmComponent,
     HDDAComponent,

@@ -55,9 +55,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 .bottom > * {
     flex-grow: 1;
     width: 45%;
+}
+.bottom button{
+    margin:0;
+    padding: 7px;
 }
