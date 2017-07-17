@@ -29,10 +29,15 @@
   </ng-container>
   <ng-container *ngSwitchDefault>
     <div class="grid">
-    <div>
-        <div class="content">Enter the digits that you have understood using the number pad below.
-        </div>
-    </div>
+      <div>
+        <div *ngIf="state == 1; then startDescription; else runningDescription"></div>
+        <ng-template #startDescription>
+          <div class="content">Press "Start" to begin the hearing test.</div>
+        </ng-template>
+        <ng-template #runningDescription>
+          <div class="content">Enter the digits that you have understood using the number pad below.</div>
+        </ng-template>
+      </div>
       <div>
         <div class="display">{{enteredNumber}}</div>
       </div>
