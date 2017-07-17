@@ -3,6 +3,8 @@ import { LanguageService } from '../../../services/language.service';
 import { DigitTripleTestState } from '../../../enums/DigitTripleTestState.enum';
 import { DttApiService } from '../../../services/dtt-api.service';
 import { AudioService } from '../../../services/audio.service';
+import { SettingsService } from '../../../services/settings.service';
+import { SenseCogPage } from '../../../../../e2e/app.po';
 
 import State = DigitTripleTestState;
 
@@ -16,6 +18,7 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy {
   activeKey = '';
 
   state: State = State.void;
+  playingSound = false;
   enteredNumber = '';
 
   id: string;
@@ -26,14 +29,21 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy {
 
   result = 0;
 
-  constructor(public _languageService: LanguageService, private api: DttApiService, private audio: AudioService, private zone: NgZone) { }
+  constructor(
+    public _languageService: LanguageService,
+    private api: DttApiService,
+    private audio: AudioService,
+    private zone: NgZone,
+    public _settings: SettingsService
+  ) { }
+
 
   ngOnInit() {
-    /** start of workaround to remove name prompt | need to be removed in --prod*/
+    /** start of workaround to remove name prompt | need to be removed in final release*/
     this.state = 1;
     this.name = 'TestNameOfUser';
     this.init();
-    /** end of workaround to remove name prompt | need to be removed in --prod */
+    /** end of workaround to remove name prompt | need to be removed in final release */
 
     window.addEventListener('keydown',
       this.keyDownEventListener);
@@ -49,7 +59,7 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy {
     if (this.id && this.state <= State.finishing) {
       this.api.finish({ id: this.id, annotation: 'test got destroyed' });
     }
-    if (this.state) {
+    if (this.playingSound == true) {
       this.audio.stop();
     }
   }
@@ -59,15 +69,30 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy {
   }
 
   async start() {
+    let languageStr: string;
+    let languageNum = this._settings.language;
+    switch (languageNum) {
+      case 0:
+        languageStr = 'de';
+        break;
+      case 1:
+        languageStr = 'en';
+        break;
+      default:
+        break;
+    }
+
     let res = await this.api.initialize({
-      language: 'de',
+      language: languageStr,
       name: this.name
     });
+    console.log(languageStr);
     this.id = res.Id;
     this.present(res.TripleBuffer);
     this.audio.onMainSourceEnded.subscribe(() => {
       this.zone.run(() => { this.state = State.input; });
     });
+    this.playingSound = true;
   }
 
   async continue() {
@@ -104,7 +129,7 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy {
 
   present(data: ArrayBuffer | string) {
     this.state = State.presentation;
-    this.audio.play(data);
+    setTimeout(() => { this.audio.play(data); }, 2000);
   }
 
   keyDownEventListener = (e: KeyboardEvent) => {
