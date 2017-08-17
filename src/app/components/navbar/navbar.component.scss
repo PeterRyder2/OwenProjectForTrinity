@@ -1,15 +1,14 @@
 @import "../../../variables";
 
 .top-bar{
-    width: 100%;
     background: #2f2f2f;
-    height: 75px;
     display: flex;
     align-items: center;
+    font-size: 4vmin;
 }
 
 .logo{
-    height: 50px;
+    height: 4em;
     margin: 10px 30px;
 }
 

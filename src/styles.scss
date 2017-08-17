@@ -10,7 +10,12 @@ body{
 * {
     font-family: 'Rajdhani', sans-serif;
 }
-
+.deselect {
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
 button[standard]{
     display: flex;
     cursor: pointer;

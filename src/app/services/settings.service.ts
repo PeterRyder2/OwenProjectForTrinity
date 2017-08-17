@@ -9,7 +9,8 @@ export class SettingsService {
   private _language = Language.German;
   get language() { return this._language; };
   set language(value: Language) {
-    this._language = value;
+    // this._language = value;
+    this._language = Language.English
     this.languageChangedEvent.next(value);
     this.save();
   };
