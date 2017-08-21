@@ -10,7 +10,7 @@ export class SettingsService {
   get language() { return this._language; };
   set language(value: Language) {
     // this._language = value;
-    this._language = Language.English
+    this._language = Language.English;
     this.languageChangedEvent.next(value);
     this.save();
   };
