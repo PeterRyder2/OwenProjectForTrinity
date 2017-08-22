@@ -1,3 +1,4 @@
+import { ProcedureContainerComponent } from './components/procedure-container/procedure-container.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -19,6 +20,10 @@ const routes: Routes = [
     path: '',
     redirectTo: '/Dashboard',
     pathMatch: 'full'
+  },
+  {
+    path: 'Procedure',
+    component: ProcedureContainerComponent
   },
   {
     path: 'DigitTripleTest',

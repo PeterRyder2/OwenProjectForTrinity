@@ -1,0 +1,1 @@
+<snscg-checkbox (toggleSelect)="this.selectChapter($event, chapter.name)" [checked]="!this.isChapterSkipped(chapter.name)" *ngFor="let chapter of this.procedure.chapters"> {{chapter.name}} </snscg-checkbox>

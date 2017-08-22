@@ -1,3 +1,4 @@
+import { ProcedureService } from './services/procedure.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -28,6 +29,10 @@ import { HDDAComponent } from './components/hearing/hdda/hdda.component';
 import { VF14Component } from './components/vision/vf14/vf14.component';
 import { IQCODEComponent } from './components/cognition/iqcode/iqcode.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ChapterSelectionComponent } from './components/chapter-selection/chapter-selection.component';
+import { ProcedureContainerComponent } from './components/procedure-container/procedure-container.component';
+import { ProcedureHostDirective } from './directives/procedure-host.directive';
+import { DescriptionComponent } from './components/description/description.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +53,11 @@ import { FooterComponent } from './components/footer/footer.component';
     AudioTestingRealmComponent,
     HDDAComponent,
     IQCODEComponent,
-    VF14Component
+    VF14Component,
+    ChapterSelectionComponent,
+    ProcedureContainerComponent,
+    ProcedureHostDirective,
+    DescriptionComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +71,8 @@ import { FooterComponent } from './components/footer/footer.component';
     ConfigService,
     AudioService,
     DttApiService,
-    CognitionApiService
+    CognitionApiService,
+    ProcedureService
   ],
   bootstrap: [AppComponent]
 })
