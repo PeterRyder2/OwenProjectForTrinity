@@ -20,6 +20,8 @@ export class QuestionnaireComponent implements OnInit {
   activeQuestionIndex = 0;
   progress = 0;
 
+  score = 0;
+
   constructor(public _languageService: LanguageService) { }
 
   ngOnInit() {
@@ -34,17 +36,20 @@ export class QuestionnaireComponent implements OnInit {
   nextQuestion() {
     if (this.activeQuestion.type == QuestionType.jump) {
       if (this.activeQuestion.answers.find(val => val.selected == true).value < 0) {
-        console.log('ENDE')
+        console.log('ENDE');
         this.finished.emit();
       } else
         this.selectQuestion(this.activeQuestion.answers.find(val => val.selected == true).value)
     } else if (this.activeQuestionIndex >= this.questionnaire.questions.length - 1 || this.activeQuestion.jumpTo <= -1) {
-      console.log('ENDE')
+      console.log('ENDE');
+      this.score += this.activeQuestion.answers.find(val => val.selected == true).value;
       this.finished.emit();
     } else {
       let index = this.activeQuestionIndex + 1;
+      this.score += this.activeQuestion.answers.find(val => val.selected == true).value;
       this.selectQuestion(index);
     }
+    console.log(this.score);
   }
 
   selectQuestion(index: number) {
@@ -54,7 +59,6 @@ export class QuestionnaireComponent implements OnInit {
     };
     this.activeQuestion = this.questionnaire.questions[this.activeQuestionIndex];
     this.progress = this.activeQuestionIndex / (this.questionnaire.questions.length - 1);
-    console.log(this.progress);
   }
 
   getTemplate(nr: number) {
