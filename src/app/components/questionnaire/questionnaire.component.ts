@@ -14,7 +14,7 @@ export class QuestionnaireComponent implements OnInit {
 
   @Input() questionnaire: IQuestionnaire;
 
-  @Output() finished = new EventEmitter();
+  @Output() finished = new EventEmitter<number>();
 
   activeQuestion: IQuestion;
   activeQuestionIndex = 0;
@@ -37,13 +37,13 @@ export class QuestionnaireComponent implements OnInit {
     if (this.activeQuestion.type == QuestionType.jump) {
       if (this.activeQuestion.answers.find(val => val.selected == true).value < 0) {
         console.log('ENDE');
-        this.finished.emit();
+        this.finished.emit(this.score);
       } else
         this.selectQuestion(this.activeQuestion.answers.find(val => val.selected == true).value)
     } else if (this.activeQuestionIndex >= this.questionnaire.questions.length - 1 || this.activeQuestion.jumpTo <= -1) {
       console.log('ENDE');
       this.score += this.activeQuestion.answers.find(val => val.selected == true).value;
-      this.finished.emit();
+      this.finished.emit(this.score);
     } else {
       let index = this.activeQuestionIndex + 1;
       this.score += this.activeQuestion.answers.find(val => val.selected == true).value;
