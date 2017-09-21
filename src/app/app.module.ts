@@ -10,10 +10,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LanguageService } from './services/language.service';
 import { SettingsService } from './services/settings.service';
 import { FocusDirective } from './directives/focus.directive';
-import { VisionTestComponent } from './components/-tests/vision-test/vision-test.component';
-import { DigitTripleTestComponent } from './components/-tests/digit-triple-test/digit-triple-test.component';
 import { CheckboxComponent } from './components/layout/checkbox/checkbox.component';
-import { CognitionTestComponent } from './components/-tests/cognition-test/cognition-test.component';
 import { QuestionComponent } from './components/questionnaire/question/question.component';
 import { QuestionnaireComponent } from './components/questionnaire/questionnaire.component';
 import { DividerComponent } from './components/layout/divider/divider.component';
@@ -22,7 +19,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProgressbarComponent } from './components/layout/progressbar/progressbar.component';
 import { ConfigService } from './services/config.service';
 import { AudioService } from './services/audio.service';
-import { DttApiService } from './services/dtt-api.service';
+import { HearingApiService } from './services/hearing-api.service';
 import { AudioTestingRealmComponent } from './components/audio-testing-realm/audio-testing-realm.component';
 import { CognitionApiService } from './services/cognition-api.service';
 import { HDDAComponent } from './components/hearing/hdda/hdda.component';
@@ -33,6 +30,9 @@ import { ChapterSelectionComponent } from './components/chapter-selection/chapte
 import { ProcedureContainerComponent } from './components/procedure-container/procedure-container.component';
 import { ProcedureHostDirective } from './directives/procedure-host.directive';
 import { DescriptionComponent } from './components/description/description.component';
+import { DigitTripleTestComponent } from 'app/components/hearing/digit-triple-test/digit-triple-test.component';
+import { VisionTestComponent } from 'app/components/vision/vision-test/vision-test.component';
+import { CognitionTestComponent } from 'app/components/cognition/cognition-test/cognition-test.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +70,7 @@ import { DescriptionComponent } from './components/description/description.compo
     SettingsService,
     ConfigService,
     AudioService,
-    DttApiService,
+    HearingApiService,
     CognitionApiService,
     ProcedureService
   ],

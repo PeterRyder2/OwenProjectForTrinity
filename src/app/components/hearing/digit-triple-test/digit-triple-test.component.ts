@@ -1,7 +1,8 @@
+import { Language } from '../../../enums/languages.enum';
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { LanguageService } from '../../../services/language.service';
 import { DigitTripleTestState } from '../../../enums/DigitTripleTestState.enum';
-import { DttApiService } from '../../../services/dtt-api.service';
+import { HearingApiService } from '../../../services/hearing-api.service';
 import { AudioService } from '../../../services/audio.service';
 import { SettingsService } from '../../../services/settings.service';
 import { SenseCogPage } from '../../../../../e2e/app.po';
@@ -31,7 +32,7 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy {
 
   constructor(
     public _languageService: LanguageService,
-    private api: DttApiService,
+    private api: HearingApiService,
     private audio: AudioService,
     private zone: NgZone,
     public _settings: SettingsService
@@ -72,10 +73,10 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy {
     let languageStr: string;
     let languageNum = this._settings.language;
     switch (languageNum) {
-      case 0:
+      case Language.German:
         languageStr = 'de';
         break;
-      case 1:
+      case Language.English:
         languageStr = 'en';
         break;
       default:
