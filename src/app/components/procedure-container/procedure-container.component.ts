@@ -24,7 +24,7 @@ export class ProcedureContainerComponent implements OnInit {
     this.procedureService.init(this);
   }
 
-  loadComponent = <T>(component: new () => T) => {
+  loadComponent = <T>(component: new (...args: any[]) => T) => {
     let componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
 
     let viewContainerRef = this.procedureHost.viewContainerRef;

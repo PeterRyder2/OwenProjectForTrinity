@@ -36,12 +36,10 @@ export class QuestionnaireComponent implements OnInit {
   nextQuestion() {
     if (this.activeQuestion.type == QuestionType.jump) {
       if (this.activeQuestion.answers.find(val => val.selected == true).value < 0) {
-        console.log('ENDE');
         this.finished.emit(this.score);
       } else
         this.selectQuestion(this.activeQuestion.answers.find(val => val.selected == true).value)
     } else if (this.activeQuestionIndex >= this.questionnaire.questions.length - 1 || this.activeQuestion.jumpTo <= -1) {
-      console.log('ENDE');
       this.score += this.activeQuestion.answers.find(val => val.selected == true).value;
       this.finished.emit(this.score);
     } else {
@@ -54,10 +52,11 @@ export class QuestionnaireComponent implements OnInit {
 
   selectQuestion(index: number) {
     this.activeQuestionIndex = index;
-    if (this.questionnaire.questions[this.activeQuestionIndex].answerTemplateNr != null) {
-      this.questionnaire.questions[this.activeQuestionIndex].answers = this.getTemplate(this.questionnaire.questions[this.activeQuestionIndex].answerTemplateNr);
-    };
     this.activeQuestion = this.questionnaire.questions[this.activeQuestionIndex];
+    if (this.activeQuestion.type == QuestionType.multiple || this.activeQuestion.type == QuestionType.single)
+      if (this.activeQuestion.answerTemplateNr != null) {
+        this.activeQuestion.answers = this.getTemplate(this.activeQuestion.answerTemplateNr);
+      };
     this.progress = this.activeQuestionIndex / (this.questionnaire.questions.length - 1);
   }
 

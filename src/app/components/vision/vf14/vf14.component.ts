@@ -78,17 +78,19 @@ export class VF14Component implements OnInit {
       },
       {
         question: 'Do you currently drive a car?',
+        type: QuestionType.jump,
         answers: [
           {
             answer: 'Yes',
-            value: 13
+            jumpTo: 13,
+            value: null
           },
           {
             answer: 'No',
-            value: 15
+            jumpTo: 15,
+            value: null
           }
-        ],
-        type: QuestionType.jump
+        ]
       },
       {
         question: 'How much difficulty do you have driving during the day because of your vision?',
@@ -103,17 +105,19 @@ export class VF14Component implements OnInit {
       },
       {
         question: 'Have you ever driven a car?',
+        type: QuestionType.jump,
         answers: [
           {
             answer: 'Yes',
-            value: 16
+            jumpTo: 16,
+            value: null
           },
           {
             answer: 'No',
-            value: -1
+            jumpTo: -1,
+            value: null
           }
-        ],
-        type: QuestionType.jump
+        ]
       },
       {
         question: 'When did you stop driving?',

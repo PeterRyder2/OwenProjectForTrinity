@@ -120,6 +120,7 @@ export class ProcedureService {
     this.procedure.chapters[this.position.chapter].skipped = true;
     let chaptersLeft = this.nextChapter();
     if (!chaptersLeft) {
+      console.log('TODO end');
       // TODO
     }
   }
@@ -141,7 +142,6 @@ export class ProcedureService {
         for (let chapter of this.procedure.chapters) {
           chapter.skipped = this.chapterSelectionComponentRef.instance.chaptersToSkip.includes(chapter.name);
         }
-        console.log(this.chapterSelectionComponentRef.instance.chaptersToSkip);
         let allChaptersSkipped = !this.nextChapter(false);
         if (allChaptersSkipped) {
           // TODO send a message to pick atleast one
@@ -186,6 +186,7 @@ export class ProcedureService {
     if (!testsLeft) {
       let chaptersLeft = this.nextChapter();
       if (!chaptersLeft) {
+        console.log('TODO end')
         // TODO continue to last
       }
     }
