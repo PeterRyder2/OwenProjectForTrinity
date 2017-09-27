@@ -1,3 +1,4 @@
+import { ITestComponent, ITestResponse, ITestResult } from '../../../intefaces/IProcedureConfig.interface';
 import { Language } from '../../../enums/languages.enum';
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { LanguageService } from '../../../services/language.service';
@@ -5,7 +6,6 @@ import { DigitTripleTestState } from '../../../enums/DigitTripleTestState.enum';
 import { HearingApiService } from '../../../services/hearing-api.service';
 import { AudioService } from '../../../services/audio.service';
 import { SettingsService } from '../../../services/settings.service';
-import { SenseCogPage } from '../../../../../e2e/app.po';
 
 import State = DigitTripleTestState;
 
@@ -14,21 +14,27 @@ import State = DigitTripleTestState;
   templateUrl: './digit-triple-test.component.html',
   styleUrls: ['./digit-triple-test.component.scss']
 })
-export class DigitTripleTestComponent implements OnInit, OnDestroy {
+export class DigitTripleTestComponent implements OnInit, OnDestroy, ITestComponent {
 
   activeKey = '';
 
   state: State = State.void;
-  playingSound = false;
   enteredNumber = '';
 
-  id: string;
+  testId: string;
   progress = 0;
 
-  name = '';
+  // TODO was soll mit dem namen passieren
+  name = 'Robert';
+  // TODO was soll mit der Annotation passieren
   annotation = '';
 
   result = 0;
+
+  get canContinue() {
+    if (this.enteredNumber.length !== 3 && this.state == State.input) return false;
+    return true;
+  }
 
   constructor(
     public _languageService: LanguageService,
@@ -40,12 +46,6 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
-    /** start of workaround to remove name prompt | need to be removed in final release*/
-    this.state = 1;
-    this.name = 'TestNameOfUser';
-    this.init();
-    /** end of workaround to remove name prompt | need to be removed in final release */
-
     window.addEventListener('keydown',
       this.keyDownEventListener);
     window.addEventListener('keyup',
@@ -57,80 +57,87 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy {
       this.keyDownEventListener);
     window.addEventListener('keyup',
       this.keyUpEventListener);
-    if (this.id && this.state <= State.finishing) {
-      this.api.finish({ id: this.id, annotation: 'test got destroyed' });
+    if (this.testId && this.state <= State.finishing) {
+      this.api.finish({ id: this.testId, annotation: 'test got destroyed' });
     }
-    if (this.playingSound == true) {
+    if (this.audio.isPlaying == true) {
       this.audio.stop();
     }
   }
 
-  init() {
-    this.state = State.started;
-  }
+  async continue(): Promise<ITestResponse> {
+    switch (this.state) {
+      case State.void:
+        this.start();
+        break;
 
-  async start() {
-    let languageStr: string;
-    let languageNum = this._settings.language;
-    switch (languageNum) {
-      case Language.German:
-        languageStr = 'de';
+      case State.input:
+        this.nextTriple();
         break;
-      case Language.English:
-        languageStr = 'en';
-        break;
+
+      case State.finishing:
+        let res = await this.finish();
+        return {
+          isTestFinnished: true,
+          result: res
+        };
+
       default:
         break;
     }
+    return {
+      isTestFinnished: false
+    };
+  }
 
+  async start() {
     let res = await this.api.initialize({
-      language: languageStr,
+      language: this._settings.languageStr,
       name: this.name
     });
-    console.log(languageStr);
-    this.id = res.Id;
+    this.testId = res.Id;
     this.present(res.TripleBuffer);
     this.audio.onMainSourceEnded.subscribe(() => {
       this.zone.run(() => { this.state = State.input; });
     });
-    this.playingSound = true;
   }
 
-  async continue() {
+  async nextTriple() {
     if (this.enteredNumber.length == 3) {
       this.state = State.validation;
       let selectedTriple = this.enteredNumber;
       this.enteredNumber = '';
-      let res = await this.api.next({ id: this.id, selectedTriple: selectedTriple });
+      let res = await this.api.next({ id: this.testId, selectedTriple: selectedTriple });
       this.progress = res.Progress;
-      if (res.End)
+      console.log(res.AvgSnr, res.End)
+      if (res.End === true)
         this.state = State.finishing;
       else
         this.present(res.TripleBuffer);
     }
   }
 
-  cancel() {
-    this.state = State.finishing;
-  }
-
-  async finish() {
+  // TODO ist die Annotation noch gewünscht?
+  async finish(): Promise<ITestResult> {
     this.audio.stop();
-    let res = await this.api.finish({ id: this.id, annotation: this.annotation });
-    this.result = res.Snr;
-    this.state = State.result;
+    let res = await this.api.finish({ id: this.testId, annotation: this.annotation });
+    console.log(res.Snr)
+    return {
+      score: res.Snr,
+      type: 1
+    };
   }
 
-  reset() {
-    this.state = State.void;
-    this.enteredNumber = '';
-
-    this.id = '';
+  cancel() {
+    if (this.testId && this.state <= State.finishing) {
+      this.api.finish({ id: this.testId, annotation: 'test got destroyed' });
+    }
+    this.audio.stop();
   }
 
   present(data: ArrayBuffer | string) {
     this.state = State.presentation;
-    setTimeout(() => { this.audio.play(data); }, 2000);
+    this.audio.play(data);
   }
 
   keyDownEventListener = (e: KeyboardEvent) => {
