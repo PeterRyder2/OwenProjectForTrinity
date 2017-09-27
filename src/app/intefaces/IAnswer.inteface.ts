@@ -4,6 +4,6 @@ export interface IJumpAnswerExtension {
 
 export interface IAnswer {
     answer: string;
-    value: number;
+    value: number | null;
     selected?: boolean;
 }
