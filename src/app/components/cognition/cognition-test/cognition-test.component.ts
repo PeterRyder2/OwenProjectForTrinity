@@ -1,4 +1,6 @@
-import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
+import { Subject } from 'rxjs/Rx';
+import { ITestComponent, ITestResponse } from '../../../intefaces/IProcedureConfig.interface';
+import { Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { IQuestion } from '../../../intefaces/IQuestion.interface';
 import { LanguageService } from '../../../services/language.service';
 import { CognitionTestState } from '../../../enums/CognitionTest.State.enum';
@@ -13,16 +15,23 @@ let State = CognitionTestState;
   templateUrl: './cognition-test.component.html',
   styleUrls: ['./cognition-test.component.scss']
 })
-export class CognitionTestComponent implements OnInit, OnDestroy {
+export class CognitionTestComponent implements OnInit, OnDestroy, ITestComponent {
+
+  @Output() disableContinueChanged = new EventEmitter<boolean>();
+
+  // ?Needed
+  name = 'rolf';
+  annotation = '';
 
   id: string;
-  name = '';
   activeKey = '';
-  annotation = '';
   activeWord = '';
-  result = '';
   state = State.void;
   questionnaire: IQuestionnaire;
+  countinueQuestionnaireDisabled = false;
+  continueDisabled = true;
+
+  continueQuestionnaireSubject: Subject<null> = new Subject();
 
   words: {
     present: string[],
@@ -34,11 +43,7 @@ export class CognitionTestComponent implements OnInit, OnDestroy {
   constructor(public _languageService: LanguageService, private api: CognitionApiService, public audio: AudioService) { }
 
   ngOnInit() {
-    /** start of workaround to remove name prompt | need to be removed in final release */
-    this.state = 1;
-    this.name = 'TestNameOfUser';
     this.init();
-    /** end of workaround to remove name prompt | need to be removed in final release */
 
     window.addEventListener('keydown',
       this.keyDownEventListener);
@@ -50,12 +55,60 @@ export class CognitionTestComponent implements OnInit, OnDestroy {
     let res = await this.api.initialize({ language: 'de', name: this.name });
     this.id = res.ID;
     this.questionnaire = res.Questionaire;
+    this.state = State.presenting;
+    this.checkContinueDisabled();
     this.words = {
       present: res.PresentWords,
       test: res.TestWords.concat(res.PresentWords)
     };
-    this.state = 1;
     setTimeout(() => { this.presentWords(); }, 2500);
+  }
+
+  disableContinueQuestionnaire(disable: boolean) {
+    this.countinueQuestionnaireDisabled = disable;
+    this.checkContinueDisabled();
+  }
+
+  checkContinueDisabled() {
+    switch (this.state) {
+      case State.presenting:
+        this.disableContinue(true);
+        break;
+      case State.presentingQuestion:
+        this.disableContinue(this.countinueQuestionnaireDisabled);
+        break;
+      case State.presentingFinal:
+        this.disableContinue(true);
+        break;
+      case State.finishing:
+        this.disableContinue(false);
+        break
+    }
+  }
+
+  disableContinue(disabled: boolean) {
+    this.continueDisabled = disabled;
+  }
+
+  async continue(): Promise<ITestResponse> {
+    switch (this.state) {
+      case State.presentingQuestion:
+        this.continueQuestionnaireSubject.next();
+        break;
+      case State.finishing:
+        let res = await this.finish();
+        console.log(res);
+        return {
+          isTestFinnished: true,
+          result: {
+            score: res,
+            type: null
+          }
+        }
+    }
+    return {
+      isTestFinnished: false
+    };
   }
 
   async presentWords() {
@@ -67,13 +120,15 @@ export class CognitionTestComponent implements OnInit, OnDestroy {
     this.audio.play(res.sound);
     if (this.words.present.length == 0) {
       this.state = State.presentingQuestion;
+      this.checkContinueDisabled();
     } else {
-      setTimeout(() => { this.presentWords(); }, 2000);
+      setTimeout(() => { this.presentWords(); }, 200);
     }
   }
 
   questionnaireFinnished() {
     this.state = State.presentingFinal;
+    this.checkContinueDisabled();
     this.presentNextTest();
   }
 
@@ -82,6 +137,7 @@ export class CognitionTestComponent implements OnInit, OnDestroy {
     this.activeWord = this.words.test.splice(rnd, 1)[0];
     if (this.words.test.length == 0) {
       this.state = State.finishing;
+      this.checkContinueDisabled();
     }
   }
 
@@ -93,8 +149,8 @@ export class CognitionTestComponent implements OnInit, OnDestroy {
     this.presentNextTest();
   }
 
-  finish() {
-    this.api.finish({
+  async finish() {
+    return await this.api.finish({
       id: this.id,
       wordRes: this.results,
       annotation: this.annotation
@@ -106,7 +162,7 @@ export class CognitionTestComponent implements OnInit, OnDestroy {
       this.keyDownEventListener);
     window.addEventListener('keyup',
       this.keyUpEventListener);
-    if (this.id && this.state <= State.ended) {
+    if (this.id && this.state <= State.finishing) {
       this.api.finish({ id: this.id, wordRes: null, annotation: 'test got destroyed' });
     }
     if (this.words) {

@@ -3,7 +3,5 @@ export enum CognitionTestState {
     presenting,
     presentingQuestion,
     presentingFinal,
-    finishing,
-    result,
-    ended
+    finishing
 }
