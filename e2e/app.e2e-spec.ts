@@ -1,14 +1,14 @@
-import { SenseCogPage } from './app.po';
+import { AppPage } from './app.po';
 
-describe('sense-cog App', () => {
-  let page: SenseCogPage;
+describe('sense-cog-web App', () => {
+  let page: AppPage;
 
   beforeEach(() => {
-    page = new SenseCogPage();
+    page = new AppPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('snscg works!');
+    expect(page.getParagraphText()).toEqual('Welcome to snscg!');
   });
 });
