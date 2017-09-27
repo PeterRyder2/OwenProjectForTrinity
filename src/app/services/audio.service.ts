@@ -16,6 +16,9 @@ export class AudioService {
     private mainStarted = 0;
     private timePlayed = 0;
 
+    private _isPlaying = false;
+    get isPlaying() { return this._isPlaying; }
+
     private _volume = 1;
     get volume() { return this.volume; }
     set volume(value: number) { this._volume = this.gain.gain.value = value; }
@@ -46,6 +49,7 @@ export class AudioService {
     }
 
     mainEndedListner = () => {
+        this._isPlaying = false;
         this.mainSourceEnded.next();
     }
 
@@ -62,11 +66,13 @@ export class AudioService {
         if (data) await this.loadBuffer(data);
         this.initNewMainSource();
         this.mainSource.start(this.mainStarted = this.context.currentTime, this.timePlayed);
+        this._isPlaying = true;
     }
 
     pause() {
         if (this.mainSource.buffer) {
             this.mainSource.stop();
+            this._isPlaying = false;
             this.timePlayed += this.context.currentTime - this.mainStarted;
         }
     }
@@ -74,6 +80,7 @@ export class AudioService {
     stop() {
         if (this.mainSource.buffer) {
             this.mainSource.stop();
+            this._isPlaying = false;
             this.mainStarted = 0;
         }
     }

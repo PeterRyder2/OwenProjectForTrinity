@@ -30,9 +30,9 @@ import { ChapterSelectionComponent } from './components/chapter-selection/chapte
 import { ProcedureContainerComponent } from './components/procedure-container/procedure-container.component';
 import { ProcedureHostDirective } from './directives/procedure-host.directive';
 import { DescriptionComponent } from './components/description/description.component';
-import { DigitTripleTestComponent } from 'app/components/hearing/digit-triple-test/digit-triple-test.component';
-import { VisionTestComponent } from 'app/components/vision/vision-test/vision-test.component';
-import { CognitionTestComponent } from 'app/components/cognition/cognition-test/cognition-test.component';
+import { DigitTripleTestComponent } from './components/hearing/digit-triple-test/digit-triple-test.component';
+import { VisionTestComponent } from './components/vision/vision-test/vision-test.component';
+import { CognitionTestComponent } from './components/cognition/cognition-test/cognition-test.component';
 
 @NgModule({
   declarations: [
