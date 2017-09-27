@@ -1,3 +1,6 @@
+import { CognitionTestComponent } from '../cognition/cognition-test/cognition-test.component';
+import { DigitTripleTestComponent } from '../hearing/digit-triple-test/digit-triple-test.component';
+import { QuestionnaireComponent } from '../questionnaire/questionnaire.component';
 import { DescriptionComponent } from '../description/description.component';
 import { ChapterSelectionComponent } from '../chapter-selection/chapter-selection.component';
 import { ProcedureService } from '../../services/procedure.service';
@@ -10,7 +13,10 @@ import { Component, ComponentFactoryResolver, ComponentRef, OnInit, ViewChild } 
   styleUrls: ['./procedure-container.component.scss'],
   entryComponents: [
     ChapterSelectionComponent,
-    DescriptionComponent
+    DescriptionComponent,
+    QuestionnaireComponent,
+    DigitTripleTestComponent,
+    CognitionTestComponent
   ]
 })
 export class ProcedureContainerComponent implements OnInit {

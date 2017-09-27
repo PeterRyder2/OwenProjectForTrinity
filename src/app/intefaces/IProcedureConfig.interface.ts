@@ -16,21 +16,27 @@ interface IDescription {
 interface ITest {
     name: string;
     description: IDescription;
-    component: new () => ITestComponent;
+    component: new(...args: any[]) => ITestComponent;
+    inputData?: IInputData[];
     result?: ITestResult;
     skipped?: boolean;
 }
 
-interface ITestResult {
+interface IInputData {
+    identifier: string;
+    data: any;
+}
+
+export interface ITestResult {
     score: number | string;
     type: any; // TODO
 }
 
-interface ITestComponent {
-    continue: () => ITestResponse;
+export interface ITestComponent {
+    continue(): Promise<ITestResponse>;
 }
 
-type ITestResponse = {
+export type ITestResponse = {
     isTestFinnished: false;
 } | {
     isTestFinnished: true;

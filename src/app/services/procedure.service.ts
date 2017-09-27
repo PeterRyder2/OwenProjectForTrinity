@@ -1,3 +1,6 @@
+import { QuestionnaireComponent } from '../components/questionnaire/questionnaire.component';
+import { CognitionTestComponent } from '../components/cognition/cognition-test/cognition-test.component';
+import { DigitTripleTestComponent } from '../components/hearing/digit-triple-test/digit-triple-test.component';
 import { BehaviorSubject } from 'rxjs/Rx';
 import { DescriptionComponent } from '../components/description/description.component';
 import { ProcedureContainerComponent } from '../components/procedure-container/procedure-container.component';
@@ -5,6 +8,7 @@ import { ChapterSelectionComponent } from '../components/chapter-selection/chapt
 import { Error } from 'tslint/lib/error';
 import { IProcedure } from '../intefaces/IProcedureConfig.interface';
 import { ComponentRef, Injectable } from '@angular/core';
+import { HDDA, VF14, IQCODE } from './questionnaires';
 
 @Injectable()
 export class ProcedureService {
@@ -22,14 +26,20 @@ export class ProcedureService {
             description: {
               name: 'HDDADescription'
             },
-            component: null
+            component: QuestionnaireComponent,
+            inputData: [
+              {
+                identifier: 'questionnaire',
+                data: HDDA
+              }
+            ]
           },
           {
             name: 'DigitTripleTest',
             description: {
               name: 'DigitTripleTestDescription'
             },
-            component: null
+            component: DigitTripleTestComponent
           }
         ]
       },
@@ -44,14 +54,20 @@ export class ProcedureService {
             description: {
               name: 'IQCODEDescription'
             },
-            component: null
+            component: QuestionnaireComponent,
+            inputData: [
+              {
+                identifier: 'questionnaire',
+                data: IQCODE
+              }
+            ]
           },
           {
             name: 'CognitionTest',
             description: {
               name: 'CognitionTestDescription'
             },
-            component: null
+            component: CognitionTestComponent
           }
         ]
       },
@@ -66,21 +82,35 @@ export class ProcedureService {
             description: {
               name: 'VF14Description'
             },
-            component: null
+            component: QuestionnaireComponent,
+            inputData: [
+              {
+                identifier: 'questionnaire',
+                data: VF14
+              }
+            ]
           },
-          {
-            name: 'VisionTest',
-            description: {
-              name: 'VisionTestDescription'
-            },
-            component: null
-          }
+          // {
+          //   name: 'VisionTest',
+          //   description: {
+          //     name: 'VisionTestDescription'
+          //   },
+          //   component: null
+          // }
         ]
       },
     ]
   };
 
   position = new ProcedurePosition();
+
+  get activeChapter() {
+    return this.procedure.chapters[this.position.chapter];
+  }
+
+  get activeTest() {
+    return this.procedure.chapters[this.position.chapter].tests[this.position.test];
+  }
 
   chapterSelectionComponentRef: ComponentRef<ChapterSelectionComponent>;
 
@@ -117,7 +147,7 @@ export class ProcedureService {
   }
 
   private skipChapter() {
-    this.procedure.chapters[this.position.chapter].skipped = true;
+    this.activeChapter.skipped = true;
     let chaptersLeft = this.nextChapter();
     if (!chaptersLeft) {
       console.log('TODO end');
@@ -126,7 +156,7 @@ export class ProcedureService {
   }
 
   private skipTest() {
-    this.procedure.chapters[this.position.chapter].tests[this.position.test].skipped = true;
+    this.activeTest.skipped = true;
     this.advance();
   }
 
@@ -211,7 +241,7 @@ export class ProcedureService {
   private nextTest(countUp = true) {
     let testsLeft = false;
     let nextTest = countUp ? this.position.test + 1 : this.position.test;
-    for (let i = nextTest; i < this.procedure.chapters[this.position.chapter].tests.length; i++) {
+    for (let i = nextTest; i < this.activeChapter.tests.length; i++) {
       if (!this.procedure.chapters[i].skipped) {
         this.position.test++;
         this.position.state = ProcedureState.TestDescription;
@@ -224,28 +254,31 @@ export class ProcedureService {
 
   private loadNextChapterDescription() {
     let descriptionComponentRef = this.procedureContainer.loadComponent(DescriptionComponent);
-    descriptionComponentRef.instance.name = this.procedure.chapters[this.position.chapter].description.name;
-    this.position.name = this.procedure.chapters[this.position.chapter].description.name;
+    descriptionComponentRef.instance.name = this.activeChapter.description.name;
+    this.position.name = this.activeChapter.description.name;
   }
 
   private loadNextTestDescription() {
     let descriptionComponentRef = this.procedureContainer.loadComponent(DescriptionComponent);
-    descriptionComponentRef.instance.name = this.procedure.chapters[this.position.chapter].tests[this.position.test].description.name;
-    this.position.name = this.procedure.chapters[this.position.chapter].tests[this.position.test].description.name;
+    descriptionComponentRef.instance.name = this.activeTest.description.name;
+    this.position.name = this.activeTest.description.name;
   }
 
   private loadNextTest() {
-    let descriptionComponentRef = this.procedureContainer.loadComponent(DescriptionComponent);
+    let descriptionComponentRef = this.procedureContainer.loadComponent(this.activeTest.component);
     // Correct component needs to be implemented
-    descriptionComponentRef.instance.name = this.procedure.chapters[this.position.chapter].tests[this.position.test].name;
-    this.position.name = this.procedure.chapters[this.position.chapter].tests[this.position.test].name;
+    if (this.activeTest.inputData !== undefined)
+      for (let inputData of this.activeTest.inputData) {
+        descriptionComponentRef.instance[inputData.identifier] = inputData.data;
+      }
+    this.position.name = this.activeTest.name;
   }
 
   private loadNextTestResult() {
     let descriptionComponentRef = this.procedureContainer.loadComponent(DescriptionComponent);
     // Correct component needs to be implemented and the point to the result object of the test
-    descriptionComponentRef.instance.name = this.procedure.chapters[this.position.chapter].tests[this.position.test].name + ' RESULT';
-    this.position.name = this.procedure.chapters[this.position.chapter].tests[this.position.test].name + 'Result';
+    descriptionComponentRef.instance.name = this.activeTest.name + ' RESULT';
+    this.position.name = this.activeTest.name + 'Result';
   }
 
 }
