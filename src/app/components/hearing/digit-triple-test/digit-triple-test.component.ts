@@ -1,6 +1,6 @@
 import { ITestComponent, ITestResponse, ITestResult } from '../../../intefaces/IProcedureConfig.interface';
 import { Language } from '../../../enums/languages.enum';
-import { Component, OnInit, OnDestroy, ViewChild, ElementRef, NgZone } from '@angular/core';
+import { Component, ElementRef, EventEmitter, NgZone, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { LanguageService } from '../../../services/language.service';
 import { DigitTripleTestState } from '../../../enums/DigitTripleTestState.enum';
 import { HearingApiService } from '../../../services/hearing-api.service';
@@ -16,10 +16,13 @@ import State = DigitTripleTestState;
 })
 export class DigitTripleTestComponent implements OnInit, OnDestroy, ITestComponent {
 
+  @Output() disableContinueChanged = new EventEmitter<boolean>();
+
   activeKey = '';
 
   state: State = State.void;
   enteredNumber = '';
+  showOwnContinueBtn = true;
 
   testId: string;
   progress = 0;
@@ -63,20 +66,29 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy, ITestCompone
     if (this.audio.isPlaying == true) {
       this.audio.stop();
     }
+    this.state = State.cancelled;
   }
 
-  async continue(): Promise<ITestResponse> {
+  subscribeContinueDisabled(cb: (isDisabled: boolean) => void): void {
+    this.disableContinueChanged.subscribe(cb);
+    this.showOwnContinueBtn = false;
+  }
+
+  continue = async (): Promise<ITestResponse> => {
     switch (this.state) {
       case State.void:
         this.start();
+        this.disableContinueChanged.emit(!this.canContinue);
         break;
 
       case State.input:
         this.nextTriple();
+        this.disableContinueChanged.emit(!this.canContinue);
         break;
 
       case State.finishing:
         let res = await this.finish();
+        this.disableContinueChanged.emit(!this.canContinue);
         return {
           isTestFinnished: true,
           result: res
@@ -98,7 +110,11 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy, ITestCompone
     this.testId = res.Id;
     this.present(res.TripleBuffer);
     this.audio.onMainSourceEnded.subscribe(() => {
-      this.zone.run(() => { this.state = State.input; });
+      if (this.state !== State.cancelled)
+        this.zone.run(() => {
+          this.state = State.input;
+          this.disableContinueChanged.emit(!this.canContinue);
+        });
     });
   }
 
@@ -109,7 +125,6 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy, ITestCompone
       this.enteredNumber = '';
       let res = await this.api.next({ id: this.testId, selectedTriple: selectedTriple });
       this.progress = res.Progress;
-      console.log(res.AvgSnr, res.End)
       if (res.End === true)
         this.state = State.finishing;
       else
@@ -159,6 +174,7 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy, ITestCompone
   addNumber(value: string) {
     if (this.enteredNumber.length < 3)
       this.enteredNumber += value;
+    this.disableContinueChanged.emit(!this.canContinue);
   }
 
   removeLastNumber() {

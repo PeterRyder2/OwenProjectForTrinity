@@ -1,3 +1,4 @@
+import { ProcedureService } from '../../services/procedure.service';
 import { Component, OnInit } from '@angular/core';
 import { LanguageService } from '../../services/language.service';
 
@@ -8,9 +9,13 @@ import { LanguageService } from '../../services/language.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public _languageService: LanguageService) { }
+  constructor(public _languageService: LanguageService, public procedureService: ProcedureService) { }
 
   ngOnInit() {
+  }
+
+  skip() {
+    this.procedureService.skip();
   }
 
 }

@@ -6,6 +6,23 @@ export class Util {
         }
         return view.buffer;
     }
+
+    static deepCloneObject<T extends any>(from: T): T {
+        if (from == null || typeof from != 'object') return from;
+        if (from.constructor != Object && from.constructor != Array) return from;
+        if (from.constructor == Date || from.constructor == RegExp || from.constructor == Function ||
+            from.constructor == String || from.constructor == Number || from.constructor == Boolean)
+            return new from.constructor(from);
+
+        let to = new from.constructor();
+
+        // tslint:disable-next-line:forin
+        for (let name in from) {
+            to[name] = typeof to[name] == 'undefined' ? this.deepCloneObject(from[name]) : to[name];
+        }
+
+        return to;
+    }
 }
 
 export class Assert {

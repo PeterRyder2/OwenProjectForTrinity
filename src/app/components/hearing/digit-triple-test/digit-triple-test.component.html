@@ -84,7 +84,7 @@
         </ng-template>
       </div> -->
   </div>
-  <button standard [class.active]="activeKey == 'Enter'" (click)="continue()">
+  <button *ngIf="this.showOwnContinueBtn" [disabled]="!this.canContinue" standard [class.active]="activeKey == 'Enter'" (click)="continue()">
           {{_languageService.digitTripleTest.continue}}
         </button>
   <!-- </ng-container> -->

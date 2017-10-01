@@ -1,4 +1,5 @@
 <div class="container">
+  <div class="title">{{questionnaire.title}}</div>
   <div class="question-container">
     <snscg-question class="question" [question]="activeQuestion" [progress]="progress" (newSelection)="this.checkContinueDisabled($event)" ></snscg-question>
   </div>

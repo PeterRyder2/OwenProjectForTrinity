@@ -1,120 +1,33 @@
-import { QuestionnaireComponent } from '../components/questionnaire/questionnaire.component';
-import { CognitionTestComponent } from '../components/cognition/cognition-test/cognition-test.component';
-import { DigitTripleTestComponent } from '../components/hearing/digit-triple-test/digit-triple-test.component';
-import { BehaviorSubject } from 'rxjs/Rx';
-import { DescriptionComponent } from '../components/description/description.component';
-import { ProcedureContainerComponent } from '../components/procedure-container/procedure-container.component';
-import { ChapterSelectionComponent } from '../components/chapter-selection/chapter-selection.component';
-import { Error } from 'tslint/lib/error';
-import { IProcedure } from '../intefaces/IProcedureConfig.interface';
 import { ComponentRef, Injectable } from '@angular/core';
-import { HDDA, VF14, IQCODE } from './questionnaires';
+import { BehaviorSubject } from 'rxjs/Rx';
+
+import { ChapterSelectionComponent } from '../components/chapter-selection/chapter-selection.component';
+import { HomeComponent } from '../components/home/home.component';
+import { ProcedureContainerComponent } from '../components/procedure-container/procedure-container.component';
+import { IProcedure, ITestResponse } from '../intefaces/IProcedureConfig.interface';
+import { Util } from '../lib/util';
+import { procedureConfig } from '../lib/procedure';
 
 @Injectable()
 export class ProcedureService {
 
-  private procedure: IProcedure = {
-    chapters: [
-      {
-        name: 'Hearing',
-        description: {
-          name: 'HearingChapterDescription'
-        },
-        tests: [
-          {
-            name: 'HDDA',
-            description: {
-              name: 'HDDADescription'
-            },
-            component: QuestionnaireComponent,
-            inputData: [
-              {
-                identifier: 'questionnaire',
-                data: HDDA
-              }
-            ]
-          },
-          {
-            name: 'DigitTripleTest',
-            description: {
-              name: 'DigitTripleTestDescription'
-            },
-            component: DigitTripleTestComponent
-          }
-        ]
-      },
-      {
-        name: 'Cognition',
-        description: {
-          name: 'CognitionChapterDescription'
-        },
-        tests: [
-          {
-            name: 'IQCODE',
-            description: {
-              name: 'IQCODEDescription'
-            },
-            component: QuestionnaireComponent,
-            inputData: [
-              {
-                identifier: 'questionnaire',
-                data: IQCODE
-              }
-            ]
-          },
-          {
-            name: 'CognitionTest',
-            description: {
-              name: 'CognitionTestDescription'
-            },
-            component: CognitionTestComponent
-          }
-        ]
-      },
-      {
-        name: 'Vision',
-        description: {
-          name: 'VisionChapterDescription'
-        },
-        tests: [
-          {
-            name: 'VF14',
-            description: {
-              name: 'VF14Description'
-            },
-            component: QuestionnaireComponent,
-            inputData: [
-              {
-                identifier: 'questionnaire',
-                data: VF14
-              }
-            ]
-          },
-          // {
-          //   name: 'VisionTest',
-          //   description: {
-          //     name: 'VisionTestDescription'
-          //   },
-          //   component: null
-          // }
-        ]
-      },
-    ]
-  };
-
-  position = new ProcedurePosition();
-
-  get activeChapter() {
-    return this.procedure.chapters[this.position.chapter];
-  }
-
-  get activeTest() {
-    return this.procedure.chapters[this.position.chapter].tests[this.position.test];
-  }
+  private procedure: IProcedure;
 
   chapterSelectionComponentRef: ComponentRef<ChapterSelectionComponent>;
 
   procedureContainer: ProcedureContainerComponent;
+
+  position = new ProcedurePosition();
+
+  isContinueDisabled;
+
+  private get activeChapter() {
+    return this.procedure.chapters[this.position.chapter];
+  }
+
+  private get activeTest() {
+    return this.procedure.chapters[this.position.chapter].tests[this.position.test];
+  }
 
   constructor() { }
 
@@ -132,7 +45,6 @@ export class ProcedureService {
         break;
 
       case ProcedureState.Test:
-        // TODO cancel test
         this.skipTest();
         break;
 
@@ -141,17 +53,21 @@ export class ProcedureService {
         break;
 
       default:
-        throw new Error(`apperently the ProcedureState was out of its enum range, 
-          this should not happen and something has to be messed up badly`);
+        throw new Error(`apperently the ProcedureState was out of its enum range,
+           this should not happen and something has to be messed up badly`);
     }
+  }
+
+  reset() {
+    this.position.reset();
+    this.init();
   }
 
   private skipChapter() {
     this.activeChapter.skipped = true;
     let chaptersLeft = this.nextChapter();
     if (!chaptersLeft) {
-      console.log('TODO end');
-      // TODO
+      this.endProcedure();
     }
   }
 
@@ -160,55 +76,81 @@ export class ProcedureService {
     this.advance();
   }
 
-  init(procedureContainer: ProcedureContainerComponent) {
-    this.procedureContainer = procedureContainer;
-    this.chapterSelectionComponentRef = this.procedureContainer.loadComponent(ChapterSelectionComponent);
-    this.chapterSelectionComponentRef.instance.procedure = this.procedure;
+  private endProcedure() {
+    this.reset();
   }
 
-  continue() {
-    switch (this.position.state) {
-      case ProcedureState.ChapterSelection:
-        for (let chapter of this.procedure.chapters) {
-          chapter.skipped = this.chapterSelectionComponentRef.instance.chaptersToSkip.includes(chapter.name);
-        }
-        let allChaptersSkipped = !this.nextChapter(false);
-        if (allChaptersSkipped) {
-          // TODO send a message to pick atleast one
-        }
-        break;
-
-      case ProcedureState.ChapterDescription:
-        this.position.state = ProcedureState.TestDescription;
-        this.loadNextTestDescription();
-        break;
-
-      case ProcedureState.TestDescription:
-        this.position.state = ProcedureState.Test;
-        this.loadNextTest();
-        break;
-
-      case ProcedureState.Test:
-        let isTestOver = this.continueTest();
-        if (isTestOver) {
-          this.position.state = ProcedureState.TestResult;
-          this.loadNextTestResult();
-        }
-        break;
-
-      case ProcedureState.TestResult:
-        this.advance();
-        break;
-
-      default:
-        throw new Error(`apperently the ProcedureState was out of its enum range, 
-          this should not happen and something has to be messed up badly`);
-    }
+  init(procedureContainer?: ProcedureContainerComponent) {
+    if (procedureContainer)
+      this.procedureContainer = procedureContainer;
+    this.isContinueDisabled = false;
+    this.procedure = Util.deepCloneObject(procedureConfig);
+    this.procedureContainer.loadComponent(HomeComponent);
   }
 
-  private continueTest() {
-    // TODO
-    return true;
+  continueTestComponent = async (): Promise<ITestResponse> => {
+    return {
+      isTestFinnished: true,
+      result: {
+        score: 0,
+        type: null
+      },
+    };
+  };
+  continueDescriptionComponent = async () => { return true; };
+
+  async continue() {
+    if (!this.isContinueDisabled)
+      switch (this.position.state) {
+        case ProcedureState.Home:
+          this.chapterSelectionComponentRef = this.procedureContainer.loadComponent(ChapterSelectionComponent);
+          this.chapterSelectionComponentRef.instance.subscribeContinueDisabled((isDisabled) => { this.isContinueDisabled = isDisabled; })
+          this.chapterSelectionComponentRef.instance.procedure = this.procedure;
+          this.position.state = ProcedureState.ChapterSelection;
+          break;
+        case ProcedureState.ChapterSelection:
+          for (let chapter of this.procedure.chapters) {
+            chapter.skipped = this.chapterSelectionComponentRef.instance.chaptersToSkip.includes(chapter.name);
+          }
+          let allChaptersSkipped = !this.nextChapter(false);
+          if (allChaptersSkipped) {
+            // TODO send a message to pick atleast one
+          }
+          break;
+
+        case ProcedureState.ChapterDescription:
+          let chapterDescriptionOver = await this.continueDescriptionComponent();
+          if (chapterDescriptionOver) {
+            this.position.state = ProcedureState.TestDescription;
+            this.loadNextTestDescription();
+          }
+          break;
+
+        case ProcedureState.TestDescription:
+          let testDescriptionOver = await this.continueDescriptionComponent();
+          if (testDescriptionOver) {
+            this.position.state = ProcedureState.Test;
+            this.loadNextTest();
+          }
+          break;
+
+        case ProcedureState.Test:
+          let testResponse = await this.continueTestComponent();
+          if (testResponse.isTestFinnished) {
+            this.activeTest.result = testResponse.result;
+            this.position.state = ProcedureState.TestResult;
+            this.loadNextTestResult();
+          }
+          break;
+
+        case ProcedureState.TestResult:
+          this.advance();
+          break;
+
+        default:
+          throw new Error(`apperently the ProcedureState was out of its enum range,
+           this should not happen and something has to be messed up badly`);
+      }
   }
 
   private advance() {
@@ -216,8 +158,7 @@ export class ProcedureService {
     if (!testsLeft) {
       let chaptersLeft = this.nextChapter();
       if (!chaptersLeft) {
-        console.log('TODO end')
-        // TODO continue to last
+        this.endProcedure();
       }
     }
   }
@@ -253,37 +194,38 @@ export class ProcedureService {
   }
 
   private loadNextChapterDescription() {
-    let descriptionComponentRef = this.procedureContainer.loadComponent(DescriptionComponent);
-    descriptionComponentRef.instance.name = this.activeChapter.description.name;
-    this.position.name = this.activeChapter.description.name;
+    let descriptionComponentRef = this.procedureContainer.loadComponent(this.activeChapter.description);
+    this.continueDescriptionComponent = descriptionComponentRef.instance.continue;
+    this.position.name = this.activeChapter.name + 'ChapterDescription';
   }
 
   private loadNextTestDescription() {
-    let descriptionComponentRef = this.procedureContainer.loadComponent(DescriptionComponent);
-    descriptionComponentRef.instance.name = this.activeTest.description.name;
-    this.position.name = this.activeTest.description.name;
+    let descriptionComponentRef = this.procedureContainer.loadComponent(this.activeTest.description);
+    this.continueDescriptionComponent = descriptionComponentRef.instance.continue;
+    this.position.name = this.activeTest.name + 'Description';
   }
 
   private loadNextTest() {
-    let descriptionComponentRef = this.procedureContainer.loadComponent(this.activeTest.component);
-    // Correct component needs to be implemented
+    let testComponentRef = this.procedureContainer.loadComponent(this.activeTest.component);
+    testComponentRef.instance.subscribeContinueDisabled((isDisabled) => { this.isContinueDisabled = isDisabled; })
+    this.continueTestComponent = testComponentRef.instance.continue;
     if (this.activeTest.inputData !== undefined)
       for (let inputData of this.activeTest.inputData) {
-        descriptionComponentRef.instance[inputData.identifier] = inputData.data;
+        testComponentRef.instance[inputData.identifier] = inputData.data;
       }
     this.position.name = this.activeTest.name;
   }
 
   private loadNextTestResult() {
-    let descriptionComponentRef = this.procedureContainer.loadComponent(DescriptionComponent);
-    // Correct component needs to be implemented and the point to the result object of the test
-    descriptionComponentRef.instance.name = this.activeTest.name + ' RESULT';
+    let resultComponentRef = this.procedureContainer.loadComponent(this.activeTest.resultComponent);
+    resultComponentRef.instance.resultData = this.activeTest.result;
     this.position.name = this.activeTest.name + 'Result';
   }
 
 }
 
 enum ProcedureState {
+  Home,
   ChapterSelection,
   ChapterDescription,
   TestDescription,
@@ -294,16 +236,23 @@ enum ProcedureState {
 
 
 class ProcedurePosition {
-  state = ProcedureState.ChapterSelection;
+  state = ProcedureState.Home;
   chapter = 0;
   test = 0;
 
-  private nameSubject = new BehaviorSubject('ChapterSelection');
-  onNameChange = this.nameSubject.asObservable();
+  private onNameChangeSubject = new BehaviorSubject('Home');
+  onNameChange = this.onNameChangeSubject.asObservable();
   set name(val: string) {
-    this.nameSubject.next(val);
+    this.onNameChangeSubject.next(val);
   }
   get name() {
-    return this.nameSubject.getValue();
+    return this.onNameChangeSubject.getValue();
+  }
+
+  reset() {
+    this.state = ProcedureState.Home;
+    this.chapter = 0;
+    this.test = 0;
+    this.name = 'Home';
   }
 }

@@ -1,3 +1,4 @@
-<ng-template snscgProcedureHost></ng-template>
-<button (click)="this.continue()">Continue</button>
-<button (click)="this.skip()">Skip</button>
+<div class="container">
+  <ng-template snscgProcedureHost></ng-template>
+</div>
+<button [disabled]="this.procedureService.isContinueDisabled" standard class="continue" (click)="this.continue()">Continue</button>

@@ -1,5 +1,5 @@
 import { IProcedure } from '../../intefaces/IProcedureConfig.interface';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'snscg-chapter-selection',
@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./chapter-selection.component.scss']
 })
 export class ChapterSelectionComponent implements OnInit {
+
+  @Output() disableContinueChanged = new EventEmitter<boolean>();
 
   procedure: IProcedure;
 
@@ -17,12 +19,27 @@ export class ChapterSelectionComponent implements OnInit {
   ngOnInit() {
   }
 
+  subscribeContinueDisabled(cb: (isDisabled: boolean) => void): void {
+    this.disableContinueChanged.subscribe(cb);
+  }
+
   selectChapter(select: boolean, chapterName: string) {
     if (select)
       this.chaptersToSkip = this.chaptersToSkip.filter(val => val !== chapterName);
     else
       this.chaptersToSkip.push(chapterName);
-    console.log(this.chaptersToSkip)
+    this.checkNoChaptersSelected();
+  }
+
+  checkNoChaptersSelected() {
+    let chaptersLeft = false;
+    for (let chapter of this.procedure.chapters) {
+      if (!this.chaptersToSkip.includes(chapter.name)) {
+        chaptersLeft = true;
+        break;
+      }
+    }
+    this.disableContinueChanged.emit(!chaptersLeft);
   }
 
   isChapterSkipped(chapterName) {

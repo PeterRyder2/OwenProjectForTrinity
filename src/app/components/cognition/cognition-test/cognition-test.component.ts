@@ -19,6 +19,8 @@ export class CognitionTestComponent implements OnInit, OnDestroy, ITestComponent
 
   @Output() disableContinueChanged = new EventEmitter<boolean>();
 
+  showOwnContinueBtn = true;
+
   // ?Needed
   name = 'rolf';
   annotation = '';
@@ -88,9 +90,15 @@ export class CognitionTestComponent implements OnInit, OnDestroy, ITestComponent
 
   disableContinue(disabled: boolean) {
     this.continueDisabled = disabled;
+    this.disableContinueChanged.emit(disabled);
   }
 
-  async continue(): Promise<ITestResponse> {
+  subscribeContinueDisabled(cb: (isDisabled: boolean) => void): void {
+    this.disableContinueChanged.subscribe(cb);
+    this.showOwnContinueBtn = false;
+  }
+
+  continue = async (): Promise<ITestResponse> => {
     switch (this.state) {
       case State.presentingQuestion:
         this.continueQuestionnaireSubject.next();

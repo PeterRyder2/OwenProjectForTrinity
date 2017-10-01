@@ -19,7 +19,7 @@ export class QuestionnaireComponent implements OnInit, OnDestroy, ITestComponent
   @Input() continueSubject: Subject<null>;
 
   @Output() finished = new EventEmitter<number>();
-  @Output() onDisableContinue = new EventEmitter<boolean>();
+  @Output() disableContinueChanged = new EventEmitter<boolean>();
 
   activeQuestion: IQuestion;
   activeQuestionIndex = 0;
@@ -49,7 +49,7 @@ export class QuestionnaireComponent implements OnInit, OnDestroy, ITestComponent
   checkContinueDisabled(isValid) {
     this.activeQuestionValid = isValid;
     this.continueDisabled = !this.canContinue();
-    this.onDisableContinue.emit(this.continueDisabled);
+    this.disableContinueChanged.emit(this.continueDisabled);
   }
 
   canContinue() {
@@ -57,14 +57,19 @@ export class QuestionnaireComponent implements OnInit, OnDestroy, ITestComponent
       || this.activeQuestionValid === true);
   }
 
-  async continue(): Promise<ITestResponse> {
+  subscribeContinueDisabled(cb: (isDisabled: boolean) => void) {
+    this.disableContinueChanged.subscribe(cb);
+    this.showOwnContinueButton = false;
+  }
+
+  continue = async (): Promise<ITestResponse> => {
     let finnished = false;
     if (this.canContinue()) {
       if (this.activeQuestionValid) {
         this.activeQuestion.answered = true;
         switch (this.activeQuestion.type) {
           case QuestionType.jump:
-            if (this.activeQuestion.answers.find(val => val.selected == true).value < 0) {
+            if (this.activeQuestion.answers.find(val => val.selected == true).jumpTo < 0) {
               finnished = true;
             } else
               this.selectQuestion(this.activeQuestion.answers.find(val => val.selected == true).jumpTo)

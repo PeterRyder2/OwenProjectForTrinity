@@ -2,27 +2,28 @@ export interface IProcedure {
     chapters: IChapter[];
 }
 
-interface IChapter {
+export interface IChapter {
     name: string;
-    description: IDescription;
+    description: new (...args: any[]) => IDescriptionComponent;
     tests: ITest[];
     skipped?: boolean;
 }
 
-interface IDescription {
-    name: string;
+export interface IDescriptionComponent {
+    continue(): Promise<boolean>;
 }
 
-interface ITest {
+export interface ITest {
     name: string;
-    description: IDescription;
-    component: new(...args: any[]) => ITestComponent;
+    description: new (...args: any[]) => IDescriptionComponent;
+    component: new (...args: any[]) => ITestComponent;
     inputData?: IInputData[];
     result?: ITestResult;
+    resultComponent: new (...args: any[]) => IResultComponent;
     skipped?: boolean;
 }
 
-interface IInputData {
+export interface IInputData {
     identifier: string;
     data: any;
 }
@@ -32,13 +33,18 @@ export interface ITestResult {
     type: any; // TODO
 }
 
+export interface IResultComponent {
+    resultData: ITestResult;
+}
+
 export interface ITestComponent {
     continue(): Promise<ITestResponse>;
+    subscribeContinueDisabled(cb: (isDisaled: boolean) => void): void;
 }
 
 export type ITestResponse = {
     isTestFinnished: false;
 } | {
-    isTestFinnished: true;
-    result: ITestResult;
-};
+        isTestFinnished: true;
+        result: ITestResult;
+    };

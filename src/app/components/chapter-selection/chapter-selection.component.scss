@@ -1,0 +1,28 @@
+@import '../../../variables.scss';
+.container {
+  flex-flow: column;
+  display: flex;
+}
+
+.title {
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  font-size: 2.8rem;
+  line-height: 1.1;
+  width: 100%;
+  text-align: center;
+  color: $theme-color-font-accent;
+  font-weight: bold;
+}
+
+.selection-container {
+  >snscg-checkbox {
+    margin-top: 0.7rem;
+    display: block;
+    padding: 0.5rem;
+    border: 1px solid #e0e0e0;
+    background: #EFEBEB;
+    border-radius: 5px;
+    font-size: 2rem;
+  }
+}

@@ -24,7 +24,7 @@ export class FooterComponent implements OnInit {
     }, 1000);
   }
 
-  initPosition(){
+  initPosition() {
     this.procedureService.position.onNameChange.subscribe(value => {
       this.positionName = value;
     });

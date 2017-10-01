@@ -1,41 +1,58 @@
 @import "../../../variables";
-
-.top-bar{
-    width: 100%;
-    background: #2f2f2f;
-    height: 75px;
-    display: flex;
-    align-items: center;
+.top-bar {
+  width: 100%;
+  background: #2f2f2f;
+  display: flex;
+  align-items: center;
 }
 
-.logo{
-    height: 50px;
-    margin: 10px 30px;
+.logo {
+  height: $navbar-font-size;
+  margin: $navbar-margin;
 }
 
-button{
-    display: flex;
-    cursor: pointer;
-    height: 100%;
-    background-color: transparent;
-    color: $main-one-accent-one;
-    font-weight: 500;
-    font-size: 30px;
-    border: none;
-    outline: none;
+button {
+  display: flex;
+  cursor: pointer;
+  background-color: transparent;
+  color: $main-one-accent-one;
+  font-size: calc(#{$navbar-font-size}/2);
+  line-height: $navbar-font-size;
+  border: none;
+  outline: none;
+  padding: $navbar-margin;
+  >* {
+    line-height: $navbar-font-size;
+    height: $navbar-font-size;
+    min-width: ($navbar-height - 1rem);
+  }
+  >.flag {
+    height: calc(#{$navbar-font-size}/2);
+    padding: calc(#{$navbar-font-size}/4) 0 !important;
+  }
 }
 
-button:not([disabled]):active, button:not([disabled]).active{
-    box-shadow: inset 0px 0px 42px 0px $dark !important;
+button:not([disabled]):active,
+button:not([disabled]).active {
+  box-shadow: inset 0px 0px 42px 0px $dark !important;
 }
 
-button:not([disabled]):hover, button:not([disabled]).active{
-    //background: lightgray;
-    color: white;
-    box-shadow: inset 0px 0px 10px 0px $dark;
-    z-index: 100;
+button:not([disabled]):hover,
+button:not([disabled]).active {
+  color: $accent-one;
+  box-shadow: inset 0px 0px 10px 0px $dark;
+  z-index: 100;
 }
 
-.active-route{
-    color: $accent-one !important;
+.navButtonsContainer {
+  display: flex;
+  /* flex-direction: column;*/
+  align-items: center;
+  /* justify-content: center;*/
+}
+
+.absoluteRight {
+  right: 0px;
+  top: 0px;
+  position: absolute;
 }
