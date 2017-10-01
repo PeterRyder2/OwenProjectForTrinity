@@ -1,31 +1,27 @@
 <div *ngIf="this.page == 0" class="description">
-  <H2>Rectangle size adjustment</H2>
-  <p>Please ensure that this text is well visible and clearly recognisable, but please do NOT set a browser zoom differing from
-    100%.
-  </p>
-  <p>Now please adjust the width of the rectangle below so that it is the same size as your card using the + and – buttons</p>
-  <div class="cal_container">- RECTANGLE + </div>
+  <H2>{{language.firstPage.title}}</H2>
+  <p>{{language.firstPage.firstParagraph}}</p>
+  <p>{{language.firstPage.secondParagraph}}</p>
+  <div class="cal_container">{{language.firstPage.firstHint}}</div>
 
 
-  <div class="continue_hint">Press continue when the size of the card and the rectangle are the same.</div>
+  <div class="continue_hint">{{language.firstPage.secondHint}}</div>
 </div>
 
 <div *ngIf="this.page == 1" class="description">
-  <H2>Vision test instructions</H2>
-  <p>
-    Keep a distance of 50 cm from your eyes to the screen during the test.
-  </p>
+  <H2>{{language.secondPage.title}}</H2>
+  <p>{{language.secondPage.firstParagraph}}</p>
 
-  <div class="cal_container">Please press "Continue".</div>
+  <div class="cal_container">{{language.secondPage.firstHint}}</div>
 </div>
 
 <div *ngIf="this.page == 2" class="description">
-  <H2>Vision test instructions</H2>
-  <p>You will see squares of different sizes with a gap in one side of the shape.</p>
-  <p>Press the arrow button which is on the same side as the gap.</p>
-  <p>Example: : If you saw this shape Π you would press the arrow &darr; below the symbol.</p>
-  <p>The number of symbols shown will depend on your particular responses.</p>
-  <p>The test is designed to be hard. If you are unsure of the correct response, please take a guess.</p>
+  <H2>{{language.thirdPage.title}}</H2>
+  <p>{{language.thirdPage.firstParagraph}}</p>
+  <p>{{language.thirdPage.secondParagraph}}</p>
+  <p>{{language.thirdPage.thirdParagraph}}</p>
+  <p>{{language.thirdPage.fourthParagraph}}</p>
+  <p>{{language.thirdPage.fifthParagraph}}</p>
 
-  <div class="cal_container">Press "Start" to begin the vision test.</div>
+  <div class="cal_container">{{language.thirdPage.firstHint}}</div>
 </div>

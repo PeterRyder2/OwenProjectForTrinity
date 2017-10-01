@@ -3,10 +3,10 @@
   <button routerLink="/Dashboard" routerLinkActive="active-route">Dashboard</button>
   <div class="absoluteRight">
     <div class="navButtonsContainer">
-      <button *ngIf="this.procedureService.position.state != 0" class="floatLeft navButtonsElement" (click)="skip()"><div>skip</div></button>
-      <button *ngIf="this.procedureService.position.state == 0" ><img src="assets/uk_flag.svg" alt="" (click)="_settings.language = 1" class="flag navButtonsElement"></button>
-      <button *ngIf="this.procedureService.position.state == 0" ><img src="assets/fr_flag.svg" alt="" class="flag navButtonsElement"></button>
-      <button *ngIf="this.procedureService.position.state == 0" ><img src="assets/gr_flag.svg" alt="" class="flag navButtonsElement"></button>
+      <button *ngIf="this.procedureService.position.state != 0" class="floatLeft navButtonsElement" (click)="skip()"><div>{{language.skip}}</div></button>
+      <button *ngIf="this.procedureService.position.state == 0" [class.active]="settingsService.language == 1"><img src="assets/uk_flag.svg" alt="" (click)="settingsService.language = 1" class="flag navButtonsElement"></button>
+      <button *ngIf="this.procedureService.position.state == 0" [class.active]="settingsService.language == 2"><img src="assets/gr_flag.svg" alt="" (click)="settingsService.language = 2" class="flag navButtonsElement"></button>
+      <button *ngIf="this.procedureService.position.state == 0" [class.active]="settingsService.language == 3"><img src="assets/fr_flag.svg" alt="" (click)="settingsService.language = 3" class="flag navButtonsElement"></button>
       <button *ngIf="this.procedureService.position.state != 0" (click)="this.procedureService.reset()"><i class="fa fa-home navButtonsElement" aria-hidden="true"></i></button>
     </div>
   </div>

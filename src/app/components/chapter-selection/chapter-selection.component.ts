@@ -1,5 +1,6 @@
-import { IProcedure } from '../../intefaces/IProcedureConfig.interface';
+import { IProcedure } from '../../interfaces/IProcedureConfig.interface';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'snscg-chapter-selection',
@@ -14,7 +15,11 @@ export class ChapterSelectionComponent implements OnInit {
 
   chaptersToSkip: string[] = [];
 
-  constructor() { }
+  get language() {
+    return this.languageService.components.chapterSelection;
+  }
+
+  constructor(public languageService: LanguageService) { }
 
   ngOnInit() {
   }

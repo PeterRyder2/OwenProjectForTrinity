@@ -1,12 +1,12 @@
-import { ITestComponent, ITestResponse } from '../../intefaces/IProcedureConfig.interface';
+import { ITestComponent, ITestResponse } from '../../interfaces/IProcedureConfig.interface';
 import { Assert } from '../../lib/util';
 import { Subject } from 'rxjs/Rx';
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { IQuestionnaire } from '../../intefaces/IQuestionnaire.interface';
-import { IQuestion } from '../../intefaces/IQuestion.interface';
+import { IQuestionnaire } from '../../interfaces/IQuestionnaire.interface';
+import { IQuestion } from '../../interfaces/IQuestion.interface';
 import { LanguageService } from '../../services/language.service';
 import { QuestionType } from '../../enums/QuestionType.enum';
-import { IAnswer } from '../../intefaces/IAnswer.inteface';
+import { IAnswer } from '../../interfaces/IAnswer.inteface';
 
 @Component({
   selector: 'snscg-questionnaire',

@@ -1,11 +1,11 @@
 import { Subject } from 'rxjs/Rx';
-import { ITestComponent, ITestResponse } from '../../../intefaces/IProcedureConfig.interface';
+import { ITestComponent, ITestResponse } from '../../../interfaces/IProcedureConfig.interface';
 import { Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
-import { IQuestion } from '../../../intefaces/IQuestion.interface';
+import { IQuestion } from '../../../interfaces/IQuestion.interface';
 import { LanguageService } from '../../../services/language.service';
 import { CognitionTestState } from '../../../enums/CognitionTest.State.enum';
 import { CognitionApiService, ICognitionTestRespone } from '../../../services/cognition-api.service';
-import { IQuestionnaire } from '../../../intefaces/IQuestionnaire.interface';
+import { IQuestionnaire } from '../../../interfaces/IQuestionnaire.interface';
 import { AudioService } from '../../../services/audio.service';
 
 let State = CognitionTestState;

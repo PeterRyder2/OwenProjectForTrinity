@@ -29,7 +29,7 @@ import { VF14 } from '../components/vision/vf14/vf14';
 import {
     VisionChapterDescriptionComponent,
 } from '../components/vision/vision-chapter-description/vision-chapter-description.component';
-import { IProcedure } from '../intefaces/IProcedureConfig.interface';
+import { IProcedure } from '../interfaces/IProcedureConfig.interface';
 
 export const procedureConfig: IProcedure = {
     chapters: [

@@ -1,20 +1,17 @@
 <div  *ngIf="this.page == 0" class="description">
-  <h2>Hearing test instructions</h2>
-  <p>The speech-in-noise test is next.</p>
-  <p>Some speech is played now. Please adjust the volume (if necessary) using the + and – buttons to make the speech clearly
-    audible.</p>
-  <div class="continue_hint">- Volume display + </div>
+  <h2>{{language.firstPage.title}}</h2>
+  <p>{{language.firstPage.firstParagraph}}</p>
+  <p>{{language.firstPage.secondParagraph}}</p>
+  <div class="continue_hint">{{language.firstPage.firstHint}}</div>
 
-  <div class="continue_hint">Press "Continue" when the speech is clearly audible. </div>
+  <div class="continue_hint">{{language.firstPage.secondHint}}</div>
 </div>
 
 <div *ngIf="this.page == 1" class="description">
-  <h2>Hearing test instructions</h2>
-  <p>
-    During the test, you hear combinations of numbers, with noise in the background. Please enter the three numbers that you
-    hear using the number pad on the screen. You may use the &larr; button to delete a number.</p>
-  <p>The number of times the process is repeated will depend on your particular responses.</p>
-  <p>The test will get harder. If you are unsure, please take a guess.</p>
+  <h2>{{language.secondPage.title}}</h2>
+  <p>{{language.secondPage.firstParagraph}}</p>
+  <p>{{language.secondPage.secondParagraph}}</p>
+  <p>{{language.secondPage.thirdParagraph}}</p>
 
-  <div class="continue_hint">Press "Start" to begin the hearing test.</div>
+  <div class="continue_hint">{{language.secondPage.firstHint}}</div>
 </div>

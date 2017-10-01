@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IDescriptionComponent, ITestResponse } from '../../../intefaces/IProcedureConfig.interface';
+import { IDescriptionComponent, ITestResponse } from '../../../interfaces/IProcedureConfig.interface';
+import { LanguageService } from '../../../services/language.service';
 
 @Component({
   selector: 'snscg-vision-chapter-description',
@@ -8,12 +9,16 @@ import { IDescriptionComponent, ITestResponse } from '../../../intefaces/IProced
 })
 export class VisionChapterDescriptionComponent implements OnInit, IDescriptionComponent {
 
-  constructor() { }
+  get language() {
+    return this.languageService.components.vision.chapterDescription;
+  }
+
+  constructor(public languageService: LanguageService) { }
 
   ngOnInit() {
   }
 
-  continue = async(): Promise<boolean> => {
+  continue = async (): Promise<boolean> => {
     return true;
   }
 }

@@ -1,5 +1,6 @@
+import { LanguageService } from '../../../services/language.service';
 import { Component, OnInit } from '@angular/core';
-import { IDescriptionComponent, ITestResponse } from '../../../intefaces/IProcedureConfig.interface';
+import { IDescriptionComponent, ITestResponse } from '../../../interfaces/IProcedureConfig.interface';
 
 @Component({
   selector: 'snscg-cognition-chapter-description',
@@ -8,7 +9,11 @@ import { IDescriptionComponent, ITestResponse } from '../../../intefaces/IProced
 })
 export class CognitionChapterDescriptionComponent implements OnInit, IDescriptionComponent {
 
-  constructor() { }
+  get language(){
+    return this.languageService.components.cognition.chapterDescription;
+  }
+
+  constructor(public languageService: LanguageService) { }
 
   ngOnInit() {
   }

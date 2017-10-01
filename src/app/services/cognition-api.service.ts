@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { ConfigService } from './config.service';
-import { IQuestionnaire } from '../intefaces/IQuestionnaire.interface';
+import { IQuestionnaire } from '../interfaces/IQuestionnaire.interface';
 
 @Injectable()
 export class CognitionApiService {

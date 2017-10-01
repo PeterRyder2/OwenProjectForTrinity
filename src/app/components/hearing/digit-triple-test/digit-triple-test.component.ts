@@ -1,4 +1,4 @@
-import { ITestComponent, ITestResponse, ITestResult } from '../../../intefaces/IProcedureConfig.interface';
+import { ITestComponent, ITestResponse, ITestResult } from '../../../interfaces/IProcedureConfig.interface';
 import { Language } from '../../../enums/languages.enum';
 import { Component, ElementRef, EventEmitter, NgZone, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { LanguageService } from '../../../services/language.service';
@@ -39,8 +39,12 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy, ITestCompone
     return true;
   }
 
+  get language() {
+    return this.languageService.components.hearing.testDescription;
+  }
+
   constructor(
-    public _languageService: LanguageService,
+    public languageService: LanguageService,
     private api: HearingApiService,
     private audio: AudioService,
     private zone: NgZone,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ITestResponse, IDescriptionComponent } from '../../../intefaces/IProcedureConfig.interface';
+import { ITestResponse, IDescriptionComponent } from '../../../interfaces/IProcedureConfig.interface';
+import { LanguageService } from '../../../services/language.service';
 
 @Component({
   selector: 'snscg-hearing-chapter-description',
@@ -8,15 +9,16 @@ import { ITestResponse, IDescriptionComponent } from '../../../intefaces/IProced
 })
 export class HearingChapterDescriptionComponent implements OnInit, IDescriptionComponent {
 
-  abc = 'ahahah'
+  get language() {
+    return this.languageService.components.hearing.chapterDescription;
+  }
 
-  constructor() { }
+  constructor(public languageService: LanguageService) { }
 
   ngOnInit() {
   }
 
-  continue = async(): Promise<boolean> => {
-    console.log(this.abc)
+  continue = async (): Promise<boolean> => {
     return true;
   }
 }

@@ -1,5 +1,5 @@
 import { QuestionType } from '../../../enums/QuestionType.enum';
-import { IQuestionnaire } from '../../../intefaces/IQuestionnaire.interface';
+import { IQuestionnaire } from '../../../interfaces/IQuestionnaire.interface';
 
 export let HDDA: IQuestionnaire = {
   id: 'HDDA',

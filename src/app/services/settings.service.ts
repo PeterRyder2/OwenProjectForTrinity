@@ -19,6 +19,10 @@ export class SettingsService {
         return 'de';
       case Language.English:
         return 'en';
+        case Language.French:
+          return 'fr';
+        case Language.Greek:
+          return 'gr';
       default:
         break;
     }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IResultComponent, ITestResult } from '../../../intefaces/IProcedureConfig.interface';
+import { IResultComponent, ITestResult } from '../../../interfaces/IProcedureConfig.interface';
 
 @Component({
   selector: 'snscg-hdda-result',

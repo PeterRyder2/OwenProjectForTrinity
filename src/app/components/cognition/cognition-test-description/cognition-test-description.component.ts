@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ITestResponse, IDescriptionComponent } from '../../../intefaces/IProcedureConfig.interface';
+import { ITestResponse, IDescriptionComponent } from '../../../interfaces/IProcedureConfig.interface';
+import { LanguageService } from '../../../services/language.service';
 
 @Component({
   selector: 'snscg-cognition-test-description',
@@ -10,7 +11,11 @@ export class CognitionTestDescriptionComponent implements OnInit, IDescriptionCo
 
   page = 0;
 
-  constructor() { }
+  get language() {
+    return this.languageService.components.cognition.testDescription;
+  }
+
+  constructor(public languageService: LanguageService) { }
 
   ngOnInit() {
   }

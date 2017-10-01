@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs/Rx';
 import { ChapterSelectionComponent } from '../components/chapter-selection/chapter-selection.component';
 import { HomeComponent } from '../components/home/home.component';
 import { ProcedureContainerComponent } from '../components/procedure-container/procedure-container.component';
-import { IProcedure, ITestResponse } from '../intefaces/IProcedureConfig.interface';
+import { IProcedure, ITestResponse } from '../interfaces/IProcedureConfig.interface';
 import { Util } from '../lib/util';
 import { procedureConfig } from '../lib/procedure';
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'snscg-home',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  get language() {
+    return this.languageService.components.home;
+  }
+
+  constructor(public languageService: LanguageService) { }
 
   ngOnInit() {
   }

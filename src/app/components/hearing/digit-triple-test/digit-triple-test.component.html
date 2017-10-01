@@ -35,7 +35,7 @@
   <ng-container *ngSwitchDefault> -->
   <div class="grid">
     <div>
-      <div *ngIf="state == 1; then startDescription; else runningDescription"></div>
+      <div *ngIf="state == 0; then startDescription; else runningDescription"></div>
       <ng-template #startDescription>
         <div class="content">Press "Start" to begin the hearing test.</div>
       </ng-template>
@@ -85,7 +85,7 @@
       </div> -->
   </div>
   <button *ngIf="this.showOwnContinueBtn" [disabled]="!this.canContinue" standard [class.active]="activeKey == 'Enter'" (click)="continue()">
-          {{_languageService.digitTripleTest.continue}}
+          Continue
         </button>
   <!-- </ng-container> -->
 

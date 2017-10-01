@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LanguageService } from '../../services/language.service';
-import { english } from '../../langauge-files/english';
-import { german } from 'app/langauge-files/german';
+import { english } from '../../language-files/english';
+import { german } from 'app/language-files/german';
 import { SettingsService } from '../../services/settings.service';
 import { Router } from '@angular/router';
 

@@ -1,4 +1,6 @@
 export enum Language {
     German,
-    English
+    English,
+    Greek,
+    French
 }

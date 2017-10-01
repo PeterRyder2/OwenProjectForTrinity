@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { IQuestion } from '../../../intefaces/IQuestion.interface';
+import { IQuestion } from '../../../interfaces/IQuestion.interface';
 import { QuestionType } from '../../../enums/QuestionType.enum';
-import { IAnswer } from '../../../intefaces/IAnswer.inteface';
+import { IAnswer } from '../../../interfaces/IAnswer.inteface';
 
 @Component({
   selector: 'snscg-question',
