@@ -6,18 +6,6 @@
   align-items: center;
 }
 
-<<<<<<< HEAD
-.top-bar{
-    background: #2f2f2f;
-    display: flex;
-    align-items: center;
-    font-size: 4vmin;
-}
-
-.logo{
-    height: 4em;
-    margin: 10px 30px;
-=======
 .logo {
   height: $navbar-font-size;
   margin: $navbar-margin;
@@ -42,7 +30,6 @@ button {
     height: calc(#{$navbar-font-size}/2);
     padding: calc(#{$navbar-font-size}/4) 0 !important;
   }
->>>>>>> origin/new-base
 }
 
 button:not([disabled]):active,

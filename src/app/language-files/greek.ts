@@ -17,7 +17,7 @@ export const greek: ILanguageFile = {
             }
         },
         chapterSelection: {
-            title: `FRENCH LANGUAGE`,
+            title: `GREEK LANGUAGE`,
             Cognition: `Cognition GREEK LANGUAGE`,
             Hearing: `Hearing GREEK LANGUAGE`,
             Vision: `Vision GREEK LANGUAGE`,

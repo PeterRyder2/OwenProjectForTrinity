@@ -9,8 +9,7 @@ export class SettingsService {
   private _language = Language.German;
   get language() { return this._language; };
   set language(value: Language) {
-    // this._language = value;
-    this._language = Language.English
+    this._language = value;
     this.languageChangedEvent.next(value);
     this.save();
   };
@@ -20,10 +19,10 @@ export class SettingsService {
         return 'de';
       case Language.English:
         return 'en';
-        case Language.French:
-          return 'fr';
-        case Language.Greek:
-          return 'gr';
+      case Language.French:
+        return 'fr';
+      case Language.Greek:
+        return 'gr';
       default:
         break;
     }
