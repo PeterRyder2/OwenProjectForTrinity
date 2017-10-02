@@ -1,0 +1,39 @@
+<div class="mute" (click)="this.audio.toggleMute()">
+  <i *ngIf="this.audio.muted; else voloff;" class="material-icons">volume_off</i>
+  <ng-template #voloff>
+    <i class="material-icons">volume_up</i>
+  </ng-template>
+</div>
+<div class="container" [ngSwitch]="this.state">
+  <div class="grid">
+    <ng-container *ngSwitchCase="0">
+      <input placeholder="Name" standard type="text" [(ngModel)]="this.name">
+      <button [disabled]="this.name == ''" standard [class.active]="activeKey == 'Enter'" (click)="init()">
+                {{_languageService.digitTripleTest.continue}}
+            </button>
+    </ng-container>
+    <ng-container *ngSwitchCase="1">
+      <div class="text">
+        {{this.activeWord}}
+      </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="2">
+      <snscg-questionnaire [continueSubject]="this.continueQuestionnaireSubject" [questionnaire]="this.questionnaire" (disableContinueChanged)="this.disableContinueQuestionnaire($event)"
+        (finished)="this.questionnaireFinnished()"></snscg-questionnaire>
+    </ng-container>
+    <ng-container *ngSwitchCase="3">
+      <div class="text">
+        {{activeWord}}
+      </div>
+      <div>
+        <button standard class="red" (click)="this.resultForWord(false)">
+                    <i class="material-icons">cancel</i>
+                </button>
+        <button standard class="green" (click)="this.resultForWord(true)">
+                    <i class="material-icons">check</i>
+                </button>
+      </div>
+    </ng-container>
+    <button standard *ngIf="this.showOwnContinueBtn" [disabled]="this.continueDisabled" (click)="this.continue()">{{ _languageService.digitTripleTest.continue }}</button>
+  </div>
+</div>

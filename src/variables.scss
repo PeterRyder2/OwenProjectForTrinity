@@ -6,5 +6,10 @@ $main-one: #fff;
 $main-one-accent-one: #a2a2a2;
 $main-one-accent-two: #808080;
 $main-two: #2f2f2f;
-
-$navbar-height: 75px;
+$theme-color-font: #292b2c;
+$theme-color-font-accent: #00288C;
+$theme-color-button: #EFEBEB;
+$cal-color-font: #006502;
+$navbar-font-size: 4rem;
+$navbar-margin: 0.5rem;
+$navbar-height: ($navbar-font-size + 2* $navbar-margin);

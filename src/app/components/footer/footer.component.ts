@@ -1,3 +1,4 @@
+import { ProcedureService } from '../../services/procedure.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,12 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  date: any;
+  date = new Date();
+  positionName: string;
 
-  constructor() { }
+  constructor(private procedureService: ProcedureService) { }
 
   ngOnInit() {
-    this.date = new Date();
+    this.initDate();
+    this.initPosition();
+  }
+
+  initDate() {
+    setInterval(() => {
+      this.date = new Date();
+    }, 1000);
+  }
+
+  initPosition() {
+    this.procedureService.position.onNameChange.subscribe(value => {
+      this.positionName = value;
+    });
   }
 
 }

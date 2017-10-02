@@ -14,6 +14,20 @@ export class SettingsService {
     this.languageChangedEvent.next(value);
     this.save();
   };
+  get languageStr() {
+    switch (this.language) {
+      case Language.German:
+        return 'de';
+      case Language.English:
+        return 'en';
+        case Language.French:
+          return 'fr';
+        case Language.Greek:
+          return 'gr';
+      default:
+        break;
+    }
+  }
 
   private languageChangedEvent = new Subject<Language>();
   onLanguageChanged = this.languageChangedEvent.asObservable();

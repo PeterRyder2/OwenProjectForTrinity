@@ -1,3 +1,17 @@
-#contentWrapper{
-    margin: 40px 0;
+@import '../variables.scss';
+#contentWrapper {
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  margin-top: $navbar-height;
+  overflow: auto;
+  width: 100%;
+  margin-bottom: calc(1rem + 8px);
+}
+
+snscg-footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  line-height: 1rem;
 }

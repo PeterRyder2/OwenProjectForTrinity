@@ -1,14 +1,10 @@
 <div class="container">
+  <div class="title">{{questionnaire.title}}</div>
   <div class="question-container">
-    <snscg-question class="question" [question]="activeQuestion" [progress]="progress"></snscg-question>
+    <snscg-question class="question" [question]="activeQuestion" [progress]="progress" (newSelection)="this.checkContinueDisabled($event)" ></snscg-question>
   </div>
   <div class="bottom">
-    <button standard (click)="prevQuestion()" *ngIf="questionnaire.backEnabled && activeQuestionIndex > 0" class="navigate">
-      {{_languageService.questionnaire.back}}
-    </button>
-
-    <button standard (click)="nextQuestion()" [disabled]="questionnaire.forceResponse !== false && activeQuestion.answered != true 
-      || this.activeQuestion.type == 2 && activeQuestion.answered != true " class="navigate">
+    <button standard *ngIf="this.showOwnContinueButton" [disabled]="this.continueDisabled" (click)="continue()" class="navigate">
       {{_languageService.questionnaire.continue}}
     </button>
   </div>

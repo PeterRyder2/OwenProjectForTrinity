@@ -1,0 +1,92 @@
+<div class="container">
+  <!-- <div class="container" [ngSwitch]="this.state"> -->
+  <!-- 
+  <ng-container *ngSwitchCase="0">
+    <div class="grid">
+      Please enter your name before you start the test:
+      <p> </p>
+      <input placeholder="Name" standard type="text" [(ngModel)]="this.name">
+      <button [disabled]="this.name == ''" standard [class.active]="activeKey == 'Enter'" (click)="init()">
+        {{_languageService.digitTripleTest.continue}}
+      </button>
+    </div>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="5">
+    <div class="grid">
+      <textarea name="" id="" cols="30" rows="10" [(ngModel)]="this.annotation">
+
+      </textarea>
+      <button [disabled]="this.name == ''" standard [class.active]="activeKey == 'Enter'" (click)="this.finish()">
+        {{_languageService.digitTripleTest.continue}}
+      </button>
+    </div>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="6">
+    <div class="grid">
+      <p>*PLACEHOLDER* You result: {{this.result}} *PLACEHOLDER*</p>
+      <button [disabled]="this.name == ''" standard [class.active]="activeKey == 'Enter'" (click)="this.finish()">
+        {{_languageService.digitTripleTest.continue}}
+      </button>
+    </div>
+  </ng-container>
+
+  <ng-container *ngSwitchDefault> -->
+  <div class="grid">
+    <div>
+      <div *ngIf="state == 0; then startDescription; else runningDescription"></div>
+      <ng-template #startDescription>
+        <div class="content">Press "Start" to begin the hearing test.</div>
+      </ng-template>
+      <ng-template #runningDescription>
+        <div class="content">Enter the digits that you have understood using the number pad below.</div>
+      </ng-template>
+    </div>
+    <div>
+      <div class="display">{{enteredNumber}}</div>
+    </div>
+    <snscg-progressbar [value]="this.progress"></snscg-progressbar>
+    <div>
+      <button [disabled]="state != 3" standard [class.active]="activeKey == '7'" (click)="addNumber('7')">7</button>
+      <button [disabled]="state != 3" standard [class.active]="activeKey == '8'" (click)="addNumber('8')">8</button>
+      <button [disabled]="state != 3" standard [class.active]="activeKey == '9'" (click)="addNumber('9')">9</button>
+    </div>
+    <div>
+      <button [disabled]="state != 3" standard [class.active]="activeKey == '4'" (click)="addNumber('4')">4</button>
+      <button [disabled]="state != 3" standard [class.active]="activeKey == '5'" (click)="addNumber('5')">5</button>
+      <button [disabled]="state != 3" standard [class.active]="activeKey == '6'" (click)="addNumber('6')">6</button>
+    </div>
+    <div>
+      <button [disabled]="state != 3" standard [class.active]="activeKey == '1'" (click)="addNumber('1')">1</button>
+      <button [disabled]="state != 3" standard [class.active]="activeKey == '2'" (click)="addNumber('2')">2</button>
+      <button [disabled]="state != 3" standard [class.active]="activeKey == '3'" (click)="addNumber('3')">3</button>
+    </div>
+    <div>
+      <button [disabled]="state != 3" standard [class.active]="activeKey == '*'" (click)="addNumber('*')">*</button>
+      <button [disabled]="state != 3" standard [class.active]="activeKey == '0'" (click)="addNumber('0')">0</button>
+      <button [disabled]="state != 3" standard [class.active]="activeKey.match('Delete|Backspace')" (click)="removeLastNumber()"><i class="material-icons">backspace</i></button>
+    </div>
+    <!-- <div>
+        <div *ngIf="state == 1; then startBtn; else cancelBtn"></div>
+        <ng-template #startBtn>
+          <button standard [class.active]="activeKey == 'Enter'" (click)="start()">
+            {{_languageService.digitTripleTest.start}}
+          </button>
+        </ng-template>
+        <ng-template #cancelBtn>
+          <button standard (click)="cancel()">
+          {{_languageService.digitTripleTest.cancel}}
+        </button>
+          <button standard [class.active]="activeKey == 'Enter'" (click)="continue()" [disabled]="state !== 3">
+          {{_languageService.digitTripleTest.continue}}
+        </button>
+        </ng-template>
+      </div> -->
+  </div>
+  <button *ngIf="this.showOwnContinueBtn" [disabled]="!this.canContinue" standard [class.active]="activeKey == 'Enter'" (click)="continue()">
+          Continue
+        </button>
+  <!-- </ng-container> -->
+
+</div>

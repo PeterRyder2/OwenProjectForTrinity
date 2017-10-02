@@ -8,12 +8,18 @@
 
 .checkbox{
     background: $light;
-    width: 20px;
-    height: 20px;
+    width: 1.5em;
+    height: 1.5em;
     margin: auto;
     border-radius: 5px;
     border: 1px solid $main-one-accent-one;
     transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.label {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 0.4em;
 }
 
 .checkbox.checked{
@@ -38,10 +44,4 @@
 .path.checked{
     stroke-dashoffset: 0;
     animation: dash 180ms linear;
-}
-
-.label {
-    display: inline-flex;
-    align-items: center;
-    margin-left: 5px;
 }

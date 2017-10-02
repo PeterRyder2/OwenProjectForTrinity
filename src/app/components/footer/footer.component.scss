@@ -1,0 +1,12 @@
+.container {
+  background: #2F2F2F;
+  bottom: 0px;
+  height: calc(1rem + 8px);
+  text-align: right;
+  color: white;
+  width: 100%;
+  >div {
+    line-height: 1rem;
+    padding: 4px;
+  }
+}

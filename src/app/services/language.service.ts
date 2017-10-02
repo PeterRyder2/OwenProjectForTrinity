@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { SettingsService } from './settings.service';
-import { LangaugeFile } from '../langauge-files/_language.interface';
+import { ILanguageFile } from '../interfaces/ILanguage.interface';
 import { Language } from '../enums/languages.enum';
-import { german } from '../langauge-files/german';
-import { english } from '../langauge-files/english';
+import { german } from '../language-files/german';
+import { english } from '../language-files/english';
+import { french } from '../language-files/french';
+import { greek } from '../language-files/greek';
 
 @Injectable()
-export class LanguageService extends LangaugeFile {
+export class LanguageService extends ILanguageFile {
 
   constructor(private _settings: SettingsService) {
     super();
@@ -17,10 +19,16 @@ export class LanguageService extends LangaugeFile {
   loadLanguage() {
     switch (this._settings.language) {
       case Language.German:
-        this.setLanguage(german);
+        this.setLanguage(JSON.parse(JSON.stringify(german)));
         break;
       case Language.English:
-        this.setLanguage(english);
+        this.setLanguage(JSON.parse(JSON.stringify(english)));
+        break;
+      case Language.Greek:
+        this.setLanguage(JSON.parse(JSON.stringify(greek)));
+        break;
+      case Language.French:
+        this.setLanguage(JSON.parse(JSON.stringify(french)));
         break;
 
       default:
@@ -28,7 +36,7 @@ export class LanguageService extends LangaugeFile {
     }
   }
 
-  private setLanguage(file: LangaugeFile) {
+  private setLanguage(file: ILanguageFile) {
     // tslint:disable-next-line:forin
     for (let key in file) {
       this[key] = file[key];

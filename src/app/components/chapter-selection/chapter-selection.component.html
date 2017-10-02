@@ -1,0 +1,7 @@
+<div class="container">
+  <h2 class="title">{{language.title}}</h2>
+  <div class="selection-container">
+    <snscg-checkbox class="chapter" (toggleSelect)="this.selectChapter($event, chapter.name)" [checked]="!this.isChapterSkipped(chapter.name)"
+      *ngFor="let chapter of this.procedure.chapters">{{language[chapter.name]}}</snscg-checkbox>
+  </div>
+</div>
