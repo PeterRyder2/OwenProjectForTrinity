@@ -1,3 +1,5 @@
+import { TestIdResolver } from './services/test-id-resolver.service';
+import { IdService } from './services/id.service';
 import { ProcedureService } from './services/procedure.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -45,6 +47,7 @@ import { VisionChapterDescriptionComponent } from './components/vision/vision-ch
 import { CognitionChapterDescriptionComponent } from './components/cognition/cognition-chapter-description/cognition-chapter-description.component';
 import { HearingChapterDescriptionComponent } from './components/hearing/hearing-chapter-description/hearing-chapter-description.component';
 import { HomeComponent } from './components/home/home.component';
+import { IdentificationComponent } from './components/identification/identification.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +84,8 @@ import { HomeComponent } from './components/home/home.component';
     VisionChapterDescriptionComponent,
     CognitionChapterDescriptionComponent,
     HearingChapterDescriptionComponent,
-    HomeComponent
+    HomeComponent,
+    IdentificationComponent
   ],
   imports: [
     BrowserModule,
@@ -96,7 +100,9 @@ import { HomeComponent } from './components/home/home.component';
     AudioService,
     HearingApiService,
     CognitionApiService,
-    ProcedureService
+    ProcedureService,
+    IdService,
+    TestIdResolver
   ],
   bootstrap: [AppComponent]
 })

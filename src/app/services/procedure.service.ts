@@ -1,3 +1,4 @@
+import { IdService } from './id.service';
 import { ComponentRef, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/Rx';
 
@@ -7,6 +8,7 @@ import { ProcedureContainerComponent } from '../components/procedure-container/p
 import { IProcedure, ITestResponse } from '../interfaces/IProcedureConfig.interface';
 import { Util } from '../lib/util';
 import { procedureConfig } from '../lib/procedure';
+import { ProcedureState } from '../enums/Procedure.State.enum';
 
 @Injectable()
 export class ProcedureService {
@@ -29,7 +31,7 @@ export class ProcedureService {
     return this.procedure.chapters[this.position.chapter].tests[this.position.test];
   }
 
-  constructor() { }
+  constructor(private idService: IdService) { }
 
   skip() {
     switch (this.position.state) {
@@ -59,7 +61,7 @@ export class ProcedureService {
   }
 
   reset() {
-    this.position.reset();
+    this.position.init();
     this.init();
   }
 
@@ -84,9 +86,18 @@ export class ProcedureService {
     if (procedureContainer)
       this.procedureContainer = procedureContainer;
     this.isContinueDisabled = false;
+    this.idService.generateId('snscg-ec');
+    this.idService.annotation = 'this data comes from the SenseCog eChecker';
     this.procedure = Util.deepCloneObject(procedureConfig);
+    this.position.init();
     this.procedureContainer.loadComponent(HomeComponent);
   }
+
+  destroy() {
+    this.idService.reset();
+    this.procedureContainer = null;
+    this.position.destroy();
+  };
 
   continueTestComponent = async (): Promise<ITestResponse> => {
     return {
@@ -102,6 +113,8 @@ export class ProcedureService {
   async continue() {
     if (!this.isContinueDisabled)
       switch (this.position.state) {
+        case ProcedureState.Void:
+          break;
         case ProcedureState.Home:
           this.chapterSelectionComponentRef = this.procedureContainer.loadComponent(ChapterSelectionComponent);
           this.chapterSelectionComponentRef.instance.subscribeContinueDisabled((isDisabled) => { this.isContinueDisabled = isDisabled; })
@@ -224,23 +237,12 @@ export class ProcedureService {
 
 }
 
-enum ProcedureState {
-  Home,
-  ChapterSelection,
-  ChapterDescription,
-  TestDescription,
-  Test,
-  TestResult,
-  EndResult
-}
-
-
 class ProcedurePosition {
-  state = ProcedureState.Home;
+  state = ProcedureState.Void;
   chapter = 0;
   test = 0;
 
-  private onNameChangeSubject = new BehaviorSubject('Home');
+  private onNameChangeSubject = new BehaviorSubject('no procedure active');
   onNameChange = this.onNameChangeSubject.asObservable();
   set name(val: string) {
     this.onNameChangeSubject.next(val);
@@ -249,7 +251,14 @@ class ProcedurePosition {
     return this.onNameChangeSubject.getValue();
   }
 
-  reset() {
+  destroy() {
+    this.state = ProcedureState.Void;
+    this.chapter = 0;
+    this.test = 0;
+    this.name = 'no procedure active';
+  }
+
+  init() {
     this.state = ProcedureState.Home;
     this.chapter = 0;
     this.test = 0;

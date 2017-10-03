@@ -30,7 +30,7 @@ import { QuestionnaireComponent } from '../questionnaire/questionnaire.component
 import { ChapterSelectionComponent } from '../chapter-selection/chapter-selection.component';
 import { ProcedureService } from '../../services/procedure.service';
 import { ProcedureHostDirective } from '../../directives/procedure-host.directive';
-import { Component, ComponentFactoryResolver, ComponentRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ComponentFactoryResolver, ComponentRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { HddaResultComponent } from '../hearing/hdda-result/hdda-result.component';
 import { LanguageService } from '../../services/language.service';
 
@@ -71,7 +71,7 @@ import { LanguageService } from '../../services/language.service';
     Vf14ResultComponent
   ]
 })
-export class ProcedureContainerComponent implements OnInit {
+export class ProcedureContainerComponent implements OnInit, OnDestroy {
 
   @ViewChild(ProcedureHostDirective) procedureHost: ProcedureHostDirective;
 
@@ -87,6 +87,10 @@ export class ProcedureContainerComponent implements OnInit {
 
   ngOnInit() {
     this.procedureService.init(this);
+  }
+
+  ngOnDestroy() {
+    this.procedureService.destroy();
   }
 
   loadComponent = <T>(component: new (...args: any[]) => T) => {

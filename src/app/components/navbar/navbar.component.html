@@ -3,11 +3,17 @@
   <button routerLink="/Dashboard" routerLinkActive="active-route">Dashboard</button>
   <div class="absoluteRight">
     <div class="navButtonsContainer">
-      <button *ngIf="this.procedureService.position.state != 0" class="floatLeft navButtonsElement" (click)="skip()"><div>{{language.skip}}</div></button>
-      <button *ngIf="this.procedureService.position.state == 0" [class.active]="settingsService.language == 1"><img src="assets/uk_flag.svg" alt="" (click)="settingsService.language = 1" class="flag navButtonsElement"></button>
-      <button *ngIf="this.procedureService.position.state == 0" [class.active]="settingsService.language == 2"><img src="assets/gr_flag.svg" alt="" (click)="settingsService.language = 2" class="flag navButtonsElement"></button>
-      <button *ngIf="this.procedureService.position.state == 0" [class.active]="settingsService.language == 3"><img src="assets/fr_flag.svg" alt="" (click)="settingsService.language = 3" class="flag navButtonsElement"></button>
-      <button *ngIf="this.procedureService.position.state != 0" (click)="this.procedureService.reset()"><i class="fa fa-home navButtonsElement" aria-hidden="true"></i></button>
+      <button><div class="mute" (click)="this.audioService.toggleMute()">
+          <i *ngIf="this.audioService.muted; else voloff;" class="material-icons">volume_off</i>
+          <ng-template #voloff>
+            <i class="material-icons">volume_up</i>
+          </ng-template>
+        </div></button>
+      <button *ngIf="this.procedureService.position.state > this.stateEnum.Home" (click)="skip()"><div>{{language.skip}}</div></button>
+      <button *ngIf="this.procedureService.position.state <= this.stateEnum.Home" [class.active]="settingsService.language == 1"><img src="assets/uk_flag.svg" alt="" (click)="settingsService.language = 1" class="flag"></button>
+      <button *ngIf="this.procedureService.position.state <= this.stateEnum.Home" [class.active]="settingsService.language == 2"><img src="assets/gr_flag.svg" alt="" (click)="settingsService.language = 2" class="flag"></button>
+      <button *ngIf="this.procedureService.position.state <= this.stateEnum.Home" [class.active]="settingsService.language == 3"><img src="assets/fr_flag.svg" alt="" (click)="settingsService.language = 3" class="flag"></button>
+      <button *ngIf="this.procedureService.position.state > this.stateEnum.Home" (click)="this.procedureService.reset()"><i class="fa fa-home" aria-hidden="true"></i></button>
     </div>
   </div>
 </div>

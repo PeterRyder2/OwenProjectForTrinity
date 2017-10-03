@@ -1,3 +1,5 @@
+import { TestIdResolver } from './services/test-id-resolver.service';
+import { IdentificationComponent } from './components/identification/identification.component';
 import { ProcedureContainerComponent } from './components/procedure-container/procedure-container.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -24,7 +26,8 @@ const routes: Routes = [
   },
   {
     path: 'DigitTripleTest',
-    component: DigitTripleTestComponent
+    component: DigitTripleTestComponent,
+    resolve: [TestIdResolver]
   },
   {
     path: 'VisionTest',
@@ -32,11 +35,16 @@ const routes: Routes = [
   },
   {
     path: 'CognitionTest',
-    component: CognitionTestComponent
+    component: CognitionTestComponent,
+    resolve: [TestIdResolver]
   },
   {
     path: 'AudioTestingRealm',
     component: AudioTestingRealmComponent
+  },
+  {
+    path: 'identification/:path',
+    component: IdentificationComponent
   }
 ];
 

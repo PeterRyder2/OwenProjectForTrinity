@@ -1,3 +1,4 @@
+import { IdService } from '../../../services/id.service';
 import { ITestComponent, ITestResponse, ITestResult } from '../../../interfaces/IProcedureConfig.interface';
 import { Language } from '../../../enums/languages.enum';
 import { Component, ElementRef, EventEmitter, NgZone, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
@@ -27,11 +28,6 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy, ITestCompone
   testId: string;
   progress = 0;
 
-  // TODO was soll mit dem namen passieren
-  name = 'Robert';
-  // TODO was soll mit der Annotation passieren
-  annotation = '';
-
   result = 0;
 
   get canContinue() {
@@ -44,11 +40,12 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy, ITestCompone
   }
 
   constructor(
-    public languageService: LanguageService,
     private api: HearingApiService,
     private audio: AudioService,
     private zone: NgZone,
-    public _settings: SettingsService
+    private idService: IdService,
+    private settings: SettingsService,
+    public languageService: LanguageService
   ) { }
 
 
@@ -108,8 +105,8 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy, ITestCompone
 
   async start() {
     let res = await this.api.initialize({
-      language: this._settings.languageStr,
-      name: this.name
+      language: this.settings.languageStr,
+      name: this.idService.id
     });
     this.testId = res.Id;
     this.present(res.TripleBuffer);
@@ -139,7 +136,7 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy, ITestCompone
   // TODO ist die Annotation noch gewünscht?
   async finish(): Promise<ITestResult> {
     this.audio.stop();
-    let res = await this.api.finish({ id: this.testId, annotation: this.annotation });
+    let res = await this.api.finish({ id: this.testId, annotation: this.idService.annotation });
     console.log(res.Snr)
     return {
       score: res.Snr,
