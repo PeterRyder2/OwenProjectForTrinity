@@ -1,4 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Direction, VisionTestImage } from '../../../lib/Image';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'snscg-vision-test',
@@ -7,11 +8,16 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class VisionTestComponent implements OnInit, OnDestroy {
 
+  @ViewChild('canvas') canvasRef: ElementRef;
+  canvas: HTMLCanvasElement;
+
   activeKey = '';
 
   constructor() { }
 
   ngOnInit() {
+    this.canvas = this.canvasRef.nativeElement;
+    this.draw();
     window.addEventListener('keydown',
       this.keyDownEventListener);
     window.addEventListener('keyup',
@@ -23,6 +29,44 @@ export class VisionTestComponent implements OnInit, OnDestroy {
       this.keyDownEventListener);
     window.addEventListener('keyup',
       this.keyUpEventListener);
+  }
+
+  draw() {
+    let ctx = this.canvas.getContext('2d');
+    let vti = new VisionTestImage(100, 100);
+    let date1 = Date.now();
+    for (let i = 0; i < 1000; i++) {
+      vti.drawC(Direction.top);
+      ctx.putImageData(vti.toImageData(), 0, 0);
+    }
+    let date2 = Date.now();
+    for (let i = 0; i < 1000; i++) {
+      ctx.fillStyle = 'black';
+      ctx.fillRect(0, 0, 99, 99);
+      ctx.fillStyle = 'white';
+      ctx.fillRect(1, 1, 99, 98);
+    }
+    let date3 = Date.now();
+    ctx.fillStyle = 'white';
+    ctx.strokeStyle = '#000';
+    ctx.lineWidth = 1;
+    ctx.lineJoin = ''
+    for (let i = 0; i < 1000; i++) {
+      ctx.fillRect(0, 0, 99, 99);
+      this.drawLine(ctx, [{ x: 99, y: 0 }, { x: 0, y: 0 }, { x: 0, y: 99 }, { x: 99, y: 99 }]);
+    }
+    let date4 = Date.now();
+    console.log(date2 - date1, date3 - date2, date4 - date3);
+  }
+
+  drawLine(context: CanvasRenderingContext2D, points: { x: number, y: number }[]) {
+    // TODO -
+    context.beginPath();
+    context.moveTo(points[0].x, points[0].y);
+    for (let i = 1; i < points.length; i++)
+      context.lineTo(points[i].x, points[i].y);
+    context.stroke();
+    context.closePath();
   }
 
   keyDownEventListener = (e: KeyboardEvent) => {

@@ -31,7 +31,9 @@ export const english: ILanguageFile = {
                     firstHint: `Press "Start" to begin with the questionnaire.`,
                 }
             },
-            test: {},
+            test: {
+                continue: 'Continue'
+            },
             testDescription: {
                 firstPage: {
                     title: `Memory test instructions`,
@@ -70,7 +72,11 @@ export const english: ILanguageFile = {
                     firstHint: `Press "Start" to begin the questionnaire.`,
                 }
             },
-            test: {},
+            test: {
+                startHint: 'Press "Continue" to begin the hearing test.',
+                continueHint: 'Enter the digits that you have understood using the number pad below.',
+                continue: 'Continue'
+            },
             testDescription: {
                 firstPage: {
                     title: `Hearing test instructions`,

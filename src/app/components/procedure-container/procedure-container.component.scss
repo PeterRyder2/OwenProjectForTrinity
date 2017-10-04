@@ -22,3 +22,21 @@
     font-size: 3.5rem;
     line-height: 4.5rem;
 }
+
+.contentWrapper {
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    margin-top: $navbar-height;
+    overflow: auto;
+    width: 100%;
+    margin-bottom: calc(1rem + 8px);
+  }
+  
+  snscg-footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    line-height: 1rem;
+  }
+  

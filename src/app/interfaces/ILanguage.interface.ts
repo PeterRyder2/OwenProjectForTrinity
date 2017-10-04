@@ -29,7 +29,9 @@ export class ILanguageFile {
                     firstHint: string;
                 }
             },
-            test: {},
+            test: {
+                continue: string;
+            },
             testDescription: {
                 firstPage: {
                     title: string;
@@ -64,7 +66,11 @@ export class ILanguageFile {
                     firstHint: string;
                 }
             },
-            test: {},
+            test: {
+                startHint: string;
+                continueHint: string;
+                continue: string;
+            },
             testDescription: {
                 firstPage: {
                     title: string;

@@ -42,7 +42,11 @@ export class CognitionTestComponent implements OnInit, OnDestroy, ITestComponent
 
   results: ICognitionTestRespone[] = [];
 
-  constructor(public _languageService: LanguageService, private api: CognitionApiService, public audio: AudioService) { }
+  get language(){
+    return this.languageService.components.cognition.test
+  }
+
+  constructor(public languageService: LanguageService, private api: CognitionApiService, public audio: AudioService) { }
 
   ngOnInit() {
     this.init();

@@ -36,7 +36,7 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy, ITestCompone
   }
 
   get language() {
-    return this.languageService.components.hearing.testDescription;
+    return this.languageService.components.hearing.test;
   }
 
   constructor(

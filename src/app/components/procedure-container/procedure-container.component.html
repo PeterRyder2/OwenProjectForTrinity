@@ -1,4 +1,9 @@
-<div class="container">
-  <ng-template snscgProcedureHost></ng-template>
+<snscg-navbar>
+</snscg-navbar>
+<div class="contentWrapper">
+  <div class="container">
+    <ng-template snscgProcedureHost></ng-template>
+  </div>
+  <button [disabled]="this.procedureService.isContinueDisabled" standard class="continue" (click)="this.continue()">{{language.continue}}</button>
 </div>
-<button [disabled]="this.procedureService.isContinueDisabled" standard class="continue" (click)="this.continue()">{{language.continue}}</button>
+<snscg-footer></snscg-footer>

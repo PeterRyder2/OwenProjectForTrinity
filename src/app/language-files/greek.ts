@@ -31,7 +31,9 @@ export const greek: ILanguageFile = {
                     firstHint: `GREEK LANGUAGE`,
                 }
             },
-            test: {},
+            test: {
+                continue: 'GREEK LANGUAGE'
+            },
             testDescription: {
                 firstPage: {
                     title: `GREEK LANGUAGE`,
@@ -66,7 +68,11 @@ export const greek: ILanguageFile = {
                     firstHint: `GREEK LANGUAGE`,
                 }
             },
-            test: {},
+            test: {
+                startHint: 'GREEK LANGUAGE',
+                continueHint: 'GREEK LANGUAGE',
+                continue: 'GREEK LANGUAGE'
+            },
             testDescription: {
                 firstPage: {
                     title: `GREEK LANGUAGE`,

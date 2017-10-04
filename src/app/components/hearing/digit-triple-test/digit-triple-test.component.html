@@ -37,10 +37,10 @@
     <div>
       <div *ngIf="state == 0; then startDescription; else runningDescription"></div>
       <ng-template #startDescription>
-        <div class="content">Press "Start" to begin the hearing test.</div>
+        <div class="content">{{language.startHint}}</div>
       </ng-template>
       <ng-template #runningDescription>
-        <div class="content">Enter the digits that you have understood using the number pad below.</div>
+        <div class="content">{{language.continueHint}}</div>
       </ng-template>
     </div>
     <div>
@@ -68,7 +68,7 @@
       <button [disabled]="state != 3" standard [class.active]="activeKey.match('Delete|Backspace')" (click)="removeLastNumber()"><i class="material-icons">backspace</i></button>
     </div>
     <button *ngIf="this.showOwnContinueBtn" [disabled]="!this.canContinue" standard [class.active]="activeKey == 'Enter'" (click)="continue()">
-          Continue
+          {{language.continue}}
         </button>
   </div>
 

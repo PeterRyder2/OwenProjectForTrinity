@@ -17,7 +17,7 @@ export const german: ILanguageFile = {
             }
         },
         chapterSelection: {
-            title: `FRENCH LANGUAGE`,
+            title: `GERMAN LANGUAGE`,
             Cognition: `Cognition GERMAN LANGUAGE`,
             Hearing: `Hearing GERMAN LANGUAGE`,
             Vision: `Vision GERMAN LANGUAGE`,
@@ -31,7 +31,9 @@ export const german: ILanguageFile = {
                     firstHint: `GERMAN LANGUAGE`,
                 }
             },
-            test: {},
+            test: {
+                continue: 'GERMAN LANGUAGE'
+            },
             testDescription: {
                 firstPage: {
                     title: `GERMAN LANGUAGE`,
@@ -66,7 +68,11 @@ export const german: ILanguageFile = {
                     firstHint: `GERMAN LANGUAGE`,
                 }
             },
-            test: {},
+            test: {
+                startHint: 'GERMAN LANGUAGE',
+                continueHint: 'GERMAN LANGUAGE',
+                continue: 'GERMAN LANGUAGE'
+            },
             testDescription: {
                 firstPage: {
                     title: `GERMAN LANGUAGE`,

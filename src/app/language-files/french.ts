@@ -31,7 +31,9 @@ export const french: ILanguageFile = {
                     firstHint: `FRENCH LANGUAGE`,
                 }
             },
-            test: {},
+            test: {
+                continue: 'FRENCH LANGUAGE'
+            },
             testDescription: {
                 firstPage: {
                     title: `FRENCH LANGUAGE`,
@@ -66,7 +68,11 @@ export const french: ILanguageFile = {
                     firstHint: `FRENCH LANGUAGE`,
                 }
             },
-            test: {},
+            test: {
+                startHint: 'FRENCH LANGUAGE',
+                continueHint: 'FRENCH LANGUAGE',
+                continue: 'FRENCH LANGUAGE'
+            },
             testDescription: {
                 firstPage: {
                     title: `FRENCH LANGUAGE`,
