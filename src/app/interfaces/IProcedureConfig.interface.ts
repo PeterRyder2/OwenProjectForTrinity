@@ -18,7 +18,7 @@ export interface ITest {
     description: new (...args: any[]) => IDescriptionComponent;
     component: new (...args: any[]) => ITestComponent;
     inputData?: IInputData[];
-    result?: ITestResult;
+    result?: ITestResult<any>;
     resultComponent: new (...args: any[]) => IResultComponent;
     skipped?: boolean;
 }
@@ -28,13 +28,12 @@ export interface IInputData {
     data: any;
 }
 
-export interface ITestResult {
-    score: number | string;
-    type: any; // TODO
+export interface ITestResult<T> {
+    result: T;
 }
 
 export interface IResultComponent {
-    resultData: ITestResult;
+    resultData: ITestResult<any>;
 }
 
 export interface ITestComponent {
@@ -42,9 +41,4 @@ export interface ITestComponent {
     subscribeContinueDisabled(cb: (isDisaled: boolean) => void): void;
 }
 
-export type ITestResponse = {
-    isTestFinnished: false;
-} | {
-        isTestFinnished: true;
-        result: ITestResult;
-    };
+export type ITestResponse = false | ITestResult<any>;

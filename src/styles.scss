@@ -23,8 +23,14 @@ body {
   color: $theme-color-font;
 }
 
+div, h1, h2, h3, h4, h5, p{
+  user-select: none;
+  cursor: default;
+}
+
 * {
   font-family: 'Lato', sans-serif;
+  // user-select: none;
 }
 
 button[standard] {
@@ -35,8 +41,8 @@ button[standard] {
   background-color: white;
   border: 1px solid $main-one-accent-one;
   justify-content: center;
-  font-weight: 500;
-  font-size: 30px;
+  align-items: center;
+  font-size: 2rem;
   border-radius: 4px;
   transition: background .4s cubic-bezier(.25, .8, .25, 1), box-shadow 280ms cubic-bezier(.4, 0, .2, 1);
 }
@@ -67,20 +73,20 @@ button[standard]:not([disabled]).active {
   box-shadow: 0 5px 5px -3px rgba(0, 0, 0, .2), 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12) !important;
 }
 
-button[standard]:not([disabled]):hover,
-button[standard]:not([disabled]).active {
-  background: #2F2F2F;
-  color: white;
-  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
-  z-index: 100;
-}
+// button[standard]:not([disabled]):hover,
+// button[standard]:not([disabled]).active {
+//   background: #2F2F2F;
+//   color: white;
+//   box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+//   z-index: 100;
+// }
 
 button[standard]:disabled:hover,
 button[standard]:disabled {
   background-color: transparent;
   cursor: default;
-  color: #e2e2e2;
-  border-color: #e2e2e2;
+  color: #aeaeae;
+  border-color: #aeaeae;
 }
 
 section {

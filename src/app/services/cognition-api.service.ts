@@ -16,7 +16,7 @@ export class CognitionApiService {
   }
 
   finish(input: { id: string, wordRes: ICognitionTestRespone[], annotation: string }) {
-    return this.http.post(`${this.url}/cognition/finish`, input).map(res => res.text()).toPromise();
+    return this.http.post(`${this.url}/cognition/finish`, input).map(res => res.json() as ICognitionTestResult).toPromise();
   }
   getWord(input: { id: string, word: string }) {
     return this.http.post(`${this.url}/cognition/word`, input).map(res => res.json() as { sound: string }).toPromise();
@@ -34,3 +34,10 @@ export interface ICognitionTestRespone {
   Word: string;
   Seen: boolean;
 };
+
+export interface ICognitionTestResult {
+  SeenCorrect: number;
+  SeenWrong: number;
+  NotSeenCorrect: number;
+  NotSeenWrong: number;
+}

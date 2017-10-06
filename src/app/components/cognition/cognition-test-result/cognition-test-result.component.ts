@@ -1,3 +1,4 @@
+import { ICognitionTestResult } from '../../../services/cognition-api.service';
 import { Component, OnInit } from '@angular/core';
 import { IResultComponent, ITestResult } from '../../../interfaces/IProcedureConfig.interface';
 
@@ -8,7 +9,7 @@ import { IResultComponent, ITestResult } from '../../../interfaces/IProcedureCon
 })
 export class CognitionTestResultComponent implements OnInit, IResultComponent {
 
-  resultData: ITestResult;
+  resultData: ITestResult<ICognitionTestResult>;
 
   constructor() { }
 

@@ -1,3 +1,16 @@
-<p *ngIf="this.resultData">
-  Result: {{this.resultData.score}}
+<p *ngIf="this.resultData.result">
+  YES correct: {{resultData.result.SeenCorrect}}
+
+</p>
+<p *ngIf="this.resultData.result">
+  YES wrong: {{resultData.result.SeenWrong}}
+
+</p>
+<p *ngIf="this.resultData.result">
+  NO correct: {{resultData.result.NotSeenCorrect}}
+
+</p>
+<p *ngIf="this.resultData.result">
+  NO wrong: {{resultData.result.NotSeenWrong}}
+
 </p>

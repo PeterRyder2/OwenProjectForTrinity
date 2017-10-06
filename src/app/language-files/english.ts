@@ -13,12 +13,12 @@ export const english: ILanguageFile = {
                 title: `Welcome to the eChecker`,
                 firstParagraph: `The eChecker can test your hearing, vision and memory. There will be questionnaires and interactive tests. After each test, a brief result is shown.`,
                 secondParagraph: `Note: The memory questionnaire is designed to be filled in by someone who knows you well. Don’t worry if there is not somebody available to complete this as we can miss out this part of the test if necessary.`,
-                firstHint: `Press "Start" to begin!`,
+                firstHint: `Press "Continue" to begin!`,
             }
         },
         chapterSelection: {
             title: `Which test would you like to take?`,
-            Cognition: `Cognition test`,
+            Cognition: `Memory test`,
             Hearing: `Hearing test`,
             Vision: `Vision test`,
         },
@@ -28,7 +28,7 @@ export const english: ILanguageFile = {
                     title: `Memory test`,
                     firstParagraph: `The memory test includes a questionnaire and a short test that asks you to remember some words.`,
                     secondParagraph: `For the memory test, you might need to adjust the volume to make sure that the sound is clearly audible.`,
-                    firstHint: `Press "Start" to begin with the questionnaire.`,
+                    firstHint: `Press "Continue" to begin with the questionnaire.`,
                 }
             },
             test: {
@@ -45,8 +45,8 @@ export const english: ILanguageFile = {
                 },
                 secondPage: {
                     title: `Memory test instructions`,
-                    firstParagraph: `During the test, you are going to be presented with some words. Try to remember them We will ask you to recall them later.`,
-                    firstHint: `Press "Start" to begin the memory test.`,
+                    firstParagraph: `During the test, you are going to be presented with some words. Try to remember them. We will ask you to recall them later.`,
+                    firstHint: `Press "Continue" to begin the memory test.`,
                 }
             },
             testResult: {},
@@ -54,7 +54,7 @@ export const english: ILanguageFile = {
             questionnaireDescription: {
                 firstPage: {
                     title: `Memory questionnaire instructions`,
-                    firstParagraph: `>This questionnaire is designed to be completed by someone who knows you well. 
+                    firstParagraph: `This questionnaire is designed to be completed by someone who knows you well. 
                     If nobody is around to do complete the questionnaire, 
                     please click on the “Skip” button above. Otherwise please click “Continue" to start the questionnaire.`
                 }
@@ -69,7 +69,7 @@ export const english: ILanguageFile = {
                     secondParagraph: `In the questionnaire, simply highlight the answer which best describes you.`,
                     thirdParagraph: `For the speech test, you might need to adjust the volume to make sure that the sound is clearly audible.
                     External speakers or headphones might be necessary to yield a sufficient level.`,
-                    firstHint: `Press "Start" to begin the questionnaire.`,
+                    firstHint: `Press "Continue" to begin the questionnaire.`,
                 }
             },
             test: {
@@ -92,7 +92,7 @@ export const english: ILanguageFile = {
                     hear using the number pad on the screen. You may use the &larr; button to delete a number.`,
                     secondParagraph: `The number of times the process is repeated will depend on your particular responses.`,
                     thirdParagraph: `The test will get harder. If you are unsure, please take a guess.`,
-                    firstHint: `Press "Start" to begin the hearing test.`,
+                    firstHint: `Press "Continue" to begin the hearing test.`,
                 }
             },
             testResult: {},
@@ -113,7 +113,7 @@ export const english: ILanguageFile = {
                     secondParagraph: `In the questionnaire, simply highlight the answer which best describes you.`,
                     thirdParagraph: `For the acuity test, you will first need to set the size of a shown rectangle. You will need any card the size of a bank
                     card for this, and please ensure your browser itself does NOT zoom the vision test pages.`,
-                    firstHint: `Press "Start" to begin with the questionnaire.`,
+                    firstHint: `Press "Continue" to begin with the questionnaire.`,
                 }
             },
             test: {},
@@ -138,7 +138,7 @@ export const english: ILanguageFile = {
                     thirdParagraph: `Example: : If you saw this shape Π you would press the arrow &darr; below the symbol.`,
                     fourthParagraph: `The number of symbols shown will depend on your particular responses.`,
                     fifthParagraph: `The test is designed to be hard. If you are unsure of the correct response, please take a guess.`,
-                    firstHint: `Press "Start" to begin the vision test.`,
+                    firstHint: `Press "Continue" to begin the vision test.`,
                 }
             },
             testResult: {},

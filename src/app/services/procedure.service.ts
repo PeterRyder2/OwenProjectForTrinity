@@ -58,6 +58,7 @@ export class ProcedureService {
         throw new Error(`apperently the ProcedureState was out of its enum range,
            this should not happen and something has to be messed up badly`);
     }
+    this.isContinueDisabled = false;
   }
 
   reset() {
@@ -101,11 +102,7 @@ export class ProcedureService {
 
   continueTestComponent = async (): Promise<ITestResponse> => {
     return {
-      isTestFinnished: true,
-      result: {
-        score: 0,
-        type: null
-      },
+      result: 0,
     };
   };
   continueDescriptionComponent = async () => { return true; };
@@ -149,8 +146,9 @@ export class ProcedureService {
 
         case ProcedureState.Test:
           let testResponse = await this.continueTestComponent();
-          if (testResponse.isTestFinnished) {
-            this.activeTest.result = testResponse.result;
+          if (testResponse !== false) {
+            console.log(testResponse)
+            this.activeTest.result = testResponse;
             this.position.state = ProcedureState.TestResult;
             this.loadNextTestResult();
           }

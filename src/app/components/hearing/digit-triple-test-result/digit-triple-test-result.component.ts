@@ -8,7 +8,7 @@ import { IResultComponent, ITestResult } from '../../../interfaces/IProcedureCon
 })
 export class DigitTripleTestResultComponent implements OnInit, IResultComponent {
 
-  resultData: ITestResult;
+  resultData: ITestResult<any>;
 
   constructor() { }
 

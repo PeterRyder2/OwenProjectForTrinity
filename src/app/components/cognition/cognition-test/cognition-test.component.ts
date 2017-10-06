@@ -42,7 +42,7 @@ export class CognitionTestComponent implements OnInit, OnDestroy, ITestComponent
 
   results: ICognitionTestRespone[] = [];
 
-  get language(){
+  get language() {
     return this.languageService.components.cognition.test
   }
 
@@ -111,16 +111,10 @@ export class CognitionTestComponent implements OnInit, OnDestroy, ITestComponent
         let res = await this.finish();
         console.log(res);
         return {
-          isTestFinnished: true,
-          result: {
-            score: res,
-            type: null
-          }
+          result: res
         }
     }
-    return {
-      isTestFinnished: false
-    };
+    return false
   }
 
   async presentWords() {
@@ -146,11 +140,11 @@ export class CognitionTestComponent implements OnInit, OnDestroy, ITestComponent
 
   presentNextTest() {
     let rnd = Math.round(Math.random() * (this.words.test.length - 1));
-    this.activeWord = this.words.test.splice(rnd, 1)[0];
     if (this.words.test.length == 0) {
       this.state = State.finishing;
       this.checkContinueDisabled();
-    }
+    } else
+      this.activeWord = this.words.test.splice(rnd, 1)[0];
   }
 
   resultForWord(seen: boolean) {
@@ -174,7 +168,7 @@ export class CognitionTestComponent implements OnInit, OnDestroy, ITestComponent
       this.keyDownEventListener);
     window.addEventListener('keyup',
       this.keyUpEventListener);
-    if (this.id && this.state <= State.finishing) {
+    if (this.id && this.state < State.finishing) {
       this.api.finish({ id: this.id, wordRes: null, annotation: 'test got destroyed' });
     }
     if (this.words) {

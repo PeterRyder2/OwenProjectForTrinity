@@ -31,7 +31,7 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy, ITestCompone
   result = 0;
 
   get canContinue() {
-    if (this.enteredNumber.length !== 3 && this.state == State.input) return false;
+    if (this.enteredNumber.length !== 3 && this.state == State.presentation) return false;
     return true;
   }
 
@@ -61,7 +61,7 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy, ITestCompone
       this.keyDownEventListener);
     window.addEventListener('keyup',
       this.keyUpEventListener);
-    if (this.testId && this.state <= State.finishing) {
+    if (this.testId && this.state < State.finishing) {
       this.api.finish({ id: this.testId, annotation: 'test got destroyed' });
     }
     if (this.audio.isPlaying == true) {
@@ -90,20 +90,16 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy, ITestCompone
       case State.finishing:
         let res = await this.finish();
         this.disableContinueChanged.emit(!this.canContinue);
-        return {
-          isTestFinnished: true,
-          result: res
-        };
+        return res
 
       default:
         break;
     }
-    return {
-      isTestFinnished: false
-    };
+    return false;
   }
 
   async start() {
+    console.log(this.settings.languageStr)
     let res = await this.api.initialize({
       language: this.settings.languageStr,
       name: this.idService.id
@@ -134,13 +130,12 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy, ITestCompone
   }
 
   // TODO ist die Annotation noch gewünscht?
-  async finish(): Promise<ITestResult> {
+  async finish(): Promise<ITestResult<number>> {
     this.audio.stop();
     let res = await this.api.finish({ id: this.testId, annotation: this.idService.annotation });
     console.log(res.Snr)
     return {
-      score: res.Snr,
-      type: 1
+      result: res.Snr
     };
   }
 

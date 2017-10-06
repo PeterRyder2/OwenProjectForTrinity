@@ -4,7 +4,7 @@ export class Util {
         for (let i = 0; i < str.length; i++) {
             view[i] = str.charCodeAt(i);
         }
-        return view.buffer;
+        return view.buffer as ArrayBuffer;
     }
 
     static deepCloneObject<T extends any>(from: T): T {

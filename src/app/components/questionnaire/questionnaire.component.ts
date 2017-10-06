@@ -90,16 +90,10 @@ export class QuestionnaireComponent implements OnInit, OnDestroy, ITestComponent
       let score = this.evaluateQuestionnaire();
       this.finished.emit(score);
       return {
-        isTestFinnished: true,
-        result: {
-          type: null,
-          score: score
-        }
+        result: score
       }
     }
-    return {
-      isTestFinnished: false
-    }
+    return false
   }
 
   selectQuestion(index: number) {
