@@ -31,7 +31,7 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy, ITestCompone
   result = 0;
 
   get canContinue() {
-    if (this.enteredNumber.length !== 3 && this.state == State.presentation) return false;
+    if (this.enteredNumber.length !== 3 && this.state == State.input || this.state == State.presentation) return false;
     return true;
   }
 
@@ -148,6 +148,7 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy, ITestCompone
 
   present(data: ArrayBuffer | string) {
     this.state = State.presentation;
+    this.disableContinueChanged.emit(!this.canContinue);
     this.audio.play(data);
   }
 
