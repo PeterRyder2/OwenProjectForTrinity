@@ -1,6 +1,6 @@
 <div class="container" [ngSwitch]="this.state">
   <ng-container *ngSwitchCase="0">
-    Sorry, when you see this the server is unavailable or there is a bug.
+    <div class="loader"></div>
   </ng-container>
   <ng-container *ngSwitchCase="1">
     <div class="text">
@@ -8,10 +8,16 @@
     </div>
   </ng-container>
   <ng-container *ngSwitchCase="2">
+      <div class="intro" innerHtml="{{language.firstIntro}}"></div>
+  </ng-container>
+  <ng-container *ngSwitchCase="3">
     <snscg-questionnaire [continueSubject]="this.continueQuestionnaireSubject" [questionnaire]="this.questionnaire" (disableContinueChanged)="this.disableContinueQuestionnaire($event)"
       (finished)="this.questionnaireFinnished()"></snscg-questionnaire>
   </ng-container>
-  <ng-container *ngSwitchCase="3">
+  <ng-container *ngSwitchCase="4">
+      <div class="intro" innerHTML="{{language.secondIntro}}"></div>
+  </ng-container>
+  <ng-container *ngSwitchCase="5">
     <div class="text">
       {{activeWord}}
     </div>
@@ -23,6 +29,9 @@
                     <i class="material-icons">check</i>
                 </button>
     </div>
+  </ng-container>
+  <ng-container *ngSwitchCase="6">
+      <div class="intro" innerHTML="{{language.outro}}"></div>
   </ng-container>
   <button standard *ngIf="this.showOwnContinueBtn" [disabled]="this.continueDisabled" (click)="this.continue()">{{language.continue}}</button>
 </div>

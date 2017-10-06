@@ -30,7 +30,10 @@ export class ILanguageFile {
                 }
             },
             test: {
+                firstIntro: string;
+                secondIntro: string;
                 continue: string;
+                outro: string;
             },
             testDescription: {
                 firstPage: {
@@ -39,6 +42,7 @@ export class ILanguageFile {
                     secondParagraph: string;
                     firstHint: string;
                     secondHint: string;
+                    soundFile: string;
                 },
                 secondPage: {
                     title: string;
@@ -78,6 +82,7 @@ export class ILanguageFile {
                     secondParagraph: string;
                     firstHint: string;
                     secondHint: string;
+                    soundFile: string;
                 },
                 secondPage: {
                     title: string;

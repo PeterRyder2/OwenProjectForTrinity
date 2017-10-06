@@ -1,3 +1,5 @@
+import { IdService } from '../../../services/id.service';
+import { SettingsService } from '../../../services/settings.service';
 import { Subject } from 'rxjs/Rx';
 import { ITestComponent, ITestResponse } from '../../../interfaces/IProcedureConfig.interface';
 import { Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
@@ -21,10 +23,6 @@ export class CognitionTestComponent implements OnInit, OnDestroy, ITestComponent
 
   showOwnContinueBtn = true;
 
-  // ?Needed
-  name = 'rolf';
-  annotation = '';
-
   id: string;
   activeKey = '';
   activeWord = '';
@@ -46,7 +44,7 @@ export class CognitionTestComponent implements OnInit, OnDestroy, ITestComponent
     return this.languageService.components.cognition.test
   }
 
-  constructor(public languageService: LanguageService, private api: CognitionApiService, public audio: AudioService) { }
+  constructor(public languageService: LanguageService, private api: CognitionApiService, public audio: AudioService, private settings: SettingsService, private idService: IdService) { }
 
   ngOnInit() {
     this.init();
@@ -58,16 +56,18 @@ export class CognitionTestComponent implements OnInit, OnDestroy, ITestComponent
   }
 
   async init() {
-    let res = await this.api.initialize({ language: 'de', name: this.name });
+    let res = await this.api.initialize({ language: this.settings.languageStr, name: this.idService.id });
     this.id = res.ID;
     this.questionnaire = res.Questionaire;
-    this.state = State.presenting;
     this.checkContinueDisabled();
     this.words = {
       present: res.PresentWords,
       test: res.TestWords.concat(res.PresentWords)
     };
-    setTimeout(() => { this.presentWords(); }, 2500);
+    setTimeout(() => {
+      this.state = State.presenting;
+      this.presentWords();
+    }, 2500);
   }
 
   disableContinueQuestionnaire(disable: boolean) {
@@ -77,16 +77,16 @@ export class CognitionTestComponent implements OnInit, OnDestroy, ITestComponent
 
   checkContinueDisabled() {
     switch (this.state) {
-      case State.presenting:
-        this.disableContinue(true);
-        break;
       case State.presentingQuestion:
         this.disableContinue(this.countinueQuestionnaireDisabled);
         break;
+      case State.presenting:
       case State.presentingFinal:
         this.disableContinue(true);
         break;
       case State.finishing:
+      case State.instructionsFinal:
+      case State.instructionsQuestion:
         this.disableContinue(false);
         break
     }
@@ -104,8 +104,16 @@ export class CognitionTestComponent implements OnInit, OnDestroy, ITestComponent
 
   continue = async (): Promise<ITestResponse> => {
     switch (this.state) {
+      case State.instructionsQuestion:
+        this.state = State.presentingQuestion;
+        break;
       case State.presentingQuestion:
         this.continueQuestionnaireSubject.next();
+        break;
+      case State.instructionsFinal:
+        this.state = State.presentingFinal;
+        this.presentNextTest();
+        this.checkContinueDisabled();
         break;
       case State.finishing:
         let res = await this.finish();
@@ -125,17 +133,16 @@ export class CognitionTestComponent implements OnInit, OnDestroy, ITestComponent
     let res = await this.api.getWord({ id: this.id, word: this.activeWord });
     this.audio.play(res.sound);
     if (this.words.present.length == 0) {
-      this.state = State.presentingQuestion;
+      this.state = State.instructionsQuestion;
       this.checkContinueDisabled();
     } else {
-      setTimeout(() => { this.presentWords(); }, 200);
+      setTimeout(() => { this.presentWords(); }, 2000);
     }
   }
 
   questionnaireFinnished() {
-    this.state = State.presentingFinal;
+    this.state = State.instructionsFinal;
     this.checkContinueDisabled();
-    this.presentNextTest();
   }
 
   presentNextTest() {
@@ -159,7 +166,7 @@ export class CognitionTestComponent implements OnInit, OnDestroy, ITestComponent
     return await this.api.finish({
       id: this.id,
       wordRes: this.results,
-      annotation: this.annotation
+      annotation: this.idService.annotation
     });
   }
 

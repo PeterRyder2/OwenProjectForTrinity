@@ -42,11 +42,9 @@ export class SettingsService {
       case 'en-GB':
         this.language = Language.English;
         break;
-      case 'de':
-        this.language = Language.German;
-        break;
 
       default:
+      this.language = Language.English;
         break;
     }
   }

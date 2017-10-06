@@ -1,0 +1,91 @@
+Disclaimer:
+  ☐ @Thomas @Daniel @Marc Um diese Datei gut zu sehen und zu bearbeiten lade das "Todo+" PLugin von VSCode herrunter!
+  ✔ Alt + D um als DONE zu markieren, nochmal zu wiederrückgängig machen
+  ✘ Alt + C um als CANCELLED zu markieren, nochmal zu wiederrückgängig machen
+  ☐ @ für tags @critical, @high, @low, @today sind besondere tags
+
+Thomas muss wissen:
+  ☐ wie starte ich das ganze (inkl. Server)
+  ☐ editieren von Texten
+  ☐ kompilieren
+  ☐ ändern der Mailadresse(n)
+  ☐ deployen
+  
+ALLGEMEIN: 
+  ☐ MUTE BUTTON IN FINALER VERSION RAUS
+  ✔ "Einsprungpunkt" soll "procedure" sein
+  ✔ jegliches Markieren verbieten!
+  ✔ Internet Explorer 11 geht gar nicht
+  ☐ Audio Internet Explorer 11 geht nicht
+  ✔ Skipping nicht immer korrekt: wenn man NUR Hearins auswählt und dann während des Fragebogens skipt, dann landet man nicht im DTT sondern auf der Startseite...
+
+  ✔ NAVIGATION: 'Back' funktioniert nicht! Entweder fixen, oder Back verhindern (history löschen?) 
+  =>GEHT NICHT "VERLÄSSLICH"
+
+  ✔ Continue-Button: Schrift kleiner
+  ✔ Continue-Button: Disabled "zu blass"
+  ✔ Continue-Button: Hover "zu stark"
+
+  ✔ ALLE Texte: prüfen, ob 'Continue' drin steht (statt 'Start')
+
+  ✔ @critical Result: größer, "benennen" (questionnaires: "Score", DTT: "SRT"
+  ✔ @critical QUESTIONNAIRE: Result momentan leer
+
+  ✔ Auswahl Tests: "Cognition test" -> "Memory test"
+
+Questionnaires allgemein: 
+  ✔ Fragen: bei Mehrzeilig lieber "Top" aussrichten (statt Bottom jetzt)
+
+Hearing: 
+  ☐ @questionable Nach Instructions direkt starten
+  ✔ Instructions: raten
+  ✔ @critical Volume einstellen: Instruktion, dass man am Gerät eiregeln soll (kein ±), im Endloslooping den TestTripel abspielen (beim Memory-Test genauso)
+  ✔ Englische Version der Audiodaten
+  ✔ FireFox: sizing falsch: Scrollbar erscheint fast immer...  
+  ✔ Space zw. Buttons
+  ✔ Ziffern auf Buttons größer (fett?)
+  ✔ (jetzt leer) '+ Button disabled (raten erzwingen)
+  ✔ Disabled "zu blass"
+  ✔ Während Darbietung Continue-Button disabled
+        
+MEMORY:
+  ✔ Continue ist enabled während der 20 Wörter
+  ✔ @critical "echtes Timing"
+  ✔ Nach 20. Wort: Anzeige der Frage zu schnell, auch 2 Sek. zeigen, + kurze Pause
+  ✔ Instruktionen vor Fragen:
+      Now we are going to ask you some questions.
+      Answer as quickly and accurately as possible.
+      Please press any key to continue
+  ☐ @questionable Nach letzter Frage: Anzeige des recall Frage zu schnell, auch 2 Sek. pause
+  ✔ Instruktion vor recall:
+      Now we are going to show you some words.
+      You need to decide whether or not you have already seen them.
+      Please press any key to continue.
+  ☐ @qestionable Score ist noch zu klären: Anzahl der richtigen Antworten in der Recall Phase ?
+  ☐ @qestionable Progress bar während der 20 Wörter
+  ✔ letzte Seite => Anleitung, Auswertung
+  ☐ Audio Signale neu => Manchester
+  ✔ Questionnaire Instructions:   ">" am Anfang entfernen
+  ✔ @critical Bei JEDER Frage: Instruction "Compared with ten years ago how is this person at:" dazu  
+  ✔ Test Instructions: "remember them" Punkt fehlt
+  ✘ @WorksAsIntended "Sorry, when you see this the server is unavailable or there is a bug"
+  ✘ @critical Leere Seite vor Result (soll weg)?
+      erstmal nicht machbar, da continue nur vom master herraus aufrufbar ist und nicht vom slave
+      => bedeutet änderung des Systems
+  ✔ ^^^^^ FIX: Outro text ^^^^
+
+  ✔ Result
+	YES correct: X1
+	YES wrong: X2 
+	NO correct: X3
+	NO wrong: X4
+
+Vision:
+  ✔ questionnaire: Vision questionnaire instructions {{language.firstPage.firstParagraph}
+
+Api:
+  ✔ @critical SMTP zum Versenden der Ergebnisse
+      sensecogsmtp@hoertech.de
+      Server: smtp.1und1.de
+      Port: 587  STARTTLS
+      Pwd: mP4SCeC!

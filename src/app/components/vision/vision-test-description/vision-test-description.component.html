@@ -1,27 +1,27 @@
 <div *ngIf="this.page == 0" class="description">
-  <H2>{{language.firstPage.title}}</H2>
-  <p>{{language.firstPage.firstParagraph}}</p>
-  <p>{{language.firstPage.secondParagraph}}</p>
-  <div class="cal_container">{{language.firstPage.firstHint}}</div>
+  <H2 innerHTML="{{language.firstPage.title}}"></H2>
+  <p innerHTML="{{language.firstPage.firstParagraph}}"></p>
+  <p innerHTML="{{language.firstPage.secondParagraph}}"></p>
+  <div class="cal_container" innerHTML="{{language.firstPage.firstHint}}"></div>
 
 
-  <div class="continue_hint">{{language.firstPage.secondHint}}</div>
+  <div class="continue_hint" innerHTML="{{language.firstPage.secondHint}}"></div>
 </div>
 
 <div *ngIf="this.page == 1" class="description">
-  <H2>{{language.secondPage.title}}</H2>
-  <p>{{language.secondPage.firstParagraph}}</p>
+  <H2 innerHTML="{{language.secondPage.title}}"></H2>
+  <p innerHTML="{{language.secondPage.firstParagraph}}"></p>
 
-  <div class="cal_container">{{language.secondPage.firstHint}}</div>
+  <div class="cal_container" innerHTML="{{language.secondPage.firstHint}}"></div>
 </div>
 
 <div *ngIf="this.page == 2" class="description">
-  <H2>{{language.thirdPage.title}}</H2>
-  <p>{{language.thirdPage.firstParagraph}}</p>
-  <p>{{language.thirdPage.secondParagraph}}</p>
-  <p>{{language.thirdPage.thirdParagraph}}</p>
-  <p>{{language.thirdPage.fourthParagraph}}</p>
-  <p>{{language.thirdPage.fifthParagraph}}</p>
+  <H2 innerHTML="{{language.thirdPage.title}}"></H2>
+  <p innerHTML="{{language.thirdPage.firstParagraph}}"></p>
+  <p innerHTML="{{language.thirdPage.secondParagraph}}"></p>
+  <p innerHTML="{{language.thirdPage.thirdParagraph}}"></p>
+  <p innerHTML="{{language.thirdPage.fourthParagraph}}"></p>
+  <p innerHTML="{{language.thirdPage.fifthParagraph}}"></p>
 
-  <div class="cal_container">{{language.thirdPage.firstHint}}</div>
+  <div class="cal_container" innerHTML="{{language.thirdPage.firstHint}}"></div>
 </div>

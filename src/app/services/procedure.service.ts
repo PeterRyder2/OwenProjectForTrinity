@@ -194,8 +194,8 @@ export class ProcedureService {
     let testsLeft = false;
     let nextTest = countUp ? this.position.test + 1 : this.position.test;
     for (let i = nextTest; i < this.activeChapter.tests.length; i++) {
-      if (!this.procedure.chapters[i].skipped) {
-        this.position.test++;
+      if (!this.activeChapter.tests[i].skipped) {
+        this.position.test = i;
         this.position.state = ProcedureState.TestDescription;
         this.loadNextTestDescription();
         testsLeft = true;

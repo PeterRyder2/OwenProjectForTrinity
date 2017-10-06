@@ -32,7 +32,10 @@ export const greek: ILanguageFile = {
                 }
             },
             test: {
-                continue: 'GREEK LANGUAGE'
+                firstIntro: 'GREEK LANGUAGE',
+                secondIntro: 'GREEK LANGUAGE',
+                continue: 'GREEK LANGUAGE',
+                outro: 'GREEK LANGUAGE'
             },
             testDescription: {
                 firstPage: {
@@ -41,6 +44,7 @@ export const greek: ILanguageFile = {
                     secondParagraph: `GREEK LANGUAGE`,
                     firstHint: `GREEK LANGUAGE`,
                     secondHint: `GREEK LANGUAGE`,
+                    soundFile: 'testTripleSound.mp3'
                 },
                 secondPage: {
                     title: `GREEK LANGUAGE`,
@@ -80,6 +84,7 @@ export const greek: ILanguageFile = {
                     secondParagraph: `GREEK LANGUAGE`,
                     firstHint: `GREEK LANGUAGE`,
                     secondHint: `GREEK LANGUAGE`,
+                    soundFile: 'testTripleSound.mp3'
                 },
                 secondPage: {
                     title: `GREEK LANGUAGE`,

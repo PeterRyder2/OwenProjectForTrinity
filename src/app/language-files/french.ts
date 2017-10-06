@@ -32,7 +32,10 @@ export const french: ILanguageFile = {
                 }
             },
             test: {
-                continue: 'FRENCH LANGUAGE'
+                firstIntro: 'FRENCH LANGUAGE',
+                secondIntro: 'FRENCH LANGUAGE',
+                continue: 'FRENCH LANGUAGE',
+                outro: 'FRENCH LANGUAGE'
             },
             testDescription: {
                 firstPage: {
@@ -41,6 +44,7 @@ export const french: ILanguageFile = {
                     secondParagraph: `FRENCH LANGUAGE`,
                     firstHint: `FRENCH LANGUAGE`,
                     secondHint: `FRENCH LANGUAGE`,
+                    soundFile: 'testTripleSound.mp3'
                 },
                 secondPage: {
                     title: `FRENCH LANGUAGE`,
@@ -80,6 +84,7 @@ export const french: ILanguageFile = {
                     secondParagraph: `FRENCH LANGUAGE`,
                     firstHint: `FRENCH LANGUAGE`,
                     secondHint: `FRENCH LANGUAGE`,
+                    soundFile: 'testTripleSound.mp3'
                 },
                 secondPage: {
                     title: `FRENCH LANGUAGE`,

@@ -32,16 +32,19 @@ export const english: ILanguageFile = {
                 }
             },
             test: {
-                continue: 'Continue'
+                firstIntro: 'Now we are going to ask you some questions.<br>Answer as quickly and accurately as possible.<br><br>Please press \'Continue\' to continue',
+                secondIntro: 'Now we are going to show you some words.<br>You need to decide whether or not you have already seen them.<br><br>Please press \'Continue\' to continue.',
+                continue: 'Continue',
+                outro: 'Great!<br>You\'ve completed the memory test, please press \'Continue\' to progress.'
             },
             testDescription: {
                 firstPage: {
                     title: `Memory test instructions`,
                     firstParagraph: `The memory test is next.`,
-                    secondParagraph: `Some speech is played now. Please adjust the volume (if necessary) using the + and – buttons to make the speech clearly 
-                    audible.`,
-                    firstHint: ` - Volume display + `,
+                    secondParagraph: `Some speech is played now. Please adjust the volume (if necessary) on your device to make the speech clearly audible.`,
+                    firstHint: ` Please set the volume of your device to a suitable level. `,
                     secondHint: `Press "Continue" when the speech is clearly audible.`,
+                    soundFile: 'testTripleSound.mp3'
                 },
                 secondPage: {
                     title: `Memory test instructions`,
@@ -81,17 +84,17 @@ export const english: ILanguageFile = {
                 firstPage: {
                     title: `Hearing test instructions`,
                     firstParagraph: `The speech-in-noise test is next.`,
-                    secondParagraph: `Some speech is played now. Please adjust the volume (if necessary) using the + and – buttons to make the speech clearly
-                    audible.`,
-                    firstHint: ` - Volume display + `,
+                    secondParagraph: `Some speech is played now. Please adjust the volume (if necessary) on your device to make the speech clearly audible.`,
+                    firstHint: ` Please set the volume of your device to a suitable level. `,
                     secondHint: `Press "Continue" when the speech is clearly audible.`,
+                    soundFile: 'testTripleSound.mp3'
                 },
                 secondPage: {
                     title: `Hearing test instructions`,
                     firstParagraph: `During the test, you hear combinations of numbers, with noise in the background. Please enter the three numbers that you
                     hear using the number pad on the screen. You may use the &larr; button to delete a number.`,
                     secondParagraph: `The number of times the process is repeated will depend on your particular responses.`,
-                    thirdParagraph: `The test will get harder. If you are unsure, please take a guess.`,
+                    thirdParagraph: `The test will get harder. aLway enter three numbers, if you are unsure, please take a guess.`,
                     firstHint: `Press "Continue" to begin the hearing test.`,
                 }
             },

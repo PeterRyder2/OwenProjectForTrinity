@@ -20,6 +20,32 @@
   }
 }
 
+.loader {
+  margin: auto;
+  border: 16px solid $main-one-accent-two;
+  /* Light grey */
+  border-top: 16px solid $accent-one;
+  /* Blue */
+  border-radius: 50%;
+  width: 10rem;
+  height: 10rem;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.intro {
+  text-align: center;
+  font-size: 2rem;
+}
+
 .text {
   font-size: 5rem;
   text-align: center;

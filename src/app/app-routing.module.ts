@@ -45,6 +45,10 @@ const routes: Routes = [
   {
     path: 'identification/:path',
     component: IdentificationComponent
+  },
+  {
+    path: '**',
+    redirectTo: '/Procedure'
   }
 ];
 

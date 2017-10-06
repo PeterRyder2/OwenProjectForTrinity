@@ -32,7 +32,10 @@ export const german: ILanguageFile = {
                 }
             },
             test: {
-                continue: 'GERMAN LANGUAGE'
+                firstIntro: 'GERMAN LANGUAGE',
+                secondIntro: 'GERMAN LANGUAGE',
+                continue: 'GERMAN LANGUAGE',
+                outro: 'GERMAN LANGUAGE'
             },
             testDescription: {
                 firstPage: {
@@ -41,6 +44,7 @@ export const german: ILanguageFile = {
                     secondParagraph: `GERMAN LANGUAGE`,
                     firstHint: `GERMAN LANGUAGE`,
                     secondHint: `GERMAN LANGUAGE`,
+                    soundFile: 'testTripleSound.mp3'
                 },
                 secondPage: {
                     title: `GERMAN LANGUAGE`,
@@ -80,6 +84,7 @@ export const german: ILanguageFile = {
                     secondParagraph: `GERMAN LANGUAGE`,
                     firstHint: `GERMAN LANGUAGE`,
                     secondHint: `GERMAN LANGUAGE`,
+                    soundFile: 'testTripleSound.mp3'
                 },
                 secondPage: {
                     title: `GERMAN LANGUAGE`,
