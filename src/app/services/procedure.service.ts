@@ -146,8 +146,8 @@ export class ProcedureService {
 
         case ProcedureState.Test:
           let testResponse = await this.continueTestComponent();
+          console.log(testResponse)
           if (testResponse !== false) {
-            console.log(testResponse)
             this.activeTest.result = testResponse;
             this.position.state = ProcedureState.TestResult;
             this.loadNextTestResult();

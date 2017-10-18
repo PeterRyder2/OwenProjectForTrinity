@@ -2,12 +2,12 @@
   <img class="logo" src="assets/SENSECOG_Logo_black.svg" alt="">
   <div class="absoluteRight">
     <div class="navButtonsContainer">
-      <button><div class="mute" (click)="this.audioService.toggleMute()">
+      <!--<button><div class="mute" (click)="this.audioService.toggleMute()">
           <i *ngIf="this.audioService.muted; else voloff;" class="material-icons">volume_off</i>
           <ng-template #voloff>
             <i class="material-icons">volume_up</i>
           </ng-template>
-        </div></button>
+        </div></button>//-->
       <button *ngIf="this.procedureService.position.state > this.stateEnum.Home" (click)="skip()"><div>{{language.skip}}</div></button>
       <button *ngIf="this.procedureService.position.state <= this.stateEnum.Home" [class.active]="settingsService.language == 1"><img src="assets/uk_flag.svg" alt="" (click)="settingsService.language = 1" class="flag"></button>
       <button *ngIf="this.procedureService.position.state <= this.stateEnum.Home" [class.active]="settingsService.language == 2"><img src="assets/gr_flag.svg" alt="" (click)="settingsService.language = 2" class="flag"></button>

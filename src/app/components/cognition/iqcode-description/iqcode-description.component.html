@@ -1,4 +1,9 @@
-<div class="description">
+<div *ngIf="this.page == 0" class="description">
     <H2 innerHTML="{{language.firstPage.title}}"></H2>
     <p innerHTML="{{language.firstPage.firstParagraph}}"></p>
+</div>
+
+<div *ngIf="this.page == 1" class="description">
+    <H2 innerHTML="{{language.secondPage.title}}"></H2>
+    <p innerHTML="{{language.secondPage.firstParagraph}}"></p>
 </div>

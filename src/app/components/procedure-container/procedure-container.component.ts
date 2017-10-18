@@ -75,6 +75,8 @@ export class ProcedureContainerComponent implements OnInit, OnDestroy {
 
   @ViewChild(ProcedureHostDirective) procedureHost: ProcedureHostDirective;
 
+  activeKey = '';
+
   get language() {
     return this.languageService.components.procedureContainer;
   }
@@ -87,9 +89,17 @@ export class ProcedureContainerComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.procedureService.init(this);
+    window.addEventListener('keydown',
+      this.keyDownEventListener);
+    window.addEventListener('keyup',
+      this.keyUpEventListener);
   }
 
   ngOnDestroy() {
+    window.removeEventListener('keydown',
+      this.keyDownEventListener);
+    window.addEventListener('keyup',
+      this.keyUpEventListener);
     this.procedureService.destroy();
   }
 
@@ -109,6 +119,19 @@ export class ProcedureContainerComponent implements OnInit, OnDestroy {
 
   skip() {
     this.procedureService.skip();
+  }
+
+
+
+  keyDownEventListener = (e: KeyboardEvent) => {
+    if (e.key.match('Enter'))
+      this.continue();
+    this.activeKey = e.key;
+  }
+
+
+  keyUpEventListener = (e: KeyboardEvent) => {
+    this.activeKey = '';
   }
 
 }

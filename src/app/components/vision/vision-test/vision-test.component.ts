@@ -1,12 +1,13 @@
 import { Direction, VisionTestImage } from '../../../lib/Image';
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ITestComponent, ITestResponse } from '../../../interfaces/IProcedureConfig.interface';
 
 @Component({
   selector: 'snscg-vision-test',
   templateUrl: './vision-test.component.html',
   styleUrls: ['./vision-test.component.scss']
 })
-export class VisionTestComponent implements OnInit, OnDestroy {
+export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
 
   @ViewChild('canvas') canvasRef: ElementRef;
   canvas: HTMLCanvasElement;
@@ -29,6 +30,14 @@ export class VisionTestComponent implements OnInit, OnDestroy {
       this.keyDownEventListener);
     window.addEventListener('keyup',
       this.keyUpEventListener);
+  }
+
+  async continue(): Promise<ITestResponse> {
+    return {
+      result: 12
+    }
+  }
+  subscribeContinueDisabled(cb: (isDisaled: boolean) => void): void {
   }
 
   draw() {

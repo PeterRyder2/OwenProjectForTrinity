@@ -3,7 +3,7 @@ import { IQuestionnaire } from '../../../interfaces/IQuestionnaire.interface';
 
 export let VF14: IQuestionnaire = {
   id: 'VF-14',
-  title: 'Visual Function Index',
+  title: 'Vision questionnaire',
   forceResponse: true,
   questions: [
     {
@@ -117,15 +117,15 @@ export let VF14: IQuestionnaire = {
       answers: [
         {
           answer: 'less than 6 months ago',
-          value: 0
+          value: null
         },
         {
           answer: '6-12 months ago',
-          value: 0
+          value: null
         },
         {
           answer: 'more than 12 months ago',
-          value: 0
+          value: null
         }
       ]
     },
@@ -135,15 +135,15 @@ export let VF14: IQuestionnaire = {
       answers: [
         {
           answer: 'vision',
-          value: 0
+          value: null
         },
         {
           answer: 'other illness',
-          value: 0
+          value: null
         },
         {
           answer: 'other reason',
-          value: 0
+          value: null
         }
       ]
     }
@@ -171,7 +171,7 @@ export let VF14: IQuestionnaire = {
         value: 1
       },
       {
-        answer: 'yes, and am unable to do the activty',
+        answer: 'yes, and am unable to do the activity',
         value: 0
       }
     ],

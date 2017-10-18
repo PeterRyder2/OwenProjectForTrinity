@@ -10,6 +10,8 @@ import { LanguageService } from '../../../services/language.service';
 export class DigitTripleTestDescriptionComponent implements OnInit, IDescriptionComponent {
 
   page = 0;
+  playSound = false;
+  audioF: any;
 
   get language() {
     return this.languageService.components.hearing.testDescription;
@@ -18,8 +20,17 @@ export class DigitTripleTestDescriptionComponent implements OnInit, IDescription
   constructor(public languageService: LanguageService) { }
 
   ngOnInit() {
+    setTimeout(() => {
+      this.showSound();
+    }, 4000);
   }
-
+  showSound() {
+    this.playSound = true;
+    /*this.audio = new Audio();
+    this.audio.src = 'assets/' + this.languageService.components.hearing.testDescription.firstPage.soundFile;
+    this.audio.load();
+    this.audio.play();*/
+  }
   continue = async (): Promise<boolean> => {
     this.page++;
     if (this.page > 1)

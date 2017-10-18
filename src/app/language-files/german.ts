@@ -58,6 +58,10 @@ export const german: ILanguageFile = {
                 firstPage: {
                     title: `GERMAN LANGUAGE`,
                     firstParagraph: `GERMAN LANGUAGE`,
+                },
+                secondPage: {
+                    title: `GERMAN LANGUAGE`,
+                    firstParagraph: `GERMAN LANGUAGE`,
                 }
             },
             questionnaireResult: {}
@@ -146,7 +150,9 @@ export const german: ILanguageFile = {
                     firstParagraph: `GERMAN LANGUAGE`,
                 }
             },
-            questionnaireResult: {}
+            questionnaireResult: {
+                noResult: 'GERMAN LANGUAGE'
+            }
         }
     }
 };

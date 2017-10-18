@@ -58,6 +58,10 @@ export const greek: ILanguageFile = {
                 firstPage: {
                     title: `GREEK LANGUAGE`,
                     firstParagraph: `GREEK LANGUAGE`,
+                },
+                secondPage: {
+                    title: `GREEK LANGUAGE`,
+                    firstParagraph: `GREEK LANGUAGE`,
                 }
             },
             questionnaireResult: {}
@@ -146,7 +150,9 @@ export const greek: ILanguageFile = {
                     firstParagraph: `GREEK LANGUAGE`,
                 }
             },
-            questionnaireResult: {}
+            questionnaireResult: {
+                noResult: 'GREEK LANGUAGE'
+            }
         }
     }
 };

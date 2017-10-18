@@ -9,6 +9,8 @@ import { LanguageService } from '../../../services/language.service';
 })
 export class IqcodeDescriptionComponent implements OnInit, IDescriptionComponent {
 
+  page = 0;
+
   get language() {
     return this.languageService.components.cognition.questionnaireDescription;
   }
@@ -19,6 +21,10 @@ export class IqcodeDescriptionComponent implements OnInit, IDescriptionComponent
   }
 
   continue = async (): Promise<boolean> => {
-    return true;
+    this.page++;
+    if (this.page > 1)
+      return true;
+    else
+      return false;
   }
 }

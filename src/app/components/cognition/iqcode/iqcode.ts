@@ -3,7 +3,7 @@ import { IQuestionnaire } from '../../../interfaces/IQuestionnaire.interface';
 
 export let IQCODE: IQuestionnaire = {
   id: 'IQCODE',
-  title: 'IQCODE',
+  title: 'Memory questionnaire',
   questions: [
     {
       question: 'Compared with ten years ago how is this person at: Remembering things about family and friends e.g. occupations, birthdays, addresses',

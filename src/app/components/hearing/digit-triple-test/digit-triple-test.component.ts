@@ -17,7 +17,7 @@ import State = DigitTripleTestState;
 })
 export class DigitTripleTestComponent implements OnInit, OnDestroy, ITestComponent {
 
-  @Output() disableContinueChanged = new EventEmitter<boolean>();
+  @Output() disableContinueChanged = new EventEmitter<boolean>(true);
 
   activeKey = '';
 
@@ -83,9 +83,10 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy, ITestCompone
         break;
 
       case State.input:
-        this.nextTriple();
+        let res1 = await this.nextTriple();
         this.disableContinueChanged.emit(!this.canContinue);
-        break;
+        console.log(res1);
+        return res1;
 
       case State.finishing:
         let res = await this.finish();
@@ -120,12 +121,16 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy, ITestCompone
       this.state = State.validation;
       let selectedTriple = this.enteredNumber;
       this.enteredNumber = '';
+      this.disableContinueChanged.emit(!this.canContinue);
       let res = await this.api.next({ id: this.testId, selectedTriple: selectedTriple });
       this.progress = res.Progress;
-      if (res.End === true)
+      if (res.End === true) {
         this.state = State.finishing;
-      else
+        return await this.finish();
+      } else {
         this.present(res.TripleBuffer);
+        return false;
+      }
     }
   }
 
@@ -158,7 +163,7 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy, ITestCompone
         this.addNumber(e.key);
       } else if (e.key.match('Delete|Backspace'))
         this.removeLastNumber();
-      else if (e.key.match('Enter'))
+      else if (e.key.match('Enter') && this.showOwnContinueBtn)
         this.continue();
       this.activeKey = e.key;
     }

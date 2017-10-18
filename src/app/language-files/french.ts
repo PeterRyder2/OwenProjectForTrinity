@@ -58,6 +58,10 @@ export const french: ILanguageFile = {
                 firstPage: {
                     title: `FRENCH LANGUAGE`,
                     firstParagraph: `FRENCH LANGUAGE`,
+                },
+                secondPage: {
+                    title: `FRENCH LANGUAGE`,
+                    firstParagraph: `FRENCH LANGUAGE`,
                 }
             },
             questionnaireResult: {}
@@ -146,7 +150,9 @@ export const french: ILanguageFile = {
                     firstParagraph: `FRENCH LANGUAGE`,
                 }
             },
-            questionnaireResult: {}
+            questionnaireResult: {
+                noResult: 'FRENCH LANGUAGE'
+            }
         }
     }
 };

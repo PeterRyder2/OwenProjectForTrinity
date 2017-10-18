@@ -59,7 +59,19 @@ export const english: ILanguageFile = {
                     title: `Memory questionnaire instructions`,
                     firstParagraph: `This questionnaire is designed to be completed by someone who knows you well. 
                     If nobody is around to do complete the questionnaire, 
-                    please click on the “Skip” button above. Otherwise please click “Continue" to start the questionnaire.`
+                    please click on the “Skip” button above. Otherwise please click “Continue".`
+                },
+                secondPage: {
+                    title: `Memory questionnaire instructions`,
+                    firstParagraph: `Now we want you to remember what your friend or relative was like 10 years ago and
+                    to compare it with what he/she is like now. The following questions refer to 
+                    situations where this person has to use his/her memory or intelligence and we want
+                    you to indicate whether this has improved, stayed the same or got worse in that
+                    situation over the past 10 years. Note the importance of comparing his/her present
+                    performance with 10 years ago. So if 10 years ago this person always forgot where
+                    he/she had left things, and he/she still does, then this would be considered "Hasn't
+                    changed much". Please indicate the changes you have observed by highlighting the
+                    appropriate answer.`
                 }
             },
             questionnaireResult: {}
@@ -77,7 +89,7 @@ export const english: ILanguageFile = {
             },
             test: {
                 startHint: 'Press "Continue" to begin the hearing test.',
-                continueHint: 'Enter the digits that you have understood using the number pad below.',
+                continueHint: 'Enter the recognized digits with the number pad below.',
                 continue: 'Continue'
             },
             testDescription: {
@@ -94,7 +106,7 @@ export const english: ILanguageFile = {
                     firstParagraph: `During the test, you hear combinations of numbers, with noise in the background. Please enter the three numbers that you
                     hear using the number pad on the screen. You may use the &larr; button to delete a number.`,
                     secondParagraph: `The number of times the process is repeated will depend on your particular responses.`,
-                    thirdParagraph: `The test will get harder. aLway enter three numbers, if you are unsure, please take a guess.`,
+                    thirdParagraph: `The test will get harder. Always enter three numbers, if you are unsure, please take a guess.`,
                     firstHint: `Press "Continue" to begin the hearing test.`,
                 }
             },
@@ -152,7 +164,9 @@ export const english: ILanguageFile = {
                     firstParagraph: `Optional if questionnaire requires particular mandatory instructions.`,
                 }
             },
-            questionnaireResult: {}
+            questionnaireResult: {
+                noResult: 'No result possible'
+            }
         }
     }
 };

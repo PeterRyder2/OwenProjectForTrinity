@@ -133,8 +133,10 @@ export class CognitionTestComponent implements OnInit, OnDestroy, ITestComponent
     let res = await this.api.getWord({ id: this.id, word: this.activeWord });
     this.audio.play(res.sound);
     if (this.words.present.length == 0) {
-      this.state = State.instructionsQuestion;
-      this.checkContinueDisabled();
+      setTimeout(() => {
+        this.state = State.instructionsQuestion;
+        this.checkContinueDisabled();
+      }, 2000);
     } else {
       setTimeout(() => { this.presentWords(); }, 2000);
     }

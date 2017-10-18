@@ -18,7 +18,7 @@ export class QuestionnaireComponent implements OnInit, OnDestroy, ITestComponent
   @Input() questionnaire: IQuestionnaire;
   @Input() continueSubject: Subject<null>;
 
-  @Output() finished = new EventEmitter<number>();
+  @Output() finished = new EventEmitter<IQuestionnaireResponse>();
   @Output() disableContinueChanged = new EventEmitter<boolean>();
 
   activeQuestion: IQuestion;
@@ -109,7 +109,7 @@ export class QuestionnaireComponent implements OnInit, OnDestroy, ITestComponent
       return this.activeQuestionIndex >= this.questionnaire.questions.length - 1 || this.activeQuestion.jumpTo <= -1
   }
 
-  evaluateQuestionnaire() {
+  evaluateQuestionnaire(): IQuestionnaireResponse {
     let score = 0;
     let answeredQuestions = 0;
     for (let question of this.questionnaire.questions) {
@@ -146,7 +146,10 @@ export class QuestionnaireComponent implements OnInit, OnDestroy, ITestComponent
         }
       }
     }
-    return score;
+    return {
+      score: score,
+      answeredQuestions: answeredQuestions
+    };
   }
 
   checkQuestionnaire() {
@@ -224,4 +227,9 @@ export class QuestionnaireComponent implements OnInit, OnDestroy, ITestComponent
     return arr;
   }
 
+}
+
+export interface IQuestionnaireResponse {
+  score: number;
+  answeredQuestions: number;
 }

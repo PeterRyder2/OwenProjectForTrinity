@@ -1,5 +1,8 @@
 <div class="result">
-  <p *ngIf="this.resultData">
-    Score: {{this.resultData.result}}
+  <p *ngIf="this.score !== undefined">
+    Score: {{this.score}}
+  </p>
+  <p *ngIf="this.score === null">
+    Score: {{language.noResult}}
   </p>
 </div>

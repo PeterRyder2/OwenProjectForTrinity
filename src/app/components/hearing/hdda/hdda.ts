@@ -3,7 +3,7 @@ import { IQuestionnaire } from '../../../interfaces/IQuestionnaire.interface';
 
 export let HDDA: IQuestionnaire = {
   id: 'HDDA',
-  title: 'HDDA',
+  title: 'Hearing questionnaire',
   forceResponse: true,
   backEnabled: false,
   questions: [
@@ -30,31 +30,31 @@ export let HDDA: IQuestionnaire = {
     }, {
       question: 'Can you understand when someone is speaking to you in a low voice?',
       type: QuestionType.single,
-      answerTemplateNr: 0
+      answerTemplateNr: 1
     }, {
       question: 'Can you understand when someone is speaking to you on the telephone?',
       type: QuestionType.single,
-      answerTemplateNr: 0
+      answerTemplateNr: 1
     }, {
       question: 'Can you hear the sound of a coin dropping on the floor?',
       type: QuestionType.single,
-      answerTemplateNr: 0
+      answerTemplateNr: 1
     }, {
       question: 'Can you hear the sound of a door closing?',
       type: QuestionType.single,
-      answerTemplateNr: 0
+      answerTemplateNr: 1
     }, {
       question: 'Can you hear when someone approaches you from behind?',
       type: QuestionType.single,
-      answerTemplateNr: 0
+      answerTemplateNr: 1
     }, {
       question: 'Can you hear when someone is speaking to you in a noisy setting such as a pub or restaurant?',
       type: QuestionType.single,
-      answerTemplateNr: 0
+      answerTemplateNr: 1
     }, {
       question: 'Can you hold a conversation in a group setting when several people are speaking at the same time?',
       type: QuestionType.single,
-      answerTemplateNr: 0
+      answerTemplateNr: 1
     }
   ],
   answerTemplates: [
@@ -69,6 +69,20 @@ export let HDDA: IQuestionnaire = {
       },
       {
         answer: 'Never',
+        value: 2
+      }
+    ],
+    [
+      {
+        answer: 'No, I can\'t',
+        value: 0
+      },
+      {
+        answer: 'With some difficulty',
+        value: 1
+      },
+      {
+        answer: 'Yes, without difficulty',
         value: 2
       }
     ]

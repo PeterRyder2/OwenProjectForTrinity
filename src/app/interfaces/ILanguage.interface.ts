@@ -56,6 +56,10 @@ export class ILanguageFile {
                 firstPage: {
                     title: string;
                     firstParagraph: string;
+                },
+                secondPage: {
+                    title: string;
+                    firstParagraph: string;
                 }
             },
             questionnaireResult: {}
@@ -144,7 +148,9 @@ export class ILanguageFile {
                     firstParagraph: string;
                 }
             },
-            questionnaireResult: {}
+            questionnaireResult: {
+                noResult: string;
+            }
         }
     }
 }
