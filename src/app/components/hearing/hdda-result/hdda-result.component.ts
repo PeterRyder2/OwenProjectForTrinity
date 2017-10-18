@@ -17,6 +17,7 @@ export class HddaResultComponent implements OnInit, IResultComponent {
     // this.score = val.result.score;
     this.score = parseFloat(val.result.score.toFixed(2));
     this.initEmail('Piers.Dawes@manchester.ac.uk');
+    this.initEmail('zoe.simkin@manchester.ac.uk');
     this.initEmail('jahanara.miah@manchester.ac.uk');
     this.initEmail('m.manstein-klein@hoertech.de');
     this.initEmail('t.wittkop@hoertech.de');
