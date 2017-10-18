@@ -22,7 +22,7 @@ export class DigitTripleTestDescriptionComponent implements OnInit, IDescription
   ngOnInit() {
     setTimeout(() => {
       this.showSound();
-    }, 4000);
+    }, 2000);
   }
   showSound() {
     this.playSound = true;
