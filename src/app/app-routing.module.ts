@@ -22,6 +22,11 @@ const routes: Routes = [
   },
   {
     path: 'Procedure',
+    component: ProcedureContainerComponent,
+    resolve: [TestIdResolver]
+  },
+  {
+    path: 'AutoProcedure',
     component: ProcedureContainerComponent
   },
   {

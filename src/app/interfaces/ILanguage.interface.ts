@@ -3,6 +3,10 @@ export class ILanguageFile {
         navbar: {
             skip: string;
         },
+        identification: {
+            name: string;
+            continue: string;
+        }
         procedureContainer: {
             continue: string;
         },

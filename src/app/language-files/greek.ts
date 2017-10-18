@@ -8,6 +8,10 @@ export const greek: ILanguageFile = {
         procedureContainer: {
             continue: `GREEK LANGUAGE`,
         },
+        identification: {
+            name: 'GREEK LANGUAGE',
+            continue: 'GREEK LANGUAGE'
+        },
         home: {
             firstPage: {
                 title: `GREEK LANGUAGE`,

@@ -5,6 +5,10 @@ export const french: ILanguageFile = {
         navbar: {
             skip: `FRENCH LANGUAGE`,
         },
+        identification: {
+            name: 'FRENCH LANGUAGE',
+            continue: 'FRENCH LANGUAGE'
+        },
         procedureContainer: {
             continue: `FRENCH LANGUAGE`,
         },
