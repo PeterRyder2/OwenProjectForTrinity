@@ -36,7 +36,7 @@ export class ProcedureService {
   skip() {
     switch (this.position.state) {
       case ProcedureState.ChapterSelection:
-        throw new Error(`one should not have th option to press skip in the chapter selection`);
+        throw new Error(`one should not have the option to press skip in the chapter selection`);
 
       case ProcedureState.ChapterDescription:
         this.skipChapter();
