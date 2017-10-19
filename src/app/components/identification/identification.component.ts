@@ -1,3 +1,4 @@
+import { LanguageService } from '../../services/language.service';
 import { SettingsService } from '../../services/settings.service';
 import { IdService } from '../../services/id.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,14 +12,23 @@ import { Language } from '../../enums/languages.enum';
 })
 export class IdentificationComponent implements OnInit {
 
-  id = 'erna';
+  id = '';
   path: string;
 
-  constructor(private router: Router, private route: ActivatedRoute, private idService: IdService, private settings: SettingsService) { }
+  get language() {
+    return this.languageService.components.identification;
+  }
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private idService: IdService,
+    private settings: SettingsService,
+    private languageService: LanguageService
+  ) { }
 
   ngOnInit() {
     this.route.params.subscribe(parmas => { this.path = parmas.path });
-    this.setId();
   }
 
   setId() {

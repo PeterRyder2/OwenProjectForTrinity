@@ -18,9 +18,6 @@ export class LanguageService extends ILanguageFile {
 
   loadLanguage() {
     switch (this._settings.language) {
-      case Language.German:
-        this.setLanguage(JSON.parse(JSON.stringify(german)));
-        break;
       case Language.English:
         this.setLanguage(JSON.parse(JSON.stringify(english)));
         break;

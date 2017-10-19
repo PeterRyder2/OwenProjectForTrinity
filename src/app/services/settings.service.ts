@@ -6,7 +6,7 @@ import { Subject } from 'rxjs/Subject';
 @Injectable()
 export class SettingsService {
 
-  private _language = Language.German;
+  private _language = Language.English;
   get language() { return this._language; };
   set language(value: Language) {
     this._language = value;
@@ -15,8 +15,6 @@ export class SettingsService {
   };
   get languageStr() {
     switch (this.language) {
-      case Language.German:
-        return 'de';
       case Language.English:
         return 'en';
       case Language.French:

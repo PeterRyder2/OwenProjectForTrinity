@@ -4,8 +4,10 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class IdService {
 
+  wasSet = false;
   private _id;
   set id(value: string) {
+    this.wasSet = true;
     this._id = value;
   }
   get id() {
@@ -30,6 +32,7 @@ export class IdService {
 
   generateId(prefix?: string) {
     prefix = prefix ? prefix + '-' : '';
+    this.wasSet = false;
     return this._id = prefix + Util.generateUUID();
   }
 

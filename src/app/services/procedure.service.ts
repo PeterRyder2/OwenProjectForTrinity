@@ -87,7 +87,8 @@ export class ProcedureService {
     if (procedureContainer)
       this.procedureContainer = procedureContainer;
     this.isContinueDisabled = false;
-    this.idService.generateId('snscg-ec');
+    if (!this.idService.wasSet)
+      this.idService.generateId('snscg-ec');
     this.idService.annotation = 'this data comes from the SenseCog eChecker';
     this.procedure = Util.deepCloneObject(procedureConfig);
     this.position.init();
@@ -129,6 +130,7 @@ export class ProcedureService {
           break;
 
         case ProcedureState.ChapterDescription:
+          console.log(this.idService.id)
           let chapterDescriptionOver = await this.continueDescriptionComponent();
           if (chapterDescriptionOver) {
             this.position.state = ProcedureState.TestDescription;
