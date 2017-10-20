@@ -23,7 +23,6 @@ export class Vf14ResultComponent implements OnInit, IResultComponent {
       this.score = null;
       this.initEmail('Piers.Dawes@manchester.ac.uk');
       this.initEmail('zoe.simkin@manchester.ac.uk');
-      this.initEmail('jahanara.miah@manchester.ac.uk');
       this.initEmail('m.manstein-klein@hoertech.de');
       this.initEmail('t.wittkop@hoertech.de');
       console.log(val.result, this.score);

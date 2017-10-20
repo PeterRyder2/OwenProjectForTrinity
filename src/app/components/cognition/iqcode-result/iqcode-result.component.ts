@@ -19,7 +19,6 @@ export class IqcodeResultComponent implements OnInit, IResultComponent {
     this.score = parseFloat(this.score.toFixed(2));
     this.initEmail('Piers.Dawes@manchester.ac.uk');
     this.initEmail('zoe.simkin@manchester.ac.uk');
-    this.initEmail('jahanara.miah@manchester.ac.uk');
     this.initEmail('m.manstein-klein@hoertech.de');
     this.initEmail('t.wittkop@hoertech.de');
     console.log(val.result, this.score);
