@@ -1,0 +1,13 @@
+.container {
+  font-size: 2rem;
+  display: flex;
+  flex-flow: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  > snscg-checkbox{
+      padding: 1rem;
+  }
+}

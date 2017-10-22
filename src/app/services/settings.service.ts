@@ -6,6 +6,11 @@ import { Subject } from 'rxjs/Subject';
 @Injectable()
 export class SettingsService {
 
+  showedControlCenter = false;
+  skipId = false;
+  showActualResult = true;
+  sendEmail = true;
+
   private _language = Language.English;
   get language() { return this._language; };
   set language(value: Language) {

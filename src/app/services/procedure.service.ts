@@ -1,3 +1,5 @@
+import { FakeResultComponent } from '../components/fake-result/fake-result.component';
+import { SettingsService } from './settings.service';
 import { IdService } from './id.service';
 import { ComponentRef, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/Rx';
@@ -31,7 +33,7 @@ export class ProcedureService {
     return this.procedure.chapters[this.position.chapter].tests[this.position.test];
   }
 
-  constructor(private idService: IdService) { }
+  constructor(private idService: IdService, private settings: SettingsService) { }
 
   skip() {
     switch (this.position.state) {
@@ -230,8 +232,13 @@ export class ProcedureService {
   }
 
   private loadNextTestResult() {
-    let resultComponentRef = this.procedureContainer.loadComponent(this.activeTest.resultComponent);
-    resultComponentRef.instance.resultData = this.activeTest.result;
+    if (this.settings.showActualResult) {
+      let resultComponentRef = this.procedureContainer.loadComponent(this.activeTest.resultComponent);
+      resultComponentRef.instance.resultData = this.activeTest.result;
+    } else {
+      let resultComponentRef = this.procedureContainer.loadComponent(FakeResultComponent);
+      resultComponentRef.instance.name = this.activeTest.name;
+    }
     this.position.name = this.activeTest.name + 'Result';
   }
 

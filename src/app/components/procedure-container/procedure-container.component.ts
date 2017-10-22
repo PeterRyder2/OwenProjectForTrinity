@@ -1,3 +1,4 @@
+import { FakeResultComponent } from '../fake-result/fake-result.component';
 import { HomeComponent } from '../home/home.component';
 import {
   CognitionTestDescriptionComponent,
@@ -42,6 +43,7 @@ import { LanguageService } from '../../services/language.service';
     HomeComponent,
     ChapterSelectionComponent,
     QuestionnaireComponent,
+    FakeResultComponent,
 
     HearingChapterDescriptionComponent,
 

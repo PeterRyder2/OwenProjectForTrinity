@@ -1,0 +1,12 @@
+<div class="container">
+  <snscg-checkbox [(checked)]="this.settings.skipId">
+    Skip Id
+  </snscg-checkbox>
+  <snscg-checkbox [(checked)]="this.settings.showActualResult">
+    Show actual result
+  </snscg-checkbox>
+  <snscg-checkbox [(checked)]="this.settings.sendEmail">
+    Send emails
+  </snscg-checkbox>
+  <button (click)="this.continue()" standard>Continue</button>
+</div>

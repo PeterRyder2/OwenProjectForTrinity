@@ -1,3 +1,4 @@
+import { ControlCenterComponent } from './components/control-center/control-center.component';
 import { TestIdResolver } from './services/test-id-resolver.service';
 import { IdentificationComponent } from './components/identification/identification.component';
 import { ProcedureContainerComponent } from './components/procedure-container/procedure-container.component';
@@ -17,13 +18,17 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/Procedure',
+    redirectTo: '/Controller',
     pathMatch: 'full'
   },
   {
     path: 'Procedure',
     component: ProcedureContainerComponent,
     resolve: [TestIdResolver]
+  },
+  {
+    path: 'Controller',
+    component: ControlCenterComponent
   },
   {
     path: 'AutoProcedure',
@@ -53,7 +58,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/Procedure'
+    redirectTo: '/Controller'
   }
 ];
 

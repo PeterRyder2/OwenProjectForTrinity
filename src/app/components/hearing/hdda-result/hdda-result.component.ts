@@ -1,3 +1,4 @@
+import { SettingsService } from '../../../services/settings.service';
 import { Component, OnInit } from '@angular/core';
 import { IResultComponent, ITestResult } from '../../../interfaces/IProcedureConfig.interface';
 import { Http } from '@angular/http';
@@ -28,7 +29,7 @@ export class HddaResultComponent implements OnInit, IResultComponent {
   message: string;
   endpoint: string;
 
-  constructor(private http: Http) { this.http = http; }
+  constructor(private http: Http, public settings: SettingsService) { this.http = http; }
 
   ngOnInit() {
   }
@@ -43,7 +44,8 @@ export class HddaResultComponent implements OnInit, IResultComponent {
     // Start php via the built in server: $ php -S localhost:8000
     this.endpoint = 'http://sensecog.hoertech.de/mailer_echecker.php';
 
-    this.sendEmail();
+    if (this.settings.sendEmail)
+      this.sendEmail();
     console.log(this.resultData);
   }
   sendEmail() {

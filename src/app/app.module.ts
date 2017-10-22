@@ -48,6 +48,8 @@ import { CognitionChapterDescriptionComponent } from './components/cognition/cog
 import { HearingChapterDescriptionComponent } from './components/hearing/hearing-chapter-description/hearing-chapter-description.component';
 import { HomeComponent } from './components/home/home.component';
 import { IdentificationComponent } from './components/identification/identification.component';
+import { ControlCenterComponent } from './components/control-center/control-center.component';
+import { FakeResultComponent } from './components/fake-result/fake-result.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +87,9 @@ import { IdentificationComponent } from './components/identification/identificat
     CognitionChapterDescriptionComponent,
     HearingChapterDescriptionComponent,
     HomeComponent,
-    IdentificationComponent
+    IdentificationComponent,
+    ControlCenterComponent,
+    FakeResultComponent
   ],
   imports: [
     BrowserModule,

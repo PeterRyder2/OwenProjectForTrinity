@@ -9,7 +9,18 @@ export class CheckboxComponent implements OnInit {
 
   @HostBinding('style.cursor') pointer = 'pointer';
 
-  @Input() checked = false;
+  @Output() checkedChange = new EventEmitter<boolean>();
+
+  checkedValue = false;
+  @Input()
+  get checked() {
+    return this.checkedValue;
+  }
+  set checked(val) {
+    this.checkedValue = val;
+    this.checkedChange.emit(this.checkedValue);
+  }
+
   @Output() toggleSelect = new EventEmitter<boolean>();
 
   constructor() { }
