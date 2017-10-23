@@ -3,6 +3,9 @@ import { IResultComponent, ITestResult, ITestResponse } from '../../../interface
 import { Http } from '@angular/http';
 import { IQuestionnaireResponse } from '../../questionnaire/questionnaire.component';
 import { LanguageService } from '../../../services/language.service';
+import { MailApiService } from '../../../services/mail-api.service';
+import { SettingsService } from '../../../services/settings.service';
+
 
 @Component({
   selector: 'snscg-vf14-result',
@@ -21,10 +24,14 @@ export class Vf14ResultComponent implements OnInit, IResultComponent {
       this.score = parseFloat(this.score.toFixed(2));
     } else
       this.score = null;
-      this.initEmail('Piers.Dawes@manchester.ac.uk');
-      this.initEmail('zoe.simkin@manchester.ac.uk');
-      this.initEmail('m.manstein-klein@hoertech.de');
-      this.initEmail('t.wittkop@hoertech.de');
+
+      if (this.settings.sendEmail)
+        this.mailer.sendMail('VF14-Result', this.score);
+      
+      //this.initEmail('Piers.Dawes@manchester.ac.uk');
+      //this.initEmail('zoe.simkin@manchester.ac.uk');
+      //this.initEmail('m.manstein-klein@hoertech.de');
+      //this.initEmail('t.wittkop@hoertech.de');
       console.log(val.result, this.score);
   }
 
@@ -37,7 +44,7 @@ export class Vf14ResultComponent implements OnInit, IResultComponent {
     return this.languageService.components.vision.questionnaireResult;
   }
 
-  constructor(public languageService: LanguageService, private http: Http) { this.http = http; }
+  constructor(public languageService: LanguageService, private http: Http, public settings: SettingsService, private mailer: MailApiService) { this.http = http; }
 
   ngOnInit() {
   }

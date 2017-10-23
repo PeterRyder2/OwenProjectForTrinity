@@ -16,6 +16,7 @@ export class HddaDescriptionComponent implements OnInit, IDescriptionComponent {
   constructor(public languageService: LanguageService) { }
 
   ngOnInit() {
+    
   }
 
   continue = async (): Promise<boolean> => {

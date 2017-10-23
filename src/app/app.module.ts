@@ -50,6 +50,7 @@ import { HomeComponent } from './components/home/home.component';
 import { IdentificationComponent } from './components/identification/identification.component';
 import { ControlCenterComponent } from './components/control-center/control-center.component';
 import { FakeResultComponent } from './components/fake-result/fake-result.component';
+import { MailApiService } from './services/mail-api.service';
 
 @NgModule({
   declarations: [
@@ -106,7 +107,8 @@ import { FakeResultComponent } from './components/fake-result/fake-result.compon
     CognitionApiService,
     ProcedureService,
     IdService,
-    TestIdResolver
+    TestIdResolver,
+    MailApiService
   ],
   bootstrap: [AppComponent]
 })

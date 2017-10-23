@@ -62,7 +62,7 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy, ITestCompone
     window.addEventListener('keyup',
       this.keyUpEventListener);
     if (this.testId && this.state < State.finishing) {
-      this.api.finish({ id: this.testId, annotation: 'test got destroyed' });
+      this.api.finish({ id: this.testId, annotation: 'test got destroyed', sendMail: this.settings.sendEmail });
     }
     if (this.audio.isPlaying == true) {
       this.audio.stop();
@@ -137,18 +137,11 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy, ITestCompone
   // TODO ist die Annotation noch gewünscht?
   async finish(): Promise<ITestResult<number>> {
     this.audio.stop();
-    let res = await this.api.finish({ id: this.testId, annotation: this.idService.annotation });
+    let res = await this.api.finish({ id: this.testId, annotation: this.idService.annotation, sendMail: this.settings.sendEmail });
     console.log(res.Snr)
     return {
       result: res.Snr
     };
-  }
-
-  cancel() {
-    if (this.testId && this.state <= State.finishing) {
-      this.api.finish({ id: this.testId, annotation: 'test got destroyed' });
-    }
-    this.audio.stop();
   }
 
   present(data: ArrayBuffer | string) {

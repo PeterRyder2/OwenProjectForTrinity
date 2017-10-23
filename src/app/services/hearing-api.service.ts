@@ -21,7 +21,7 @@ export class HearingApiService {
     return this.http.post(`${this.url}/d3/next`, input).map(res => res.json() as ITripleResonse).toPromise();
   }
 
-  finish(input: { id: string, annotation: string }) {
+  finish(input: { id: string, annotation: string, sendMail: boolean }) {
     return this.http.post(`${this.url}/d3/finish`, input).map(res => res.json() as { Snr: number }).toPromise();
   }
 

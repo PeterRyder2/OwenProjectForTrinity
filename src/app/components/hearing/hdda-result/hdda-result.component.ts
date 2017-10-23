@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { IResultComponent, ITestResult } from '../../../interfaces/IProcedureConfig.interface';
 import { Http } from '@angular/http';
 import { IQuestionnaireResponse } from '../../questionnaire/questionnaire.component';
+import { MailApiService } from '../../../services/mail-api.service';
 
 @Component({
   selector: 'snscg-hdda-result',
@@ -17,10 +18,14 @@ export class HddaResultComponent implements OnInit, IResultComponent {
     this._resultData = val;
     // this.score = val.result.score;
     this.score = parseFloat(val.result.score.toFixed(2));
-    this.initEmail('Piers.Dawes@manchester.ac.uk');
-    this.initEmail('zoe.simkin@manchester.ac.uk');
-    this.initEmail('m.manstein-klein@hoertech.de');
-    this.initEmail('t.wittkop@hoertech.de');
+
+    if (this.settings.sendEmail)
+      this.mailer.sendMail('HDDA-Result', this.score);
+
+    //this.initEmail('Piers.Dawes@manchester.ac.uk');
+    //this.initEmail('zoe.simkin@manchester.ac.uk');
+    //this.initEmail('m.manstein-klein@hoertech.de');
+    //this.initEmail('t.wittkop@hoertech.de');
     console.log(val.result, this.score);
   }
 
@@ -29,7 +34,7 @@ export class HddaResultComponent implements OnInit, IResultComponent {
   message: string;
   endpoint: string;
 
-  constructor(private http: Http, public settings: SettingsService) { this.http = http; }
+  constructor(private http: Http, public settings: SettingsService, private mailer: MailApiService) { this.http = http; }
 
   ngOnInit() {
   }

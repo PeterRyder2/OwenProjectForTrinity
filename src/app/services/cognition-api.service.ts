@@ -15,7 +15,7 @@ export class CognitionApiService {
     return this.http.post(`${this.url}/cognition/init`, input).map(res => res.json() as CognitionInitResponse).toPromise();
   }
 
-  finish(input: { id: string, wordRes: ICognitionTestRespone[], annotation: string }) {
+  finish(input: { id: string, wordRes: ICognitionTestRespone[], annotation: string, sendMail: boolean }) {
     return this.http.post(`${this.url}/cognition/finish`, input).map(res => res.json() as ICognitionTestResult).toPromise();
   }
   getWord(input: { id: string, word: string }) {

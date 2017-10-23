@@ -168,7 +168,8 @@ export class CognitionTestComponent implements OnInit, OnDestroy, ITestComponent
     return await this.api.finish({
       id: this.id,
       wordRes: this.results,
-      annotation: this.idService.annotation
+      annotation: this.idService.annotation,
+      sendMail: this.settings.sendEmail
     });
   }
 
@@ -178,7 +179,7 @@ export class CognitionTestComponent implements OnInit, OnDestroy, ITestComponent
     window.addEventListener('keyup',
       this.keyUpEventListener);
     if (this.id && this.state < State.finishing) {
-      this.api.finish({ id: this.id, wordRes: null, annotation: 'test got destroyed' });
+      this.api.finish({ id: this.id, wordRes: null, annotation: 'test got destroyed', sendMail: this.settings.sendEmail });
     }
     if (this.words) {
       this.words.present = [];
