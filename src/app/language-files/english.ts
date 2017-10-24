@@ -6,7 +6,7 @@ export const english: ILanguageFile = {
             skip: `Skip`,
         },
         identification: {
-            name: 'Name',
+            name: 'ID',
             continue: 'Continue'
         },
         procedureContainer: {

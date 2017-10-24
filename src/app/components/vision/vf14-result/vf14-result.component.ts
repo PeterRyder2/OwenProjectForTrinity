@@ -5,7 +5,7 @@ import { IQuestionnaireResponse } from '../../questionnaire/questionnaire.compon
 import { LanguageService } from '../../../services/language.service';
 import { MailApiService } from '../../../services/mail-api.service';
 import { SettingsService } from '../../../services/settings.service';
-
+import { IdService } from '../../../services/id.service';
 
 @Component({
   selector: 'snscg-vf14-result',
@@ -25,8 +25,10 @@ export class Vf14ResultComponent implements OnInit, IResultComponent {
     } else
       this.score = null;
 
-      if (this.settings.sendEmail)
-        this.mailer.sendMail('VF14-Result', this.score);
+      if (this.settings.sendEmail) {
+        var message = 'Id: ' +  this.idService.id.toString() + '\nScore: ' + this.score.toString() ;
+        this.mailer.sendMail('VF14-Data - ' + this.idService.id.toString(), message);
+      }
       
       //this.initEmail('Piers.Dawes@manchester.ac.uk');
       //this.initEmail('zoe.simkin@manchester.ac.uk');
@@ -44,7 +46,7 @@ export class Vf14ResultComponent implements OnInit, IResultComponent {
     return this.languageService.components.vision.questionnaireResult;
   }
 
-  constructor(public languageService: LanguageService, private http: Http, public settings: SettingsService, private mailer: MailApiService) { this.http = http; }
+  constructor(public languageService: LanguageService, private http: Http, public settings: SettingsService, private mailer: MailApiService, private idService: IdService) { this.http = http; }
 
   ngOnInit() {
   }

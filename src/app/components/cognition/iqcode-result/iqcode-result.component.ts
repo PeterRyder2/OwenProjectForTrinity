@@ -4,6 +4,7 @@ import { Http } from '@angular/http';
 import { IQuestionnaireResponse } from '../../questionnaire/questionnaire.component';
 import { MailApiService } from '../../../services/mail-api.service';
 import { SettingsService } from '../../../services/settings.service';
+import { IdService } from '../../../services/id.service';
 
 @Component({
   selector: 'snscg-iqcode-result',
@@ -19,9 +20,12 @@ export class IqcodeResultComponent implements OnInit, IResultComponent {
     this.score = val.result.score / 16;
     // this.score = Math.round(this.score);
     this.score = parseFloat(this.score.toFixed(2));
-    if (this.settings.sendEmail)
-      this.mailer.sendMail('IQCODE-Result', this.score);
-
+    
+    if (this.settings.sendEmail) {
+      var message = 'Id: ' +  this.idService.id.toString() + '\nScore: ' + this.score.toString() ;
+      this.mailer.sendMail('IQCODE-Data - ' + this.idService.id.toString(), message);
+    }
+    
     //this.initEmail('Piers.Dawes@manchester.ac.uk');
     //this.initEmail('zoe.simkin@manchester.ac.uk');
     //this.initEmail('m.manstein-klein@hoertech.de');
@@ -34,7 +38,7 @@ export class IqcodeResultComponent implements OnInit, IResultComponent {
   message: string;
   endpoint: string;
 
-  constructor(private http: Http, public settings: SettingsService, private mailer: MailApiService) { this.http = http; }
+  constructor(private http: Http, public settings: SettingsService, private mailer: MailApiService, private idService: IdService) { this.http = http; }
 
   ngOnInit() {
   }
