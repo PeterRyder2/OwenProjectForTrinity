@@ -14,9 +14,9 @@ Thomas muss wissen:
     Achtung: API server IP muss stimmen in C:\SenseCog\dev\sense-cog-web\src\app\services\config.service.ts
   ✔ kompilieren App (Webseite): Im Terminal ( C:\SenseCog\dev\sense-cog-web ): ng build --prod, Kompilat in C:\SenseCog\dev\sense-cog-web\dist
   ✔ ändern der Mailadresse(n) API ( sense-cog-api/config.json )
-  ✔ ändern der Mailadresse(n) APP ( C:\SenseCog\dev\sense-cog-web\src\app\components\cognition\iqcode-result\iqcode-result.component.ts )
-  ✔ ändern der Mailadresse(n) APP ( C:\SenseCog\dev\sense-cog-web\src\app\components\vision\vf14-result\vf14-result.component.ts )
-  ✔ ändern der Mailadresse(n) APP ( C:\SenseCog\dev\sense-cog-web\src\app\components\hearing\hdda-result\hdda-result.component.ts )
+  %✔ ändern der Mailadresse(n) APP ( C:\SenseCog\dev\sense-cog-web\src\app\components\cognition\iqcode-result\iqcode-result.component.ts )
+  %✔ ändern der Mailadresse(n) APP ( C:\SenseCog\dev\sense-cog-web\src\app\components\vision\vf14-result\vf14-result.component.ts )
+  %✔ ändern der Mailadresse(n) APP ( C:\SenseCog\dev\sense-cog-web\src\app\components\hearing\hdda-result\hdda-result.component.ts )
   ✔ Zugriff auf gespeicherte Daten vom Server: Nur Messmodule ( C:\SenseCog\dev\sense-cog-api\db\*TestDocument\*\*\* )
   ☐ Offline Version
   ✔ deployen
