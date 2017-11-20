@@ -86,6 +86,9 @@ declare global {
     interface Array<T> {
         countOf(predicate: (this: void, value: T, index: number, obj: Array<T>) => boolean): number;
     }
+    interface Array<T> {
+        last(ofsset?: number): T;
+    }
 }
 
 Array.prototype.countOf = function <T>(predicate: (this: void, value: T, index: number, obj: Array<T>) => boolean) {
@@ -95,4 +98,8 @@ Array.prototype.countOf = function <T>(predicate: (this: void, value: T, index: 
             count++;
     }
     return count;
+}
+
+Array.prototype.last = function (offset = 0) {
+    return this[this.length - 1 - offset];
 }
