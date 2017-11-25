@@ -28,30 +28,48 @@ export class BaseImage {
 
 export class VisionTestImage extends BaseImage {
 
-    constructor(width: number, height: number) {
-        super(width, height);
+    puxel: number;
+
+    constructor(puxel: number) {
+        super(puxel * 5, puxel * 5);
+        this.puxel = puxel;
     }
 
     drawC(direction: Direction) {
+        for (let row = 0; row < this.pixels.length; row++)
+            for (let col = 0; col < this.pixels[row].length; col++) {
+                if (row + 1 > this.puxel && row < this.pixels.length - this.puxel && col + 1 > this.puxel && col < this.pixels[0].length - this.puxel)
+                    this.pixels[row][col] = new Pixel(0, 0, 0, 0);
+                else
+                    this.pixels[row][col] = new Pixel(0, 0, 0, 255);
+            }
         switch (direction) {
-            case 0:
+            case Direction.top:
                 // -
-                for (let i = 0; i < this.pixels.length; i++)
-                    for (let j = 0; j < this.pixels[i].length; j++) {
-                        if (i > 9 && j > 9 && i < 90 && j < 100)
-                            this.pixels[i][j] = new Pixel(0, 0, 0, 0);
-                        else
-                            this.pixels[i][j] = new Pixel(0, 0, 0, 255);
+                for (let row = 0; row < this.puxel; row++)
+                    for (let col = this.puxel * 2; col < this.puxel * 3; col++) {
+                        this.pixels[row][col] = new Pixel(0, 0, 0, 0);
                     }
                 break;
-            case 1:
+            case Direction.bottom:
                 // -
-                for (let i = 0; i < this.pixels.length; i++)
-                    for (let j = 0; j < this.pixels[i].length; j++) {
-                        if (i > 9 && j > 9 && i < 90 && j < 100)
-                            this.pixels[i][j] = new Pixel(0, 0, 0, 0);
-                        else
-                            this.pixels[i][j] = new Pixel(0, 0, 0, 255);
+                for (let row = this.puxel * 4; row < this.puxel * 5; row++)
+                    for (let col = this.puxel * 2; col < this.puxel * 3; col++) {
+                        this.pixels[row][col] = new Pixel(0, 0, 0, 0);
+                    }
+                break;
+            case Direction.left:
+                // -
+                for (let row = this.puxel * 2; row < this.puxel * 3; row++)
+                    for (let col = 0; col < this.puxel; col++) {
+                        this.pixels[row][col] = new Pixel(0, 0, 0, 0);
+                    }
+                break;
+            case Direction.right:
+                // -
+                for (let row = this.puxel * 2; row < this.puxel * 3; row++)
+                    for (let col = this.puxel * 4; col < this.puxel * 5; col++) {
+                        this.pixels[row][col] = new Pixel(0, 0, 0, 0);
                     }
                 break;
             default:

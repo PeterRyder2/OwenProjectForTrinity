@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  flex-flow: column;
+}
+
+.text {
+  height: 300px;
+}
+
+.btn {
+  margin: 20px;
+}
+
+.res {
+  >* {
+    text-align: center;
+    margin: 10px;
+  }
+  font-size: 1.4rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}

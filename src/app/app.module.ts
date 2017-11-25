@@ -51,6 +51,7 @@ import { IdentificationComponent } from './components/identification/identificat
 import { ControlCenterComponent } from './components/control-center/control-center.component';
 import { FakeResultComponent } from './components/fake-result/fake-result.component';
 import { MailApiService } from './services/mail-api.service';
+import { ResultParserComponent } from './components/result-parser/result-parser.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,8 @@ import { MailApiService } from './services/mail-api.service';
     HomeComponent,
     IdentificationComponent,
     ControlCenterComponent,
-    FakeResultComponent
+    FakeResultComponent,
+    ResultParserComponent
   ],
   imports: [
     BrowserModule,

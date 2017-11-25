@@ -10,6 +10,7 @@ import { AudioTestingRealmComponent } from './components/audio-testing-realm/aud
 import { DigitTripleTestComponent } from './components/hearing/digit-triple-test/digit-triple-test.component';
 import { VisionTestComponent } from './components/vision/vision-test/vision-test.component';
 import { CognitionTestComponent } from './components/cognition/cognition-test/cognition-test.component';
+import { ResultParserComponent } from './components/result-parser/result-parser.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,10 @@ const routes: Routes = [
     path: '',
     redirectTo: '/Controller',
     pathMatch: 'full'
+  },
+  {
+    path: 'Parser',
+    component: ResultParserComponent
   },
   {
     path: 'Procedure',

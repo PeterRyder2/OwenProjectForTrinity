@@ -26,13 +26,54 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
 
   ngOnInit() {
     this.canvas = this.canvasRef.nativeElement;
+    this.makeHighRes(this.canvas);
     this.testData = new VisionTestData();
-    this.testData.activeDirection = Math.round((Math.random() * 100)) % 4;
+    this.newDirection();
     window.addEventListener('keydown',
       this.keyDownEventListener);
     window.addEventListener('keyup',
       this.keyUpEventListener);
     this.state = State.WaitingForInput;
+  }
+
+  newDirection() {
+    this.testData.activeDirection = Math.round((Math.random() * 100)) % 4;
+    this.drawC();
+  }
+
+  makeHighRes(c: HTMLCanvasElement) {
+    let ctx = c.getContext('2d');
+    // finally query the various pixel ratios
+    let devicePixelRatio = window.devicePixelRatio || 1;
+    let backingStoreRatio = (ctx as any).webkitBackingStorePixelRatio ||
+      (ctx as any).mozBackingStorePixelRatio ||
+      (ctx as any).msBackingStorePixelRatio ||
+      (ctx as any).oBackingStorePixelRatio ||
+      (ctx as any).backingStorePixelRatio || 1;
+    let ratio = devicePixelRatio / backingStoreRatio;
+    // upscale canvas if the two ratios don't match
+    if (devicePixelRatio !== backingStoreRatio) {
+
+      let oldWidth = c.width;
+      let oldHeight = c.height;
+      c.width = Math.round(oldWidth * ratio);
+      c.height = Math.round(oldHeight * ratio);
+      c.style.width = oldWidth + 'px';
+      c.style.height = oldHeight + 'px';
+      // now scale the context to counter
+      // the fact that we've manually scaled
+      // our canvas element
+      ctx.scale(ratio, ratio);
+    }
+  }
+
+
+  drawC() {
+    let ctx = this.canvas.getContext('2d');
+    ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+    let img = new VisionTestImage(this.testData.activePuxel);
+    img.drawC(this.testData.activeDirection);
+    ctx.putImageData(img.toImageData(), this.canvas.width / 2 - this.testData.activePuxel * 2.5, this.canvas.height / 2 - this.testData.activePuxel * 2.5);
   }
 
   ngOnDestroy() {
@@ -93,11 +134,11 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
             this.testData.activeTrial = nextPhase;
         } else
           this.testData.activeTrial = nextTrial;
-        this.testData.activeDirection = Math.round((Math.random() * 100)) % 4;
+        this.newDirection();
       }
     } else {
       this.testData.activeTrial.trail++;
-      this.testData.activeDirection = Math.round((Math.random() * 100)) % 4;
+      this.newDirection();
     }
   }
 
@@ -107,7 +148,7 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
       return true;
     if (this.testData.activeTrial.responses.countOf((val => val)) >= bo)
       return true;
-    if (this.testData.activeTrial.responses.countOf((val => !val)) >= bo)
+    if (this.testData.activeTrial.responses.countOf((val => !val)) >= (this.testData.activeTrial.phase == 1 ? bo : bo - 1))
       return true;
     return false;
   }
@@ -140,7 +181,7 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
         newTrial = {
           trail: 1,
           responses: [],
-          puxel: this.testData.activeTrial.puxel - 1,
+          puxel: this.testData.activeTrial.puxel - (this.testData.activeTrial.phase == 1 ? this.testData.activeTrial.puxel > 1 ? 2 : 1 : 1),
           phase: this.testData.activeTrial.phase
         }
       else
@@ -158,7 +199,14 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
   nextPhase() {
     let newTrial: VisionTestTrial;
     if (this.testData.activeTrial.phase < 3) {
-      if (this.testData.activeTrial.puxel < this.testData.puxels.length - 1)
+      if (this.testData.activeTrial.puxel < this.testData.puxels.length - 2)
+        newTrial = {
+          trail: 1,
+          responses: [],
+          puxel: this.testData.activeTrial.puxel + (this.testData.responses.last().correct ? 0 : 2),
+          phase: this.testData.activeTrial.phase + 1
+        }
+      else if (this.testData.activeTrial.puxel < this.testData.puxels.length - 1)
         newTrial = {
           trail: 1,
           responses: [],
@@ -193,31 +241,31 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
   }
 
   draw() {
-    let ctx = this.canvas.getContext('2d');
-    let vti = new VisionTestImage(100, 100);
-    let date1 = Date.now();
-    for (let i = 0; i < 1000; i++) {
-      vti.drawC(Direction.top);
-      ctx.putImageData(vti.toImageData(), 0, 0);
-    }
-    let date2 = Date.now();
-    for (let i = 0; i < 1000; i++) {
-      ctx.fillStyle = 'black';
-      ctx.fillRect(0, 0, 99, 99);
-      ctx.fillStyle = 'white';
-      ctx.fillRect(1, 1, 99, 98);
-    }
-    let date3 = Date.now();
-    ctx.fillStyle = 'white';
-    ctx.strokeStyle = '#000';
-    ctx.lineWidth = 1;
-    ctx.lineJoin = ''
-    for (let i = 0; i < 1000; i++) {
-      ctx.fillRect(0, 0, 99, 99);
-      this.drawLine(ctx, [{ x: 99, y: 0 }, { x: 0, y: 0 }, { x: 0, y: 99 }, { x: 99, y: 99 }]);
-    }
-    let date4 = Date.now();
-    console.log(date2 - date1, date3 - date2, date4 - date3);
+    // let ctx = this.canvas.getContext('2d');
+    // let vti = new VisionTestImage(10);
+    // let date1 = Date.now();
+    // for (let i = 0; i < 1000; i++) {
+    //   vti.drawC(Direction.top);
+    //   ctx.putImageData(vti.toImageData(), 0, 0);
+    // }
+    // let date2 = Date.now();
+    // for (let i = 0; i < 1000; i++) {
+    //   ctx.fillStyle = 'black';
+    //   ctx.fillRect(0, 0, 99, 99);
+    //   ctx.fillStyle = 'white';
+    //   ctx.fillRect(1, 1, 99, 98);
+    // }
+    // let date3 = Date.now();
+    // ctx.fillStyle = 'white';
+    // ctx.strokeStyle = '#000';
+    // ctx.lineWidth = 1;
+    // ctx.lineJoin = ''
+    // for (let i = 0; i < 1000; i++) {
+    //   ctx.fillRect(0, 0, 99, 99);
+    //   this.drawLine(ctx, [{ x: 99, y: 0 }, { x: 0, y: 0 }, { x: 0, y: 99 }, { x: 99, y: 99 }]);
+    // }
+    // let date4 = Date.now();
+    // console.log(date2 - date1, date3 - date2, date4 - date3);
   }
 
   drawLine(context: CanvasRenderingContext2D, points: { x: number, y: number }[]) {
@@ -258,15 +306,18 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
 }
 
 class VisionTestData {
+  get activePuxel() {
+    return this.puxels[this.activeTrial.puxel]
+  }
   puxels = [
+    1,
     2,
+    3,
     4,
     6,
     8,
-    12,
-    16,
-    20,
-    32
+    10,
+    16
   ]
   activeDirection: Direction;
   activeTrial: VisionTestTrial = {

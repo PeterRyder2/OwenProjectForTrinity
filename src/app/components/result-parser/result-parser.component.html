@@ -1,0 +1,22 @@
+<div class="container">
+<textarea class="text" [(ngModel)]="this.testData"></textarea>
+<button class="btn" standard (click)="this.Evaluate()">Parse</button>
+</div>
+<div class="res" *ngIf="this.res">
+  <p>
+    YES correct: {{res.SeenCorrect}}
+
+  </p>
+  <p>
+    YES wrong: {{res.SeenWrong}}
+
+  </p>
+  <p>
+    NO correct: {{res.NotSeenCorrect}}
+
+  </p>
+  <p>
+    NO wrong: {{res.NotSeenWrong}}
+
+  </p>
+</div>
