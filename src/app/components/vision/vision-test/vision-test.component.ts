@@ -1,5 +1,5 @@
 import { VisionTestState } from '../../../enums/VisionTestState.enum';
-import { Direction, VisionTestImage } from '../../../lib/Image';
+import { Direction, VisionCalibrationImage, VisionTestImage } from '../../../lib/Image';
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ITestComponent, ITestResponse } from '../../../interfaces/IProcedureConfig.interface';
 import { Util } from '../../../lib/util';
@@ -14,26 +14,72 @@ let State = VisionTestState;
 export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
 
   @ViewChild('canvas') canvasRef: ElementRef;
+  @ViewChild('CalibrationCanvas') calCanvasRef: ElementRef;
   canvas: HTMLCanvasElement;
+  calCanvas: HTMLCanvasElement;
 
   Direction = Direction;
   state = State.Initializing;
   testData: VisionTestData;
 
   activeKey = '';
+  calibrationSize = 0.5;
+  pixelAcuity = 6;
+  distance = 1000;
 
   constructor() { }
 
   ngOnInit() {
     this.canvas = this.canvasRef.nativeElement;
+    this.calCanvas = this.calCanvasRef.nativeElement;
     this.makeHighRes(this.canvas);
+    this.makeHighRes(this.calCanvas);
     this.testData = new VisionTestData();
-    this.newDirection();
     window.addEventListener('keydown',
       this.keyDownEventListener);
     window.addEventListener('keyup',
       this.keyUpEventListener);
     this.state = State.WaitingForInput;
+    this.drawCard(this.calibrationSize)
+    this.calibratePuxels(this.pixelAcuity);
+  }
+
+  plus(addition: number) {
+    this.drawCard(this.calibrationSize += this.calibrationSize + addition >= 1 ? 0 : addition)
+  }
+
+  minus(addition: number) {
+    this.drawCard(this.calibrationSize -= this.calibrationSize - addition <= 0 ? 0 : addition)
+  }
+
+  calibrate() {
+    let PS = 53.98 / Math.round(this.calCanvas.width * this.calibrationSize);
+    let D = this.distance;
+    let PA = 6 * 60 * 2 * Math.atan((PS / 2 / D) * 180 / Math.PI);
+    PA = +(Math.round((PA + 'e+2') as any)  + 'e-2')
+    console.log(PS, D, PA);
+    this.calibratePuxels(this.pixelAcuity = PA);
+  }
+
+  calibratePuxels(PA: number) {
+    this.testData.puxels = [
+      Math.floor(6 / PA),
+      Math.floor(12 / PA),
+      Math.floor(18 / PA),
+      Math.floor(24 / PA),
+      Math.floor(36 / PA),
+      Math.floor(48 / PA),
+      Math.floor(60 / PA),
+      Math.floor(96 / PA),
+    ]
+    this.newDirection();
+  }
+
+  drawCard(size: number) {
+    let ctx = this.calCanvas.getContext('2d');
+    ctx.clearRect(0, 0, this.calCanvas.width, this.calCanvas.height)
+    let img = new VisionCalibrationImage(this.calCanvas.width, this.calCanvas.height, size);
+    ctx.putImageData(img.toImageData(), 0, 0);
   }
 
   newDirection() {
@@ -238,44 +284,6 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
   }
 
   subscribeContinueDisabled(cb: (isDisaled: boolean) => void): void {
-  }
-
-  draw() {
-    // let ctx = this.canvas.getContext('2d');
-    // let vti = new VisionTestImage(10);
-    // let date1 = Date.now();
-    // for (let i = 0; i < 1000; i++) {
-    //   vti.drawC(Direction.top);
-    //   ctx.putImageData(vti.toImageData(), 0, 0);
-    // }
-    // let date2 = Date.now();
-    // for (let i = 0; i < 1000; i++) {
-    //   ctx.fillStyle = 'black';
-    //   ctx.fillRect(0, 0, 99, 99);
-    //   ctx.fillStyle = 'white';
-    //   ctx.fillRect(1, 1, 99, 98);
-    // }
-    // let date3 = Date.now();
-    // ctx.fillStyle = 'white';
-    // ctx.strokeStyle = '#000';
-    // ctx.lineWidth = 1;
-    // ctx.lineJoin = ''
-    // for (let i = 0; i < 1000; i++) {
-    //   ctx.fillRect(0, 0, 99, 99);
-    //   this.drawLine(ctx, [{ x: 99, y: 0 }, { x: 0, y: 0 }, { x: 0, y: 99 }, { x: 99, y: 99 }]);
-    // }
-    // let date4 = Date.now();
-    // console.log(date2 - date1, date3 - date2, date4 - date3);
-  }
-
-  drawLine(context: CanvasRenderingContext2D, points: { x: number, y: number }[]) {
-    // TODO -
-    context.beginPath();
-    context.moveTo(points[0].x, points[0].y);
-    for (let i = 1; i < points.length; i++)
-      context.lineTo(points[i].x, points[i].y);
-    context.stroke();
-    context.closePath();
   }
 
   keyDownEventListener = (e: KeyboardEvent) => {

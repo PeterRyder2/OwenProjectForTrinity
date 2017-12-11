@@ -11,6 +11,25 @@
   }
 }
 
+.calibrationCanvas{
+  border: solid 1px black;
+}
+
+.puxels {
+  display: flex;
+  flex-flow: row;
+  >*:first-child {
+    width: 6rem;
+  }
+  >* {
+    >* {
+      padding: 0 10px;
+      border: solid 1px black;
+    }
+    width: 3rem;
+  }
+}
+
 .container-two {
   display: flex;
   align-items: center;

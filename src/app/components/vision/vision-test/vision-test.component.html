@@ -1,28 +1,72 @@
-<div class="container-one">
-  <div>
-    <button (click)="this.continue(Direction.top)" standard [class.active]="activeKey == 'up'">
-      <i class="material-icons">keyboard_arrow_up</i>
-    </button>
-    <div class="container-two">
-      <button (click)="this.continue(Direction.left)" standard [class.active]="activeKey == 'left'">
-        <i class="material-icons">keyboard_arrow_left</i>
+<div>
+  <div class="container-one">
+    <div>
+      <button (click)="this.continue(Direction.top)" standard [class.active]="activeKey == 'up'">
+        <i class="material-icons">keyboard_arrow_up</i>
       </button>
-      <canvas height="100" width="100" #canvas></canvas>
-      <button (click)="this.continue(Direction.right)" standard [class.active]="activeKey == 'right'">
-        <i class="material-icons">keyboard_arrow_right</i>
+      <div class="container-two">
+        <button (click)="this.continue(Direction.left)" standard [class.active]="activeKey == 'left'">
+          <i class="material-icons">keyboard_arrow_left</i>
+        </button>
+        <canvas height="200" width="200" #canvas></canvas>
+        <button (click)="this.continue(Direction.right)" standard [class.active]="activeKey == 'right'">
+          <i class="material-icons">keyboard_arrow_right</i>
+        </button>
+      </div>
+      <button (click)="this.continue(Direction.bottom)" standard [class.active]="activeKey == 'down'">
+        <i class="material-icons">keyboard_arrow_down</i>
       </button>
     </div>
-    <button (click)="this.continue(Direction.bottom)" standard [class.active]="activeKey == 'down'">
-      <i class="material-icons">keyboard_arrow_down</i>
-    </button>
+    <div>
+      <button (click)="this.wrong()" standard [class.active]="activeKey == 'down'">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </button>
+      <button (click)="this.right()" standard [class.active]="activeKey == 'down'">
+        <i class="fa fa-check" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div>
+      <canvas height="300" width="600" class="calibrationCanvas" #CalibrationCanvas></canvas>
+    </div>
+    <div>
+      <button (click)="this.plus(0.05)">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+        <i class="fa fa-plus" aria-hidden="true"></i>
+      </button>
+      <button (click)="this.plus(0.01)">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+      </button>
+      <button (click)="this.minus(0.01)">
+        <i class="fa fa-minus" aria-hidden="true"></i>
+      </button>
+      <button (click)="this.minus(0.05)">
+        <i class="fa fa-minus" aria-hidden="true"></i>
+        <i class="fa fa-minus" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div>
+      distance: <input [(ngModel)]="this.distance" type="text">
+      <button standard (click)="this.calibrate()">Calibrate</button>
+      <div>pixel acuity: {{pixelAcuity}}</div>
+    </div>
   </div>
-  <div>
-    <button (click)="this.wrong()" standard [class.active]="activeKey == 'down'">
-      <i class="fa fa-times" aria-hidden="true"></i>
-    </button>
-    <button (click)="this.right()" standard [class.active]="activeKey == 'down'">
-      <i class="fa fa-check" aria-hidden="true"></i>
-    </button>
+  <div class="puxels">
+    <div>
+      <div>
+        Puxel NR.
+      </div>
+      <div>
+        Puxel size
+      </div>
+    </div>
+    <div *ngFor="let p of this.testData.puxels; let i = index">
+      <div>
+        {{i}}
+      </div>
+      <div>
+        {{p}}
+      </div>
+    </div>
   </div>
 </div>
 <div *ngIf="this.state != 2">
