@@ -226,7 +226,10 @@ export class ProcedureService {
     this.continueTestComponent = testComponentRef.instance.continue;
     if (this.activeTest.inputData !== undefined)
       for (let inputData of this.activeTest.inputData) {
-        testComponentRef.instance[inputData.identifier] = inputData.data;
+        if (inputData.data[this.settings.languageStr] !== undefined)
+          testComponentRef.instance[inputData.identifier] = inputData.data[this.settings.languageStr];
+        else
+          testComponentRef.instance[inputData.identifier] = inputData.data;
       }
     this.position.name = this.activeTest.name;
   }

@@ -14,15 +14,34 @@ export class BaseImage {
 
     toImageData(): ImageData {
         let data = new ImageData(this.pixels[0].length, this.pixels.length);
-        let l = this.pixels.length - 1;
-        for (let i = 0; i < this.pixels.length; i++)
+        let c = 0;
+        for (let i = 0; i < this.pixels.length; i++) {
+            let l = this.pixels[i].length * 4;
             for (let j = 0; j < this.pixels[i].length; j++) {
-                data.data[(i * l + i + j) * 4] = this.pixels[i][j].R;
-                data.data[(i * l + i + j) * 4 + 1] = this.pixels[i][j].G;
-                data.data[(i * l + i + j) * 4 + 2] = this.pixels[i][j].B;
-                data.data[(i * l + i + j) * 4 + 3] = this.pixels[i][j].A;
+                data.data[i * l + j * 4] = this.pixels[i][j].R;
+                data.data[i * l + j * 4 + 1] = this.pixels[i][j].G;
+                data.data[i * l + j * 4 + 2] = this.pixels[i][j].B;
+                data.data[i * l + j * 4 + 3] = this.pixels[i][j].A;
+                c += 4;
             }
+        }
         return data;
+    }
+}
+
+export class VisionCalibrationImage extends BaseImage {
+    constructor(width: number, height: number, size = 0.5) {
+        super(width, height);
+        this.drawCard(size);
+    }
+
+    drawCard(size: number) {
+        let offset = Math.round((this.pixels[0].length - this.pixels[0].length * size) / 2);
+        console.log(offset, this.pixels[0].length - offset * 2)
+        for (let row = Math.round(this.pixels.length / 2); row < this.pixels.length; row++)
+            for (let col = offset; col < this.pixels[row].length - offset; col++) {
+                this.pixels[row][col] = new Pixel(0, 0, 0, 255);
+            }
     }
 }
 
