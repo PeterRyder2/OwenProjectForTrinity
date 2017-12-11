@@ -1,8 +1,36 @@
+TODO
+
+- Anzahl Pixel des Rechtecks anzeigen
+
+- Rechteck im richtigen Verhältnis Breite / Höhe,
+  zentriert mit abgerundeten Ecken.
+  Text/Label im Rechteck 
+  "Compare size with"
+  "your bank card"
+
+- Wenn am Ende von Phase 2 die Schwelle bereits die minimale Symbolgröße ist, endet der Test und Phase 3/4 entfällt.
+
+- Nach einer Antwort soll das Symbol verschwinden und erst nach einer kurzen Pause neu angezeigt werden.
+  Pause erstmal 1 Sekunde. Das dient als Feedback, dass die Antwort angenommen wurde, auch wenn die
+  Öffnung im Symbol im nächsten Trial auf der gleichen Seite ist.
+  Vielleicht kannst Du zusätzlich auch die 4 Pfeil-Buttons in dieser Pause disablen.
+
+  Seitenstruktur im "echten" vision test:
+- Vision: Adjust Seite mit Rechteck
+- Vision: DIstance Seite 1: Ok, optimal
+- Vision: DIstance Seite 2: Ok, aber Möglichkeit zum Verbessern (Distanz vergrößern)
+- Vision: DIstance Seite 3: Nicht Ok, Möglichkeit zum Verbessern (Distanz vergrößern), Fehler solange nicht Ok
+- Vision: Instructions zum Shape, Continue => los
+- Während Test ständig "Mini-Instructions"
+
+
+- Zusatzseite bei akustischer Kalibrierung (zusätzliche Startaufforderung)
+
+
+BUGS
 
 - Nach "Continue" drücken bleibt "Continue" enabled
-
 - Nach "Continue" drücken dauert es bei WITH 5-6 Sekunden, bis was passiert. Bei Daniel geht es schneller, schreibt er.
-
 - Wenn der Test nach "Continue" drücken hängt, und ich per "Home" auf die Startseite gehen, kann es sein dass der "Continue"
   Knopf nachträglich disabled wird und dann disabled bleibt (auf der "Home" Seite)
 
