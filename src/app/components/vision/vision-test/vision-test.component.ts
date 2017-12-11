@@ -25,6 +25,7 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
   activeKey = '';
   calibrationSize = 0.5;
   pixelAcuity = 6;
+  pixelAmount = 0;
   distance = 1000;
 
   constructor() { }
@@ -76,6 +77,7 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
   }
 
   drawCard(size: number) {
+    this. pixelAmount = Math.round(this.calCanvas.width * this.calibrationSize);
     let ctx = this.calCanvas.getContext('2d');
     ctx.clearRect(0, 0, this.calCanvas.width, this.calCanvas.height)
     let img = new VisionCalibrationImage(this.calCanvas.width, this.calCanvas.height, size);
