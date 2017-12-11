@@ -11,8 +11,8 @@ Thomas muss wissen:
   ✔ wie starte ich das ganze (API Strg+ö und F5, neues Fenster: Live Server ng serve --host 192.168.99.41 )
   ✔ editieren von Texten ( C:\SenseCog\dev\sense-cog-web\src\app\language-files\english.ts )
   ✔ kompilieren API: Strg+ö und F5, Kompilat in C:\SenseCog\dev\sense-cog-api\dist
-    Achtung: API server IP muss stimmen in C:\SenseCog\dev\sense-cog-web\src\app\services\config.service.ts
   ✔ kompilieren App (Webseite): Im Terminal ( C:\SenseCog\dev\sense-cog-web ): ng build --prod, Kompilat in C:\SenseCog\dev\sense-cog-web\dist
+  Achtung: API server IP muss stimmen in C:\SenseCog\dev\sense-cog-web\src\app\services\config.service.ts
   ✔ ändern der Mailadresse(n) API ( sense-cog-api/config.json )
   %✔ ändern der Mailadresse(n) APP ( C:\SenseCog\dev\sense-cog-web\src\app\components\cognition\iqcode-result\iqcode-result.component.ts )
   %✔ ändern der Mailadresse(n) APP ( C:\SenseCog\dev\sense-cog-web\src\app\components\vision\vf14-result\vf14-result.component.ts )
@@ -23,10 +23,10 @@ Thomas muss wissen:
   ✔  1. Server Adresse in die App: aktuerll http://82.165.69.131 nach C:\SenseCog\dev\sense-cog-web\src\app\services\config.service.ts
   ✔  2.  Mailadresse(n) prüfen ( 1x API, 3x APP)
   ✔  3. API und APP Kompilieren
-  ✔  4. APP auf Webserver: Control Center, Webexplorer von C:\SenseCog\dev\sense-cog-web\dist
-        dazu rechte MAustaste ZIP erzeugen, im Webexplorer entpacken
+  ✔  4. APP auf Webserver:  WinSCP, SFTP auf p35492077@home89585951.1and1-data.host, Passwort wie 1&1 ControlCenter
+        C:\SenseCog\dev\sense-cog-web\dist nach /sensecog
   ✔  5. node killen: putty, ps man, kill X
-  ✔  6. API auf Cloud Server: WinSCP, SFTP auf 82.165.69.131, Benutzer root, Passwort aus Cload-Panel
+  ✔  6. API auf Cloud Server: WinSCP, SFTP auf 82.165.69.131, Benutzer root, Passwort wie 1&1 ControlCenter
         C:\SenseCog\dev\sense-cog-api\dist nach /var/www/sense-cog-api/dis
   ✔  7. node starten: putty, cd /var/www/sense-cog-api, node ./dist/launch.js &
   
