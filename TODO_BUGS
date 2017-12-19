@@ -1,12 +1,11 @@
 TODO
 
-- Anzahl Pixel des Rechtecks anzeigen
-
 - Rechteck im richtigen Verhältnis Breite / Höhe,
   zentriert mit abgerundeten Ecken.
   Text/Label im Rechteck 
   "Compare size with"
   "your bank card"
+- Tabellenzeilen Phase/Trials kleiner , weniger Zeilenabstand
 
 - Wenn am Ende von Phase 2 die Schwelle bereits die minimale Symbolgröße ist, endet der Test und Phase 3/4 entfällt.
 
