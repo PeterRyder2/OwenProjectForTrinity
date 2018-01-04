@@ -129,12 +129,14 @@ export const greek: ILanguageFile = {
                     firstParagraph: `GREEK LANGUAGE`,
                     secondParagraph: `GREEK LANGUAGE`,
                     firstHint: `GREEK LANGUAGE`,
-                    secondHint: `GREEK LANGUAGE`,
                 },
                 secondPage: {
                     title: `GREEK LANGUAGE`,
                     firstParagraph: `GREEK LANGUAGE`,
+                    secondParagraph: `GREEK LANGUAGE`,
                     firstHint: `GREEK LANGUAGE`,
+                    secondHint: `GREEK LANGUAGE`,
+                    thirdHint: `GREEK LANGUAGE`,
                 },
                 thirdPage: {
                     title: `GREEK LANGUAGE`,

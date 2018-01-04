@@ -55,6 +55,17 @@ export class Util {
         });
         return uuid;
     }
+
+    static async Delay<T>(delayMS: number, func?: () => T) {
+        return await new Promise<T>((res, rej) => {
+            setTimeout(() => {
+                if (func)
+                    res(func());
+                else
+                    res();
+            }, delayMS)
+        })
+    }
 }
 
 export class Assert {

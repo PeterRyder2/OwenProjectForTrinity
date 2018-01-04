@@ -129,12 +129,14 @@ export const french: ILanguageFile = {
                     firstParagraph: `FRENCH LANGUAGE`,
                     secondParagraph: `FRENCH LANGUAGE`,
                     firstHint: `FRENCH LANGUAGE`,
-                    secondHint: `FRENCH LANGUAGE`,
                 },
                 secondPage: {
                     title: `FRENCH LANGUAGE`,
                     firstParagraph: `FRENCH LANGUAGE`,
+                    secondParagraph: `FRENCH LANGUAGE`,
                     firstHint: `FRENCH LANGUAGE`,
+                    secondHint: `FRENCH LANGUAGE`,
+                    thirdHint: `FRENCH LANGUAGE`,
                 },
                 thirdPage: {
                     title: `FRENCH LANGUAGE`,

@@ -129,12 +129,14 @@ export const german: ILanguageFile = {
                     firstParagraph: `GERMAN LANGUAGE`,
                     secondParagraph: `GERMAN LANGUAGE`,
                     firstHint: `GERMAN LANGUAGE`,
-                    secondHint: `GERMAN LANGUAGE`,
                 },
                 secondPage: {
                     title: `GERMAN LANGUAGE`,
                     firstParagraph: `GERMAN LANGUAGE`,
+                    secondParagraph: `GERMAN LANGUAGE`,
                     firstHint: `GERMAN LANGUAGE`,
+                    secondHint: `GERMAN LANGUAGE`,
+                    thirdHint: `GERMAN LANGUAGE`,
                 },
                 thirdPage: {
                     title: `GERMAN LANGUAGE`,

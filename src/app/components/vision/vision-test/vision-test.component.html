@@ -1,99 +1,137 @@
-<div>
-  <div class="container-one">
-    <div>
-      <button (click)="this.continue(Direction.top)" standard [class.active]="activeKey == 'up'">
-        <i class="material-icons">keyboard_arrow_up</i>
+<!-- <div class="container-one">
+  <div>
+    <button [disabled]="this.state !== this.StateRef.WaitingForInput" (click)="this.continue(Direction.top)" standard [class.active]="activeKey == 'up'">
+      <i class="material-icons">keyboard_arrow_up</i>
+    </button>
+    <div class="container-two">
+      <button [disabled]="this.state !== this.StateRef.WaitingForInput" (click)="this.continue(Direction.left)" standard [class.active]="activeKey == 'left'">
+        <i class="material-icons">keyboard_arrow_left</i>
       </button>
-      <div class="container-two">
-        <button (click)="this.continue(Direction.left)" standard [class.active]="activeKey == 'left'">
-          <i class="material-icons">keyboard_arrow_left</i>
-        </button>
-        <canvas height="200" width="200" #canvas></canvas>
-        <button (click)="this.continue(Direction.right)" standard [class.active]="activeKey == 'right'">
-          <i class="material-icons">keyboard_arrow_right</i>
-        </button>
-      </div>
-      <button (click)="this.continue(Direction.bottom)" standard [class.active]="activeKey == 'down'">
-        <i class="material-icons">keyboard_arrow_down</i>
+      <canvas height="200" width="200" #canvas></canvas>
+      <button [disabled]="this.state !== this.StateRef.WaitingForInput" (click)="this.continue(Direction.right)" standard [class.active]="activeKey == 'right'">
+        <i class="material-icons">keyboard_arrow_right</i>
       </button>
     </div>
-    <div>
-      <button (click)="this.wrong()" standard [class.active]="activeKey == 'down'">
-        <i class="fa fa-times" aria-hidden="true"></i>
-      </button>
-      <button (click)="this.right()" standard [class.active]="activeKey == 'down'">
-        <i class="fa fa-check" aria-hidden="true"></i>
-      </button>
-    </div>
-    <div>
-      <canvas height="300" width="600" class="calibrationCanvas" #CalibrationCanvas></canvas>
-    </div>
-    <div>
-      <button (click)="this.plus(0.05)">
-        <i class="fa fa-plus" aria-hidden="true"></i>
-        <i class="fa fa-plus" aria-hidden="true"></i>
-      </button>
-      <button (click)="this.plus(0.01)">
-        <i class="fa fa-plus" aria-hidden="true"></i>
-      </button>
-      <button (click)="this.minus(0.01)">
-        <i class="fa fa-minus" aria-hidden="true"></i>
-      </button>
-      <button (click)="this.minus(0.05)">
-        <i class="fa fa-minus" aria-hidden="true"></i>
-        <i class="fa fa-minus" aria-hidden="true"></i>
-      </button>
-    </div>
-    <div>
-      distance: <input [(ngModel)]="this.distance" type="text">
-      <button standard (click)="this.calibrate()">Calibrate</button>
-      <div>pixel acuity: {{pixelAcuity}}</div>
-      <div>pixel amount: {{pixelAmount}}</div>
-    </div>
-  </div>
-  <div class="puxels">
-    <div>
-      <div>
-        Puxel NR.
-      </div>
-      <div>
-        Puxel size
-      </div>
-    </div>
-    <div *ngFor="let p of this.testData.puxels; let i = index">
-      <div>
-        {{i}}
-      </div>
-      <div>
-        {{p}}
-      </div>
-    </div>
+    <button [disabled]="this.state !== this.StateRef.WaitingForInput" (click)="this.continue(Direction.bottom)" standard [class.active]="activeKey == 'down'">
+      <i class="material-icons">keyboard_arrow_down</i>
+    </button>
   </div>
 </div>
-<div *ngIf="this.state != 2">
-  <p>Direction: {{Direction[testData.activeDirection]}}</p>
-  <p>Phase: {{testData.activeTrial.phase}}</p>
-  <p>Trial: {{testData.activeTrial.trail}}</p>
-  <p>Puxel: {{testData.activeTrial.puxel + 1}} of {{this.testData.puxels.length}}</p>
-</div>
-<div *ngIf="this.state == 2">
-  <p>FINNISHED</p>
-  <p>Threshold: {{this.evaluate()}}</p>
-</div>
-<div class="row">
-  <p>Phase</p>
-  <p>Trials done</p>
-  <p>Puxel</p>
-  <p>Correct</p>
-  <p>Answers</p>
-</div>
-<div class="row" *ngFor="let res of this.testData.responses">
-  <p>{{res.phase}}</p>
-  <p>{{res.trail}}</p>
-  <p>{{res.puxel + 1}} of {{this.testData.puxels.length}}</p>
-  <p>{{res.correct}}</p>
-  <div class="box">
-    <div *ngFor="let res1 of res.responses" [style.background]="res1 ? 'green' : 'red'">
+<div class="miniInstuctions">
+    <p>INSTUCTIONS</p>
+    <p>adfakjösdnfaklsndflkasndf lkansdklfjnaskldnfalksdjf dalk afnskldn faslk jdnflka sndfkl asndk flansdkl fjnasdkl fnaskdjl fnkldsn fklasdnf klsdnf lkasjdn flkajsndf klajdsnlfkjasnkldjfkalsdnklfjansdkln faksljdn kjsn fadsjkn fkasldn fklasjdn kflasdn fklsjdnf klajsdn lkajsn dfkl nfaskl dfnaslk jdfn</p>
+</div> -->
+
+<div class="container">
+  <div>
+    <div class="container-one">
+      <div>
+        <button [disabled]="this.state !== this.StateRef.WaitingForInput" (click)="this.continue(Direction.top)" standard [class.active]="activeKey == 'up'">
+          <i class="material-icons">keyboard_arrow_up</i>
+        </button>
+        <div class="container-two">
+          <button [disabled]="this.state !== this.StateRef.WaitingForInput" (click)="this.continue(Direction.left)" standard [class.active]="activeKey == 'left'">
+            <i class="material-icons">keyboard_arrow_left</i>
+          </button>
+          <canvas height="200" width="200" #canvas></canvas>
+          <button [disabled]="this.state !== this.StateRef.WaitingForInput" (click)="this.continue(Direction.right)" standard [class.active]="activeKey == 'right'">
+            <i class="material-icons">keyboard_arrow_right</i>
+          </button>
+        </div>
+        <button [disabled]="this.state !== this.StateRef.WaitingForInput" (click)="this.continue(Direction.bottom)" standard [class.active]="activeKey == 'down'">
+          <i class="material-icons">keyboard_arrow_down</i>
+        </button>
+      </div>
+      <div>
+        <button [disabled]="this.state !== this.StateRef.WaitingForInput" (click)="this.wrong()" standard [class.active]="activeKey == 'down'">
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
+        <button [disabled]="this.state !== this.StateRef.WaitingForInput" (click)="this.right()" standard [class.active]="activeKey == 'down'">
+          <i class="fa fa-check" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+    <div class="calibrationCanvas">
+      <button (click)="this.changeSize(-0.05)">
+        <i class="fa fa-minus" aria-hidden="true"></i>
+        <i class="fa fa-minus" aria-hidden="true"></i>
+      </button>
+      <button (click)="this.changeSize(-1/this.calCanvas.width)">
+        <i class="fa fa-minus" aria-hidden="true"></i>
+      </button>
+      <div>
+        <canvas height="270" width="430" #CalibrationCanvas>
+        </canvas>
+        <div class="label" [style.fontSize]="(3 + 30 * this.calibrationSize)+'px'">
+          Compare size with
+          <br> your bank card
+        </div>
+      </div>
+      <button (click)="this.changeSize(1/this.calCanvas.width)">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+      </button>
+      <button (click)="this.changeSize(0.05)">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+        <i class="fa fa-plus" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div>
+      <div>
+        distance:
+        <input [(ngModel)]="this.distance" type="text">
+        <button standard (click)="this.calibrate()">Calibrate</button>
+        <div>pixel acuity: {{pixelAcuity}}</div>
+        <div>pixel amount: {{pixelAmount}}</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="puxels">
+      <div>
+        <div>
+          Puxel NR.
+        </div>
+        <div>
+          Puxel size
+        </div>
+      </div>
+      <div *ngFor="let p of this.testData.puxels; let i = index">
+        <div>
+          {{i + 1}}
+        </div>
+        <div>
+          {{p}}
+        </div>
+      </div>
+    </div>
+    <div *ngIf="this.state != this.StateRef.Finished">
+      <p>Direction: {{Direction[testData.activeDirection]}}</p>
+      <p>Phase: {{testData.activeTrial.phase}}</p>
+      <p>Trial: {{testData.activeTrial.trail}}</p>
+      <p>Puxel: {{testData.activeTrial.puxel + 1}} of {{this.testData.puxels.length}}</p>
+    </div>
+    <div *ngIf="this.state == this.StateRef.Finished">
+      <p>FINNISHED</p>
+      <p>Threshold: {{this.evaluate()}}</p>
+    </div>
+  </div>
+  <div>
+    <div class="row">
+      <p>Phase</p>
+      <p>Trials done</p>
+      <p>Puxel</p>
+      <p>Correct</p>
+      <p>Answers</p>
+    </div>
+    <div class="row" *ngFor="let res of this.testData.responses">
+      <p>{{res.phase}}</p>
+      <p>{{res.trail}}</p>
+      <p>{{res.puxel + 1}} of {{this.testData.puxels.length}}</p>
+      <p>{{res.correct}}</p>
+      <div class="box">
+        <div *ngFor="let res1 of res.responses" [style.background]="res1 ? 'green' : 'red'">
+        </div>
+      </div>
     </div>
   </div>
 </div>

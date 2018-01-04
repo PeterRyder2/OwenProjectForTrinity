@@ -8,11 +8,11 @@ export let HDDA_gr: IQuestionnaire = {
   backEnabled: false,
   questions: [
     {
-      question: 'Have you noticed that you don’t hear as well as you used to?',
+      question: 'GR Have you noticed that you don’t hear as well as you used to?',
       type: QuestionType.single,
       answerTemplateNr: 0
     }, {
-      question: 'Has anybody told you that you don’t hear well?',
+      question: ' GR Has anybody told you that you don’t hear well?',
       type: QuestionType.single,
       answerTemplateNr: 0
     }, {

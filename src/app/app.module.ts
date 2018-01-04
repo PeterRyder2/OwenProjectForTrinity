@@ -52,6 +52,8 @@ import { ControlCenterComponent } from './components/control-center/control-cent
 import { FakeResultComponent } from './components/fake-result/fake-result.component';
 import { MailApiService } from './services/mail-api.service';
 import { ResultParserComponent } from './components/result-parser/result-parser.component';
+import { NgInitDirective } from './directives/ng-init.directive';
+import { TextInsertPipe } from './pipes/text-insert.pipe';
 
 @NgModule({
   declarations: [
@@ -92,7 +94,9 @@ import { ResultParserComponent } from './components/result-parser/result-parser.
     IdentificationComponent,
     ControlCenterComponent,
     FakeResultComponent,
-    ResultParserComponent
+    ResultParserComponent,
+    NgInitDirective,
+    TextInsertPipe
   ],
   imports: [
     BrowserModule,

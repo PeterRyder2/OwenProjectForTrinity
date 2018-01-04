@@ -10,7 +10,7 @@ export interface IChapter {
 }
 
 export interface IDescriptionComponent {
-    continue(): Promise<boolean>;
+    continue(): Promise<boolean | IInputData[]>;
 }
 
 export interface ITest {

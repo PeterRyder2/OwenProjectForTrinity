@@ -178,6 +178,8 @@ export class CognitionTestComponent implements OnInit, OnDestroy, ITestComponent
       this.keyDownEventListener);
     window.addEventListener('keyup',
       this.keyUpEventListener);
+    this.disableContinueChanged.emit(false);
+    this.disableContinueChanged.unsubscribe();
     if (this.id && this.state < State.finishing) {
       this.api.finish({ id: this.id, wordRes: null, annotation: 'test got destroyed', sendMail: this.settings.sendEmail });
     }

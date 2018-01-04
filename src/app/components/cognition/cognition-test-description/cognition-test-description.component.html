@@ -3,11 +3,19 @@
   <p innerHTML="{{language.firstPage.firstParagraph}}"></p>
   <p innerHTML="{{language.firstPage.secondParagraph}}"></p>
   <div class="continue_hint" innerHTML="{{language.firstPage.firstHint}}"></div>
-  <audio src="assets/{{language.firstPage.soundFile}}" loop="true" autoplay="true" *ngIf="this.playSound === true"></audio>
   <div class="continue_hint" innerHTML="{{language.firstPage.secondHint}}"></div>
 </div>
 
 <div *ngIf="this.page == 1" class="description">
+  <H2 innerHTML="{{language.firstPage.title}}"></H2>
+  <p innerHTML="{{language.firstPage.firstParagraph}}"></p>
+  <p innerHTML="{{language.firstPage.secondParagraph}}"></p>
+  <div class="continue_hint" innerHTML="{{language.firstPage.firstHint}}"></div>
+  <audio src="assets/{{language.firstPage.soundFile}}" loop="true" autoplay="true"></audio>
+  <div class="continue_hint" innerHTML="{{language.firstPage.thirdHint}}"></div>
+</div>
+
+<div *ngIf="this.page == 2" class="description">
   <H2 innerHTML="{{language.secondPage.title}}"></H2>
   <p innerHTML="{{language.secondPage.firstParagraph}}"></p>
   <div class="continue_hint" innerHTML="{{language.secondPage.firstHint}}"></div>

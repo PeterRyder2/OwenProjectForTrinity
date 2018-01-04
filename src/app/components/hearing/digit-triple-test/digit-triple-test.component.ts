@@ -62,6 +62,8 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy, ITestCompone
       this.keyDownEventListener);
     window.addEventListener('keyup',
       this.keyUpEventListener);
+    this.disableContinueChanged.emit(false);
+    this.disableContinueChanged.unsubscribe();
     if (this.testId && this.state < State.finishing) {
       this.api.finish({ id: this.testId, annotation: 'test got destroyed', sendMail: this.settings.sendEmail });
     }
@@ -87,7 +89,6 @@ export class DigitTripleTestComponent implements OnInit, OnDestroy, ITestCompone
       case State.input:
         let res1 = await this.nextTriple();
         this.disableContinueChanged.emit(!this.canContinue);
-        console.log(res1);
         return res1;
 
       case State.finishing:

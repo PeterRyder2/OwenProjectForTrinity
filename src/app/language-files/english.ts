@@ -52,7 +52,8 @@ export const english: ILanguageFile = {
                     secondParagraph: `Some speech is played now. 
                     Please adjust the volume (if necessary) on your device to make the speech clearly audible.`,
                     firstHint: ` You can use external speakers or headphones if necessary. `,
-                    secondHint: `Press "Continue" when the speech is clearly audible.`,
+                    secondHint: `Press "Continue" to start the test sound.`,
+                    thirdHint: `Press "Continue" when the speech is clearly audible.`,
                     soundFile: 'testTripleSound.mp3'
                 },
                 secondPage: {
@@ -113,7 +114,8 @@ export const english: ILanguageFile = {
                     secondParagraph: `Some speech is played now. 
                     Please adjust the volume (if necessary) on your device to make the speech clearly audible.`,
                     firstHint: ` You can use external speakers or headphones if necessary. `,
-                    secondHint: `Press "Continue" when the speech is clearly audible.`,
+                    secondHint: `Press "Continue" to start the test sound.`,
+                    thirdHint: `Press "Continue" when the speech is clearly audible.`,
                     soundFile: 'testTripleSound.mp3'
                 },
                 secondPage: {
@@ -160,13 +162,18 @@ export const english: ILanguageFile = {
                     firstParagraph: `Please ensure that this text is well visible and clearly recognisable, but please do NOT set a browser zoom differing from
                     100%.`,
                     secondParagraph: `Now please adjust the width of the rectangle below so that it is the same size as your card using the + and – buttons`,
-                    firstHint: ` - RECTANGLE + `,
-                    secondHint: `Press continue when the size of the card and the rectangle are the same.`
+                    firstHint: `Press continue when the size of the card and the rectangle are the same.`
                 },
                 secondPage: {
                     title: `Vision test instructions`,
-                    firstParagraph: `Keep a distance of 50 cm from your eyes to the screen during the test.`,
-                    firstHint: `Please press "Continue".`,
+                    firstParagraph: `Use a distance of atleast minDistancecm, but a distance of
+                    optDistancecm would be better.`,
+                    secondParagraph: `Please enter the distance that you will use in cm:`,
+                    firstHint: `Please use more distance atleast minDistancecm
+                    better optDistancecm. Please adjust the distance.`,
+                    secondHint: `You can do the test but a distance of at least optDistancecm would
+                    better. Please Press "Continue" or adjust the distance.`,
+                    thirdHint: `Optimal Distance you are safe to go. Please Press "Continue".`,
                 },
                 thirdPage: {
                     title: `Vision test instructions`,
