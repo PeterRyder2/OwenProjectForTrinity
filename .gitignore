@@ -2,7 +2,7 @@
 
 # WITH
 # this file is real in repository, and local fake for live server
-/src/app/services/config.service.ts
+src/app/services/config.service.ts
 
 # compiled output
 /dist
