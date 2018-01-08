@@ -53,6 +53,7 @@ export const greek: ILanguageFile = {
                     Please adjust the volume (if necessary) on your device to make the speech clearly audible.`,
                     firstHint: ` You can use external speakers or headphones if necessary. `,
                     secondHint: `Press "Continue" when the speech is clearly audible.`,
+                    thirdHint: `GR hint 3`,
                     soundFile: 'testTripleSound.mp3'
                 },
                 secondPage: {
@@ -116,6 +117,7 @@ export const greek: ILanguageFile = {
                     Please adjust the volume (if necessary) on your device to make the speech clearly audible.`,
                     firstHint: ` You can use external speakers or headphones if necessary. `,
                     secondHint: `Press "Continue" when the speech is clearly audible.`,
+                    thirdHint: `GR hint 3`,
                     soundFile: 'testTripleSound.mp3'
                 },
                 secondPage: {
@@ -162,12 +164,12 @@ export const greek: ILanguageFile = {
                     firstParagraph: `Please ensure that this text is well visible and clearly recognisable, but please do NOT set a browser zoom differing from
                     100%.`,
                     secondParagraph: `Now please adjust the width of the rectangle below so that it is the same size as your card using the + and – buttons`,
-                    firstHint: ` - RECTANGLE + `,
-                    secondHint: `Press continue when the size of the card and the rectangle are the same.`
+                    firstHint: `Press continue when the size of the card and the rectangle are the same.`
                 },
                 secondPage: {
                     title: `Vision test instructions`,
                     firstParagraph: `Keep a distance of 50 cm from your eyes to the screen during the test.`,
+                    secondParagraph: `GR paragraph 2`,
                     firstHint: `Please press "Continue".`,
                     secondHint: `GREEK LANGUAGE`,
                     thirdHint: `GREEK LANGUAGE`,
