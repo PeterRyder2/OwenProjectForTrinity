@@ -26,6 +26,12 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
   }
+  
+  setLang(val) {
+    console.log(val)
+    this.settingsService.language = val;
+  }
+
 
   skip() {
     this.procedureService.skip();
