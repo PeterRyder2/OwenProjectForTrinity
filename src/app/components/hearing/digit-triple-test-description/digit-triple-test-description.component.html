@@ -1,13 +1,21 @@
 <div  *ngIf="this.page == 0" class="description">
-  <h2 innerHTML="{{language.firstPage.title}}"></h2>
-  <p innerHTML="{{language.firstPage.firstParagraph}}"></p>
-  <p innerHTML="{{language.firstPage.secondParagraph}}"></p>
-  <div class="continue_hint" innerHTML="{{language.firstPage.firstHint}}"></div>
-  <audio src="assets/{{language.firstPage.soundFile}}" loop="true" autoplay="true" *ngIf="this.domSound === true"></audio>
-  <div class="continue_hint" innerHTML="{{language.firstPage.secondHint}}"></div>
-</div>
+    <h2 innerHTML="{{language.firstPage.title}}"></h2>
+    <p innerHTML="{{language.firstPage.firstParagraph}}"></p>
+    <p innerHTML="{{language.firstPage.secondParagraph}}"></p>
+    <div class="continue_hint" innerHTML="{{language.firstPage.firstHint}}"></div>
+    <div class="continue_hint" innerHTML="{{language.firstPage.secondHint}}"></div>
+  </div>
+  
+  <div  *ngIf="this.page == 1" class="description">
+      <h2 innerHTML="{{language.firstPage.title}}"></h2>
+      <p innerHTML="{{language.firstPage.firstParagraph}}"></p>
+      <p innerHTML="{{language.firstPage.secondParagraph}}"></p>
+      <div class="continue_hint" innerHTML="{{language.firstPage.firstHint}}"></div>
+      <audio src="assets/{{language.firstPage.soundFile}}" loop="true" autoplay="true"></audio>
+      <div class="continue_hint" innerHTML="{{language.firstPage.thirdHint}}"></div>
+    </div>
 
-<div *ngIf="this.page == 1" class="description">
+<div *ngIf="this.page == 2" class="description">
   <h2 innerHTML="{{language.secondPage.title}}"></h2>
   <p innerHtml="{{language.secondPage.firstParagraph}}"></p>
   <p innerHTML="{{language.secondPage.secondParagraph}}"></p>

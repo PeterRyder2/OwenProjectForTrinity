@@ -4,34 +4,39 @@ Dringende Fragen:
 - Cognition, Texte + Audio Signale: EN, FR, GR, bislang in ...\CognitionTestData\de\...
 - Mini-Instructions Zeilenumbruch
 
-- Rechteck im richtigen Verhältnis Breite / Höhe,
+- Algorithmus möglicherweise falsch
+  falsche Schwelle bginn phase 2
+  was passiert wenn Phase 2 & 3 Alles falsch ist?
+
+- DONE - Rechteck im richtigen Verhältnis Breite / Höhe,
   zentriert mit abgerundeten Ecken.
   Text/Label im Rechteck 
   "Compare size with"
   "your bank card"
-- Tabellenzeilen Phase/Trials kleiner , weniger Zeilenabstand
+- DONE - Tabellenzeilen Phase/Trials kleiner , weniger Zeilenabstand
 
-- Wenn am Ende von Phase 2 die Schwelle bereits die minimale Symbolgröße ist, endet der Test und Phase 3/4 entfällt.
+- DONe - Wenn am Ende von Phase 2 die Schwelle bereits die minimale Symbolgröße ist, endet der Test und Phase 3/4 entfällt.
 
-- Nach einer Antwort soll das Symbol verschwinden und erst nach einer kurzen Pause neu angezeigt werden.
+- DONE - Nach einer Antwort soll das Symbol verschwinden und erst nach einer kurzen Pause neu angezeigt werden.
   Pause erstmal 1 Sekunde. Das dient als Feedback, dass die Antwort angenommen wurde, auch wenn die
   Öffnung im Symbol im nächsten Trial auf der gleichen Seite ist.
   Vielleicht kannst Du zusätzlich auch die 4 Pfeil-Buttons in dieser Pause disablen.
 
   Seitenstruktur im "echten" vision test:
-- Vision: Adjust Seite mit Rechteck
-- Vision: DIstance Seite 1: Ok, optimal
-- Vision: DIstance Seite 2: Ok, aber Möglichkeit zum Verbessern (Distanz vergrößern)
-- Vision: DIstance Seite 3: Nicht Ok, Möglichkeit zum Verbessern (Distanz vergrößern), Fehler solange nicht Ok
-- Vision: Instructions zum Shape, Continue => los
-- Während Test ständig "Mini-Instructions"
+- DONE - Vision: Adjust Seite mit Rechteck
+- DONE - Vision: DIstance Seite 1: Ok, optimal
+- DONE - Vision: DIstance Seite 2: Ok, aber Möglichkeit zum Verbessern (Distanz vergrößern)
+- DONE - Vision: DIstance Seite 3: Nicht Ok, Möglichkeit zum Verbessern (Distanz vergrößern), Fehler solange nicht Ok
+- DONE - Vision: Instructions zum Shape, Continue => los
+- Form - Während Test ständig "Mini-Instructions"
 
 
-- Zusatzseite bei akustischer Kalibrierung (zusätzliche Startaufforderung)
+- DONE - Zusatzseite bei akustischer Kalibrierung (zusätzliche Startaufforderung)
 
 
 BUGS
 
+<<<<<<< HEAD
 - Nach "Continue" drücken bleibt "Continue" enabled
 - (Nach "Continue" drücken dauert es bei WITH 5-6 Sekunden, bis was passiert. Bei Daniel geht es schneller, schreibt er.)
 - (Wenn der Test nach "Continue" drücken hängt, und ich per "Home" auf die Startseite gehen, kann es sein dass der "Continue"
@@ -39,4 +44,13 @@ BUGS
 
 - (Wenn die Session per Timeout zurückgesetzt wird (ist das so?), dann kann ich trotzdem weiter messen,
   die ausgewählten Session-Parameter (z.B. Email senden) werden aber zurückgesetzt)
+=======
+- DONE - Nach "Continue" drücken bleibt "Continue" enabled
+- Kann nun beobachtet werden per logging - Nach "Continue" drücken dauert es bei WITH 5-6 Sekunden, bis was passiert. Bei Daniel geht es schneller, schreibt er.
+- DONE - Wenn der Test nach "Continue" drücken hängt, und ich per "Home" auf die Startseite gehen, kann es sein dass der "Continue"
+  Knopf nachträglich disabled wird und dann disabled bleibt (auf der "Home" Seite)
+
+- Benötigt validierung - Wenn die Session per Timeout zurückgesetzt wird (ist das so?), dann kann ich trotzdem weiter messen,
+  die ausgewählten Session-Parameter (z.B. Email senden) werden aber zurückgesetzt
+>>>>>>> bcaf1eb48cc88511ca2cc212b417aec3a262c6c4
   

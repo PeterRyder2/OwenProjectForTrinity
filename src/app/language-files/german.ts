@@ -167,6 +167,8 @@ export const german: ILanguageFile = {
                     title: `Vision test instructions`,
                     firstParagraph: `Keep a distance of 50 cm from your eyes to the screen during the test.`,
                     firstHint: `Please press "Continue".`,
+                    secondHint: `GERMAN LANGUAGE`,
+                    thirdHint: `GERMAN LANGUAGE`,
                 },
                 thirdPage: {
                     title: `Vision test instructions`,

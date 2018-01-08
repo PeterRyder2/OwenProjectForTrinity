@@ -1,5 +1,5 @@
 import { VisionTestState } from '../../../enums/VisionTestState.enum';
-import { Direction, VisionCalibrationImage, VisionTestImage } from '../../../lib/Image';
+import { Direction, VisionCalibrationImage, VisionTestImage, makeCanvasHighRes } from '../../../lib/Image';
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ITestComponent, ITestResponse } from '../../../interfaces/IProcedureConfig.interface';
 import { Util } from '../../../lib/util';
@@ -19,6 +19,7 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
   calCanvas: HTMLCanvasElement;
 
   Direction = Direction;
+  StateRef = VisionTestState;
   state = State.Initializing;
   testData: VisionTestData;
 
@@ -26,95 +27,75 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
   calibrationSize = 0.5;
   pixelAcuity = 6;
   pixelAmount = 0;
-  distance = 1000;
+  distance = 100;
 
   constructor() { }
 
   ngOnInit() {
     this.canvas = this.canvasRef.nativeElement;
-    this.calCanvas = this.calCanvasRef.nativeElement;
-    this.makeHighRes(this.canvas);
-    this.makeHighRes(this.calCanvas);
+    // this.calCanvas = this.calCanvasRef.nativeElement;
+    makeCanvasHighRes(this.canvas);
+    // makeCanvasHighRes(this.calCanvas);
     this.testData = new VisionTestData();
     window.addEventListener('keydown',
       this.keyDownEventListener);
     window.addEventListener('keyup',
       this.keyUpEventListener);
     this.state = State.WaitingForInput;
-    this.drawCard(this.calibrationSize)
     this.calibratePuxels(this.pixelAcuity);
+    // this.drawCard(this.calibrationSize);
   }
 
-  plus(addition: number) {
-    this.drawCard(this.calibrationSize += this.calibrationSize + addition >= 1 ? 0 : addition)
-  }
-
-  minus(addition: number) {
-    this.drawCard(this.calibrationSize -= this.calibrationSize - addition <= 0 ? 0 : addition)
+  changeSize(addition: number) {
+    this.drawCard(this.calibrationSize += this.calibrationSize + addition > 1 ? 0 : this.calibrationSize + addition < 0.2 ? 0 : addition)
   }
 
   calibrate() {
     let PS = 53.98 / Math.round(this.calCanvas.width * this.calibrationSize);
     let D = this.distance;
-    let PA = 6 * 60 * 2 * Math.atan((PS / 2 / D) * 180 / Math.PI);
-    PA = +(Math.round((PA + 'e+2') as any)  + 'e-2')
+    let PA = 6 * 60 * 2 * Math.atan((PS / 2 / (D * 10)) * 180 / Math.PI);
+    PA = +(Math.round((PA + 'e+2') as any) + 'e-2')
+    let minDistance = Math.ceil(PS / (Math.tan(8 / (6 * 60 * 2)) * 2 / (180 / Math.PI)) / 10);
+    let optDistance = Math.ceil(PS / (Math.tan(6 / (6 * 60 * 2)) * 2 / (180 / Math.PI)) / 10);
+    console.log('needed: ' + minDistance)
     console.log(PS, D, PA);
     this.calibratePuxels(this.pixelAcuity = PA);
   }
 
   calibratePuxels(PA: number) {
-    this.testData.puxels = [
-      Math.floor(6 / PA),
-      Math.floor(12 / PA),
-      Math.floor(18 / PA),
-      Math.floor(24 / PA),
-      Math.floor(36 / PA),
-      Math.floor(48 / PA),
-      Math.floor(60 / PA),
-      Math.floor(96 / PA),
-    ]
+    let list = [6, 12, 18, 24, 36, 48, 60, 96];
+    this.testData.puxels = [];
+    for (let i = 0; i < list.length; i++) {
+      const puxel = Math.floor(list[i] / PA);
+      if (puxel > 0)
+        this.testData.puxels.push(puxel);
+    }
+    this.testData.activeTrial = {
+      trail: 1,
+      responses: [],
+      puxel: this.testData.puxels.length - 1,
+      phase: 1
+    }
     this.newDirection();
   }
 
   drawCard(size: number) {
-    this. pixelAmount = Math.round(this.calCanvas.width * this.calibrationSize);
+    this.pixelAmount = Math.round(this.calCanvas.width * this.calibrationSize);
     let ctx = this.calCanvas.getContext('2d');
-    ctx.clearRect(0, 0, this.calCanvas.width, this.calCanvas.height)
+    this.clearCanvas(ctx);
     let img = new VisionCalibrationImage(this.calCanvas.width, this.calCanvas.height, size);
     ctx.putImageData(img.toImageData(), 0, 0);
+  }
+
+  clearCanvas(ctx?: CanvasRenderingContext2D) {
+    ctx = ctx || this.canvas.getContext('2d');
+    ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
   }
 
   newDirection() {
     this.testData.activeDirection = Math.round((Math.random() * 100)) % 4;
     this.drawC();
   }
-
-  makeHighRes(c: HTMLCanvasElement) {
-    let ctx = c.getContext('2d');
-    // finally query the various pixel ratios
-    let devicePixelRatio = window.devicePixelRatio || 1;
-    let backingStoreRatio = (ctx as any).webkitBackingStorePixelRatio ||
-      (ctx as any).mozBackingStorePixelRatio ||
-      (ctx as any).msBackingStorePixelRatio ||
-      (ctx as any).oBackingStorePixelRatio ||
-      (ctx as any).backingStorePixelRatio || 1;
-    let ratio = devicePixelRatio / backingStoreRatio;
-    // upscale canvas if the two ratios don't match
-    if (devicePixelRatio !== backingStoreRatio) {
-
-      let oldWidth = c.width;
-      let oldHeight = c.height;
-      c.width = Math.round(oldWidth * ratio);
-      c.height = Math.round(oldHeight * ratio);
-      c.style.width = oldWidth + 'px';
-      c.style.height = oldHeight + 'px';
-      // now scale the context to counter
-      // the fact that we've manually scaled
-      // our canvas element
-      ctx.scale(ratio, ratio);
-    }
-  }
-
 
   drawC() {
     let ctx = this.canvas.getContext('2d');
@@ -152,13 +133,18 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
       case State.Initializing:
         break;
       case State.WaitingForInput:
-        if (direction != null)
-          this.continueTrial(direction);
+        if (direction != null) {
+          this.state = State.Pause;
+          this.clearCanvas();
+          await Util.Delay(0)
+          this.state = State.WaitingForInput;
+          return this.continueTrial(direction);
+        }
         break;
       default:
         break;
     }
-    return null;
+    return false;
   }
 
   continueTrial(direction: Direction) {
@@ -168,17 +154,23 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
       this.testData.responses.push(res);
       if (this.isPhaseOver()) {
         let nextPhase = this.nextPhase();
-        if (nextPhase === false)
+        if (nextPhase === false) {
           this.state = State.Finished;
-        else
+          return {
+            result: this.evaluate()
+          }
+        } else
           this.testData.activeTrial = nextPhase;
       } else {
         let nextTrial = this.nextTrial();
         if (nextTrial === false) {
           let nextPhase = this.nextPhase();
-          if (nextPhase === false)
+          if (nextPhase === false) {
             this.state = State.Finished;
-          else
+            return {
+              result: this.evaluate()
+            }
+          } else
             this.testData.activeTrial = nextPhase;
         } else
           this.testData.activeTrial = nextTrial;
@@ -188,6 +180,7 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
       this.testData.activeTrial.trail++;
       this.newDirection();
     }
+    return false;
   }
 
   isTrialOver() {
@@ -246,7 +239,9 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
 
   nextPhase() {
     let newTrial: VisionTestTrial;
-    if (this.testData.activeTrial.phase < 3) {
+    if (this.testData.activeTrial.phase > 1 && this.testData.responses.last().correct && this.testData.activeTrial.puxel == 0)
+      return false
+    else if (this.testData.activeTrial.phase < 3) {
       if (this.testData.activeTrial.puxel < this.testData.puxels.length - 2)
         newTrial = {
           trail: 1,
@@ -330,12 +325,7 @@ class VisionTestData {
     16
   ]
   activeDirection: Direction;
-  activeTrial: VisionTestTrial = {
-    trail: 1,
-    responses: [],
-    puxel: this.puxels.length - 1,
-    phase: 1
-  };
+  activeTrial: VisionTestTrial;
   responses: VisionTestTrialResponse[] = []
 }
 

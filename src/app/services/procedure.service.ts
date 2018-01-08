@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs/Rx';
 import { ChapterSelectionComponent } from '../components/chapter-selection/chapter-selection.component';
 import { HomeComponent } from '../components/home/home.component';
 import { ProcedureContainerComponent } from '../components/procedure-container/procedure-container.component';
-import { IProcedure, ITestResponse } from '../interfaces/IProcedureConfig.interface';
+import { IProcedure, ITestResponse, IInputData } from '../interfaces/IProcedureConfig.interface';
 import { Util } from '../lib/util';
 import { procedureConfig } from '../lib/procedure';
 import { ProcedureState } from '../enums/Procedure.State.enum';
@@ -108,7 +108,7 @@ export class ProcedureService {
       result: 0,
     };
   };
-  continueDescriptionComponent = async () => { return true; };
+  continueDescriptionComponent = async (): Promise<boolean | IInputData[]> => { return true; };
 
   async continue() {
     if (!this.isContinueDisabled)
@@ -143,6 +143,10 @@ export class ProcedureService {
         case ProcedureState.TestDescription:
           let testDescriptionOver = await this.continueDescriptionComponent();
           if (testDescriptionOver) {
+            if (Array.isArray(testDescriptionOver)) {
+              if (!this.activeTest.inputData) this.activeTest.inputData = [];
+              this.activeTest.inputData.push(...testDescriptionOver);
+            }
             this.position.state = ProcedureState.Test;
             this.loadNextTest();
           }
@@ -150,7 +154,6 @@ export class ProcedureService {
 
         case ProcedureState.Test:
           let testResponse = await this.continueTestComponent();
-          console.log(testResponse)
           if (testResponse !== false) {
             this.activeTest.result = testResponse;
             this.position.state = ProcedureState.TestResult;

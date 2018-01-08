@@ -46,6 +46,7 @@ export class ILanguageFile {
                     secondParagraph: string;
                     firstHint: string;
                     secondHint: string;
+                    thirdHint: string;
                     soundFile: string;
                 },
                 secondPage: {
@@ -90,6 +91,7 @@ export class ILanguageFile {
                     secondParagraph: string;
                     firstHint: string;
                     secondHint: string;
+                    thirdHint: string;
                     soundFile: string;
                 },
                 secondPage: {
@@ -127,12 +129,14 @@ export class ILanguageFile {
                     firstParagraph: string;
                     secondParagraph: string;
                     firstHint: string;
-                    secondHint: string;
                 },
                 secondPage: {
                     title: string;
                     firstParagraph: string;
+                    secondParagraph: string;
                     firstHint: string;
+                    secondHint: string;
+                    thirdHint: string;
                 },
                 thirdPage: {
                     title: string;

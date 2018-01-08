@@ -37,83 +37,93 @@ import { VisionTestComponent } from '../components/vision/vision-test/vision-tes
 export const procedureConfig: IProcedure = {
   chapters: [
     {
-      name: 'Hearing',
-      description: HearingChapterDescriptionComponent,
-      tests: [
-        {
-          name: 'HDDA',
-          description: HddaDescriptionComponent,
-          resultComponent: HddaResultComponent,
-          component: QuestionnaireComponent,
-          inputData: [
-            {
-              identifier: 'questionnaire',
-              data: HDDA
-            }
-          ]
-        },
-        {
-          name: 'DigitTripleTest',
-          description: DigitTripleTestDescriptionComponent,
-          resultComponent: DigitTripleTestResultComponent,
-          component: DigitTripleTestComponent
-        }
-      ]
-    },
-    {
-      name: 'Cognition',
-      description: CognitionChapterDescriptionComponent,
-      tests: [
-        {
-          name: 'IQCODE',
-          description: IqcodeDescriptionComponent,
-          resultComponent: IqcodeResultComponent,
-          component: QuestionnaireComponent,
-          inputData: [
-            {
-              identifier: 'questionnaire',
-              data: IQCODE
-            }
-          ]
-        },
-        {
-          name: 'CognitionTest',
-          description: CognitionTestDescriptionComponent,
-          resultComponent: CognitionTestResultComponent,
-          component: CognitionTestComponent
-        }
-      ]
-    },
-    {
       name: 'Vision',
       description: VisionChapterDescriptionComponent,
       tests: [
-        {
-          name: 'VF14',
-          description: Vf14DescriptionComponent,
-          resultComponent: Vf14ResultComponent,
-          component: QuestionnaireComponent,
-          inputData: [
-            {
-              identifier: 'questionnaire',
-              data: VF14
-            }
-          ]
-        },
         {
           name: 'VisionTest',
           description: VisionTestDescriptionComponent,
           resultComponent: VisionTestResultComponent,
           component: VisionTestComponent
         }
-        // {
-        //   name: 'VisionTest',
-        //   description: {
-        //     name: 'VisionTestDescription'
-        //   },
-        //   component: null
-        // }
       ]
     },
   ]
 }
+
+// export const procedureConfig: IProcedure = {
+//   chapters: [
+//     {
+//       name: 'Hearing',
+//       description: HearingChapterDescriptionComponent,
+//       tests: [
+//         {
+//           name: 'HDDA',
+//           description: HddaDescriptionComponent,
+//           resultComponent: HddaResultComponent,
+//           component: QuestionnaireComponent,
+//           inputData: [
+//             {
+//               identifier: 'questionnaire',
+//               data: HDDA
+//             }
+//           ]
+//         },
+//         {
+//           name: 'DigitTripleTest',
+//           description: DigitTripleTestDescriptionComponent,
+//           resultComponent: DigitTripleTestResultComponent,
+//           component: DigitTripleTestComponent
+//         }
+//       ]
+//     },
+//     {
+//       name: 'Cognition',
+//       description: CognitionChapterDescriptionComponent,
+//       tests: [
+//         {
+//           name: 'IQCODE',
+//           description: IqcodeDescriptionComponent,
+//           resultComponent: IqcodeResultComponent,
+//           component: QuestionnaireComponent,
+//           inputData: [
+//             {
+//               identifier: 'questionnaire',
+//               data: IQCODE
+//             }
+//           ]
+//         },
+//         {
+//           name: 'CognitionTest',
+//           description: CognitionTestDescriptionComponent,
+//           resultComponent: CognitionTestResultComponent,
+//           component: CognitionTestComponent
+//         }
+//       ]
+//     },
+//     {
+//       name: 'Vision',
+//       description: VisionChapterDescriptionComponent,
+//       tests: [
+//         {
+//           name: 'VF14',
+//           description: Vf14DescriptionComponent,
+//           resultComponent: Vf14ResultComponent,
+//           component: QuestionnaireComponent,
+//           inputData: [
+//             {
+//               identifier: 'questionnaire',
+//               data: VF14
+//             }
+//           ]
+//         },
+//         {
+//           name: 'VisionTest',
+//           description: VisionTestDescriptionComponent,
+//           resultComponent: VisionTestResultComponent,
+//           component: VisionTestComponent
+//         }
+//       ]
+//     },
+//   ]
+// }

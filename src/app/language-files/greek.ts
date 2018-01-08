@@ -169,6 +169,8 @@ export const greek: ILanguageFile = {
                     title: `Vision test instructions`,
                     firstParagraph: `Keep a distance of 50 cm from your eyes to the screen during the test.`,
                     firstHint: `Please press "Continue".`,
+                    secondHint: `GREEK LANGUAGE`,
+                    thirdHint: `GREEK LANGUAGE`,
                 },
                 thirdPage: {
                     title: `Vision test instructions`,
