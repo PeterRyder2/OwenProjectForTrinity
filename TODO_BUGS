@@ -1,4 +1,8 @@
 TODO
+Dringende Fragen:
+- Auf Firefox geht Sprachauswahl nicht
+- Cognition, Texte + Audio Signale: EN, FR, GR, bislang in ...\CognitionTestData\de\...
+- Mini-Instructions Zeilenumbruch
 
 - Rechteck im richtigen Verhältnis Breite / Höhe,
   zentriert mit abgerundeten Ecken.
@@ -29,10 +33,10 @@ TODO
 BUGS
 
 - Nach "Continue" drücken bleibt "Continue" enabled
-- Nach "Continue" drücken dauert es bei WITH 5-6 Sekunden, bis was passiert. Bei Daniel geht es schneller, schreibt er.
-- Wenn der Test nach "Continue" drücken hängt, und ich per "Home" auf die Startseite gehen, kann es sein dass der "Continue"
-  Knopf nachträglich disabled wird und dann disabled bleibt (auf der "Home" Seite)
+- (Nach "Continue" drücken dauert es bei WITH 5-6 Sekunden, bis was passiert. Bei Daniel geht es schneller, schreibt er.)
+- (Wenn der Test nach "Continue" drücken hängt, und ich per "Home" auf die Startseite gehen, kann es sein dass der "Continue"
+  Knopf nachträglich disabled wird und dann disabled bleibt (auf der "Home" Seite))
 
-- Wenn die Session per Timeout zurückgesetzt wird (ist das so?), dann kann ich trotzdem weiter messen,
-  die ausgewählten Session-Parameter (z.B. Email senden) werden aber zurückgesetzt
+- (Wenn die Session per Timeout zurückgesetzt wird (ist das so?), dann kann ich trotzdem weiter messen,
+  die ausgewählten Session-Parameter (z.B. Email senden) werden aber zurückgesetzt)
   

@@ -8,51 +8,51 @@ export let HDDA_gr: IQuestionnaire = {
   backEnabled: false,
   questions: [
     {
-      question: 'Have you noticed that you don’t hear as well as you used to?',
+      question: 'Έχετε παρατηρήσει ότι δεν ακούτε τόσο καλά όσο στο παρελθόν;',
       type: QuestionType.single,
       answerTemplateNr: 0
     }, {
-      question: 'Has anybody told you that you don’t hear well?',
+      question: 'Σας έχει πει κάποιος/α ότι δεν ακούτε καλά;',
       type: QuestionType.single,
       answerTemplateNr: 0
     }, {
-      question: 'Does your family tell you that you turn up the volume of the television or radio very loudly?',
+      question: 'Η οικογένεια σας, σας λεει ότι έχετε την ένταση ήχου της τηλεόρασης/ ραδιοφώνου πολύ δυνατά;',
       type: QuestionType.single,
       answerTemplateNr: 0
     }, {
-      question: 'When you’re talking to someone, do you have to ask the person to speak louder?',
+      question: 'Όταν συνομιλείτε με κάποιον/α, χρειάζεται να του/της ζητήσετε να μιλά πιο δυνατά;',
       type: QuestionType.single,
       answerTemplateNr: 0
     }, {
-      question: 'When you’re talking to someone, do you have to ask the person to repeat what they’re saying various times?',
+      question: 'Όταν συνομιλείτε με κάποιον/α χρειάζεται να του/της ζητήσετε να επαναλάβει αυτό που λέει αρκετές φορές;',
       type: QuestionType.single,
       answerTemplateNr: 0
     }, {
-      question: 'Can you understand when someone is speaking to you in a low voice?',
+      question: 'Μπορείτε να καταλάβετε όταν κάποιος σας μιλάει χαμηλόφωνα;',
       type: QuestionType.single,
       answerTemplateNr: 1
     }, {
-      question: 'Can you understand when someone is speaking to you on the telephone?',
+      question: 'Μπορείτε να καταλάβετε όταν συνομιλείτε με κάποιον στο τηλέφωνο;',
       type: QuestionType.single,
       answerTemplateNr: 1
     }, {
-      question: 'Can you hear the sound of a coin dropping on the floor?',
+      question: 'Μπορείτε να ακούσετε τον ήχο ενός νομίσματος που πέφτει κάτω στο πάτωμα;',
       type: QuestionType.single,
       answerTemplateNr: 1
     }, {
-      question: 'Can you hear the sound of a door closing?',
+      question: 'Μπορείτε να ακούσετε τον ήχο μιας πόρτας που κλείνει;',
       type: QuestionType.single,
       answerTemplateNr: 1
     }, {
-      question: 'Can you hear when someone approaches you from behind?',
+      question: 'Μπορείτε να ακούσετε όταν κάποιος σας προσεγγίζει από πίσω;',
       type: QuestionType.single,
       answerTemplateNr: 1
     }, {
-      question: 'Can you hear when someone is speaking to you in a noisy setting such as a pub or restaurant?',
+      question: 'Μπορείτε να ακούσετε αν συνομιλείτε με κάποιον/α  σε ένα μέρος που έχει φασαρία (π.χ. σε μια μπυραρία, σε ένα εστιατόριο;)',
       type: QuestionType.single,
       answerTemplateNr: 1
     }, {
-      question: 'Can you hold a conversation in a group setting when several people are speaking at the same time?',
+      question: 'Μπορείτε να ακολουθείτε μια συζήτηση σε μια ομάδα, όταν μιλούν ταυτόχρονα διάφορα άτομα;',
       type: QuestionType.single,
       answerTemplateNr: 1
     }
@@ -60,29 +60,29 @@ export let HDDA_gr: IQuestionnaire = {
   answerTemplates: [
     [
       {
-        answer: 'Always',
+        answer: 'Πάντα',
         value: 0
       },
       {
-        answer: 'Occasionally',
+        answer: 'Περιστασιακά',
         value: 1
       },
       {
-        answer: 'Never',
+        answer: 'Ποτέ',
         value: 2
       }
     ],
     [
       {
-        answer: 'No, I can\'t',
+        answer: 'Όχι, δεν μπορώ',
         value: 0
       },
       {
-        answer: 'With some difficulty',
+        answer: 'Με κάποια δυσκολία',
         value: 1
       },
       {
-        answer: 'Yes, without difficulty',
+        answer: 'Ναι, χωρίς δυσκολία',
         value: 2
       }
     ]

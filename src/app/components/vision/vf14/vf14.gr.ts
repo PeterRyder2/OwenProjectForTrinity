@@ -8,141 +8,141 @@ export let VF14_gr: IQuestionnaire = {
   questions: [
     {
       // tslint:disable-next-line:max-line-length
-      question: 'Do you have any difficulty, even with glasses, reading small print, such as labels on medicine bottles, a telephone book, food labels?',
+      question: 'Αντιμετωπίζετε οποιαδήποτε δυσκολία, ακόμη και με γυαλιά, στο να διαβάζετε μικρά γράμματα όπως οδηγίες ετικετών σε μπουκάλια φαρμάκων, τηλεφωνικό κατάλογο, ετικέτες φαγητών;',
       answerTemplateNr: 0,
       type: QuestionType.single
     },
     {
-      question: 'Do you have any difficulty, even with glasses, reading a newspaper or a book?',
+      question: 'Αντιμετωπίζετε οποιαδήποτε δυσκολία, ακόμη και με γυαλιά, στο να διαβάζετε εφημερίδα ή ένα βιβλίο;',
       answerTemplateNr: 0,
       type: QuestionType.single
     },
     {
       // tslint:disable-next-line:max-line-length
-      question: 'Do you have any difficulty, even with glasses, reading a large-print book or large-print newspaper or numbers on a telephone?',
+      question: 'Αντιμετωπίζετε οποιαδήποτε δυσκολία, ακόμη και με γυαλιά, στο να διαβάζετε ένα βιβλίο με μεγάλα γράμματα, ή εφημερίδες με μεγάλα γράμματα ή αριθμούς πάνω σε τηλέφωνο;',
       answerTemplateNr: 0,
       type: QuestionType.single
     },
     {
-      question: 'Do you have any difficulty, even with glasses, recognizing people when they are close to you?',
+      question: 'Αντιμετωπίζετε οποιαδήποτε δυσκολία, ακόμη και με γυαλιά, στο να αναγνωρίζετε ανθρώπους όταν είναι κοντά σας;',
       answerTemplateNr: 0,
       type: QuestionType.single
     },
     {
-      question: 'Do you have any difficulty, even with glasses, seeing steps, stairs or curbs?',
+      question: 'Αντιμετωπίζετε οποιαδήποτε δυσκολία, ακόμη και με γυαλιά, στο να βλέπετε σκαλιά, σκάλες, ή άκριες πεζοδρομίων;',
       answerTemplateNr: 0,
       type: QuestionType.single
     },
     {
-      question: 'Do you have any difficulty, even with glasses, reading traffic signs, street signs, or store signs?',
+      question: 'Αντιμετωπίζετε οποιαδήποτε δυσκολία, ακόμη και με γυαλιά, στο να διαβάζετε πινακίδες τροχαίας, δρόμων ή καταστημάτων;',
       answerTemplateNr: 0,
       type: QuestionType.single
     },
     {
-      question: 'Do you have any difficulty, even with glasses, doing find handwork like sewing, knitting, crocheting, carpentry?',
+      question: 'Αντιμετωπίζετε οποιαδήποτε δυσκολία, ακόμη και με γυαλιά, στο να κάνετε δουλειές με τα χέρια σας όπως ράψιμο, πλέξιμο, κέντημα, ξυλουργική;',
       answerTemplateNr: 0,
       type: QuestionType.single
     },
     {
-      question: 'Do you have any difficulty, even with glasses, writing checks or filling out forms?',
+      question: 'Αντιμετωπίζετε οποιαδήποτε δυσκολία, ακόμη και με γυαλιά, στο να συμπληρώνετε επιταγές ή άλλα έντυπα;',
       answerTemplateNr: 0,
       type: QuestionType.single
     },
     {
-      question: 'Do you have any difficulty, even with glasses, playing games such as bingo, dominos, card games, mahjong?',
+      question: 'Αντιμετωπίζετε οποιαδήποτε δυσκολία, ακόμη και με γυαλιά, στο το να παίζετε παιχνίδια όπως τόμπολα, ντόμινο, παιχνίδια με τράπουλα, ματζόνγκ;',
       answerTemplateNr: 0,
       type: QuestionType.single
     },
     {
-      question: 'Do you have any difficulty, even with glasses, taking part in sports like bowling, handball, tennis, golf?',
+      question: 'Αντιμετωπίζετε οποιαδήποτε δυσκολία, ακόμη και με γυαλιά,  στο να λαμβάνετε μέρος σε αθλητικές δραστηριότητες όπως μπόουλινγκ, χειροσφαίριση, αντισφαίριση, γκολφ κτλ.;',
       answerTemplateNr: 0,
       type: QuestionType.single
     },
     {
-      question: 'Do you have any difficulty, even with glasses, cooking?',
+      question: 'Αντιμετωπίζετε οποιαδήποτε δυσκολία, ακόμη και με γυαλιά, στο να μαγειρεύετε;',
       answerTemplateNr: 0,
       type: QuestionType.single
     },
     {
-      question: 'Do you have any difficulty, even with glasses, watching television?',
+      question: 'Αντιμετωπίζετε οποιαδήποτε δυσκολία, ακόμη και με γυαλιά, στο να παρακολουθείτε τηλεόραση;',
       answerTemplateNr: 0,
       type: QuestionType.single
     },
     {
-      question: 'Do you currently drive a car?',
+      question: 'Οδηγείτε αυτοκίνητο αυτήν την περίοδο;',
       type: QuestionType.jump,
       answers: [
         {
-          answer: 'Yes',
+          answer: 'Ναι',
           jumpTo: 13,
           value: null
         },
         {
-          answer: 'No',
+          answer: 'Όχι',
           jumpTo: 15,
           value: null
         }
       ]
     },
     {
-      question: 'How much difficulty do you have driving during the day because of your vision?',
+      question: 'Πόση δυσκολία αντιμετωπίζετε κατά την οδήγηση την ημέρα λόγω της όρασης σας;',
       answerTemplateNr: 1,
       type: QuestionType.single
     },
     {
-      question: 'How much difficulty do you have driving at night because of your vision?',
+      question: 'Πόση δυσκολία αντιμετωπίζεται κατά την οδήγηση το βράδυ λόγω της όρασης σας;',
       answerTemplateNr: 1,
       type: QuestionType.single,
       jumpTo: -1
     },
     {
-      question: 'Have you ever driven a car?',
+      question: 'Έχετε οδηγήσει ποτέ αυτοκίνητο;',
       type: QuestionType.jump,
       answers: [
         {
-          answer: 'Yes',
+          answer: 'Ναι',
           jumpTo: 16,
           value: null
         },
         {
-          answer: 'No',
+          answer: 'Όχι',
           jumpTo: -1,
           value: null
         }
       ]
     },
     {
-      question: 'When did you stop driving?',
+      question: 'Πότε σταματήσατε να οδηγείτε;',
       type: QuestionType.single,
       answers: [
         {
-          answer: 'less than 6 months ago',
+          answer: 'Λιγότερο από πριν 6 μήνες',
           value: null
         },
         {
-          answer: '6-12 months ago',
+          answer: 'Πριν από 6-12 μήνες',
           value: null
         },
         {
-          answer: 'more than 12 months ago',
+          answer: 'Περισσότερο από πριν 12 μήνες ',
           value: null
         }
       ]
     },
     {
-      question: 'Why did you stop driving?',
+      question: 'Γιατί σταματήσατε να οδηγείτε;',
       type: QuestionType.single,
       answers: [
         {
-          answer: 'vision',
+          answer: 'Όραση',
           value: null
         },
         {
-          answer: 'other illness',
+          answer: 'Άλλη ασθένεια',
           value: null
         },
         {
-          answer: 'other reason',
+          answer: 'Άλλος λόγος',
           value: null
         }
       ]
@@ -151,45 +151,45 @@ export let VF14_gr: IQuestionnaire = {
   answerTemplates: [
     [
       {
-        answer: 'not applicable',
+        answer: 'Δεν ισχύει',
         value: null
       },
       {
-        answer: 'no',
+        answer: 'όχι',
         value: 4
       },
       {
-        answer: 'yes, with a little difficulty',
+        answer: 'ναι, με μικρή δυσκολία',
         value: 3
       },
       {
-        answer: 'yes, with a moderate amount of difficulty',
+        answer: 'ναι, με μέτρια δυσκολία',
         value: 2
       },
       {
-        answer: 'yes, with a great deal of difficulty',
+        answer: 'ναι, με μεγάλη δυσκολία',
         value: 1
       },
       {
-        answer: 'yes, and am unable to do the activity',
+        answer: 'ναι, και δεν είμαι ικανός/η να κάνω τη δραστηριότητα',
         value: 0
       }
     ],
     [
       {
-        answer: 'no difficulty',
+        answer: 'Καμιά δυσκολία',
         value: 4
       },
       {
-        answer: 'a little difficulty',
+        answer: 'Μικρή δυσκολία',
         value: 3
       },
       {
-        answer: 'a moderate amount of difficulty',
+        answer: 'Μέτριος βαθμός δυσκολίας',
         value: 2
       },
       {
-        answer: 'a great deal of difficulty',
+        answer: 'Μεγάλη δυσκολία',
         value: 1
       }
     ]

@@ -6,82 +6,82 @@ export let IQCODE_gr: IQuestionnaire = {
   title: 'Memory questionnaire',
   questions: [
     {
-      question: 'Compared with ten years ago how is this person at: Remembering things about family and friends e.g. occupations, birthdays, addresses',
+      question: 'Συγκρίνοντας με πριν 10 χρόνια, πως είναι αυτό το άτομο σχετικά με το να: Θυμάται πράγματα που αφορούν την οικογένεια και φίλους πχ. Επαγγέλματα, γενέθλια, διευθύνσεις.',
       type: QuestionType.single,
       answerTemplateNr: 0
     },
     {
-      question: 'Compared with ten years ago how is this person at: Remembering things that have happened recently',
+      question: 'Συγκρίνοντας με πριν 10 χρόνια, πως είναι αυτό το άτομο σχετικά με το να: Θυμάται πράγματα που έχουν συμβεί πρόσφατα.',
       type: QuestionType.single,
       answerTemplateNr: 0
     },
     {
-      question: 'Compared with ten years ago how is this person at: Recalling conversations a few days later',
+      question: 'Συγκρίνοντας με πριν 10 χρόνια, πως είναι αυτό το άτομο σχετικά με το να: Θυμάται συζητήσεις που έχουν γίνει αφού έχουν περάσει κάποιες μέρες.',
       type: QuestionType.single,
       answerTemplateNr: 0
     },
     {
-      question: 'Compared with ten years ago how is this person at: Remembering his/her address and telephone number',
+      question: 'Συγκρίνοντας με πριν 10 χρόνια, πως είναι αυτό το άτομο σχετικά με το να: Θυμάται τον αριθμό του τηλεφώνου και την διεύθυνση του/της.',
       type: QuestionType.single,
       answerTemplateNr: 0
     },
     {
-      question: 'Compared with ten years ago how is this person at: Remembering what day and month it is',
+      question: 'Συγκρίνοντας με πριν 10 χρόνια, πως είναι αυτό το άτομο σχετικά με το να: Θυμάται τι μέρα και τι μήνας είναι.',
       type: QuestionType.single,
       answerTemplateNr: 0
     },
     {
-      question: 'Compared with ten years ago how is this person at: Remembering where things are usually kept',
+      question: 'Συγκρίνοντας με πριν 10 χρόνια, πως είναι αυτό το άτομο σχετικά με το να: Θυμάται που φυλάσσονται συνήθως τα πράγματα.',
       type: QuestionType.single,
       answerTemplateNr: 0
     },
     {
-      question: 'Compared with ten years ago how is this person at: Remembering where to find things which have been put in a different place from usual',
+      question: 'Συγκρίνοντας με πριν 10 χρόνια, πως είναι αυτό το άτομο σχετικά με το να: Θυμάται που να βρει πράγματα τα οποία έχουν τοποθετηθεί σε ένα διαφορετικό μέρος απ’ ότι συνήθως.',
       type: QuestionType.single,
       answerTemplateNr: 0
     },
     {
-      question: 'Compared with ten years ago how is this person at: Knowing how to work familiar machines around the house',
+      question: 'Συγκρίνοντας με πριν 10 χρόνια, πως είναι αυτό το άτομο σχετικά με το να: Ξέρει πως να χρησιμοποιεί τις γνώριμες μηχανές που βρίσκονται στο σπίτι.',
       type: QuestionType.single,
       answerTemplateNr: 0
     },
     {
-      question: 'Compared with ten years ago how is this person at: Learning to use a new gadget or machine around the house',
+      question: 'Συγκρίνοντας με πριν 10 χρόνια, πως είναι αυτό το άτομο σχετικά με το να: Μπορεί να μάθει πώς να χρησιμοποιεί μια καινούρια συσκευή/μηχάνημα στο σπίτι.',
       type: QuestionType.single,
       answerTemplateNr: 0
     },
     {
-      question: 'Compared with ten years ago how is this person at: Learning new things in general',
+      question: 'Συγκρίνοντας με πριν 10 χρόνια, πως είναι αυτό το άτομο σχετικά με το να: Μαθαίνει καινούρια πράγματα γενικά.',
       type: QuestionType.single,
       answerTemplateNr: 0
     },
     {
-      question: 'Compared with ten years ago how is this person at: Following a story in a book or on TV',
+      question: 'Συγκρίνοντας με πριν 10 χρόνια, πως είναι αυτό το άτομο σχετικά με το να: Μπορεί να ακολουθήσει μια ιστορία από ένα βιβλίο ή την τηλεόραση.',
       type: QuestionType.single,
       answerTemplateNr: 0
     },
     {
-      question: 'Compared with ten years ago how is this person at: Making decisions on everyday matters',
+      question: 'Συγκρίνοντας με πριν 10 χρόνια, πως είναι αυτό το άτομο σχετικά με το να: Μπορεί να πάρει αποφάσεις για καθημερινά θέματα.',
       type: QuestionType.single,
       answerTemplateNr: 0
     },
     {
-      question: 'Compared with ten years ago how is this person at: Handling money for shopping',
+      question: 'Συγκρίνοντας με πριν 10 χρόνια, πως είναι αυτό το άτομο σχετικά με το να: Μπορεί να χειριστεί χρήματα για να κάνει ψώνια.',
       type: QuestionType.single,
       answerTemplateNr: 0
     },
     {
-      question: 'Compared with ten years ago how is this person at: Handling financial matters e.g. the pension, dealing with the bank',
+      question: 'Συγκρίνοντας με πριν 10 χρόνια, πως είναι αυτό το άτομο σχετικά με το να: Μπορεί να χειριστει οικονομικά θέματα, πχ. Την σύνταξη, να ασχοληθεί με την τράπεζα.',
       type: QuestionType.single,
       answerTemplateNr: 0
     },
     {
-      question: 'Compared with ten years ago how is this person at: Handling other everyday arithmetic problems e.g. knowing how much food to buy, knowing how long between visits from family or friends',
+      question: 'Συγκρίνοντας με πριν 10 χρόνια, πως είναι αυτό το άτομο σχετικά με το να: Μπορεί να χειριστεί άλλα αριθμητικά προβλήματα της καθημερινότητας, πχ. Γνωρίζει πόσο φαγητό πρέπει να αγοράσει, θυμάται πόσο καιρό έχει να επισκεφθεί φίλους ή οικογένεια.',
       type: QuestionType.single,
       answerTemplateNr: 0
     },
     {
-      question: 'Compared with ten years ago how is this person at: Using his/her intelligence to understand what\'s going on and to reason things through',
+      question: 'Συγκρίνοντας με πριν 10 χρόνια, πως είναι αυτό το άτομο σχετικά με το να: Χρησιμοποιεί το μυαλό του/της για να αντιληφθεί τι συμβαίνει και για να σκεφτεί τα πράγματα με λογικό τρόπο.',
       type: QuestionType.single,
       answerTemplateNr: 0
     }
@@ -89,23 +89,23 @@ export let IQCODE_gr: IQuestionnaire = {
   answerTemplates: [
     [
       {
-        answer: 'Much improved',
+        answer: 'Πολλή βελτίωση',
         value: 1
       },
       {
-        answer: 'A  bit  improved',
+        answer: 'Λίγη βελτίωση',
         value: 2
       },
       {
-        answer: 'Not much change',
+        answer: 'Όχι ιδιαίτερη αλλαγή',
         value: 3
       },
       {
-        answer: 'A bit  worse',
+        answer: 'Λίγο χειρότερα',
         value: 4
       },
       {
-        answer: 'Much worse',
+        answer: 'Πολύ χειρότερα',
         value: 5
       }
     ]
