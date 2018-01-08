@@ -8,19 +8,11 @@ export let HDDA_gr: IQuestionnaire = {
   backEnabled: false,
   questions: [
     {
-<<<<<<< HEAD
       question: 'Έχετε παρατηρήσει ότι δεν ακούτε τόσο καλά όσο στο παρελθόν;',
       type: QuestionType.single,
       answerTemplateNr: 0
     }, {
       question: 'Σας έχει πει κάποιος/α ότι δεν ακούτε καλά;',
-=======
-      question: 'GR Have you noticed that you don’t hear as well as you used to?',
-      type: QuestionType.single,
-      answerTemplateNr: 0
-    }, {
-      question: ' GR Has anybody told you that you don’t hear well?',
->>>>>>> bcaf1eb48cc88511ca2cc212b417aec3a262c6c4
       type: QuestionType.single,
       answerTemplateNr: 0
     }, {
