@@ -3,38 +3,28 @@ Dringende Fragen:
 - Cognition, Texte + Audio Signale: EN, FR, GR, bislang in ...\CognitionTestData\de\...
 - Mini-Instructions Zeilenumbruch, Inhalte
 - Mini-Instructions Cognition, no/yes anstatt Symbole
+- Mini-Instructions Vision: "Press arrow at the side of the gap."
 - + / - Button in Vision Rectangle Adjustment sollte immer einen Pixel Breite ändern, Höhe je nach Skalierung
 - Zusätzliche Seite "Vision test" vor "Rectangle size adjustment"
-
-
-- Algorithmus möglicherweise falsch
-  falsche Schwelle bginn phase 2
-  was passiert wenn Phase 2 & 3 Alles falsch ist?
-
-- DONE - Rechteck im richtigen Verhältnis Breite / Höhe,
-  zentriert mit abgerundeten Ecken.
-  Text/Label im Rechteck 
-  "Compare size with"
-  "your bank card"
-- DONE - Tabellenzeilen Phase/Trials kleiner , weniger Zeilenabstand
-
-- DONe - Wenn am Ende von Phase 2 die Schwelle bereits die minimale Symbolgröße ist, endet der Test und Phase 3/4 entfällt.
-
-- DONE - Nach einer Antwort soll das Symbol verschwinden und erst nach einer kurzen Pause neu angezeigt werden.
-  Pause erstmal 1 Sekunde. Das dient als Feedback, dass die Antwort angenommen wurde, auch wenn die
-  Öffnung im Symbol im nächsten Trial auf der gleichen Seite ist.
-  Vielleicht kannst Du zusätzlich auch die 4 Pfeil-Buttons in dieser Pause disablen.
-
+- Vision test: Wenn die Minimal-Distanz > 50cm ist, dann diese im Edit-Feld anzeigen (nicht 50)
+- Beim Vision test wird in den Buttons < > ^ v angezeigt. In den Instruktionen steht aber "↓ ↑ → ←"
+- Distanz-Berechnung: Ich brauche zum Prüfen die Pixel-Breite des Rectangle nach der Kalibrierung.
+  Die auf der Testseite angezeigte "pixel acuity" weicht deutlich ab von meinen Berechnungen.
+- Distanz-Berechnung: Die optimale Distanz ist falsch. 
+  Die muss bei den aktuellen Parametern immer doppelt so groß sein wie die minimale Distanz.
+- Adaptive Steuerung falsch: falsche Schwelle beginn phase 2, soll 1 größer als Schwelle Phase 1 Seitenstruktur
+- Adaptive Steuerung: wenn am Ende Phase 2 alles falsch: Phase 3 mit Startwert "größte Größe"
+- Adaptive Steuerung: wenn am Ende Phase 3 alles falsch: Schwelle NICHT "größte Größe", sondern nicht vorhanden
+- Nach Ende des Test: Reaktion auf "Continue" fehlt, wäre eigentlich Result Seite, dann Homepage
+- NICHT done - Nach einer Antwort soll das Symbol verschwinden und erst nach einer kurzen Pause neu angezeigt werden.
+  Pause erstmal 1 Sekunde => KEINE PAUSE
+  
   Seitenstruktur im "echten" vision test:
-- DONE - Vision: Adjust Seite mit Rechteck
-- DONE - Vision: DIstance Seite 1: Ok, optimal
-- DONE - Vision: DIstance Seite 2: Ok, aber Möglichkeit zum Verbessern (Distanz vergrößern)
-- DONE - Vision: DIstance Seite 3: Nicht Ok, Möglichkeit zum Verbessern (Distanz vergrößern), Fehler solange nicht Ok
-- DONE - Vision: Instructions zum Shape, Continue => los
-- Form - Während Test ständig "Mini-Instructions"
+- Rectangle adjustment: Die jetzige Start-Größe des Rectangle ist bei mir recht klein.
+  Der Rahmen, in dem das Rectangle gemalt wird, ist kaum größer als die Kreditkarte
+  => Problem auf Tablets und Smartphones.
 
 
-- DONE - Zusatzseite bei akustischer Kalibrierung (zusätzliche Startaufforderung)
 
 
 BUGS
