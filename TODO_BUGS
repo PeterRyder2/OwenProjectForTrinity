@@ -4,6 +4,8 @@ Dringende Fragen:
 - Mini-Instructions Zeilenumbruch, Inhalte
 - Mini-Instructions Cognition, no/yes anstatt Symbole
 - + / - Button in Vision Rectangle Adjustment sollte immer einen Pixel Breite ändern, Höhe je nach Skalierung
+- Zusätzliche Seite "Vision test" vor "Rectangle size adjustment"
+
 
 - Algorithmus möglicherweise falsch
   falsche Schwelle bginn phase 2
