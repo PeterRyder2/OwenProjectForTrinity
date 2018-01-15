@@ -104,7 +104,7 @@ export const english: ILanguageFile = {
             },
             test: {
                 startHint: 'Press "Continue" to begin the hearing test.',
-                continueHint: 'Enter the recognized digits with the number pad below.',
+                continueHint: 'Enter the recognized digits with the number pad below.<br>Use &larr; button to delete a number.<br>If you are unsure about a number, please take a guess.',
                 continue: 'Continue'
             },
             testDescription: {
@@ -158,27 +158,28 @@ export const english: ILanguageFile = {
             test: {},
             testDescription: {
                 firstPage: {
-                    title: `Rectangle size adjustment`,
-                    firstParagraph: `Please ensure that this text is well visible and clearly recognisable, but please do NOT set a browser zoom differing from
-                    100%.`,
-                    secondParagraph: `Now please adjust the width of the rectangle below so that it is the same size as your card using the + and – buttons`,
-                    firstHint: `Press continue when the size of the card and the rectangle are the same.`
+                    title: `Vision test`,
+                    firstParagraph: `1. Please do NOT change the browser zoom from 100% to a different value.`,
+                    secondParagraph: `2. Place your credit card against the screen. 
+                    Adjust the width of the rectangle below so that it is the same size as the credit card 
+                    using the --/-/+/++ buttons.`,
+                    firstHint: `Press continue when the rectangle is the same width as the card.`
                 },
                 secondPage: {
                     title: `Vision test instructions`,
-                    firstParagraph: `Use a distance of atleast minDistancecm, but a distance of
-                    optDistancecm would be better.`,
+                    firstParagraph: `Use a distance of at least minDistancecm. 
+                    A distance of optDistancecm would be best.`,
                     secondParagraph: `Please enter the distance that you will use in cm:`,
-                    firstHint: `Please use more distance atleast minDistancecm
-                    better optDistancecm. Please adjust the distance.`,
-                    secondHint: `You can do the test but a distance of at least optDistancecm would
-                    better. Please Press "Continue" or adjust the distance.`,
-                    thirdHint: `Optimal Distance you are safe to go. Please Press "Continue".`,
+                    firstHint: `Please use a greater distance, at least minDistancecm.
+                    optDistancecm would be best. Please adjust the distance.`,
+                    secondHint: `You can do the test, but a distance of optDistancecm would be better. 
+                    Please press "Continue" to start or adjust the distance.`,
+                    thirdHint: `This distance is great. Please press "Continue" to start.`,
                 },
                 thirdPage: {
                     title: `Vision test instructions`,
                     firstParagraph: `You will see squares of different sizes. Each square has a gap on one side.`,
-                    secondParagraph: `Press the arrow button which is on the same side as the gap.`,
+                    secondParagraph: `Press the arrow button according to the side that the gap is on.`,
                     thirdParagraph: `For example: If you saw this shape Π you would press the arrow &darr; below the symbol.`,
                     fourthParagraph: `Some squares may be hard to see. 
                     If you are unsure which side the gap is on, please take a guess.`,
