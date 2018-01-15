@@ -11,13 +11,15 @@
   }
 }
 
+.containeVisionTest{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .miniInstuctions {
-  text-align: right;
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 20%;
+  padding-bottom: 3rem;
 }
 
 .container {

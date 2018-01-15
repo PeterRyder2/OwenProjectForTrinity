@@ -40,6 +40,9 @@ export const english: ILanguageFile = {
                 }
             },
             test: {
+                miniInstructions: 'Has this word been presented after the test started?',
+                no: 'No',
+                yes: 'Yes',
                 firstIntro: 'Now we are going to ask you some questions.<br>Answer as quickly and accurately as possible.<br><br>Please press \'Continue\' to continue',
                 secondIntro: 'Now we are going to show you some words.<br>Please decide whether or not you have already seen them.<br><br>Please press \'Continue\' to continue.',
                 continue: 'Continue',
@@ -155,9 +158,18 @@ export const english: ILanguageFile = {
                     firstHint: `Press "Continue" to begin with the questionnaire.`,
                 }
             },
-            test: {},
+            test: {
+                miniInstructions: 'Press arrow at the side of the gap.',
+            },
             testDescription: {
                 firstPage: {
+                    title: `Vision test`,
+                    firstParagraph: `1st Paragraph`,
+                    secondParagraph: `2nd Paragraph`,
+                    firstHint: `1st Hint`,
+                    secondHint: `2nd Hint`
+                },
+                secondPage: {
                     title: `Vision test`,
                     firstParagraph: `1. Please do NOT change the browser zoom from 100% to a different value.`,
                     secondParagraph: `2. Place your credit card against the screen. 
@@ -165,7 +177,7 @@ export const english: ILanguageFile = {
                     using the --/-/+/++ buttons.`,
                     firstHint: `Press continue when the rectangle is the same width as the card.`
                 },
-                secondPage: {
+                thirdPage: {
                     title: `Vision test instructions`,
                     firstParagraph: `Use a distance of at least minDistancecm. 
                     A distance of optDistancecm would be best.`,
@@ -176,7 +188,7 @@ export const english: ILanguageFile = {
                     Please press "Continue" to start or adjust the distance.`,
                     thirdHint: `This distance is great. Please press "Continue" to start.`,
                 },
-                thirdPage: {
+                fourthPage: {
                     title: `Vision test instructions`,
                     firstParagraph: `You will see squares of different sizes. Each square has a gap on one side.`,
                     secondParagraph: `Press the arrow button according to the side that the gap is on.`,

@@ -21,7 +21,7 @@ export class VisionTestDescriptionComponent implements OnInit, IDescriptionCompo
 
   page = 0;
 
-  calibrationSize = 0.5;
+  calibrationSize = 100;
   pixelAcuity = 6;
   pixelAmount = 0;
   minDistance = 40;
@@ -63,16 +63,19 @@ export class VisionTestDescriptionComponent implements OnInit, IDescriptionCompo
   }
 
   continue = async (): Promise<boolean | IInputData[]> => {
-    this.calibrate();
     switch (this.page) {
       case 0:
         this.page++;
         return false;
       case 1:
+        this.calibrate();
+        this.page++;
+        return false;
+      case 2:
         if (this.minDistance < this.distance)
           this.page++;
         return false;
-      case 2:
+      case 3:
         return [
           {
             identifier: 'pixelAcuity',

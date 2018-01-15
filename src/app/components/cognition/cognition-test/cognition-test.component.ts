@@ -126,8 +126,8 @@ export class CognitionTestComponent implements OnInit, OnDestroy, ITestComponent
   }
 
   async presentWords() {
-    this.state = State.presenting;
-
+    if (this.state !== State.presenting)
+      return;
     let rnd = Math.round(Math.random() * (this.words.present.length - 1));
     this.activeWord = this.words.present.splice(rnd, 1)[0];
     let res = await this.api.getWord({ id: this.id, word: this.activeWord });
@@ -174,6 +174,7 @@ export class CognitionTestComponent implements OnInit, OnDestroy, ITestComponent
   }
 
   ngOnDestroy() {
+    this.state = State.void;
     window.removeEventListener('keydown',
       this.keyDownEventListener);
     window.addEventListener('keyup',

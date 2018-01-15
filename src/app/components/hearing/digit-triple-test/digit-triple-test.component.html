@@ -1,45 +1,11 @@
 <div class="container">
-  <!-- <div class="container" [ngSwitch]="this.state"> -->
-  <!-- 
-  <ng-container *ngSwitchCase="0">
-    <div class="grid">
-      Please enter your name before you start the test:
-      <p> </p>
-      <input placeholder="Name" standard type="text" [(ngModel)]="this.name">
-      <button [disabled]="this.name == ''" standard [class.active]="activeKey == 'Enter'" (click)="init()">
-        {{_languageService.digitTripleTest.continue}}
-      </button>
-    </div>
-  </ng-container>
-
-  <ng-container *ngSwitchCase="5">
-    <div class="grid">
-      <textarea name="" id="" cols="30" rows="10" [(ngModel)]="this.annotation">
-
-      </textarea>
-      <button [disabled]="this.name == ''" standard [class.active]="activeKey == 'Enter'" (click)="this.finish()">
-        {{_languageService.digitTripleTest.continue}}
-      </button>
-    </div>
-  </ng-container>
-
-  <ng-container *ngSwitchCase="6">
-    <div class="grid">
-      <p>*PLACEHOLDER* You result: {{this.result}} *PLACEHOLDER*</p>
-      <button [disabled]="this.name == ''" standard [class.active]="activeKey == 'Enter'" (click)="this.finish()">
-        {{_languageService.digitTripleTest.continue}}
-      </button>
-    </div>
-  </ng-container>
-
-  <ng-container *ngSwitchDefault> -->
   <div class="grid">
     <div *ngIf="state == 0; then startDescription; else runningDescription"></div>
     <ng-template #startDescription>
-      <div class="content">{{language.startHint}}</div>
+      <div class="content" [innerHTML]="language.startHint"></div>
     </ng-template>
     <ng-template #runningDescription>
-      <div class="content">{{language.continueHint}}</div>
+      <div class="content" [innerHTML]="language.continueHint"></div>
     </ng-template>
     <div class="display">{{enteredNumber}}</div>
     <snscg-progressbar [value]="this.progress"></snscg-progressbar>
@@ -67,7 +33,4 @@
           {{language.continue}}
         </button>
   </div>
-
-  <!-- </ng-container> -->
-
 </div>

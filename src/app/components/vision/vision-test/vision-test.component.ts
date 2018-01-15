@@ -3,6 +3,7 @@ import { Direction, VisionCalibrationImage, VisionTestImage, makeCanvasHighRes }
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ITestComponent, ITestResponse } from '../../../interfaces/IProcedureConfig.interface';
 import { Util } from '../../../lib/util';
+import { LanguageService } from '../../../services/language.service';
 
 let State = VisionTestState;
 
@@ -24,18 +25,22 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
   testData: VisionTestData;
 
   activeKey = '';
-  calibrationSize = 0.5;
+  calibrationSize = 100;
   pixelAcuity = 6;
   pixelAmount = 0;
   distance = 100;
 
-  constructor() { }
+  get language() {
+    return this.languageService.components.vision.test;
+  }
+
+  constructor(public languageService: LanguageService) { }
 
   ngOnInit() {
     this.canvas = this.canvasRef.nativeElement;
-    // this.calCanvas = this.calCanvasRef.nativeElement;
+    this.calCanvas = this.calCanvasRef.nativeElement;
     makeCanvasHighRes(this.canvas);
-    // makeCanvasHighRes(this.calCanvas);
+    makeCanvasHighRes(this.calCanvas);
     this.testData = new VisionTestData();
     window.addEventListener('keydown',
       this.keyDownEventListener);
@@ -43,11 +48,11 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
       this.keyUpEventListener);
     this.state = State.WaitingForInput;
     this.calibratePuxels(this.pixelAcuity);
-    // this.drawCard(this.calibrationSize);
+    this.drawCard(this.calibrationSize);
   }
 
   changeSize(addition: number) {
-    this.drawCard(this.calibrationSize += this.calibrationSize + addition > 1 ? 0 : this.calibrationSize + addition < 0.2 ? 0 : addition)
+    this.drawCard(this.calibrationSize += this.calibrationSize + addition > this.calCanvas.width ? 0 : this.calibrationSize + addition < 50 ? 0 : addition)
   }
 
   calibrate() {

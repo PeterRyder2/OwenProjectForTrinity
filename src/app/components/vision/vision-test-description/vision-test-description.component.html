@@ -1,58 +1,67 @@
 <div *ngIf="this.page == 0" class="description">
-  <H2 innerHTML="{{language.firstPage.title}}"></H2>
-  <p innerHTML="{{language.firstPage.firstParagraph}}"></p>
-  <p innerHTML="{{language.firstPage.secondParagraph}}"></p>
-  <div class="calibrationCanvas">
-    <button (click)="this.changeSize(-0.05)">
-      <i class="fa fa-minus" aria-hidden="true"></i>
-      <i class="fa fa-minus" aria-hidden="true"></i>
-    </button>
-    <button (click)="this.changeSize(-1/this.calCanvas.width)">
-      <i class="fa fa-minus" aria-hidden="true"></i>
-    </button>
-    <div>
-      <canvas height="270" width="430" #CalibrationCanvas>
-      </canvas>
-      <div class="label" [style.fontSize]="(3 + 30 * this.calibrationSize)+'px'" [style.lineHeight]="(4 + 30 * this.calibrationSize)+'px'">
-        Compare size with
-        <br> your bank card
-      </div>
-    </div>
-    <button (click)="this.changeSize(1/this.calCanvas.width)">
-      <i class="fa fa-plus" aria-hidden="true"></i>
-    </button>
-    <button (click)="this.changeSize(0.05)">
-      <i class="fa fa-plus" aria-hidden="true"></i>
-      <i class="fa fa-plus" aria-hidden="true"></i>
-    </button>
+    <H2 innerHTML="{{language.firstPage.title}}"></H2>
+    <p innerHTML="{{language.firstPage.firstParagraph}}"></p>
+    <p innerHTML="{{language.firstPage.secondParagraph}}"></p>
+  
+    <div class="cal_container" innerHTML="{{language.firstPage.firstHint}}"></div>
+    <div class="cal_container" innerHTML="{{language.firstPage.secondHint}}"></div>
   </div>
-
-  <div class="continue_hint" innerHTML="{{language.firstPage.firstHint}}"></div>
-</div>
 
 <div *ngIf="this.page == 1" class="description">
   <H2 innerHTML="{{language.secondPage.title}}"></H2>
-  <p innerHTML="{{this.language.secondPage.firstParagraph | textInsert: [{find: 'minDistance', ins: minDistance},{find: 'optDistance', ins: optDistance}]}}">
-  </p>
-  <div>
-    <p innerHTML="{{ language.secondPage.secondParagraph}}"></p>
-    <input [(ngModel)]="this.distance" type="text">
-  </div>
-  <p class="warn" *ngIf="this.minDistance > this.distance" innerHTML="{{language.secondPage.firstHint | textInsert: [{find: 'minDistance', ins: minDistance},{find: 'optDistance', ins: optDistance}]}}">
-  </p>
-  <p class="warn ok" *ngIf="this.optDistance > this.distance && this.minDistance <= this.distance" innerHTML="{{language.secondPage.secondHint | textInsert: [{find: 'minDistance', ins: minDistance},{find: 'optDistance', ins: optDistance}]}}">
-  </p>
-  <p class="ok" *ngIf="this.optDistance <= this.distance" innerHTML="{{language.secondPage.thirdHint}}">
-  </p>
+  <p innerHTML="{{language.secondPage.firstParagraph}}"></p>
+  <p innerHTML="{{language.secondPage.secondParagraph}}"></p>
+  <div class="calibrationCanvas">
+      <button (click)="this.changeSize(-10)">
+        <i class="fa fa-minus" aria-hidden="true"></i>
+        <i class="fa fa-minus" aria-hidden="true"></i>
+      </button>
+      <button (click)="this.changeSize(-2)">
+        <i class="fa fa-minus" aria-hidden="true"></i>
+      </button>
+      <div>
+        <canvas height="270" width="430" #CalibrationCanvas>
+        </canvas>
+        <div class="label" [style.fontSize]="(3 + 30 * this.calibrationSize/this.calCanvas.width)+'px'">
+          Compare size with
+          <br> your bank card
+        </div>
+      </div>
+      <button (click)="this.changeSize(2)">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+      </button>
+      <button (click)="this.changeSize(10)">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+        <i class="fa fa-plus" aria-hidden="true"></i>
+      </button>
+    </div>
+
+  <div class="continue_hint" innerHTML="{{language.secondPage.firstHint}}"></div>
 </div>
 
 <div *ngIf="this.page == 2" class="description">
   <H2 innerHTML="{{language.thirdPage.title}}"></H2>
-  <p innerHTML="{{language.thirdPage.firstParagraph}}"></p>
-  <p innerHTML="{{language.thirdPage.secondParagraph}}"></p>
-  <p innerHTML="{{language.thirdPage.thirdParagraph}}"></p>
-  <p innerHTML="{{language.thirdPage.fourthParagraph}}"></p>
-  <p innerHTML="{{language.thirdPage.fifthParagraph}}"></p>
+  <p innerHTML="{{this.language.thirdPage.firstParagraph | textInsert: [{find: 'minDistance', ins: minDistance},{find: 'optDistance', ins: optDistance}]}}">
+  </p>
+  <div>
+    <p innerHTML="{{ language.thirdPage.secondParagraph}}"></p>
+    <input [(ngModel)]="this.distance" type="text">
+  </div>
+  <p class="warn" *ngIf="this.minDistance > this.distance" innerHTML="{{language.thirdPage.firstHint | textInsert: [{find: 'minDistance', ins: minDistance},{find: 'optDistance', ins: optDistance}]}}">
+  </p>
+  <p class="warn ok" *ngIf="this.optDistance > this.distance && this.minDistance <= this.distance" innerHTML="{{language.thirdPage.secondHint | textInsert: [{find: 'minDistance', ins: minDistance},{find: 'optDistance', ins: optDistance}]}}">
+  </p>
+  <p class="ok" *ngIf="this.optDistance <= this.distance" innerHTML="{{language.thirdPage.thirdHint}}">
+  </p>
+</div>
 
-  <div class="cal_container" innerHTML="{{language.thirdPage.firstHint}}"></div>
+<div *ngIf="this.page == 3" class="description">
+  <H2 innerHTML="{{language.fourthPage.title}}"></H2>
+  <p innerHTML="{{language.fourthPage.firstParagraph}}"></p>
+  <p innerHTML="{{language.fourthPage.secondParagraph}}"></p>
+  <p innerHTML="{{language.fourthPage.thirdParagraph}}"></p>
+  <p innerHTML="{{language.fourthPage.fourthParagraph}}"></p>
+  <p innerHTML="{{language.fourthPage.fifthParagraph}}"></p>
+
+  <div class="cal_container" innerHTML="{{language.fourthPage.firstHint}}"></div>
 </div>

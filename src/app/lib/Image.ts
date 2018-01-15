@@ -30,15 +30,15 @@ export class BaseImage {
 }
 
 export class VisionCalibrationImage extends BaseImage {
-    constructor(width: number, height: number, size = 0.5) {
+    constructor(width: number, height: number, size = 100) {
         super(width, height);
         this.drawCard(size);
     }
 
     drawCard(size: number) {
-        let radius = Math.round(this.pixels[0].length * size * 0.04);
-        let offsetCol = Math.round((this.pixels[0].length - this.pixels[0].length * size) / 2);
-        let offsetRow = Math.round((this.pixels.length - this.pixels[0].length * size * (53.98 / 85.6)) / 2);
+        let radius = Math.round(size * 0.04);
+        let offsetCol = Math.round((this.pixels[0].length - size) / 2);
+        let offsetRow = Math.round((this.pixels.length - size * (53.98 / 85.6)) / 2);
         for (let row = offsetRow; row < this.pixels.length - offsetRow; row++)
             for (let col = offsetCol; col < this.pixels[row].length - offsetCol; col++) {
                 this.pixels[row][col] = new Pixel(30, 30, 30, 255);

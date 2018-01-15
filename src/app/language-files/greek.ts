@@ -40,6 +40,9 @@ export const greek: ILanguageFile = {
                 }
             },
             test: {
+                miniInstructions: 'Has this word been presented after the test started?',
+                no: 'No',
+                yes: 'Yes',
                 firstIntro: 'Now we are going to ask you some questions.<br>Answer as quickly and accurately as possible.<br><br>Please press \'Continue\' to continue',
                 secondIntro: 'Now we are going to show you some words.<br>Please decide whether or not you have already seen them.<br><br>Please press \'Continue\' to continue.',
                 continue: 'Continue',
@@ -157,27 +160,40 @@ export const greek: ILanguageFile = {
                     firstHint: `Press "Continue" to begin with the questionnaire.`,
                 }
             },
-            test: {},
+            test: {
+                miniInstructions: 'Press arrow at the side of the gap.',
+            },
             testDescription: {
                 firstPage: {
-                    title: `Rectangle size adjustment`,
-                    firstParagraph: `Please ensure that this text is well visible and clearly recognisable, but please do NOT set a browser zoom differing from
-                    100%.`,
-                    secondParagraph: `Now please adjust the width of the rectangle below so that it is the same size as your card using the + and – buttons`,
-                    firstHint: `Press continue when the size of the card and the rectangle are the same.`
+                    title: `Vision test`,
+                    firstParagraph: `1st Paragraph`,
+                    secondParagraph: `2nd Paragraph`,
+                    firstHint: `1st Hint`,
+                    secondHint: `2nd Hint`
                 },
                 secondPage: {
-                    title: `Vision test instructions`,
-                    firstParagraph: `Keep a distance of 50 cm from your eyes to the screen during the test.`,
-                    secondParagraph: `GR paragraph 2`,
-                    firstHint: `Please press "Continue".`,
-                    secondHint: `GREEK LANGUAGE`,
-                    thirdHint: `GREEK LANGUAGE`,
+                    title: `Vision test`,
+                    firstParagraph: `1. Please do NOT change the browser zoom from 100% to a different value.`,
+                    secondParagraph: `2. Place your credit card against the screen. 
+                    Adjust the width of the rectangle below so that it is the same size as the credit card 
+                    using the --/-/+/++ buttons.`,
+                    firstHint: `Press continue when the rectangle is the same width as the card.`
                 },
                 thirdPage: {
                     title: `Vision test instructions`,
+                    firstParagraph: `Use a distance of at least minDistancecm. 
+                    A distance of optDistancecm would be best.`,
+                    secondParagraph: `Please enter the distance that you will use in cm:`,
+                    firstHint: `Please use a greater distance, at least minDistancecm.
+                    optDistancecm would be best. Please adjust the distance.`,
+                    secondHint: `You can do the test, but a distance of optDistancecm would be better. 
+                    Please press "Continue" to start or adjust the distance.`,
+                    thirdHint: `This distance is great. Please press "Continue" to start.`,
+                },
+                fourthPage: {
+                    title: `Vision test instructions`,
                     firstParagraph: `You will see squares of different sizes. Each square has a gap on one side.`,
-                    secondParagraph: `Press the arrow button which is on the same side as the gap.`,
+                    secondParagraph: `Press the arrow button according to the side that the gap is on.`,
                     thirdParagraph: `For example: If you saw this shape Π you would press the arrow &darr; below the symbol.`,
                     fourthParagraph: `Some squares may be hard to see. 
                     If you are unsure which side the gap is on, please take a guess.`,

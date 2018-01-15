@@ -34,6 +34,9 @@ export class ILanguageFile {
                 }
             },
             test: {
+                miniInstructions: string;
+                no: string;
+                yes: string;
                 firstIntro: string;
                 secondIntro: string;
                 continue: string;
@@ -122,15 +125,24 @@ export class ILanguageFile {
                     firstHint: string;
                 }
             },
-            test: {},
+            test: {
+                miniInstructions: string;
+            },
             testDescription: {
                 firstPage: {
                     title: string;
                     firstParagraph: string;
                     secondParagraph: string;
                     firstHint: string;
+                    secondHint: string;
                 },
                 secondPage: {
+                    title: string;
+                    firstParagraph: string;
+                    secondParagraph: string;
+                    firstHint: string;
+                },
+                thirdPage: {
                     title: string;
                     firstParagraph: string;
                     secondParagraph: string;
@@ -138,7 +150,7 @@ export class ILanguageFile {
                     secondHint: string;
                     thirdHint: string;
                 },
-                thirdPage: {
+                fourthPage: {
                     title: string;
                     firstParagraph: string;
                     secondParagraph: string;
