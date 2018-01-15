@@ -1,6 +1,5 @@
 TODO
 Dringende Fragen:
-- Cognition, Texte + Audio Signale: EN, FR, GR, bislang in ...\CognitionTestData\de\...
 - Mini-Instructions Zeilenumbruch, Inhalte
 - Mini-Instructions Cognition, no/yes anstatt Symbole
 - Mini-Instructions Vision: "Press arrow at the side of the gap."
@@ -29,6 +28,13 @@ Dringende Fragen:
 
 
 BUGS
-- Fehler während Cognition => API muss neu gestartet werden (zumindest im Debugger)
+- Vision Test "Distance" Seite: hat sich aufgehängt wenn Distanz 1x zu klein (rot), 
+  "Continue" bleibt enabled, reagiert aber nicht auch wenn wieder orange/grün.
+- Vision Test: Phase 1, nach falscher Antwort wird Symbol nicht mehr angezeigt.
+- Das Starten des Cognition Test dauert recht lange. 
+  Kann man das beschleunigen?
+- Die Datei zum Kalibrieren Sound ist fest verdrahtet testTripleSound.mp3, NICHT sprachabhängig,
+  und als MP3 nicht überall abspielbar. WAV ?
+- ? behoben ? Fehler während Cognition => API muss neu gestartet werden (zumindest im Debugger)
 
   
