@@ -1,10 +1,9 @@
 TODO
 Dringende Fragen:
-- Mini-Instructions Zeilenumbruch, Inhalte
-- Mini-Instructions Cognition, no/yes anstatt Symbole
+- Mini-Instructions Zeilenumbruch: <br> <br> fügt keine Leerzeilen an. Formatierung "springt" beim Num-Pad!
+- Object für Text hearing / test / startHint mind. 3 Zeilen hoch
 - Mini-Instructions Vision: "Press arrow at the side of the gap."
 - + / - Button in Vision Rectangle Adjustment sollte immer einen Pixel Breite ändern, Höhe je nach Skalierung
-- Zusätzliche Seite "Vision test" vor "Rectangle size adjustment"
 - Vision test: Wenn die Minimal-Distanz > 50cm ist, dann diese im Edit-Feld anzeigen (nicht 50)
 - Beim Vision test wird in den Buttons < > ^ v angezeigt. In den Instruktionen steht aber "↓ ↑ → ←"
 - Distanz-Berechnung: Ich brauche zum Prüfen die Pixel-Breite des Rectangle nach der Kalibrierung.
@@ -18,7 +17,6 @@ Dringende Fragen:
 - NICHT done - Nach einer Antwort soll das Symbol verschwinden und erst nach einer kurzen Pause neu angezeigt werden.
   Pause erstmal 1 Sekunde => KEINE PAUSE
   
-  Seitenstruktur im "echten" vision test:
 - Rectangle adjustment: Die jetzige Start-Größe des Rectangle ist bei mir recht klein.
   Der Rahmen, in dem das Rectangle gemalt wird, ist kaum größer als die Kreditkarte
   => Problem auf Tablets und Smartphones.
@@ -35,6 +33,6 @@ BUGS
   Kann man das beschleunigen?
 - Die Datei zum Kalibrieren Sound ist fest verdrahtet testTripleSound.mp3, NICHT sprachabhängig,
   und als MP3 nicht überall abspielbar. WAV ?
-- ? behoben ? Fehler während Cognition => API muss neu gestartet werden (zumindest im Debugger)
+
 
   
