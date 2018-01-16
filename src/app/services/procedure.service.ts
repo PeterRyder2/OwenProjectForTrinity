@@ -15,6 +15,8 @@ import { ProcedureState } from '../enums/Procedure.State.enum';
 @Injectable()
 export class ProcedureService {
 
+  static continue: () => void;
+
   private procedure: IProcedure;
 
   chapterSelectionComponentRef: ComponentRef<ChapterSelectionComponent>;
@@ -33,7 +35,9 @@ export class ProcedureService {
     return this.procedure.chapters[this.position.chapter].tests[this.position.test];
   }
 
-  constructor(private idService: IdService, private settings: SettingsService) { }
+  constructor(private idService: IdService, private settings: SettingsService) {
+    ProcedureService.continue = () => { this.continue(); };
+  }
 
   skip() {
     switch (this.position.state) {

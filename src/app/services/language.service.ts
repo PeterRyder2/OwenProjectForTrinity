@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { SettingsService } from './settings.service';
 import { ILanguageFile } from '../interfaces/ILanguage.interface';
 import { Language } from '../enums/languages.enum';
-import { german } from '../language-files/german';
 import { english } from '../language-files/english';
 import { french } from '../language-files/french';
 import { greek } from '../language-files/greek';

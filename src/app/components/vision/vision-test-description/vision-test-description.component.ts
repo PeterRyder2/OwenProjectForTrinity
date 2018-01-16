@@ -12,16 +12,19 @@ export class VisionTestDescriptionComponent implements OnInit, IDescriptionCompo
 
   @ViewChild('CalibrationCanvas') set calCanvasRef(ref: ElementRef) {
     if (ref) {
-      this.calCanvas = ref.nativeElement;
-      makeCanvasHighRes(this.calCanvas);
-      this.drawCard(this.calibrationSize);
+      console.log('lol')
+      setTimeout(() => {
+        this.calCanvas = ref.nativeElement;
+        makeCanvasHighRes(this.calCanvas);
+        this.drawCard(this.calibrationSize);
+      }, 0);
     }
   }
   calCanvas: HTMLCanvasElement;
 
   page = 0;
 
-  calibrationSize = 100;
+  calibrationSize = 300;
   pixelAcuity = 6;
   pixelAmount = 0;
   minDistance = 40;
@@ -38,11 +41,11 @@ export class VisionTestDescriptionComponent implements OnInit, IDescriptionCompo
   }
 
   changeSize(addition: number) {
-    this.drawCard(this.calibrationSize += this.calibrationSize + addition > 1 ? 0 : this.calibrationSize + addition < 0.2 ? 0 : addition);
+    this.drawCard(this.calibrationSize += this.calibrationSize + addition > this.calCanvas.width ? 0 : this.calibrationSize + addition < 50 ? 50 : addition)
   }
 
   drawCard(size: number) {
-    this.pixelAmount = Math.round(this.calCanvas.width * this.calibrationSize);
+    this.pixelAmount = this.calibrationSize;
     let ctx = this.calCanvas.getContext('2d');
     ctx.clearRect(0, 0, this.calCanvas.width, this.calCanvas.height)
     let img = new VisionCalibrationImage(this.calCanvas.width, this.calCanvas.height, size);
@@ -50,7 +53,7 @@ export class VisionTestDescriptionComponent implements OnInit, IDescriptionCompo
   }
 
   calibrate() {
-    let PS = 53.98 / Math.round(this.calCanvas.width * this.calibrationSize);
+    let PS = 53.98 / this.calibrationSize;
     let D = this.distance;
     let PA = 6 * 60 * 2 * Math.atan((PS / 2 / (D * 10)) * 180 / Math.PI);
     PA = +(Math.round((PA + 'e+2') as any) + 'e-2')
@@ -69,10 +72,12 @@ export class VisionTestDescriptionComponent implements OnInit, IDescriptionCompo
         return false;
       case 1:
         this.calibrate();
+        if (this.minDistance > 50)
+          this.distance = this.minDistance;
         this.page++;
         return false;
       case 2:
-        if (this.minDistance < this.distance)
+        if (this.minDistance <= this.distance)
           this.page++;
         return false;
       case 3:
