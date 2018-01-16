@@ -4,6 +4,7 @@ import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/co
 import { ITestComponent, ITestResponse } from '../../../interfaces/IProcedureConfig.interface';
 import { Util } from '../../../lib/util';
 import { LanguageService } from '../../../services/language.service';
+import { ProcedureService } from '../../../services/procedure.service';
 
 let State = VisionTestState;
 
@@ -56,7 +57,7 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
   }
 
   calibrate() {
-    let PS = 53.98 / Math.round(this.calCanvas.width * this.calibrationSize);
+    let PS = 53.98 / this.calibrationSize;
     let D = this.distance;
     let PA = 6 * 60 * 2 * Math.atan((PS / 2 / (D * 10)) * 180 / Math.PI);
     PA = +(Math.round((PA + 'e+2') as any) + 'e-2')
@@ -85,7 +86,7 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
   }
 
   drawCard(size: number) {
-    this.pixelAmount = Math.round(this.calCanvas.width * this.calibrationSize);
+    this.pixelAmount = this.calibrationSize;
     let ctx = this.calCanvas.getContext('2d');
     this.clearCanvas(ctx);
     let img = new VisionCalibrationImage(this.calCanvas.width, this.calCanvas.height, size);
@@ -133,7 +134,8 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
     this.continue(d);
   }
 
-  async continue(direction?: Direction): Promise<ITestResponse> {
+  continue = async (direction?: Direction): Promise<ITestResponse> => {
+    console.log(this.state);
     switch (this.state) {
       case State.Initializing:
         break;
@@ -143,9 +145,15 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
           this.clearCanvas();
           await Util.Delay(0)
           this.state = State.WaitingForInput;
-          return this.continueTrial(direction);
+          let isFin = this.continueTrial(direction);
+          ProcedureService.continue();
+          return false;
         }
         break;
+      case State.Finished:
+        return {
+          result: this.evaluate()
+        }
       default:
         break;
     }
@@ -161,9 +169,7 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
         let nextPhase = this.nextPhase();
         if (nextPhase === false) {
           this.state = State.Finished;
-          return {
-            result: this.evaluate()
-          }
+          return true;
         } else
           this.testData.activeTrial = nextPhase;
       } else {
@@ -172,9 +178,7 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
           let nextPhase = this.nextPhase();
           if (nextPhase === false) {
             this.state = State.Finished;
-            return {
-              result: this.evaluate()
-            }
+            return true;
           } else
             this.testData.activeTrial = nextPhase;
         } else

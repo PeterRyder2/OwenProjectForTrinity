@@ -37,16 +37,18 @@ export class VisionCalibrationImage extends BaseImage {
 
     drawCard(size: number) {
         let radius = Math.round(size * 0.04);
-        let offsetCol = Math.round((this.pixels[0].length - size) / 2);
-        let offsetRow = Math.round((this.pixels.length - size * (53.98 / 85.6)) / 2);
-        for (let row = offsetRow; row < this.pixels.length - offsetRow; row++)
-            for (let col = offsetCol; col < this.pixels[row].length - offsetCol; col++) {
+        let vertSize = Math.round(size * (53.98 / 85.6));
+        let offsetCol = Math.floor((this.pixels[0].length - size) / 2);
+        let offsetRow = Math.round((this.pixels.length - vertSize) / 2);
+        for (let row = offsetRow; row < vertSize + offsetRow; row++)
+            for (let col = offsetCol; col < size + offsetCol; col++) {
                 this.pixels[row][col] = new Pixel(30, 30, 30, 255);
             }
+            console.log(this.pixels.length - offsetRow, vertSize + offsetRow)
         this.drawCircle_lu(offsetCol + radius, offsetRow + radius, radius);
-        this.drawCircle_ru(this.pixels[0].length - offsetCol - radius - 1, offsetRow + radius, radius);
-        this.drawCircle_rd(this.pixels[0].length - offsetCol - radius - 1, this.pixels.length - offsetRow - radius - 1, radius);
-        this.drawCircle_ld(offsetCol + radius, this.pixels.length - offsetRow - radius - 1, radius);
+        this.drawCircle_ru(size + offsetCol - radius - 1, offsetRow + radius, radius);
+        this.drawCircle_rd(size + offsetCol - radius - 1, vertSize + offsetRow - radius - 1, radius);
+        this.drawCircle_ld(offsetCol + radius, vertSize + offsetRow - radius - 1, radius);
     }
 
     x(cx, cy, r, i, j) {
