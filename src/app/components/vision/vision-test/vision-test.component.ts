@@ -143,7 +143,7 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
         if (direction != null) {
           this.state = State.Pause;
           this.clearCanvas();
-          await Util.Delay(0)
+          await Util.Delay(1000)
           this.state = State.WaitingForInput;
           let isFin = this.continueTrial(direction);
           ProcedureService.continue();
