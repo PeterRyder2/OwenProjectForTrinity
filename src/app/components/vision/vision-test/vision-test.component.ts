@@ -146,7 +146,8 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
           await Util.Delay(1000)
           this.state = State.WaitingForInput;
           let isFin = this.continueTrial(direction);
-          ProcedureService.continue();
+          if (isFin && ProcedureService.continue)
+            ProcedureService.continue();
           return false;
         }
         break;
@@ -172,6 +173,7 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
           return true;
         } else
           this.testData.activeTrial = nextPhase;
+        this.newDirection();
       } else {
         let nextTrial = this.nextTrial();
         if (nextTrial === false) {

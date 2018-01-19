@@ -57,7 +57,7 @@ export const english: ILanguageFile = {
                     firstHint: ` You can use external speakers or headphones if necessary. `,
                     secondHint: `Press "Continue" to start the test sound.`,
                     thirdHint: `Press "Continue" when the speech is clearly audible.`,
-                    soundFile: 'testTripleSound.mp3'
+                    soundFile: 'TestMemorySound.en.mp3'
                 },
                 secondPage: {
                     title: `Word game instructions`,
@@ -119,7 +119,7 @@ export const english: ILanguageFile = {
                     firstHint: ` You can use external speakers or headphones if necessary. `,
                     secondHint: `Press "Continue" to start the test sound.`,
                     thirdHint: `Press "Continue" when the speech is clearly audible.`,
-                    soundFile: 'testTripleSound.mp3'
+                    soundFile: 'TestTripleSound.en.mp3'
                 },
                 secondPage: {
                     title: `Speech test instructions`,

@@ -16,6 +16,7 @@ export class VisionTestDescriptionComponent implements OnInit, IDescriptionCompo
       setTimeout(() => {
         this.calCanvas = ref.nativeElement;
         makeCanvasHighRes(this.calCanvas);
+        this.calibrationSize = Math.round(this.calCanvas.width * 0.8);
         this.drawCard(this.calibrationSize);
       }, 0);
     }

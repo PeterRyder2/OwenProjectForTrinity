@@ -57,7 +57,7 @@ export const greek: ILanguageFile = {
                     firstHint: ` You can use external speakers or headphones if necessary. `,
                     secondHint: `Press "Continue" when the speech is clearly audible.`,
                     thirdHint: `GR hint 3`,
-                    soundFile: 'testTripleSound.mp3'
+                    soundFile: 'TestMemorySound.gr.mp3'
                 },
                 secondPage: {
                     title: `Word game instructions`,
@@ -121,7 +121,7 @@ export const greek: ILanguageFile = {
                     firstHint: ` You can use external speakers or headphones if necessary. `,
                     secondHint: `Press "Continue" when the speech is clearly audible.`,
                     thirdHint: `GR hint 3`,
-                    soundFile: 'testTripleSound.mp3'
+                    soundFile: 'TestTripleSound.gr.mp3'
                 },
                 secondPage: {
                     title: `Speech test instructions`,
