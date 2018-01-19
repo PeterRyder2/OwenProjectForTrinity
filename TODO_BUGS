@@ -1,17 +1,12 @@
 TODO
 Dringende Fragen:
-- Mini-Instructions Zeilenumbruch: <br> <br> fügt keine Leerzeilen an. Formatierung "springt" beim Num-Pad!
-  => Object für Text hearing / test / startHint mind. 3 Zeilen hoch
+- Debug aus (default) oder an in config.service.ts für Vision
 - Vision test: Jetzt auch andersrum: Wenn Minimal-Distanz < 50, 50 anzeigen, nicht Minimal-Distanz
-- Beim Vision test wird in den Buttons < > ^ v angezeigt. In den Instruktionen steht aber "↓ ↑ → ←", 
-  diese auch auf den Buttons, die dann quadratisch
 - Vision Test "Distance" Seite: Continue wird nicht vollständig disabled, solange rot.
 - Vision Test "Symbol" Seite: Continue wird nicht vollständig disabled, solange Test läuft.
   Hier vielleicht Continue Button ganz weg?
-- Vision Test: Phase 1, nach falscher Antwort wird Symbol nicht mehr angezeigt.
 
-- Distanz-Berechnung: Ich brauche zum Prüfen die Pixel-Breite des Rectangle nach der Kalibrierung.
-  Die auf der Testseite angezeigte "pixel acuity" weicht deutlich ab von meinen Berechnungen.
+- Distanz-Berechnung: Die auf der Testseite angezeigte "pixel acuity" weicht deutlich ab von meinen Berechnungen.
 - Distanz-Berechnung: Die optimale Distanz ist falsch. 
   Die muss bei den aktuellen Parametern immer doppelt so groß sein wie die minimale Distanz.
 - Adaptive Steuerung falsch: falsche Schwelle beginn phase 2, soll 1 größer als Schwelle Phase 1 Seitenstruktur
@@ -27,12 +22,11 @@ Dringende Fragen:
 
 
 
-BUGS (später)
+Geklärt:
 
-- Das Starten des Cognition Test dauert recht lange. 
-  Kann man das beschleunigen?
-- Die Datei zum Kalibrieren Sound ist fest verdrahtet testTripleSound.mp3, NICHT sprachabhängig,
-  und als MP3 nicht überall abspielbar. WAV ?
+- Das Starten des Cognition Test dauert recht lange. Pause 2,5 sec ist absichtlich eingestellt.
+- Die Datei zum Kalibrieren Sound ist fest language string testTripleSound.mp3,
+  ggf.  als MP3 nicht überall abspielbar, ersetzen durch WAV...
 
 
   
