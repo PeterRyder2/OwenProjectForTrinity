@@ -55,8 +55,8 @@ export const french: ILanguageFile = {
                     secondParagraph: `Some speech is played now. 
                     Please adjust the volume (if necessary) on your device to make the speech clearly audible.`,
                     firstHint: ` You can use external speakers or headphones if necessary. `,
-                    secondHint: `Press "Continue" when the speech is clearly audible.`,
-                    thirdHint: `FR hint 3`,
+                    secondHint: `Press "Continue" to start the test sound.`,
+                    thirdHint: `Press "Continue" when the speech is clearly audible.`,
                     soundFile: 'TestMemorySound.fr.mp3'
                 },
                 secondPage: {
@@ -107,7 +107,7 @@ export const french: ILanguageFile = {
             },
             test: {
                 startHint: 'Press "Continue" to begin the hearing test.',
-                continueHint: 'Enter the recognized digits with the number pad below.',
+                continueHint: 'Enter the recognized digits with the number pad below.<br>Use &larr; button to delete a number.<br>If you are unsure about a number, please take a guess.',
                 continue: 'Continue'
             },
             testDescription: {
@@ -117,8 +117,8 @@ export const french: ILanguageFile = {
                     secondParagraph: `Some speech is played now. 
                     Please adjust the volume (if necessary) on your device to make the speech clearly audible.`,
                     firstHint: ` You can use external speakers or headphones if necessary. `,
-                    secondHint: `Press "Continue" when the speech is clearly audible.`,
-                    thirdHint: `FR hint 3`,
+                    secondHint: `Press "Continue" to start the test sound.`,
+                    thirdHint: `Press "Continue" when the speech is clearly audible.`,
                     soundFile: 'TestTripleSound.fr.mp3'
                 },
                 secondPage: {
@@ -159,22 +159,23 @@ export const french: ILanguageFile = {
                 }
             },
             test: {
-                miniInstructions: 'Press arrow at the side of the gap.',
+                miniInstructions: 'Press the arrow at the side of the gap, or guess if you are unsure.',
             },
             testDescription: {
                 firstPage: {
                     title: `Vision test`,
-                    firstParagraph: `1st Paragraph`,
-                    secondParagraph: `2nd Paragraph`,
-                    firstHint: `1st Hint`,
-                    secondHint: `2nd Hint`
+                    firstParagraph: `Before we start the vision test, we need to make sure that the screen is set correctly. 
+                    You will need a credit card (or a card that is the same size as a credit card).`,
+                    secondParagraph: `Please do NOT change the browser zoom from 100% to a different value.`,
+                    firstHint: `Press continue when you are ready to check the screen setting.`,
+                    secondHint: ``
                 },
                 secondPage: {
                     title: `Vision test`,
-                    firstParagraph: `1. Please do NOT change the browser zoom from 100% to a different value.`,
-                    secondParagraph: `2. Place your credit card against the screen. 
+                    firstParagraph: `Now place your credit card against the screen. 
                     Adjust the width of the rectangle below so that it is the same size as the credit card 
                     using the --/-/+/++ buttons.`,
+                    secondParagraph: ``,
                     firstHint: `Press continue when the rectangle is the same width as the card.`
                 },
                 thirdPage: {

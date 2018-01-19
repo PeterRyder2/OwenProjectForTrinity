@@ -1,11 +1,15 @@
 TODO
 Dringende Fragen:
 - Mini-Instructions Zeilenumbruch: <br> <br> fügt keine Leerzeilen an. Formatierung "springt" beim Num-Pad!
-- Object für Text hearing / test / startHint mind. 3 Zeilen hoch
-- Mini-Instructions Vision: "Press arrow at the side of the gap."
-- + / - Button in Vision Rectangle Adjustment sollte immer einen Pixel Breite ändern, Höhe je nach Skalierung
-- Vision test: Wenn die Minimal-Distanz > 50cm ist, dann diese im Edit-Feld anzeigen (nicht 50)
-- Beim Vision test wird in den Buttons < > ^ v angezeigt. In den Instruktionen steht aber "↓ ↑ → ←"
+  => Object für Text hearing / test / startHint mind. 3 Zeilen hoch
+- Vision test: Jetzt auch andersrum: Wenn Minimal-Distanz < 50, 50 anzeigen, nicht Minimal-Distanz
+- Beim Vision test wird in den Buttons < > ^ v angezeigt. In den Instruktionen steht aber "↓ ↑ → ←", 
+  diese auch auf den Buttons, die dann quadratisch
+- Vision Test "Distance" Seite: Continue wird nicht vollständig disabled, solange rot.
+- Vision Test "Symbol" Seite: Continue wird nicht vollständig disabled, solange Test läuft.
+  Hier vielleicht Continue Button ganz weg?
+- Vision Test: Phase 1, nach falscher Antwort wird Symbol nicht mehr angezeigt.
+
 - Distanz-Berechnung: Ich brauche zum Prüfen die Pixel-Breite des Rectangle nach der Kalibrierung.
   Die auf der Testseite angezeigte "pixel acuity" weicht deutlich ab von meinen Berechnungen.
 - Distanz-Berechnung: Die optimale Distanz ist falsch. 
@@ -14,8 +18,6 @@ Dringende Fragen:
 - Adaptive Steuerung: wenn am Ende Phase 2 alles falsch: Phase 3 mit Startwert "größte Größe"
 - Adaptive Steuerung: wenn am Ende Phase 3 alles falsch: Schwelle NICHT "größte Größe", sondern nicht vorhanden
 - Nach Ende des Test: Reaktion auf "Continue" fehlt, wäre eigentlich Result Seite, dann Homepage
-- NICHT done - Nach einer Antwort soll das Symbol verschwinden und erst nach einer kurzen Pause neu angezeigt werden.
-  Pause erstmal 1 Sekunde => KEINE PAUSE
   
 - Rectangle adjustment: Die jetzige Start-Größe des Rectangle ist bei mir recht klein.
   Der Rahmen, in dem das Rectangle gemalt wird, ist kaum größer als die Kreditkarte
@@ -25,10 +27,8 @@ Dringende Fragen:
 
 
 
-BUGS
-- Vision Test "Distance" Seite: hat sich aufgehängt wenn Distanz 1x zu klein (rot), 
-  "Continue" bleibt enabled, reagiert aber nicht auch wenn wieder orange/grün.
-- Vision Test: Phase 1, nach falscher Antwort wird Symbol nicht mehr angezeigt.
+BUGS (später)
+
 - Das Starten des Cognition Test dauert recht lange. 
   Kann man das beschleunigen?
 - Die Datei zum Kalibrieren Sound ist fest verdrahtet testTripleSound.mp3, NICHT sprachabhängig,
