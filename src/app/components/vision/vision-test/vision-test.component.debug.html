@@ -1,27 +1,4 @@
-<div *ngIf="!this.configService.debug" class="containeVisionTest">
-  <div class="miniInstuctions" [innerHTML]="this.language.miniInstructions"></div>
-  <div class="container-one">
-    <div>
-      <button [disabled]="this.state !== this.StateRef.WaitingForInput" (click)="this.continue(Direction.top)" standard [class.active]="activeKey == 'up'">
-        <i class="fa fa-arrow-up" aria-hidden="true"></i>
-      </button>
-      <div class="container-two">
-        <button [disabled]="this.state !== this.StateRef.WaitingForInput" (click)="this.continue(Direction.left)" standard [class.active]="activeKey == 'left'">
-          <i class="fa fa-arrow-left" aria-hidden="true"></i>
-        </button>
-        <canvas height="200" width="200" #canvas></canvas>
-        <button [disabled]="this.state !== this.StateRef.WaitingForInput" (click)="this.continue(Direction.right)" standard [class.active]="activeKey == 'right'">
-          <i class="fa fa-arrow-right" aria-hidden="true"></i>
-        </button>
-      </div>
-      <button [disabled]="this.state !== this.StateRef.WaitingForInput" (click)="this.continue(Direction.bottom)" standard [class.active]="activeKey == 'down'">
-        <i class="fa fa-arrow-down" aria-hidden="true"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-<div *ngIf="this.configService.debug" class="container">
+<div class="container">
   <div>
     <div class="containeVisionTest">
       <div class="miniInstuctions" [innerHTML]="this.language.miniInstructions"></div>
@@ -40,7 +17,7 @@
             </button>
           </div>
           <button [disabled]="this.state !== this.StateRef.WaitingForInput" (click)="this.continue(Direction.bottom)" standard [class.active]="activeKey == 'down'">
-            <i class="fa fa-arrow-down" aria-hidden="true"></i>
+              <i class="fa fa-arrow-down" aria-hidden="true"></i>
           </button>
         </div>
         <div>
@@ -64,7 +41,7 @@
       <div>
         <canvas height="270" width="430" #CalibrationCanvas>
         </canvas>
-        <div *ngIf="this.calCanvas" class="label" [style.fontSize]="(3 + 30 * this.calibrationSize/this.calCanvas.width)+'px'">
+        <div class="label" [style.fontSize]="(3 + 30 * this.calibrationSize/this.calCanvas.width)+'px'">
           Compare size with
           <br> your bank card
         </div>
@@ -106,7 +83,7 @@
         </div>
       </div>
     </div>
-    <div *ngIf="this.state != this.StateRef.Finished && testData.activeTrial">
+    <div *ngIf="this.state != this.StateRef.Finished">
       <p>Direction: {{Direction[testData.activeDirection]}}</p>
       <p>Phase: {{testData.activeTrial.phase}}</p>
       <p>Trial: {{testData.activeTrial.trail}}</p>

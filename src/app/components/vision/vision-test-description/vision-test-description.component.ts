@@ -12,7 +12,6 @@ export class VisionTestDescriptionComponent implements OnInit, IDescriptionCompo
 
   @ViewChild('CalibrationCanvas') set calCanvasRef(ref: ElementRef) {
     if (ref) {
-      console.log('lol')
       setTimeout(() => {
         this.calCanvas = ref.nativeElement;
         makeCanvasHighRes(this.calCanvas);

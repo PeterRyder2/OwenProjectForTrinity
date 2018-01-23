@@ -107,14 +107,14 @@ import { TextInsertPipe } from './pipes/text-insert.pipe';
   providers: [
     LanguageService,
     SettingsService,
-    ConfigService,
     AudioService,
     HearingApiService,
     CognitionApiService,
     ProcedureService,
     IdService,
     TestIdResolver,
-    MailApiService
+    MailApiService,
+    ConfigService
   ],
   bootstrap: [AppComponent]
 })

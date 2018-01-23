@@ -5,6 +5,7 @@ import { ITestComponent, ITestResponse } from '../../../interfaces/IProcedureCon
 import { Util } from '../../../lib/util';
 import { LanguageService } from '../../../services/language.service';
 import { ProcedureService } from '../../../services/procedure.service';
+import { ConfigService } from '../../../services/config.service';
 
 let State = VisionTestState;
 
@@ -15,8 +16,25 @@ let State = VisionTestState;
 })
 export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
 
-  @ViewChild('canvas') canvasRef: ElementRef;
-  @ViewChild('CalibrationCanvas') calCanvasRef: ElementRef;
+  @ViewChild('canvas') set canvasRef(ref: ElementRef) {
+    if (ref) {
+      setTimeout(() => {
+        this.canvas = ref.nativeElement;
+        makeCanvasHighRes(this.canvas);
+        this.calibratePuxels(this.pixelAcuity);
+      }, 0);
+    }
+  }
+  @ViewChild('CalibrationCanvas') set calCanvasRef(ref: ElementRef) {
+    if (ref) {
+      setTimeout(() => {
+        this.calCanvas = ref.nativeElement;
+        makeCanvasHighRes(this.calCanvas);
+        this.calibrationSize = Math.round(this.calCanvas.width * 0.8);
+        this.drawCard(this.calibrationSize);
+      }, 0);
+    }
+  }
   canvas: HTMLCanvasElement;
   calCanvas: HTMLCanvasElement;
 
@@ -35,21 +53,16 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
     return this.languageService.components.vision.test;
   }
 
-  constructor(public languageService: LanguageService) { }
+  constructor(public languageService: LanguageService, public configService: ConfigService) {
+    this.testData = new VisionTestData();
+  }
 
   ngOnInit() {
-    this.canvas = this.canvasRef.nativeElement;
-    this.calCanvas = this.calCanvasRef.nativeElement;
-    makeCanvasHighRes(this.canvas);
-    makeCanvasHighRes(this.calCanvas);
-    this.testData = new VisionTestData();
     window.addEventListener('keydown',
       this.keyDownEventListener);
     window.addEventListener('keyup',
       this.keyUpEventListener);
     this.state = State.WaitingForInput;
-    this.calibratePuxels(this.pixelAcuity);
-    this.drawCard(this.calibrationSize);
   }
 
   changeSize(addition: number) {
