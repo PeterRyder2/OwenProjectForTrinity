@@ -44,10 +44,10 @@
           </button>
         </div>
         <div>
-          <button [disabled]="this.state !== this.StateRef.WaitingForInput" (click)="this.wrong()" standard [class.active]="activeKey == 'down'">
+          <button [disabled]="this.state !== this.StateRef.WaitingForInput" (click)="this.wrong()" standard [class.active]="activeKey == '-'">
             <i class="fa fa-times" aria-hidden="true"></i>
           </button>
-          <button [disabled]="this.state !== this.StateRef.WaitingForInput" (click)="this.right()" standard [class.active]="activeKey == 'down'">
+          <button [disabled]="this.state !== this.StateRef.WaitingForInput" (click)="this.right()" standard [class.active]="activeKey == '+'">
             <i class="fa fa-check" aria-hidden="true"></i>
           </button>
         </div>
@@ -109,12 +109,12 @@
     <div *ngIf="this.state != this.StateRef.Finished && testData.activeTrial">
       <p>Direction: {{Direction[testData.activeDirection]}}</p>
       <p>Phase: {{testData.activeTrial.phase}}</p>
-      <p>Trial: {{testData.activeTrial.trail}}</p>
+      <p>Trial: {{testData.activeTrial.trial}}</p>
       <p>Puxel: {{testData.activeTrial.puxel + 1}} of {{this.testData.puxels.length}}</p>
     </div>
     <div *ngIf="this.state == this.StateRef.Finished">
       <p>FINNISHED</p>
-      <p>Threshold: {{this.evaluate()}}</p>
+      <p>Threshold: {{this.testData.evaluate()}}</p>
     </div>
   </div>
   <div>
@@ -127,7 +127,7 @@
     </div>
     <div class="row" *ngFor="let res of this.testData.responses">
       <p>{{res.phase}}</p>
-      <p>{{res.trail}}</p>
+      <p>{{res.trial}}</p>
       <p>{{res.puxel + 1}} of {{this.testData.puxels.length}}</p>
       <p>{{res.correct}}</p>
       <div class="box">

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, EventEmitter, Output, OnDestroy } from '@angular/core';
 import { IDescriptionComponent, ITestResponse, IInputData } from '../../../interfaces/IProcedureConfig.interface';
 import { LanguageService } from '../../../services/language.service';
 import { makeCanvasHighRes, VisionCalibrationImage } from '../../../lib/Image';
@@ -8,7 +8,7 @@ import { makeCanvasHighRes, VisionCalibrationImage } from '../../../lib/Image';
   templateUrl: './vision-test-description.component.html',
   styleUrls: ['./vision-test-description.component.scss']
 })
-export class VisionTestDescriptionComponent implements OnInit, IDescriptionComponent {
+export class VisionTestDescriptionComponent implements OnInit, OnDestroy, IDescriptionComponent {
 
   @ViewChild('CalibrationCanvas') set calCanvasRef(ref: ElementRef) {
     if (ref) {
@@ -20,6 +20,8 @@ export class VisionTestDescriptionComponent implements OnInit, IDescriptionCompo
       }, 0);
     }
   }
+  @Output() disableContinueChanged = new EventEmitter<boolean>(false);
+
   calCanvas: HTMLCanvasElement;
 
   page = 0;
@@ -29,7 +31,17 @@ export class VisionTestDescriptionComponent implements OnInit, IDescriptionCompo
   pixelAmount = 0;
   minDistance = 40;
   optDistance = 60;
-  distance = 50;
+  _distance = 50;
+  set distance(val: number) {
+    this._distance = val;
+    if (this._distance < this.minDistance)
+      this.disableContinueChanged.emit(true);
+    else
+      this.disableContinueChanged.emit(false);
+  }
+  get distance() {
+    return this._distance;
+  }
 
   get language() {
     return this.languageService.components.vision.testDescription;
@@ -37,7 +49,15 @@ export class VisionTestDescriptionComponent implements OnInit, IDescriptionCompo
 
   constructor(public languageService: LanguageService) { }
 
+  subscribeContinueDisabled(cb: (isDisaled: boolean) => void): void {
+    this.disableContinueChanged.subscribe(cb);
+  }
+
   ngOnInit() {
+  }
+
+  ngOnDestroy() {
+    this.disableContinueChanged.emit(false);
   }
 
   changeSize(addition: number) {

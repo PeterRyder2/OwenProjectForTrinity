@@ -223,6 +223,8 @@ export class ProcedureService {
 
   private loadNextTestDescription() {
     let descriptionComponentRef = this.procedureContainer.loadComponent(this.activeTest.description);
+    if (descriptionComponentRef.instance.subscribeContinueDisabled)
+      descriptionComponentRef.instance.subscribeContinueDisabled((isDisabled) => { this.isContinueDisabled = isDisabled; })
     this.continueDescriptionComponent = descriptionComponentRef.instance.continue;
     this.position.name = this.activeTest.name + 'Description';
   }

@@ -11,6 +11,7 @@ export interface IChapter {
 
 export interface IDescriptionComponent {
     continue(): Promise<boolean | IInputData[]>;
+    subscribeContinueDisabled?(cb: (isDisaled: boolean) => void): void;
 }
 
 export interface ITest {

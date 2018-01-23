@@ -1,6 +1,6 @@
 import { VisionTestState } from '../../../enums/VisionTestState.enum';
 import { Direction, VisionCalibrationImage, VisionTestImage, makeCanvasHighRes } from '../../../lib/Image';
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import { ITestComponent, ITestResponse } from '../../../interfaces/IProcedureConfig.interface';
 import { Util } from '../../../lib/util';
 import { LanguageService } from '../../../services/language.service';
@@ -35,6 +35,8 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
       }, 0);
     }
   }
+  @Output() disableContinueChanged = new EventEmitter<boolean>(false);
+
   canvas: HTMLCanvasElement;
   calCanvas: HTMLCanvasElement;
 
@@ -58,12 +60,26 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
     this.calibratePuxels(this.pixelAcuity);
   }
 
+  subscribeContinueDisabled(cb: (isDisaled: boolean) => void): void {
+    this.disableContinueChanged.subscribe(cb);
+    this.disableContinueChanged.emit(true);
+  }
+
   ngOnInit() {
     window.addEventListener('keydown',
       this.keyDownEventListener);
     window.addEventListener('keyup',
       this.keyUpEventListener);
     this.state = State.WaitingForInput;
+  }
+
+  ngOnDestroy() {
+    window.removeEventListener('keydown',
+      this.keyDownEventListener);
+    window.addEventListener('keyup',
+      this.keyUpEventListener);
+    this.disableContinueChanged.emit(false);
+    this.disableContinueChanged.unsubscribe();
   }
 
   changeSize(addition: number) {
@@ -91,7 +107,7 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
         this.testData.puxels.push(puxel);
     }
     this.testData.activeTrial = {
-      trail: 1,
+      trial: 1,
       responses: [],
       puxel: this.testData.puxels.length - 1,
       phase: 1
@@ -124,13 +140,6 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
     ctx.putImageData(img.toImageData(), this.canvas.width / 2 - this.testData.activePuxel * 2.5, this.canvas.height / 2 - this.testData.activePuxel * 2.5);
   }
 
-  ngOnDestroy() {
-    window.removeEventListener('keydown',
-      this.keyDownEventListener);
-    window.addEventListener('keyup',
-      this.keyUpEventListener);
-  }
-
   right() {
     let d = Math.round((Math.random() * 100)) % 4;
     while (d !== this.testData.activeDirection) {
@@ -148,163 +157,124 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
   }
 
   continue = async (direction?: Direction): Promise<ITestResponse> => {
-    console.log(this.state);
     switch (this.state) {
       case State.Initializing:
         break;
       case State.WaitingForInput:
+        this.disableContinueChanged.emit(true);
         if (direction != null) {
-          this.state = State.Pause;
-          this.clearCanvas();
-          await Util.Delay(0)
-          this.state = State.WaitingForInput;
+          await this.pauseTrial();
           let isFin = this.continueTrial(direction);
-          if (isFin && ProcedureService.continue)
+          if (isFin && ProcedureService.continue) {
+            this.disableContinueChanged.emit(false);
             ProcedureService.continue();
-          return false;
+          }
         }
         break;
       case State.Finished:
         return {
-          result: this.evaluate()
+          result: this.testData.evaluate()
         }
-      default:
-        break;
     }
     return false;
   }
 
+  async pauseTrial() {
+    this.state = State.Pause;
+    this.clearCanvas();
+    await Util.Delay(500)
+    this.state = State.WaitingForInput;
+  }
+
   continueTrial(direction: Direction) {
-    this.testData.activeTrial.responses.push(this.testData.activeDirection == direction);
-    if (this.isTrialOver()) {
-      let res: VisionTestTrialResponse = Util.extend(this.testData.activeTrial, { correct: this.evalTrial() })
-      this.testData.responses.push(res);
+    this.testData.activeTrial.responses.push(this.testData.activeDirection === direction);
+    if (this.isTrialOver() !== null) {
+      this.testData.responses.push(Util.extend(this.testData.activeTrial, { correct: this.isTrialOver() }));
       if (this.isPhaseOver()) {
         let nextPhase = this.nextPhase();
-        if (nextPhase === false) {
+        if (nextPhase !== false) {
+          this.testData.activeTrial = nextPhase;
+        } else {
           this.state = State.Finished;
           return true;
-        } else
-          this.testData.activeTrial = nextPhase;
-        this.newDirection();
+        }
       } else {
-        let nextTrial = this.nextTrial();
-        if (nextTrial === false) {
-          let nextPhase = this.nextPhase();
-          if (nextPhase === false) {
-            this.state = State.Finished;
-            return true;
-          } else
-            this.testData.activeTrial = nextPhase;
-        } else
-          this.testData.activeTrial = nextTrial;
-        this.newDirection();
+        this.testData.activeTrial = this.nextTrial();
       }
     } else {
-      this.testData.activeTrial.trail++;
-      this.newDirection();
+      this.testData.activeTrial.trial++;
     }
+    this.newDirection();
     return false;
   }
 
   isTrialOver() {
-    let bo = this.testData.activeTrial.phase == 1 ? 2 : 3;
-    if (this.testData.activeTrial.trail > bo)
-      return true;
-    if (this.testData.activeTrial.responses.countOf((val => val)) >= bo)
-      return true;
-    if (this.testData.activeTrial.responses.countOf((val => !val)) >= (this.testData.activeTrial.phase == 1 ? bo : bo - 1))
-      return true;
-    return false;
-  }
-
-  isPhaseOver() {
-    if (this.testData.activeTrial.phase == 1)
-      if (this.testData.responses.last().correct === false)
-        return true;
-      else
-        return false;
-    else
-      if (this.testData.responses.last().correct === false && this.testData.responses.last(1).correct === false && this.testData.responses.last(1).phase == this.testData.activeTrial.phase)
-        return true;
-      else
-        return false;
-  }
-
-  evalTrial() {
-    let bo = this.testData.activeTrial.phase == 1 ? 2 : 3;
-    if (this.testData.activeTrial.responses.countOf((val => val)) >= bo)
-      return true;
-    else
-      return false;
+    switch (this.testData.activeTrial.phase) {
+      case 1:
+        if (this.testData.activeTrial.responses.countOf(val => val) >= 2)
+          return true;
+        if (this.testData.activeTrial.responses.countOf(val => !val) >= 2)
+          return false;
+      case 2:
+      case 3:
+        if (this.testData.activeTrial.responses.countOf(val => val) >= 3)
+          return true;
+        if (this.testData.activeTrial.responses.countOf(val => !val) >= 2)
+          return false;
+    }
+    return null;
   }
 
   nextTrial() {
-    let newTrial: VisionTestTrial;
-    if (this.testData.activeTrial.puxel > 0)
-      if (this.testData.responses.last().correct)
-        newTrial = {
-          trail: 1,
-          responses: [],
-          puxel: this.testData.activeTrial.puxel - (this.testData.activeTrial.phase == 1 ? this.testData.activeTrial.puxel > 1 ? 2 : 1 : 1),
-          phase: this.testData.activeTrial.phase
-        }
-      else
-        newTrial = {
-          trail: 1,
-          responses: [],
-          puxel: this.testData.activeTrial.puxel,
-          phase: this.testData.activeTrial.phase
-        }
-    else
-      return false;
-    return newTrial;
+    switch (this.testData.activeTrial.phase) {
+      case 1:
+        return this.genTrial(1, this.testData.activeTrial.puxel - (this.testData.activeTrial.puxel == 1 ? 1 : 2));
+      case 2:
+        if (this.testData.responses.last().correct)
+          return this.genTrial(2, this.testData.activeTrial.puxel - 1);
+        else
+          return this.genTrial(2, this.testData.activeTrial.puxel);
+      case 3:
+        if (this.testData.responses.last().correct)
+          return this.genTrial(3, this.testData.activeTrial.puxel - 1);
+        else
+          return this.genTrial(3, this.testData.activeTrial.puxel);
+    }
+  }
+
+  isPhaseOver() {
+    if (this.testData.responses.last().correct && this.testData.activeTrial.puxel == 0)
+      return true;
+    switch (this.testData.activeTrial.phase) {
+      case 1:
+        return !this.testData.responses.last().correct
+      case 2:
+        if (this.testData.responses.last(1).phase == 1) return false;
+        return !(this.testData.responses.last().correct || this.testData.responses.last(1).correct)
+      case 3:
+        if (this.testData.responses.last(1).phase == 2) return false;
+        return !(this.testData.responses.last().correct || this.testData.responses.last(1).correct)
+    }
   }
 
   nextPhase() {
-    let newTrial: VisionTestTrial;
-    if (this.testData.activeTrial.phase > 1 && this.testData.responses.last().correct && this.testData.activeTrial.puxel == 0)
-      return false
-    else if (this.testData.activeTrial.phase < 3) {
-      if (this.testData.activeTrial.puxel < this.testData.puxels.length - 2)
-        newTrial = {
-          trail: 1,
-          responses: [],
-          puxel: this.testData.activeTrial.puxel + (this.testData.responses.last().correct ? 0 : 2),
-          phase: this.testData.activeTrial.phase + 1
-        }
-      else if (this.testData.activeTrial.puxel < this.testData.puxels.length - 1)
-        newTrial = {
-          trail: 1,
-          responses: [],
-          puxel: this.testData.activeTrial.puxel + (this.testData.responses.last().correct ? 0 : 1),
-          phase: this.testData.activeTrial.phase + 1
-        }
-      else
-        newTrial = {
-          trail: 1,
-          responses: [],
-          puxel: this.testData.activeTrial.puxel,
-          phase: this.testData.activeTrial.phase + 1
-        }
-    } else
-      return false;
-    return newTrial;
-  }
-
-  evaluate() {
-    let min = this.testData.puxels.length;
-    for (let res of this.testData.responses) {
-      if (res.phase !== 1) {
-        if (res.correct && (res.puxel + 1) < min) {
-          min = res.puxel + 1;
-        }
-      }
+    switch (this.testData.activeTrial.phase) {
+      case 1:
+        return this.genTrial(2, this.testData.threshold + (this.testData.threshold == this.testData.puxels.length - 1 ? 0 : 1));
+      case 2:
+        return this.genTrial(3, this.testData.threshold);
+      case 3:
+        return false;
     }
-    return min;
   }
 
-  subscribeContinueDisabled(cb: (isDisaled: boolean) => void): void {
+  genTrial(phase, puxel): VisionTestTrial {
+    return {
+      phase: phase,
+      puxel: puxel,
+      trial: 1,
+      responses: []
+    }
   }
 
   keyDownEventListener = (e: KeyboardEvent) => {
@@ -312,15 +282,27 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
     switch (e.key) {
       case 'ArrowUp':
         this.activeKey = 'up';
+        this.continue(Direction.top);
         break;
       case 'ArrowDown':
         this.activeKey = 'down';
+        this.continue(Direction.bottom);
         break;
       case 'ArrowLeft':
         this.activeKey = 'left';
+        this.continue(Direction.left);
         break;
       case 'ArrowRight':
         this.activeKey = 'right';
+        this.continue(Direction.right);
+        break;
+      case '+':
+        this.activeKey = '+';
+        this.right();
+        break;
+      case '-':
+        this.activeKey = '-';
+        this.wrong();
         break;
 
       default:
@@ -351,10 +333,34 @@ class VisionTestData {
   activeDirection: Direction;
   activeTrial: VisionTestTrial;
   responses: VisionTestTrialResponse[] = []
+
+  get threshold() {
+    let threshold = this.puxels.length - 1;
+    for (let i = this.responses.length - 1; i >= 0; i--) {
+      if (this.responses[i].phase != this.activeTrial.phase)
+        break;
+      if (this.responses[i].correct) {
+        threshold = this.responses[i].puxel;
+        break;
+      }
+    }
+    return threshold;
+  }
+
+  evaluate() {
+    let threshold = -1;
+    for (let i = this.responses.length - 1; i >= 0; i--) {
+      if (this.responses[i].phase != this.activeTrial.phase)
+        break;
+      if (this.responses[i].correct)
+        threshold = this.responses[i].puxel;
+    }
+    return threshold;
+  }
 }
 
 interface VisionTestTrial {
-  trail: number;
+  trial: number;
   phase: number;
   responses: boolean[];
   puxel: number;
