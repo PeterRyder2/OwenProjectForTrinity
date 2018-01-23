@@ -59,8 +59,12 @@ export class VisionTestDescriptionComponent implements OnInit, IDescriptionCompo
     PA = +(Math.round((PA + 'e+2') as any) + 'e-2')
     this.minDistance = Math.ceil(PS / (Math.tan(8 / (6 * 60 * 2)) * 2 / (180 / Math.PI)) / 10);
     this.optDistance = Math.ceil(PS / (Math.tan(6 / (6 * 60 * 2)) * 2 / (180 / Math.PI)) / 10);
-    console.log('needed: ' + this.minDistance)
-    console.log(PS, D, PA);
+    if (this.minDistance > 50)
+      this.distance = this.minDistance;
+    else if (this.optDistance < 50)
+      this.minDistance = this.optDistance = this.distance = 50;
+    else
+      this.minDistance = this.distance = 50;
     this.pixelAcuity = PA
     // this.calibratePuxels(this.pixelAcuity = PA);
   }
@@ -72,8 +76,6 @@ export class VisionTestDescriptionComponent implements OnInit, IDescriptionCompo
         return false;
       case 1:
         this.calibrate();
-        if (this.minDistance > 50)
-          this.distance = this.minDistance;
         this.page++;
         return false;
       case 2:

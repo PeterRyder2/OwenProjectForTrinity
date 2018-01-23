@@ -21,7 +21,7 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
       setTimeout(() => {
         this.canvas = ref.nativeElement;
         makeCanvasHighRes(this.canvas);
-        this.calibratePuxels(this.pixelAcuity);
+        this.newDirection();
       }, 0);
     }
   }
@@ -55,6 +55,7 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
 
   constructor(public languageService: LanguageService, public configService: ConfigService) {
     this.testData = new VisionTestData();
+    this.calibratePuxels(this.pixelAcuity);
   }
 
   ngOnInit() {
@@ -95,7 +96,6 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
       puxel: this.testData.puxels.length - 1,
       phase: 1
     }
-    this.newDirection();
   }
 
   drawCard(size: number) {
@@ -156,7 +156,7 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
         if (direction != null) {
           this.state = State.Pause;
           this.clearCanvas();
-          await Util.Delay(500)
+          await Util.Delay(0)
           this.state = State.WaitingForInput;
           let isFin = this.continueTrial(direction);
           if (isFin && ProcedureService.continue)
