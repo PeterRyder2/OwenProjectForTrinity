@@ -174,7 +174,7 @@ export const english: ILanguageFile = {
                     title: `Vision test`,
                     firstParagraph: `Now place your credit card against the screen. 
                     Adjust the width of the rectangle below so that it is the same size as the credit card 
-                    using the --/-/+/++ buttons.`,
+                    using the small and large - and + buttons.`,
                     secondParagraph: ``,
                     firstHint: `Press continue when the rectangle is the same width as the card.`
                 },
