@@ -101,12 +101,11 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
   }
 
   calibratePuxels(PA: number) {
-    console.log("PixalACC: " + PA);
     let list = [6, 12, 18, 24, 36, 48, 60, 96];
     this.testData.puxels = [];
     for (let i = 0; i < list.length; i++) {
       const puxel = Math.floor(list[i] / PA);
-      if (puxel > 0)
+      if (puxel > 0 && puxel != this.testData.puxels.last())
         this.testData.puxels.push(puxel);
     }
     this.testData.activeTrial = {
