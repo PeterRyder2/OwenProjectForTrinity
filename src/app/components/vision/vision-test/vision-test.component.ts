@@ -30,7 +30,8 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
       setTimeout(() => {
         this.calCanvas = ref.nativeElement;
         makeCanvasHighRes(this.calCanvas);
-        this.calibrationSize = Math.round(this.calCanvas.width * 0.8);
+        if (this.calibrationSize == -1)
+          this.calibrationSize = Math.round(this.calCanvas.width * 0.8);
         this.drawCard(this.calibrationSize);
       }, 0);
     }
@@ -46,7 +47,7 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
   testData: VisionTestData;
 
   activeKey = '';
-  calibrationSize = 100;
+  calibrationSize = -1;
   pixelAcuity = 6;
   pixelAmount = 0;
   distance = 100;
@@ -57,7 +58,6 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
 
   constructor(public languageService: LanguageService, public configService: ConfigService) {
     this.testData = new VisionTestData();
-    this.calibratePuxels(this.pixelAcuity);
   }
 
   subscribeContinueDisabled(cb: (isDisaled: boolean) => void): void {
@@ -71,6 +71,7 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
     window.addEventListener('keyup',
       this.keyUpEventListener);
     this.state = State.WaitingForInput;
+    this.calibratePuxels(this.pixelAcuity);
   }
 
   ngOnDestroy() {
@@ -86,19 +87,21 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
     this.drawCard(this.calibrationSize += this.calibrationSize + addition > this.calCanvas.width ? 0 : this.calibrationSize + addition < 50 ? 0 : addition)
   }
 
-  calibrate() {
+  calibratePixelAcuity() {
     let PS = 85.6 / this.calibrationSize;
     let D = this.distance;
-    let PA = 6 * 60 * 2 * Math.atan((PS/2 / (D * 10))) * 180 / Math.PI;
+    let PA = 6 * 60 * 2 * Math.atan((PS / 2 / (D * 10))) * 180 / Math.PI;
+    console.log('D: ' + D)
+    console.log('PA1: ' + PA)
     PA = +(Math.round((PA + 'e+2') as any) + 'e-2')
-    let minDistance = Math.ceil(PS/2 / (Math.tan(12 / (6 * 60 * 2)) / (180 / Math.PI)) / 10);
-    let optDistance = Math.ceil(PS/2 / (Math.tan( 6 / (6 * 60 * 2)) / (180 / Math.PI)) / 10);
-    console.log('needed: ' + minDistance)
-    console.log(PS, D, PA);
-    this.calibratePuxels(this.pixelAcuity = PA);
+    console.log('PA2: ' + PA)
+    this.pixelAcuity = PA;
+
+    this.calibratePuxels(PA);
   }
 
   calibratePuxels(PA: number) {
+    console.log("PixalACC: " + PA);
     let list = [6, 12, 18, 24, 36, 48, 60, 96];
     this.testData.puxels = [];
     for (let i = 0; i < list.length; i++) {

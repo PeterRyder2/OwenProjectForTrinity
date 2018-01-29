@@ -72,26 +72,29 @@ export class VisionTestDescriptionComponent implements OnInit, OnDestroy, IDescr
     ctx.putImageData(img.toImageData(), 0, 0);
   }
 
-  calibrate() {
+  calibrateDistance() {
     let PS = 85.6 / this.calibrationSize;
     console.log('calibrationSize: ' + this.calibrationSize)
     console.log('PS: ' + PS)
-    let D = this.distance;
-    let PA = 6 * 60 * 2 * Math.atan((PS/2 / (D * 10))) * 180 / Math.PI;
-    console.log('D: ' + D)
-    console.log('PA1: ' + PA)
-    PA = +(Math.round((PA + 'e+2') as any) + 'e-2')
-    console.log('PA2: ' + PA)
-    this.minDistance = Math.ceil(PS/2 / (Math.tan(12 / (6 * 60 * 2)) / (180 / Math.PI)) / 10);
-    this.optDistance = Math.ceil(PS/2 / (Math.tan( 6 / (6 * 60 * 2)) / (180 / Math.PI)) / 10);
+    this.minDistance = Math.ceil(PS / 2 / (Math.tan(12 / (6 * 60 * 2)) / (180 / Math.PI)) / 10);
+    this.optDistance = Math.ceil(PS / 2 / (Math.tan(6 / (6 * 60 * 2)) / (180 / Math.PI)) / 10);
     if (this.minDistance > 50)
       this.distance = this.minDistance;
     else if (this.optDistance < 50)
       this.minDistance = this.optDistance = this.distance = 50;
     else
       this.minDistance = this.distance = 50;
-    this.pixelAcuity = PA
-    // this.calibratePuxels(this.pixelAcuity = PA);
+  }
+
+  calibratePixelAcuity() {
+    let PS = 85.6 / this.calibrationSize;
+    let D = this.distance;
+    let PA = 6 * 60 * 2 * Math.atan((PS / 2 / (D * 10))) * 180 / Math.PI;
+    console.log('D: ' + D)
+    console.log('PA1: ' + PA)
+    PA = +(Math.round((PA + 'e+2') as any) + 'e-2')
+    console.log('PA2: ' + PA)
+    this.pixelAcuity = PA;
   }
 
   continue = async (): Promise<boolean | IInputData[]> => {
@@ -100,12 +103,14 @@ export class VisionTestDescriptionComponent implements OnInit, OnDestroy, IDescr
         this.page++;
         return false;
       case 1:
-        this.calibrate();
+        this.calibrateDistance();
         this.page++;
         return false;
       case 2:
-        if (this.minDistance <= this.distance)
+        if (this.minDistance <= this.distance) {
+          this.calibratePixelAcuity();
           this.page++;
+        }
         return false;
       case 3:
         return [
