@@ -73,12 +73,17 @@ export class VisionTestDescriptionComponent implements OnInit, OnDestroy, IDescr
   }
 
   calibrate() {
-    let PS = 53.98 / this.calibrationSize;
+    let PS = 85.6 / this.calibrationSize;
+    console.log('calibrationSize: ' + this.calibrationSize)
+    console.log('PS: ' + PS)
     let D = this.distance;
-    let PA = 6 * 60 * 2 * Math.atan((PS / 2 / (D * 10)) * 180 / Math.PI);
+    let PA = 6 * 60 * 2 * Math.atan((PS/2 / (D * 10))) * 180 / Math.PI;
+    console.log('D: ' + D)
+    console.log('PA1: ' + PA)
     PA = +(Math.round((PA + 'e+2') as any) + 'e-2')
-    this.minDistance = Math.ceil(PS / (Math.tan(8 / (6 * 60 * 2)) * 2 / (180 / Math.PI)) / 10);
-    this.optDistance = Math.ceil(PS / (Math.tan(6 / (6 * 60 * 2)) * 2 / (180 / Math.PI)) / 10);
+    console.log('PA2: ' + PA)
+    this.minDistance = Math.ceil(PS/2 / (Math.tan(12 / (6 * 60 * 2)) / (180 / Math.PI)) / 10);
+    this.optDistance = Math.ceil(PS/2 / (Math.tan( 6 / (6 * 60 * 2)) / (180 / Math.PI)) / 10);
     if (this.minDistance > 50)
       this.distance = this.minDistance;
     else if (this.optDistance < 50)

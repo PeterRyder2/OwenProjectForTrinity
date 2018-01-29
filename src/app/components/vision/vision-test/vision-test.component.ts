@@ -87,12 +87,12 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
   }
 
   calibrate() {
-    let PS = 53.98 / this.calibrationSize;
+    let PS = 85.6 / this.calibrationSize;
     let D = this.distance;
-    let PA = 6 * 60 * 2 * Math.atan((PS / 2 / (D * 10)) * 180 / Math.PI);
+    let PA = 6 * 60 * 2 * Math.atan((PS/2 / (D * 10))) * 180 / Math.PI;
     PA = +(Math.round((PA + 'e+2') as any) + 'e-2')
-    let minDistance = Math.ceil(PS / (Math.tan(8 / (6 * 60 * 2)) * 2 / (180 / Math.PI)) / 10);
-    let optDistance = Math.ceil(PS / (Math.tan(6 / (6 * 60 * 2)) * 2 / (180 / Math.PI)) / 10);
+    let minDistance = Math.ceil(PS/2 / (Math.tan(12 / (6 * 60 * 2)) / (180 / Math.PI)) / 10);
+    let optDistance = Math.ceil(PS/2 / (Math.tan( 6 / (6 * 60 * 2)) / (180 / Math.PI)) / 10);
     console.log('needed: ' + minDistance)
     console.log(PS, D, PA);
     this.calibratePuxels(this.pixelAcuity = PA);
