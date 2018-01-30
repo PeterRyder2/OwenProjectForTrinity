@@ -78,6 +78,8 @@ export class VisionTestDescriptionComponent implements OnInit, OnDestroy, IDescr
     console.log('PS: ' + PS)
     this.minDistance = Math.ceil(PS / 2 / (Math.tan(12 / (6 * 60 * 2)) / (180 / Math.PI)) / 10);
     this.optDistance = Math.ceil(PS / 2 / (Math.tan(6 / (6 * 60 * 2)) / (180 / Math.PI)) / 10);
+    console.log('minDistance: ' + this.minDistance)
+    console.log('optDistance: ' + this.optDistance)
     if (this.minDistance > 50)
       this.distance = this.minDistance;
     else if (this.optDistance < 50)

@@ -159,7 +159,7 @@ export const french: ILanguageFile = {
                 }
             },
             test: {
-                miniInstructions: 'Press the arrow at the side of the gap, or guess if you are unsure.',
+                miniInstructions: '<h1>Press the arrow at the side of the gap, or guess if you are unsure.</h1>',
             },
             testDescription: {
                 firstPage: {

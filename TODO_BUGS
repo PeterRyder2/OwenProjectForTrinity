@@ -1,16 +1,12 @@
 TODO
-Dringende Fragen:
 
-- Adaptive Steuerung: Fehler: Wenn Ende Phase 2 alles richtig, dann Ergebnis Minimum (keine Phase 3)
-- Adaptive Steuerung: ? Ergebniss Minimum aus 2 und 3 ?
-  Zusammenhang mit: Minimum = Ergebnis 0 = Index, nicht Puxel Nr., nicht Puxel Size ?
-- Adaptive Steuerung: ? beginn phase 3 wie phase 2, oder  1 größer als Schwelle Phase 2 ?
+- Vision Ergebnis: 1 Nachkommastelle für Anzeige Schwelle 6/? = PA * Puxel Size.
+- Controller: Einstellungen ID, Result, Email persistent wie Sprache?
+- Offline-Version
+- Offline-Version: Datenbank für (alle) Ergebnisse
+- Offline-Version: Sprache, Einstellungen ebenfalls persistent (aber nicht pro IP, sondern lokal)
 
-- Distanz-Berechnung: Die auf der Testseite angezeigte "pixel acuity" weicht deutlich ab von meinen Berechnungen.
-! Distanz-Berechnung: Die optimale Distanz ist falsch. 
-  Die muss bei den aktuellen Parametern immer doppelt so groß sein wie die minimale Distanz.
-
-  
+ 
 
 
 
@@ -20,6 +16,7 @@ Geklärt:
 - Das Starten des Cognition Test dauert recht lange: Pause 2,5 sec ist absichtlich eingestellt.
 - Die Datei zum Kalibrieren Sound ist fest language string testTripleSound.mp3,
   ggf.  als MP3 nicht überall abspielbar, ersetzen durch WAV...
+- Vision: Beginn phase 3 wie phase 2 ! Weil: wenn direkt falsch, dass Ende und Schwelle aus Phase 2 ist Ergebnis!
 
 
   
