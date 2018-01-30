@@ -174,9 +174,7 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
         }
         break;
       case State.Finished:
-        return {
-          result: this.testData.evaluate()
-        }
+        return this.testData.evaluate(this.pixelAcuity);
     }
     return false;
   }
@@ -184,7 +182,7 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
   async pauseTrial() {
     this.state = State.Pause;
     this.clearCanvas();
-    await Util.Delay(500)
+    await Util.Delay(0)
     this.state = State.WaitingForInput;
   }
 
@@ -264,6 +262,7 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
       case 1:
         return this.genTrial(2, this.testData.threshold + (this.testData.threshold == this.testData.puxels.length - 1 ? 0 : 1));
       case 2:
+        if (this.testData.activeTrial.puxel == 0 && (this.testData.responses.last().correct && this.testData.responses.last(1).correct)) return false;
         return this.genTrial(3, this.testData.threshold);
       case 3:
         return false;
@@ -349,15 +348,22 @@ class VisionTestData {
     return threshold;
   }
 
-  evaluate() {
+  evaluate(pixelAcuity: number) {
     let threshold = -1;
     for (let i = this.responses.length - 1; i >= 0; i--) {
       if (this.responses[i].phase != this.activeTrial.phase)
         break;
-      if (this.responses[i].correct)
+      if (this.responses[i].correct) {
         threshold = this.responses[i].puxel;
+        break
+      }
     }
-    return threshold;
+    return {
+      result: {
+        threshold: +(Math.round((this.puxels[this.threshold == -1 ? 0 : this.threshold] * pixelAcuity + 'e+2') as any) + 'e-2'),
+        index: threshold
+      }
+    };
   }
 }
 

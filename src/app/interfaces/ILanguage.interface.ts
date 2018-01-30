@@ -160,7 +160,11 @@ export class ILanguageFile {
                     firstHint: string;
                 }
             },
-            testResult: {},
+            testResult: {
+                firstCase: string;
+                secondCase: string;
+                thirdCase: string;
+            },
             questionnaire: {},
             questionnaireDescription: {
                 firstPage: {

@@ -202,7 +202,11 @@ export const greek: ILanguageFile = {
                     firstHint: `Press "Continue" to begin the vision test.`,
                 }
             },
-            testResult: {},
+            testResult: {
+                firstCase: 'No result, threshold greater than 6/$X$',
+                secondCase: 'Threshold is 6/$X$ or less',
+                thirdCase: 'Threshold is 6/$X$'
+            },
             questionnaire: {},
             questionnaireDescription: {
                 firstPage: {

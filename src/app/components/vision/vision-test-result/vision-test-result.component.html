@@ -1,5 +1,9 @@
 <div class="result">
-    <p *ngIf="this.resultData !== undefined">
-      Result: {{this.resultData.result}}
-    </p>
+  <div *ngIf="this.resultData !== undefined">
+    <div [ngSwitch]="this.resultData.result.index">
+      <p *ngSwitchCase="-1" innerHTML="{{this.language.firstCase | textInsert: [{find: 'X', ins: resultData.result.threshold}]}}"></p>
+      <p *ngSwitchCase="0" innerHTML="{{this.language.secondCase | textInsert: [{find: 'X', ins: resultData.result.threshold}]}}"></p>
+      <p *ngSwitchDefault innerHTML="{{this.language.thirdCase | textInsert: [{find: 'X', ins: resultData.result.threshold}]}}"></p>
+    </div>
   </div>
+</div>
