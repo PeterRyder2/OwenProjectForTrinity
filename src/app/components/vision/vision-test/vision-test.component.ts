@@ -182,7 +182,7 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
   async pauseTrial() {
     this.state = State.Pause;
     this.clearCanvas();
-    await Util.Delay(0)
+    await Util.Delay(500)
     this.state = State.WaitingForInput;
   }
 
