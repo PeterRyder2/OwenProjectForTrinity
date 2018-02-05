@@ -1,12 +1,7 @@
 TODO
 
-- Vision Ergebnis: 1 Nachkommastelle für Anzeige Schwelle 6/? = PA * Puxel Size.
-- Controller: Einstellungen ID, Result, Email persistent wie Sprache?
-- Offline-Version
-- Offline-Version: Datenbank für (alle) Ergebnisse
-  In der db  heißt momentan der Ordner für jeden Monat als Zahl = Monat - 1, also 0-11. Sollte besser 1-12 sein.
-- Offline-Version: Sprache, Einstellungen ebenfalls persistent (aber nicht pro IP, sondern lokal)
-
+- Offline-Version: Datenbank für (alle) Ergebnisse, "Dokumente" Ordner des Benutzer
+- Vision: Kalibrierung großes Plus mit Skalierungsfaktor
  
 
 
