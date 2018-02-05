@@ -360,7 +360,7 @@ class VisionTestData {
     }
     return {
       result: {
-        threshold: +(Math.round((this.puxels[this.threshold == -1 ? 0 : this.threshold] * pixelAcuity + 'e+2') as any) + 'e-2'),
+        threshold: +(Math.round((this.puxels[this.threshold == -1 ? 0 : this.threshold] * pixelAcuity + 'e+1') as any) + 'e-1'),
         index: threshold
       }
     };

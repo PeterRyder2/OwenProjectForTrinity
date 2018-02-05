@@ -7,9 +7,27 @@ import { Subject } from 'rxjs/Subject';
 export class SettingsService {
 
   showedControlCenter = false;
-  skipId = false;
-  showActualResult = true;
-  sendEmail = true;
+
+  private _skipId = false;
+  get skipId() { return this._skipId }
+  set skipId(value: boolean) {
+    this._skipId = value;
+    this.save();
+  }
+
+  private _showActualResult = true;
+  get showActualResult() { return this._showActualResult }
+  set showActualResult(value: boolean) {
+    this._showActualResult = value;
+    this.save();
+  }
+
+  private _sendEmail = true;
+  get sendEmail() { return this._sendEmail }
+  set sendEmail(value: boolean) {
+    this._sendEmail = value;
+    this.save();
+  }
 
   private _language = Language.English;
   get language() { return this._language; };
@@ -18,6 +36,7 @@ export class SettingsService {
     this.languageChangedEvent.next(value);
     this.save();
   };
+
   get languageStr() {
     switch (this.language) {
       case Language.English:
@@ -47,14 +66,17 @@ export class SettingsService {
         break;
 
       default:
-      this.language = Language.English;
+        this.language = Language.English;
         break;
     }
   }
 
   private save() {
     let settings: ISettings = {
-      language: this.language
+      language: this.language,
+      skipId: this.skipId,
+      showActualResult: this.showActualResult,
+      sendEmail: this.sendEmail,
     };
 
     localStorage.setItem('settings', JSON.stringify(settings));
@@ -77,4 +99,7 @@ export class SettingsService {
 
 interface ISettings {
   language: number;
+  skipId: boolean;
+  showActualResult: boolean;
+  sendEmail: boolean;
 }

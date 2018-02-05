@@ -202,8 +202,8 @@ export const french: ILanguageFile = {
             },
             testResult: {
                 firstCase: 'No result, threshold greater than 6/$X$',
-                secondCase: 'Threshold is 6/$X$ or less',
-                thirdCase: 'Threshold is 6/$X$'
+                secondCase: 'Threshold is 6/X or less',
+                thirdCase: 'Threshold is 6/X'
             },
             questionnaire: {},
             questionnaireDescription: {
