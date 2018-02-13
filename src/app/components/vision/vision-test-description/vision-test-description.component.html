@@ -13,7 +13,7 @@
   <p innerHTML="{{language.secondPage.secondParagraph}}"></p>
   <div class="calibrationCanvas">
     <div class="btnCntr">
-      <button (click)="this.changeSize(-10)">
+      <button (click)="this.changeSize(-this.scaleSize(0.05))">
         <i class="fa fa-minus big" aria-hidden="true"></i>
       </button>
       <button (click)="this.changeSize(-1)">
@@ -32,7 +32,7 @@
       <button (click)="this.changeSize(1)">
         <i class="fa fa-plus" aria-hidden="true"></i>
       </button>
-      <button (click)="this.changeSize(10)">
+      <button (click)="this.changeSize(this.scaleSize(0.05))">
         <i class="fa fa-plus big" aria-hidden="true"></i>
       </button>
     </div>

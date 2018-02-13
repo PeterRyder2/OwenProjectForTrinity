@@ -85,6 +85,7 @@ import { TextInsertPipe } from './pipes/text-insert.pipe';
     IqcodeDescriptionComponent,
     VisionTestResultComponent,
     VisionTestDescriptionComponent,
+    VisionTestComponent,
     Vf14ResultComponent,
     Vf14DescriptionComponent,
     VisionChapterDescriptionComponent,

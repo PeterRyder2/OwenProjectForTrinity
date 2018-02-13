@@ -10,8 +10,8 @@ if (environment.production) {
 
 platformBrowserDynamic().bootstrapModule(AppModule);
 
-window.onbeforeunload = function (event) {
-  console.log('reload')
-  event.preventDefault();
-  return 'Are you sure you want to reload?'
-};
+// window.onbeforeunload = function (event) {
+//   console.log('reload')
+//   event.preventDefault();
+//   return 'Are you sure you want to reload?'
+// };

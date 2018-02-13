@@ -60,6 +60,10 @@ export class VisionTestDescriptionComponent implements OnInit, OnDestroy, IDescr
     this.disableContinueChanged.emit(false);
   }
 
+  scaleSize(num: number) {
+    return Math.round(num * this.calCanvas.width);
+  }
+
   changeSize(addition: number) {
     this.drawCard(this.calibrationSize += this.calibrationSize + addition > this.calCanvas.width ? 0 : this.calibrationSize + addition < 50 ? 50 : addition)
   }
