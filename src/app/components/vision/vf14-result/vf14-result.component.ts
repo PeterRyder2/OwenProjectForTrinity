@@ -6,6 +6,7 @@ import { LanguageService } from '../../../services/language.service';
 import { MailApiService } from '../../../services/mail-api.service';
 import { SettingsService } from '../../../services/settings.service';
 import { IdService } from '../../../services/id.service';
+import { VisionApiService } from '../../../services/vision-api.service';
 
 @Component({
   selector: 'snscg-vf14-result',
@@ -25,16 +26,17 @@ export class Vf14ResultComponent implements OnInit, IResultComponent {
     } else
       this.score = null;
 
-      if (this.settings.sendEmail) {
-        var message = 'Id: ' +  this.idService.id.toString() + '\nScore: ' + this.score.toString() ;
-        this.mailer.sendMail('VF14-Data - ' + this.idService.id.toString(), message);
-      }
-      
-      //this.initEmail('Piers.Dawes@manchester.ac.uk');
-      //this.initEmail('zoe.simkin@manchester.ac.uk');
-      //this.initEmail('m.manstein-klein@hoertech.de');
-      //this.initEmail('t.wittkop@hoertech.de');
-      console.log(val.result, this.score);
+    if (this.settings.sendEmail) {
+      var message = 'Id: ' + this.idService.id.toString() + '\nScore: ' + this.score.toString();
+      this.mailer.sendMail('VF14-Data - ' + this.idService.id.toString(), message);
+    }
+    this.sendToServer();
+    console.log(val.result, this.score);
+  }
+
+  async sendToServer(){
+    let res = await this.visionApiService.saveQuestionnaire({id: this.idService.id, questionnaire: this._resultData.result});
+    console.log(res);
   }
 
   email: string;
@@ -46,35 +48,8 @@ export class Vf14ResultComponent implements OnInit, IResultComponent {
     return this.languageService.components.vision.questionnaireResult;
   }
 
-  constructor(public languageService: LanguageService, private http: Http, public settings: SettingsService, private mailer: MailApiService, private idService: IdService) { this.http = http; }
+  constructor(public languageService: LanguageService, private http: Http, public settings: SettingsService, private visionApiService: VisionApiService, private mailer: MailApiService, private idService: IdService) { this.http = http; }
 
   ngOnInit() {
-  }
-  initEmail(email: string) {
-    // This data could really come from some inputs on the interface - but let's keep it simple.
-    // this.email = 'm.manstein-klein@hoertech.de';
-    this.email = email;
-    this.name = 'SenseCog Q';
-    this.message = 'VF14 Score: ' + this.score;
-
-    // Start php via the built in server: $ php -S localhost:8000
-    this.endpoint = 'http://sensecog.hoertech.de/mailer_echecker.php';
-
-    this.sendEmail();
-    console.log(this.resultData);
-  }
-  sendEmail() {
-    let postVars = {
-      email: this.email,
-      name: this.name,
-      message: this.message
-    };
-    console.log('#sendEmail');
-    // You may also want to check the response. But again, let's keep it simple.
-    this.http.post(this.endpoint, postVars)
-      .subscribe(
-      response => console.log(response),
-      response => console.log(response)
-      )
   }
 }

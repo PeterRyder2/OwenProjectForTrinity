@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import { ConfigService } from './config.service';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
+import { IQuestionnaireResponse } from '../components/questionnaire/questionnaire.component';
 
 @Injectable()
 export class HearingApiService {
@@ -19,6 +20,10 @@ export class HearingApiService {
 
   next(input: { id: string, selectedTriple: string }) {
     return this.http.post(`${this.url}/d3/next`, input).map(res => res.json() as ITripleResonse).toPromise();
+  }
+
+  saveQuestionnaire(input: { id: string, questionnaire: IQuestionnaireResponse }) {
+    return this.http.post(`${this.url}/d3/questionnaire`, input).map(res => res.text()).toPromise();
   }
 
   finish(input: { id: string, annotation: string, sendMail: boolean }) {

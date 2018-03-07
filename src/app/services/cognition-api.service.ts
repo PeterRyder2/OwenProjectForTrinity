@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { ConfigService } from './config.service';
 import { IQuestionnaire } from '../interfaces/IQuestionnaire.interface';
+import { IQuestionnaireResponse } from '../components/questionnaire/questionnaire.component';
 
 @Injectable()
 export class CognitionApiService {
@@ -13,6 +14,10 @@ export class CognitionApiService {
   }
   initialize(input: { language: string, name: string }) {
     return this.http.post(`${this.url}/cognition/init`, input).map(res => res.json() as CognitionInitResponse).toPromise();
+  }
+
+  saveQuestionnaire(input: { id: string, questionnaire: IQuestionnaireResponse }) {
+    return this.http.post(`${this.url}/cognition/questionnaire`, input).map(res => res.text()).toPromise();
   }
 
   finish(input: { id: string, wordRes: ICognitionTestRespone[], annotation: string, sendMail: boolean }) {

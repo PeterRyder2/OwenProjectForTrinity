@@ -1,5 +1,5 @@
 import { ITestComponent, ITestResponse } from '../../interfaces/IProcedureConfig.interface';
-import { Assert } from '../../lib/util';
+import { Assert, Util } from '../../lib/util';
 import { Subject } from 'rxjs/Rx';
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { IQuestionnaire } from '../../interfaces/IQuestionnaire.interface';
@@ -146,10 +146,10 @@ export class QuestionnaireComponent implements OnInit, OnDestroy, ITestComponent
         }
       }
     }
-    return {
+    return Util.extend({
       score: score,
       answeredQuestions: answeredQuestions
-    };
+    }, this.questionnaire);
   }
 
   checkQuestionnaire() {
@@ -229,7 +229,7 @@ export class QuestionnaireComponent implements OnInit, OnDestroy, ITestComponent
 
 }
 
-export interface IQuestionnaireResponse {
+export interface IQuestionnaireResponse extends IQuestionnaire {
   score: number;
   answeredQuestions: number;
 }

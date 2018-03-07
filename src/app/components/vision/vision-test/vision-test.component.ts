@@ -6,6 +6,8 @@ import { Util } from '../../../lib/util';
 import { LanguageService } from '../../../services/language.service';
 import { ProcedureService } from '../../../services/procedure.service';
 import { ConfigService } from '../../../services/config.service';
+import { VisionApiService } from '../../../services/vision-api.service';
+import { IdService } from '../../../services/id.service';
 
 let State = VisionTestState;
 
@@ -56,7 +58,7 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
     return this.languageService.components.vision.test;
   }
 
-  constructor(public languageService: LanguageService, public configService: ConfigService) {
+  constructor(public languageService: LanguageService, public configService: ConfigService, private idService: IdService, private visionApiService: VisionApiService) {
     this.testData = new VisionTestData();
   }
 
@@ -174,7 +176,9 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
         }
         break;
       case State.Finished:
-        return this.testData.evaluate(this.pixelAcuity);
+        let res = this.testData.evaluate(this.pixelAcuity);
+        this.visionApiService.saveTest({id: this.idService.id, test: this.testData});
+        return res;
     }
     return false;
   }
@@ -260,10 +264,10 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
   nextPhase() {
     switch (this.testData.activeTrial.phase) {
       case 1:
-        return this.genTrial(2, this.testData.threshold + (this.testData.threshold == this.testData.puxels.length - 1 ? 0 : 1));
+        return this.genTrial(2, this.testData.lastThreshold + (this.testData.lastThreshold == this.testData.puxels.length - 1 ? 0 : 1));
       case 2:
         if (this.testData.activeTrial.puxel == 0 && (this.testData.responses.last().correct && this.testData.responses.last(1).correct)) return false;
-        return this.genTrial(3, this.testData.threshold);
+        return this.genTrial(3, this.testData.lastThreshold);
       case 3:
         return false;
     }
@@ -317,7 +321,7 @@ export class VisionTestComponent implements OnInit, OnDestroy, ITestComponent {
 
 }
 
-class VisionTestData {
+export class VisionTestData {
   get activePuxel() {
     return this.puxels[this.activeTrial.puxel]
   }
@@ -334,8 +338,10 @@ class VisionTestData {
   activeDirection: Direction;
   activeTrial: VisionTestTrial;
   responses: VisionTestTrialResponse[] = []
+  threshold?: number;
+  pixelAcuity?: number;
 
-  get threshold() {
+  get lastThreshold() {
     let threshold = this.puxels.length - 1;
     for (let i = this.responses.length - 1; i >= 0; i--) {
       if (this.responses[i].phase != this.activeTrial.phase)
@@ -345,10 +351,12 @@ class VisionTestData {
         break;
       }
     }
+    this.threshold = threshold;
     return threshold;
   }
 
   evaluate(pixelAcuity: number) {
+    this.pixelAcuity = pixelAcuity;
     let threshold = -1;
     for (let i = this.responses.length - 1; i >= 0; i--) {
       if (this.responses[i].phase != this.activeTrial.phase)
@@ -360,7 +368,7 @@ class VisionTestData {
     }
     return {
       result: {
-        threshold: +(Math.round((this.puxels[this.threshold == -1 ? 0 : this.threshold] * pixelAcuity + 'e+1') as any) + 'e-1'),
+        threshold: +(Math.round((this.puxels[this.lastThreshold == -1 ? 0 : this.lastThreshold] * pixelAcuity + 'e+1') as any) + 'e-1'),
         index: threshold
       }
     };

@@ -54,6 +54,7 @@ import { MailApiService } from './services/mail-api.service';
 import { ResultParserComponent } from './components/result-parser/result-parser.component';
 import { NgInitDirective } from './directives/ng-init.directive';
 import { TextInsertPipe } from './pipes/text-insert.pipe';
+import { VisionApiService } from './services/vision-api.service';
 
 @NgModule({
   declarations: [
@@ -115,7 +116,8 @@ import { TextInsertPipe } from './pipes/text-insert.pipe';
     IdService,
     TestIdResolver,
     MailApiService,
-    ConfigService
+    ConfigService,
+    VisionApiService
   ],
   bootstrap: [AppComponent]
 })

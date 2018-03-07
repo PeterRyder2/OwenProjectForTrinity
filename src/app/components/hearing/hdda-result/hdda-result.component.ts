@@ -5,6 +5,7 @@ import { Http } from '@angular/http';
 import { IQuestionnaireResponse } from '../../questionnaire/questionnaire.component';
 import { MailApiService } from '../../../services/mail-api.service';
 import { IdService } from '../../../services/id.service';
+import { HearingApiService } from '../../../services/hearing-api.service';
 
 
 
@@ -28,11 +29,13 @@ export class HddaResultComponent implements OnInit, IResultComponent {
       var message = 'Id: ' +  this.idService.id.toString() + '\nScore: ' + this.score.toString() ;
       this.mailer.sendMail('HDDA-Data - ' + this.idService.id.toString(), message);
     }
-    //this.initEmail('Piers.Dawes@manchester.ac.uk');
-    //this.initEmail('zoe.simkin@manchester.ac.uk');
-    //this.initEmail('m.manstein-klein@hoertech.de');
-    //this.initEmail('t.wittkop@hoertech.de');
+    this.sendToServer();
     console.log(val.result, this.score);
+  }
+
+  async sendToServer(){
+    let res = await this.hearingApiService.saveQuestionnaire({id: this.idService.id, questionnaire: this._resultData.result});
+    console.log(res);
   }
 
   email: string;
@@ -40,37 +43,8 @@ export class HddaResultComponent implements OnInit, IResultComponent {
   message: string;
   endpoint: string;
 
-  constructor(private http: Http, public settings: SettingsService, private mailer: MailApiService, private idService: IdService) { this.http = http; }
+  constructor(private http: Http, public settings: SettingsService, private mailer: MailApiService, private idService: IdService, private hearingApiService: HearingApiService) { this.http = http; }
 
   ngOnInit() {
-  }
-
-  initEmail(email: string) {
-    // This data could really come from some inputs on the interface - but let's keep it simple.
-    // this.email = 'm.manstein-klein@hoertech.de';
-    this.email = email;
-    this.name = 'SenseCog Q';
-    this.message = 'HDDA Score: ' + this.score;
-
-    // Start php via the built in server: $ php -S localhost:8000
-    this.endpoint = 'http://sensecog.hoertech.de/mailer_echecker.php';
-
-    if (this.settings.sendEmail)
-      this.sendEmail();
-    console.log(this.resultData);
-  }
-  sendEmail() {
-    let postVars = {
-      email: this.email,
-      name: this.name,
-      message: this.message
-    };
-    console.log('#sendEmail');
-    // You may also want to check the response. But again, let's keep it simple.
-    this.http.post(this.endpoint, postVars)
-      .subscribe(
-      response => console.log(response),
-      response => console.log(response)
-      )
   }
 }
