@@ -1,7 +1,10 @@
 TODO
 
-- Offline-Version: Datenbank für (alle) Ergebnisse, "Dokumente" Ordner des Benutzer
-- Vision: Kalibrierung großes Plus mit Skalierungsfaktor
+? Vision: Kalibrierung großes Plus mit Skalierungsfaktor
+- API launch-win Direktaufruf: Log schreiben, wo Schreibrechte sind,
+  und kein Beenden wenn Log nicht geschrieben werden kann
+- Datenbank für alle Tests
+- e-Checker merkt sich nicht Fenster-Größe
  
 
 
