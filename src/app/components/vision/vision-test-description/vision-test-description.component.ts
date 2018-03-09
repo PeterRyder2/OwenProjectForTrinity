@@ -14,15 +14,25 @@ export class VisionTestDescriptionComponent implements OnInit, OnDestroy, IDescr
     if (ref) {
       setTimeout(() => {
         this.calCanvas = ref.nativeElement;
-        makeCanvasHighRes(this.calCanvas);
-        this.calibrationSize = Math.round(this.calCanvas.width * 0.8);
-        this.drawCard(this.calibrationSize);
       }, 0);
     }
   }
+  @ViewChild('CalibrationCanvasContainer') set calCanvasContainerRef(ref: ElementRef) {
+    if (ref) {
+      setTimeout(() => {
+        this.calCanvasContainer = ref.nativeElement;
+        this.scaleCalCanvas();
+        window.addEventListener('resize', () => {
+          this.scaleCalCanvas();
+        })
+      }, 50);
+    }
+  }
+
   @Output() disableContinueChanged = new EventEmitter<boolean>(false);
 
   calCanvas: HTMLCanvasElement;
+  calCanvasContainer: HTMLDivElement;
 
   page = 0;
 
@@ -58,6 +68,35 @@ export class VisionTestDescriptionComponent implements OnInit, OnDestroy, IDescr
 
   ngOnDestroy() {
     this.disableContinueChanged.emit(false);
+  }
+
+  scaleCalCanvas() {
+    // scale width first
+    let el = this.calCanvasContainer.firstElementChild as HTMLDivElement;
+    let availiblewidth = document.getElementsByClassName('description').item(0).clientWidth;
+    let width = 2 * (el.offsetWidth + 40);
+    let remainingWidth = availiblewidth - width;
+    this.calCanvas.width = remainingWidth;
+    this.calCanvas.height = Math.round(remainingWidth * (53.98 / 85.60));
+    makeCanvasHighRes(this.calCanvas);
+    this.calibrationSize = Math.round(this.calCanvas.width * 0.8);
+    this.drawCard(this.calibrationSize);
+
+    // scale height if necessary
+    let availibleHeight = document.getElementsByClassName('description').item(0).clientHeight;
+    let outers = document.getElementsByClassName('outer');
+    let height = 0;
+    for (let i = 0; i < outers.length; i++) {
+      height += (outers.item(i) as HTMLDivElement).offsetHeight;
+    }
+    let remainingHeight = availibleHeight - height;
+    if (this.calCanvas.offsetHeight > remainingHeight) {
+      this.calCanvas.height = remainingHeight;
+      this.calCanvas.width = Math.round(remainingHeight * (85.60 / 53.98));
+      makeCanvasHighRes(this.calCanvas);
+      this.calibrationSize = Math.round(this.calCanvas.width * 0.8);
+      this.drawCard(this.calibrationSize);
+    }
   }
 
   scaleSize(num: number) {

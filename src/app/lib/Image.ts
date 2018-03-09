@@ -44,7 +44,6 @@ export class VisionCalibrationImage extends BaseImage {
             for (let col = offsetCol; col < size + offsetCol; col++) {
                 this.pixels[row][col] = new Pixel(30, 30, 30, 255);
             }
-            console.log(this.pixels.length - offsetRow, vertSize + offsetRow)
         this.drawCircle_lu(offsetCol + radius, offsetRow + radius, radius);
         this.drawCircle_ru(size + offsetCol - radius - 1, offsetRow + radius, radius);
         this.drawCircle_rd(size + offsetCol - radius - 1, vertSize + offsetRow - radius - 1, radius);
