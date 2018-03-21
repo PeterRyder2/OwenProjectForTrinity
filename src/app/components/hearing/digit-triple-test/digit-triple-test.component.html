@@ -27,7 +27,7 @@
     <div>
       <button [disabled]="state != 3" standard></button>
       <button [disabled]="state != 3" standard [class.active]="activeKey == '0'" (click)="addNumber('0')">0</button>
-      <button [disabled]="state != 3" standard [class.active]="activeKey.match('Delete|Backspace')" (click)="removeLastNumber()"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+      <button [disabled]="state != 3" standard [class.active]="activeKey.match('Delete|Backspace')" (click)="removeLastNumber()"><i class="fas fa-arrow-left"></i></button>
     </div>
     <button *ngIf="this.showOwnContinueBtn" [disabled]="!this.canContinue" standard [class.active]="activeKey == 'Enter'" (click)="continue()">
           {{language.continue}}

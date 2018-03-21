@@ -12,7 +12,7 @@
       <button *ngIf="this.procedureService.position.state <= this.stateEnum.Home" (click)="this.setLang(0)" [class.active]="settingsService.language == 0"><img src="assets/uk_flag.svg" alt="" class="flag"></button>
       <button *ngIf="this.procedureService.position.state <= this.stateEnum.Home" (click)="this.setLang(2)" [class.active]="settingsService.language == 2"><img src="assets/fr_flag.svg" alt="" class="flag"></button>
       <button *ngIf="this.procedureService.position.state <= this.stateEnum.Home" (click)="this.setLang(1)" [class.active]="settingsService.language == 1"><img src="assets/gr_flag.svg" alt="" class="flag"></button>
-      <button *ngIf="this.procedureService.position.state > this.stateEnum.Home" (click)="this.procedureService.reset()"><i class="fa fa-home" aria-hidden="true"></i></button>
+      <button *ngIf="this.procedureService.position.state > this.stateEnum.Home" (click)="this.procedureService.reset()"><div><i class="fas fa-home" aria-hidden="true"></i></div></button>
     </div>
   </div>
 </div>
