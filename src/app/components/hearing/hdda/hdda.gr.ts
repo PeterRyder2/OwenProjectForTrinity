@@ -3,7 +3,7 @@ import { IQuestionnaire } from '../../../interfaces/IQuestionnaire.interface';
 
 export let HDDA_gr: IQuestionnaire = {
   id: 'HDDA',
-  title: 'Hearing questionnaire',
+  title: 'Ερωτηματολογίου ακοής',
   forceResponse: true,
   backEnabled: false,
   questions: [

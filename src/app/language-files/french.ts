@@ -1,96 +1,96 @@
-import { ILanguageFile } from '../interfaces/ILanguage.interface';
+﻿import { ILanguageFile } from '../interfaces/ILanguage.interface';
 
 export const french: ILanguageFile = {
     components: {
         navbar: {
-            skip: `Skip`,
+            skip: `Passer`,
         },
         identification: {
             name: 'ID',
-            continue: 'Continue'
+            continue: 'Continuer'
         },
         procedureContainer: {
-            continue: `Continue`,
+            continue: `Continuer`,
         },
         home: {
             firstPage: {
-                title: `Welcome to the eChecker`,
-                firstParagraph: `The eChecker tests your hearing, vision and memory. 
-                The eChecker uses short questionnaires and interactive tests. 
-                Each part takes only a few minutes.`,
-                secondParagraph: `Please make sure that you are in a quiet room 
-                and there are no distractions while you do the eChecker.`,
-                firstHint: `Press "Continue" to begin!`,
+                title: `Bienvenue sur le test « eChecker »`,
+                firstParagraph: `Le eChecker teste votre audition, votre vision et votre mémoire. 
+                Le eChecker utilise des courts questionnaires et des tests interactifs. 
+                Chaque partie prend seulement quelques minutes.`,
+                secondParagraph: `Veuillez-vous assurer que vous êtes dans une pièce tranquille  
+                et sans distraction lorsque vous passez le eChecker.`,
+                firstHint: `Appuyer sur « Continuer » pour commencer !`,
             }
         },
         chapterSelection: {
-            title: `Which test would you like to take?`,
-            Cognition: `Memory test`,
-            Hearing: `Hearing test`,
-            Vision: `Vision test`,
+            title: `Quel test souhaitez-vous passer ?`,
+            Cognition: `Test de mémoire`,
+            Hearing: `Test d’audition`,
+            Vision: `Test de vision`,
         },
         cognition: {
             chapterDescription: {
                 firstPage: {
-                    title: `Memory test`,
-                    firstParagraph: `The memory test includes a questionnaire that asks about your memory 
-                    and thinking skills and a word game that asks you to remember some words.`,
+                    title: `Test de mémoire`,
+                    firstParagraph: `Le test de mémoire inclut un questionnaire sur votre mémoire 
+                    et votre cognition ainsi qu’un jeu de mémoire de mots vous demandant de vous souvenir de certains mots.`,
                     secondParagraph: ``,
-                    firstHint: `Press "Continue" to begin with the questionnaire.`,
+                    firstHint: `Veuillez cliquer sur « Continuer » pour commencer le questionnaire.`,
                 }
             },
             test: {
-                miniInstructions: 'Has this word been presented after the test started?',
-                no: 'No',
-                yes: 'Yes',
-                firstIntro: 'Now we are going to ask you some questions.<br>Answer as quickly and accurately as possible.<br><br>Please press \'Continue\' to continue',
-                secondIntro: 'Now we are going to show you some words.<br>Please decide whether or not you have already seen them.<br><br>Please press \'Continue\' to continue.',
-                continue: 'Continue',
-                outro: 'Great!<br>You\'ve completed the word game, please press \'Continue\' to progress.'
+                miniInstructions: 'Est-ce que ce mot vous a déjà été présenté au cours de ce test ?',
+                no: 'Non',
+                yes: 'Oui',
+                firstIntro: 'Maintenant, nous allons vous poser quelques questions.<br>Répondez le plus rapidement et précisément possible.<br><br>Appuyez sur « Continuer » pour commencer.',
+                secondIntro: 'Maintenant, nous allons vous montrer quelques mots.<br>Vous devrez dire si vous les avez déjà vus ou pas.<br><br>Appuyez sur « Continuer » pour continuer.',
+                continue: 'Continuer',
+                outro: 'Bravo !<br>Vous avez terminé le « jeu de mémoire de mots ». Appuyez sur « Continuer » pour continuer.'
             },
             testDescription: {
                 firstPage: {
-                    title: `Word game instructions`,
-                    firstParagraph: `The word game is next.`,
-                    secondParagraph: `Some speech is played now. 
-                    Please adjust the volume (if necessary) on your device to make the speech clearly audible.`,
-                    firstHint: ` You can use external speakers or headphones if necessary. `,
-                    secondHint: `Press "Continue" to start the test sound.`,
-                    thirdHint: `Press "Continue" when the speech is clearly audible.`,
+                    title: `Consignes pour le jeu de mémoire de mots`,
+                    firstParagraph: `Voici le jeu de mémoire de mots.`,
+                    secondParagraph: `Vous allez maintenant entendre des conversations. 
+                    Merci de régler le volume (si nécessaire) sur votre appareil afin d’entendre clairement ces conversations.`,
+                    firstHint: `Vous pouvez utiliser des haut-parleurs externes ou un casque si nécessaire.`,
+                    secondHint: `Appuyez sur « Continuer » pour lancer le test sonore.`,
+                    thirdHint: `Appuyez sur « Continuer » lorsque le discours est clairement audible.`,
                     soundFile: 'TestMemorySound.fr.mp3'
                 },
                 secondPage: {
-                    title: `Word game instructions`,
-                    firstParagraph: `You are going to be presented with some words. Try to remember them. We will ask you to recall them later.`,
-                    firstHint: `Press "Continue" to begin the word game.`,
+                    title: `Consignes pour le jeu de mémoire de mots`,
+                    firstParagraph: `Nous allons vous montrer quelques mots. Essayez de les mémoriser. Nous vous demanderons de les rappeler plus tard.`,
+                    firstHint: `Appuyez sur « Continuer » pour commencer le test de mémoire.`,
                 }
             },
             testResult: {},
             questionnaire: {},
             questionnaireDescription: {
                 firstPage: {
-                    title: `Memory questionnaire instructions`,
-                    firstParagraph: `This questionnaire should be completed by someone 
-                    who has known you for at least 10 years. It could be completed by a relative or a friend.<br> 
-                    If nobody is around to complete the questionnaire, please click on the “Skip” button above.<br> 
-                    If a relative or friend is able to complete the questionnaire for you, 
-                    please click “Continue” to begin the questionnaire.
+                    title: `Consignes pour le questionnaire de mémoire`,
+                    firstParagraph: `Ce questionnaire doit être complété par une personne 
+                    qui vous connait depuis au moins 10 ans. Il peut être complété par un proche ou un ami.<br> 
+                    Si personne n’est disponible pour compléter le questionnaire pour vous, merci de cliquer sur le bouton « Passer » ci-dessus.<br> 
+                    Si un proche ou un ami est présent pour compléter le questionnaire pour vous, 
+                    veuillez cliquer sur « Continuer » pour commencer le questionnaire.
                     `
                 },
                 secondPage: {
-                    title: `Memory questionnaire instructions`,
-                    firstParagraph: `Now we want you to remember what your friend or relative was like 10 years ago and
-                    to compare it with what he/she is like now.<br> 
-                    The following questions refer to 
-                    situations where this person has to use his/her memory or intelligence. We want
-                    you to indicate whether this has improved, stayed the same or got worse in that
-                    situation over the past 10 years.<br> 
-                    Note the importance of comparing his/her present
-                    performance with 10 years ago. So if 10 years ago this person always forgot where
-                    he/she had left things, and he/she still does, then this would be considered "Hasn't
-                    changed much".<br> 
-                    Please indicate the changes you have observed by highlighting the
-                    appropriate answer.`
+                    title: `Consignes pour le questionnaire de mémoire`,
+                    firstParagraph: `Maintenant nous voulons que vous vous souveniez de comment était votre proche ou ami 10 ans plus tôt et 
+                    que vous le compariez avec comment il est maintenant.<br> 
+                    Les questions suivantes font référence à  
+                    des situations pour lesquelles votre proche ou ami(e) doit utiliser sa mémoire ou son intelligence. 
+                    Pour chaque situation, vous devez indiquer si cela s’est amélioré, 
+                    est resté stable ou s'est aggravé au cours des 10 dernières années.<br> 
+                    Attention à bien comparer ses performances actuelles avec celles d’il y a 10 ans.
+                    Ainsi, si 10 ans auparavant votre proche ou ami oubliait toujours où il/elle avait laissé les choses, 
+                    et qu’il/elle le fait toujours, alors cette situation sera considérée comme
+                    « N’a pas beaucoup changé ».<br> 
+                    Veuillez indiquer les changements que vous avez observés en
+                    sélectionnant la réponse appropriée.`
                 }
             },
             questionnaireResult: {}
@@ -98,50 +98,50 @@ export const french: ILanguageFile = {
         hearing: {
             chapterDescription: {
                 firstPage: {
-                    title: `Hearing test`,
-                    firstParagraph: `The hearing test includes a questionnaire and a speech test.`,
-                    secondParagraph: `The questionnaire asks questions about your hearing.`,
-                    thirdParagraph: `The speech test involves recognising spoken numbers in background noise.`,
-                    firstHint: `Press "Continue" to begin the questionnaire.`,
+                    title: `Test d’audition`,
+                    firstParagraph: `Le test d’audition comprend un questionnaire et un test d’intelligibilité vocale.`,
+                    secondParagraph: `Le questionnaire comporte des questions sur votre audition.`,
+                    thirdParagraph: `Le test d’intelligibilité vocale consiste en la reconnaissance de chiffres énoncés avec un bruit de fond.`,
+                    firstHint: `Appuyer sur « Continuer »  pour commencer le questionnaire.`,
                 }
             },
             test: {
-                startHint: 'Press "Continue" to begin the hearing test.',
-                continueHint: 'Enter the recognized digits with the number pad below.<br>Use &larr; button to delete a number.<br>If you are unsure about a number, please take a guess.',
+                startHint: 'Appuyer sur « Continuer »  pour commencer le test d’audition.',
+                continueHint: 'Entrer les chiffres reconnus à l’aide du clavier numérique ci-dessous.<br>Utilisez le bouton &larr; pour effacer un nombre.<br>Si vous n’êtes pas sûr d’un chiffre, essayez de deviner.',
                 continue: 'Continue'
             },
             testDescription: {
                 firstPage: {
-                    title: `Speech test instructions`,
-                    firstParagraph: `The speech test is next.`,
-                    secondParagraph: `Some speech is played now. 
-                    Please adjust the volume (if necessary) on your device to make the speech clearly audible.`,
-                    firstHint: ` You can use external speakers or headphones if necessary. `,
-                    secondHint: `Press "Continue" to start the test sound.`,
-                    thirdHint: `Press "Continue" when the speech is clearly audible.`,
+                    title: `Consignes pour le test d’intelligibilité vocale`,
+                    firstParagraph: `Le test d’intelligibilité vocale est le suivant.`,
+                    secondParagraph: `Vous allez maintenant entendre des conversations.  
+                    Merci de régler le volume (si nécessaire) sur votre appareil afin d’entendre clairement ces conversations.`,
+                    firstHint: `Vous pouvez utiliser des hauts parleurs externes ou un casque si nécessaire.`,
+                    secondHint: `Appuyer sur « Continuer » pour commencer le test sonore.`,
+                    thirdHint: `Appuyer sur « Continuer » lorsque le discours est clairement audible.`,
                     soundFile: 'TestTripleSound.fr.mp3'
                 },
                 secondPage: {
-                    title: `Speech test instructions`,
-                    firstParagraph: `You will hear three spoken numbers, with noise in the background 
-                    (for example, “The digits one, five, three”). 
-                    Please enter the three numbers that you hear using the number pad on the screen 
-                    (for example, 1  5  3). 
-                    You may use the &larr; button to delete a number if you make a mistake.`,
-                    secondParagraph: `Some numbers will be hard to hear. 
-                    Please always enter three numbers. If you are unsure, please take a guess.`,
+                    title: `Instructions pour le test d’intelligibilité vocale`,
+                    firstParagraph: `Vous allez entendre trois chiffres, avec la présence d’un bruit de fond 
+                    (par exemple, « Les chiffres un, cinq, trois »). 
+                    Veuillez entrer les trois chiffres que vous entendrez en utilisant le clavier numérique de l’écran 
+                    (par exemple, 1, 5, 3). 
+                    Vous pouvez utiliser le bouton &larr; pour effacer un nombre si vous avez fait une erreur.`,
+                    secondParagraph: `Certains chiffres peuvent être difficiles à entendre. 
+                    Merci de toujours entrer 3 chiffres. Si vous n’êtes pas sûr, essayez de deviner.`,
                     thirdParagraph: ``,
-                    firstHint: `Press "Continue" to begin the hearing test.`,
+                    firstHint: `Appuyer sur « Continuez » pour commencer le test d’audition.`,
                 }
             },
             testResult: {},
             questionnaire: {},
             questionnaireDescription: {
                 firstPage: {
-                    title: `Hearing questionnaire instructions`,
-                    firstParagraph: `There are 12 questions about your hearing.<br> 
-                    Please choose the answer which best describes you.<br> 
-                    Please always select one of the responses and click “Continue”.`,
+                    title: `Consignes pour le questionnaire d’audition`,
+                    firstParagraph: `Il y a 12 questions à propos de votre audition.<br> 
+                    Veuillez choisir la réponse qui vous décrit le mieux.<br> 
+                    Merci de toujours sélectionner une des réponses avant de cliquer sur « Continuer ».`,
                 }
             },
             questionnaireResult: {}
@@ -149,73 +149,73 @@ export const french: ILanguageFile = {
         vision: {
             chapterDescription: {
                 firstPage: {
-                    title: `Vision test`,
-                    firstParagraph: `The vision test includes a questionnaire and an acuity test.`,
-                    secondParagraph: `The questionnaire asks questions about your vision.`,
-                    thirdParagraph: `In the acuity test, you will see squares of different sizes. 
-                    Each square has a gap on one side. 
-                    The test involves deciding which side of the square the gap is on.`,
-                    firstHint: `Press "Continue" to begin with the questionnaire.`,
+                    title: `Test de vision`,
+                    firstParagraph: `Ce test de vision comprend un questionnaire et un test d’acuité visuelle.`,
+                    secondParagraph: `Le questionnaire concerne votre vision.`,
+                    thirdParagraph: `Pendant le test d’acuité visuelle, vous verrez des carrés de différentes tailles. 
+                    Chaque carré possède un côté ouvert. 
+                    Vous devrez indiquer quel est le côté ouvert.`,
+                    firstHint: `Appuyez sur « Continuer » pour commencer le questionnaire.`,
                 }
             },
             test: {
-                miniInstructions: '<h1>Press the arrow at the side of the gap, or guess if you are unsure.</h1>',
+                miniInstructions: '<h1>Appuyez sur la flèche qui est du côté ouvert, ou essayez de deviner si vous n’êtes pas sûr(e).</h1>',
             },
             testDescription: {
                 firstPage: {
-                    title: `Vision test`,
-                    firstParagraph: `Before we start the vision test, we need to make sure that the screen is set correctly. 
-                    You will need a credit card (or a card that is the same size as a credit card).`,
-                    secondParagraph: `Please do NOT change the browser zoom from 100% to a different value.`,
-                    firstHint: `Press continue when you are ready to check the screen setting.`,
+                    title: `Test de vision`,
+                    firstParagraph: `Avant de commencer le test de vision, nous devons nous assurer que l’écran est bien réglé. 
+                    Vous aurez besoin d’une carte de crédit (ou d’une carte de format identique).`,
+                    secondParagraph: `Assurez-vous que le zoom de votre navigateur est bien réglé sur 100%.`,
+                    firstHint: `Appuyez sur « Continuer » si vous êtes prêt(e) à passer au réglage de l’écran.`,
                     secondHint: ``
                 },
                 secondPage: {
-                    title: `Vision test`,
-                    firstParagraph: `Now place your credit card against the screen. 
-                    Adjust the width of the rectangle below so that it is the same size as the credit card 
-                    using the small and large - and + buttons.`,
+                    title: `Test de vision`,
+                    firstParagraph: `Maintenant, placez votre carte de crédit sur l’écran. 
+                    Ajustez la taille du rectangle ci-dessous afin qu’il fasse les mêmes dimensions que la carte de crédit,  
+                    à l’aide des boutons – et +.`,
                     secondParagraph: ``,
-                    firstHint: `Press continue when the rectangle is the same width as the card.`
+                    firstHint: `Appuyez sur « Continuer » lorsque le rectangle a la même largeur que la carte.`
                 },
                 thirdPage: {
-                    title: `Vision test instructions`,
-                    firstParagraph: `Use a distance of at least minDistancecm. 
-                    A distance of optDistancecm would be best.`,
-                    secondParagraph: `Please enter the distance that you will use in cm:`,
-                    firstHint: `Please use a greater distance, at least minDistancecm.
-                    optDistancecm would be best. Please adjust the distance.`,
-                    secondHint: `You can do the test, but a distance of optDistancecm would be better. 
-                    Please press "Continue" to start or adjust the distance.`,
-                    thirdHint: `This distance is great. Please press "Continue" to start.`,
+                    title: `Consignes pour le test de vision`,
+                    firstParagraph: `Placez-vous à une distance d’au moins minDistance cm. 
+                    Une distance de optDistance cm serait idéale.`,
+                    secondParagraph: `Ecrivez la distance à laquelle vous vous placez en cm :`,
+                    firstHint: `Veuillez utiliser une distance plus grande, au moins minDistance cm.
+                    optDistance cm serait le mieux. Veuillez ajuster la distance.`,
+                    secondHint: `Vous pouvez faire le test, mais une distance de optDistance cm serait mieux. 
+                    Veuillez appuyer sur « Continuer » pour commencer ou ajuster la distance.`,
+                    thirdHint: `Cette distance est parfaite. Appuyez sur « Continuer » pour commencer.`,
                 },
                 fourthPage: {
-                    title: `Vision test instructions`,
-                    firstParagraph: `You will see squares of different sizes. Each square has a gap on one side.`,
-                    secondParagraph: `Press the arrow button according to the side that the gap is on.`,
-                    thirdParagraph: `For example: If you saw this shape Π you would press the arrow &darr; below the symbol.`,
-                    fourthParagraph: `Some squares may be hard to see. 
-                    If you are unsure which side the gap is on, please take a guess.`,
+                    title: `Consignes pour le test de vision`,
+                    firstParagraph: `Vous allez voir des carrés de différentes tailles. Chaque carré possède un côté ouvert.`,
+                    secondParagraph: `Appuyez sur la flèche pointant vers le côté ouvert.`,
+                    thirdParagraph: `Par exemple, si vous voyez cette forme Π, vous appuierez sur la flèche &darr; en dessous du symbole.`,
+                    fourthParagraph: `Certains carrés seront plus difficiles à voir. 
+                    Si vous n’êtes pas sûr(e) de savoir quel est le côté ouvert, essayez de deviner.`,
                     fifthParagraph: ``,
-                    firstHint: `Press "Continue" to begin the vision test.`,
+                    firstHint: `Appuyez sur « Continuer » pour commencer le test de vue.`,
                 }
             },
             testResult: {
-                firstCase: 'No result, threshold greater than 6/$X$',
-                secondCase: 'Threshold is 6/X or less',
-                thirdCase: 'Threshold is 6/X'
+                firstCase: 'Aucun résultat, le seuil est supérieur à 6/X',
+                secondCase: 'Le seuil est de 6/X ou moins',
+                thirdCase: 'Le seuil est de 6/X'
             },
             questionnaire: {},
             questionnaireDescription: {
                 firstPage: {
-                    title: `Vision questionnaire instructions`,
-                    firstParagraph: `There are about 20 questions about your vision.<br> 
-                    Please choose the answer which best describes you.<br> 
-                    Please always select one of the responses and click “Continue”.`,
+                    title: `Consignes pour le questionnaire concernant votre vision`,
+                    firstParagraph: `Il y aura 20 questions concernant votre vision.<br> 
+                    Choisissez la réponse qui vous correspond le mieux.<br> 
+                    Merci de toujours sélectionner une des réponses avant de cliquer sur « Continuer ».`,
                 }
             },
             questionnaireResult: {
-                noResult: 'No result possible'
+                noResult: 'Aucun résultat possible'
             }
         }
     }

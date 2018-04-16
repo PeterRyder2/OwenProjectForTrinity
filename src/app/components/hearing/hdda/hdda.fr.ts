@@ -1,58 +1,58 @@
-import { QuestionType } from '../../../enums/QuestionType.enum';
+﻿import { QuestionType } from '../../../enums/QuestionType.enum';
 import { IQuestionnaire } from '../../../interfaces/IQuestionnaire.interface';
 
 export let HDDA_fr: IQuestionnaire = {
   id: 'HDDA',
-  title: 'Hearing questionnaire',
+  title: 'Questionnaire d’audition',
   forceResponse: true,
   backEnabled: false,
   questions: [
     {
-      question: 'FR Have you noticed that you don’t hear as well as you used to?',
+      question: 'Avez-vous remarqué que vous n’entendiez plus aussi bien qu’avant ?',
       type: QuestionType.single,
       answerTemplateNr: 0
     }, {
-      question: 'FR Has anybody told you that you don’t hear well?',
+      question: 'Quelqu’un vous a-t-il dit que vous n’entendiez pas bien ?',
       type: QuestionType.single,
       answerTemplateNr: 0
     }, {
-      question: 'Does your family tell you that you turn up the volume of the television or radio very loudly?',
+      question: 'Vos proches vous disent-ils que vous réglez le volume de la radio ou de la télé très fort ?',
       type: QuestionType.single,
       answerTemplateNr: 0
     }, {
-      question: 'When you’re talking to someone, do you have to ask the person to speak louder?',
+      question: 'Lorsque vous parlez avec quelqu’un, avez-vous besoin de lui demander de parler plus fort ?',
       type: QuestionType.single,
       answerTemplateNr: 0
     }, {
-      question: 'When you’re talking to someone, do you have to ask the person to repeat what they’re saying various times?',
+      question: 'Lorsque vous parlez avec quelqu’un, avez-vous besoin de lui demander de répéter ce qu’il/elle dit plusieurs fois ?',
       type: QuestionType.single,
       answerTemplateNr: 0
     }, {
-      question: 'Can you understand when someone is speaking to you in a low voice?',
+      question: 'Pouvez-vous comprendre quelqu’un qui vous parle à voix basse ?',
       type: QuestionType.single,
       answerTemplateNr: 1
     }, {
-      question: 'Can you understand when someone is speaking to you on the telephone?',
+      question: 'Pouvez-vous comprendre quelqu’un qui vous parle au téléphone ?',
       type: QuestionType.single,
       answerTemplateNr: 1
     }, {
-      question: 'Can you hear the sound of a coin dropping on the floor?',
+      question: 'Pouvez-vous entendre le son d’une pièce de monnaie qui tombe par terre ?',
       type: QuestionType.single,
       answerTemplateNr: 1
     }, {
-      question: 'Can you hear the sound of a door closing?',
+      question: 'Pouvez-vous entendre le son d’une porte qui se ferme ?',
       type: QuestionType.single,
       answerTemplateNr: 1
     }, {
-      question: 'Can you hear when someone approaches you from behind?',
+      question: 'Pouvez-vous entendre quelqu’un qui s’approche de vous par derrière ?',
       type: QuestionType.single,
       answerTemplateNr: 1
     }, {
-      question: 'Can you hear when someone is speaking to you in a noisy setting such as a pub or restaurant?',
+      question: 'Pouvez-vous entendre quelqu’un qui vous parle dans un environnement bruyant, comme par exemple un bar ou un restaurant ?',
       type: QuestionType.single,
       answerTemplateNr: 1
     }, {
-      question: 'Can you hold a conversation in a group setting when several people are speaking at the same time?',
+      question: 'Pouvez-vous tenir une conversation dans un groupe lorsque plusieurs personnes parlent en même temps ?',
       type: QuestionType.single,
       answerTemplateNr: 1
     }
@@ -60,29 +60,29 @@ export let HDDA_fr: IQuestionnaire = {
   answerTemplates: [
     [
       {
-        answer: 'Always',
+        answer: 'Toujours',
         value: 0
       },
       {
-        answer: 'Occasionally',
+        answer: 'Occasionnellement',
         value: 1
       },
       {
-        answer: 'Neverou',
+        answer: 'Jamais',
         value: 2
       }
     ],
     [
       {
-        answer: 'No, I can\'t',
+        answer: 'Non, je ne peux pas',
         value: 0
       },
       {
-        answer: 'With some difficulty',
+        answer: 'Avec quelques difficultés',
         value: 1
       },
       {
-        answer: 'Yes, without difficulty',
+        answer: 'Oui, sans difficulté',
         value: 2
       }
     ]

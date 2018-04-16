@@ -1,148 +1,148 @@
-import { QuestionType } from '../../../enums/QuestionType.enum';
+﻿import { QuestionType } from '../../../enums/QuestionType.enum';
 import { IQuestionnaire } from '../../../interfaces/IQuestionnaire.interface';
 
 export let VF14_fr: IQuestionnaire = {
   id: 'VF-14',
-  title: 'Vision questionnaire',
+  title: 'Questionnaire concernant votre vision',
   forceResponse: true,
   questions: [
     {
       // tslint:disable-next-line:max-line-length
-      question: 'Do you have any difficulty, even with glasses, reading small print, such as labels on medicine bottles, a telephone book, food labels?',
+      question: 'Avez-vous des difficultés, même avec des lunettes, à lire les petits caractères, comme les étiquettes de médicaments, l\'annuaire ou les étiquettes de produits alimentaires ?',
       answerTemplateNr: 0,
       type: QuestionType.single
     },
     {
-      question: 'Do you have any difficulty, even with glasses, reading a newspaper or a book?',
+      question: 'Avez-vous des difficultés, même avec des lunettes, à lire le journal ou un livre ?',
       answerTemplateNr: 0,
       type: QuestionType.single
     },
     {
       // tslint:disable-next-line:max-line-length
-      question: 'Do you have any difficulty, even with glasses, reading a large-print book or large-print newspaper or numbers on a telephone?',
+      question: 'Avez-vous des difficultés, même avec des lunettes, à lire des livres ou des journaux en gros caractères, ou les chiffres sur un téléphone ?',
       answerTemplateNr: 0,
       type: QuestionType.single
     },
     {
-      question: 'Do you have any difficulty, even with glasses, recognizing people when they are close to you?',
+      question: 'Avez-vous des difficultés, même avec des lunettes, à reconnaître des personnes lorsqu\'elles sont près de vous ?',
       answerTemplateNr: 0,
       type: QuestionType.single
     },
     {
-      question: 'Do you have any difficulty, even with glasses, seeing steps, stairs or curbs?',
+      question: 'Avez-vous des difficultés, même avec des lunettes, à voir des marches, des escaliers ou des bordures de trottoir ?',
       answerTemplateNr: 0,
       type: QuestionType.single
     },
     {
-      question: 'Do you have any difficulty, even with glasses, reading traffic signs, street signs, or store signs?',
+      question: 'Avez-vous des difficultés, même avec des lunettes, à lire les panneaux de signalisation, les noms des rues ou les enseignes des magasins ?',
       answerTemplateNr: 0,
       type: QuestionType.single
     },
     {
-      question: 'Do you have any difficulty, even with glasses, doing find handwork like sewing, knitting, crocheting, carpentry?',
+      question: 'Avez-vous des difficultés, même avec des lunettes, à réaliser des travaux manuels minutieux, tels que la couture, le tricot, le crochet ou la menuiserie ?',
       answerTemplateNr: 0,
       type: QuestionType.single
     },
     {
-      question: 'Do you have any difficulty, even with glasses, writing checks or filling out forms?',
+      question: 'Avez-vous des difficultés, même avec des lunettes, pour remplir des chèques ou des formulaires ?',
       answerTemplateNr: 0,
       type: QuestionType.single
     },
     {
-      question: 'Do you have any difficulty, even with glasses, playing games such as bingo, dominos, card games, mahjong?',
+      question: 'Avez-vous des difficultés, même avec des lunettes, pour jouer à des jeux de société tels que le bingo, les dominos, les jeux de cartes ou le mahjong ?',
       answerTemplateNr: 0,
       type: QuestionType.single
     },
     {
-      question: 'Do you have any difficulty, even with glasses, taking part in sports like bowling, handball, tennis, golf?',
+      question: 'Avez-vous des difficultés, même avec des lunettes, pour participer à des activités sportives telles que le bowling, le handball, le tennis ou le golf ?',
       answerTemplateNr: 0,
       type: QuestionType.single
     },
     {
-      question: 'Do you have any difficulty, even with glasses, cooking?',
+      question: 'Avez-vous des difficultés, même avec des lunettes, à cuisiner ?',
       answerTemplateNr: 0,
       type: QuestionType.single
     },
     {
-      question: 'Do you have any difficulty, even with glasses, watching television?',
+      question: 'Avez-vous des difficultés, même avec des lunettes, à regarder la télévision ?',
       answerTemplateNr: 0,
       type: QuestionType.single
     },
     {
-      question: 'Do you currently drive a car?',
+      question: 'Conduisez une voiture actuellement ?',
       type: QuestionType.jump,
       answers: [
         {
-          answer: 'Yes',
+          answer: 'Oui',
           jumpTo: 13,
           value: null
         },
         {
-          answer: 'No',
+          answer: 'Non',
           jumpTo: 15,
           value: null
         }
       ]
     },
     {
-      question: 'How much difficulty do you have driving during the day because of your vision?',
+      question: 'A quel point la conduite de jour est-elle difficile pour vous en raison de votre vision ?',
       answerTemplateNr: 1,
       type: QuestionType.single
     },
     {
-      question: 'How much difficulty do you have driving at night because of your vision?',
+      question: 'A quel point la conduite de nuit est-elle difficile pour vous en raison de votre vision ?',
       answerTemplateNr: 1,
       type: QuestionType.single,
       jumpTo: -1
     },
     {
-      question: 'Have you ever driven a car?',
+      question: 'Avez-vous déjà conduit une voiture ?',
       type: QuestionType.jump,
       answers: [
         {
-          answer: 'Yes',
+          answer: 'Oui',
           jumpTo: 16,
           value: null
         },
         {
-          answer: 'No',
+          answer: 'Non',
           jumpTo: -1,
           value: null
         }
       ]
     },
     {
-      question: 'When did you stop driving?',
+      question: 'Quand avez-vous arrêté de conduire ?',
       type: QuestionType.single,
       answers: [
         {
-          answer: 'less than 6 months ago',
+          answer: 'Il y a moins de 6 mois',
           value: null
         },
         {
-          answer: '6-12 months ago',
+          answer: 'Il y a entre 6 mois et 12 mois',
           value: null
         },
         {
-          answer: 'more than 12 months ago',
+          answer: 'Il y a plus de 12 mois',
           value: null
         }
       ]
     },
     {
-      question: 'Why did you stop driving?',
+      question: 'Pourquoi avez-vous arrêté de conduite ?',
       type: QuestionType.single,
       answers: [
         {
-          answer: 'vision',
+          answer: 'Problèmes de vue',
           value: null
         },
         {
-          answer: 'other illness',
+          answer: 'Autre maladie',
           value: null
         },
         {
-          answer: 'other reason',
+          answer: 'Autre raison',
           value: null
         }
       ]
@@ -151,45 +151,45 @@ export let VF14_fr: IQuestionnaire = {
   answerTemplates: [
     [
       {
-        answer: 'not applicable',
+        answer: 'Non applicable',
         value: null
       },
       {
-        answer: 'no',
+        answer: 'Non',
         value: 4
       },
       {
-        answer: 'yes, with a little difficulty',
+        answer: 'Oui, avec un peu de difficultés',
         value: 3
       },
       {
-        answer: 'yes, with a moderate amount of difficulty',
+        answer: 'Oui, avec des difficultés modérées',
         value: 2
       },
       {
-        answer: 'yes, with a great deal of difficulty',
+        answer: 'Oui, avec beaucoup de difficultés',
         value: 1
       },
       {
-        answer: 'yes, and am unable to do the activity',
+        answer: 'Oui, et incapable de réaliser cette activité',
         value: 0
       }
     ],
     [
       {
-        answer: 'no difficulty',
+        answer: 'Aucune difficulté',
         value: 4
       },
       {
-        answer: 'a little difficulty',
+        answer: 'Un peu de difficultés',
         value: 3
       },
       {
-        answer: 'a moderate amount of difficulty',
+        answer: 'Une difficulté modérée',
         value: 2
       },
       {
-        answer: 'a great deal of difficulty',
+        answer: 'Beaucoup de difficultés',
         value: 1
       }
     ]

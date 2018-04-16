@@ -1,87 +1,87 @@
-import { QuestionType } from '../../../enums/QuestionType.enum';
+﻿import { QuestionType } from '../../../enums/QuestionType.enum';
 import { IQuestionnaire } from '../../../interfaces/IQuestionnaire.interface';
 
 export let IQCODE_fr: IQuestionnaire = {
   id: 'IQCODE',
-  title: 'Memory questionnaire',
+  title: 'Questionnaire de mémoire',
   questions: [
     {
-      question: 'Compared with ten years ago how is this person at: Remembering things about family and friends e.g. occupations, birthdays, addresses',
+      question: 'Par rapport à il y a dix ans, comment cette personne: Se souvenir de certains renseignements concernant la famille et les proches, par exemple leur profession, leur date d\'anniversaire, leur adresse',
       type: QuestionType.single,
       answerTemplateNr: 0
     },
     {
-      question: 'Compared with ten years ago how is this person at: Remembering things that have happened recently',
+      question: 'Par rapport à il y a dix ans, comment cette personne: Se souvenir d\'événements qui se sont produits récemment',
       type: QuestionType.single,
       answerTemplateNr: 0
     },
     {
-      question: 'Compared with ten years ago how is this person at: Recalling conversations a few days later',
+      question: 'Par rapport à il y a dix ans, comment cette personne: Se souvenir de conversations récentes, quelques jours plus tard',
       type: QuestionType.single,
       answerTemplateNr: 0
     },
     {
-      question: 'Compared with ten years ago how is this person at: Remembering his/her address and telephone number',
+      question: 'Par rapport à il y a dix ans, comment cette personne: Se rappeler son adresse et son numéro de téléphone',
       type: QuestionType.single,
       answerTemplateNr: 0
     },
     {
-      question: 'Compared with ten years ago how is this person at: Remembering what day and month it is',
+      question: 'Par rapport à il y a dix ans, comment cette personne: Se rappeler le jour et le mois en cours',
       type: QuestionType.single,
       answerTemplateNr: 0
     },
     {
-      question: 'Compared with ten years ago how is this person at: Remembering where things are usually kept',
+      question: 'Par rapport à il y a dix ans, comment cette personne: Se rappeler où sont généralement rangées les choses',
       type: QuestionType.single,
       answerTemplateNr: 0
     },
     {
-      question: 'Compared with ten years ago how is this person at: Remembering where to find things which have been put in a different place from usual',
+      question: 'Par rapport à il y a dix ans, comment cette personne: Se rappeler où trouver des objets rangés à des endroits inhabituels',
       type: QuestionType.single,
       answerTemplateNr: 0
     },
     {
-      question: 'Compared with ten years ago how is this person at: Knowing how to work familiar machines around the house',
+      question: 'Par rapport à il y a dix ans, comment cette personne: Savoir comment utiliser des appareils ménagers familiers',
       type: QuestionType.single,
       answerTemplateNr: 0
     },
     {
-      question: 'Compared with ten years ago how is this person at: Learning to use a new gadget or machine around the house',
+      question: 'Par rapport à il y a dix ans, comment cette personne: Apprendre à utiliser de nouveaux objets ou appareils ménagers dans la maison',
       type: QuestionType.single,
       answerTemplateNr: 0
     },
     {
-      question: 'Compared with ten years ago how is this person at: Learning new things in general',
+      question: 'Par rapport à il y a dix ans, comment cette personne: Apprendre des nouvelles choses en général',
       type: QuestionType.single,
       answerTemplateNr: 0
     },
     {
-      question: 'Compared with ten years ago how is this person at: Following a story in a book or on TV',
+      question: 'Par rapport à il y a dix ans, comment cette personne: Suivre une histoire dans un livre ou à la télévision',
       type: QuestionType.single,
       answerTemplateNr: 0
     },
     {
-      question: 'Compared with ten years ago how is this person at: Making decisions on everyday matters',
+      question: 'Par rapport à il y a dix ans, comment cette personne: Prendre des décisions concernant les problèmes du quotidien',
       type: QuestionType.single,
       answerTemplateNr: 0
     },
     {
-      question: 'Compared with ten years ago how is this person at: Handling money for shopping',
+      question: 'Par rapport à il y a dix ans, comment cette personne: Gérer son argent pour faire ses achats',
       type: QuestionType.single,
       answerTemplateNr: 0
     },
     {
-      question: 'Compared with ten years ago how is this person at: Handling financial matters e.g. the pension, dealing with the bank',
+      question: 'Par rapport à il y a dix ans, comment cette personne: Gérer ses finances personnelles (Par exemple payer les comptes, faire des retraits à la banques)',
       type: QuestionType.single,
       answerTemplateNr: 0
     },
     {
-      question: 'Compared with ten years ago how is this person at: Handling other everyday arithmetic problems e.g. knowing how much food to buy, knowing how long between visits from family or friends',
+      question: 'Par rapport à il y a dix ans, comment cette personne: Gérer d\'autres problèmes arithmétiques du quotidien, par exemple savoir quelle quantité d\'aliments acheter, savoir combien de temps s\'est écoulé entre les visites d\'amis/membres de la famille',
       type: QuestionType.single,
       answerTemplateNr: 0
     },
     {
-      question: 'Compared with ten years ago how is this person at: Using his/her intelligence to understand what\'s going on and to reason things through',
+      question: 'Par rapport à il y a dix ans, comment cette personne: Utiliser son intelligence pour comprendre ce qui se passe, utiliser ses capacités de réflexion et être capable de raisonner',
       type: QuestionType.single,
       answerTemplateNr: 0
     }
@@ -89,23 +89,23 @@ export let IQCODE_fr: IQuestionnaire = {
   answerTemplates: [
     [
       {
-        answer: 'Much improved',
+        answer: 'Beaucoup mieux',
         value: 1
       },
       {
-        answer: 'A  bit  improved',
+        answer: 'Un peu mieux',
         value: 2
       },
       {
-        answer: 'Not much change',
+        answer: 'Aucun changement',
         value: 3
       },
       {
-        answer: 'A bit  worse',
+        answer: 'Un peu moins bien',
         value: 4
       },
       {
-        answer: 'Much worse',
+        answer: 'Beaucoup moins bien',
         value: 5
       }
     ]

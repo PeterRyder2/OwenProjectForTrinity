@@ -1,98 +1,96 @@
-import { ILanguageFile } from '../interfaces/ILanguage.interface';
+﻿import { ILanguageFile } from '../interfaces/ILanguage.interface';
 
 export const greek: ILanguageFile = {
     components: {
         navbar: {
-            skip: `Skip`,
+            skip: `Παράλειψη`,
         },
         identification: {
             name: 'ID',
-            continue: 'Continue'
+            continue: 'Συνέχεια'
         },
         procedureContainer: {
-            continue: `Continue`,
+            continue: `Συνέχεια`,
         },
         home: {
             firstPage: {
-                title: `Welcome to the eChecker`,
-                firstParagraph: `The eChecker tests your hearing, vision and memory. 
-                The eChecker uses short questionnaires and interactive tests. 
-                Each part takes only a few minutes.`,
-                secondParagraph: `Please make sure that you are in a quiet room 
-                and there are no distractions while you do the eChecker.`,
-                firstHint: `Press "Continue" to begin!`,
+                title: `Καλώς ήρθατε στο eChecker`,
+                firstParagraph: `Το eChecker ελέγχει την ακοή σας, την όραση και τη μνήμη. 
+                Το eChecker χρησιμοποιεί σύντομα ερωτηματολόγια και διαδραστικά τεστ. 
+                Κάθε μέρος διαρκεί μόνο λίγα λεπτά.`,
+                secondParagraph: `Παρακαλούμε βεβαιωθείτε ότι βρίσκεστε σε ένα ήσυχο δωμάτιο και δεν υπάρχει 
+                κάτι στο χώρο που μπορεί να αποσπάσει την προσοχή σας ενώ κάνετε το eChecker.`,
+                firstHint: `Πατήστε "Συνέχεια" για να ξεκινήσετε!`,
             }
         },
         chapterSelection: {
-            title: `Which test would you like to take?`,
-            Cognition: `Memory test`,
-            Hearing: `Hearing test`,
-            Vision: `Vision test`,
+            title: `Ποιο τεστ θα θέλατε να κάνετε;`,
+            Cognition: `Τεστ ακοής`,
+            Hearing: `Τεστ μνήμης`,
+            Vision: `Τεστ όρασης`,
         },
         cognition: {
             chapterDescription: {
                 firstPage: {
-                    title: `Memory test`,
-                    firstParagraph: `The memory test includes a questionnaire that asks about your memory 
-                    and thinking skills and a word game that asks you to remember some words.`,
+                    title: `Τεστ μνήμης`,
+                    firstParagraph: `Το τεστ μνήμης περιλαμβάνει ένα ερωτηματολόγιο που ρωτάει σχετικά 
+                    με τη μνήμη και τις δεξιότητες σκέψης σας και ένα παιχνίδι λέξεων που σας ζητά να θυμηθείτε μερικές λέξεις.`,
                     secondParagraph: ``,
-                    firstHint: `Press "Continue" to begin with the questionnaire.`,
+                    firstHint: `Πατήστε "Συνέχεια" για να ξεκινήσετε με το ερωτηματολόγιο.`,
                 }
             },
             test: {
-                miniInstructions: 'Has this word been presented after the test started?',
-                no: 'No',
-                yes: 'Yes',
-                firstIntro: 'Now we are going to ask you some questions.<br>Answer as quickly and accurately as possible.<br><br>Please press \'Continue\' to continue',
-                secondIntro: 'Now we are going to show you some words.<br>Please decide whether or not you have already seen them.<br><br>Please press \'Continue\' to continue.',
-                continue: 'Continue',
-                outro: 'Great!<br>You\'ve completed the word game, please press \'Continue\' to progress.'
+                miniInstructions: 'Έχει παρουσιαστεί αυτή η λέξη μετά την έναρξη του τεστ;',
+                no: 'Όχι',
+                yes: 'Ναι',
+                firstIntro: 'Τώρα θα σας θέσουμε μερικές ερωτήσεις.<br>Απαντήστε όσο το δυνατόν πιο γρήγορα και με ακρίβεια.<br><br>Πατήστε "Συνέχεια" για να συνεχίσετε.',
+                secondIntro: 'Τώρα θα σας δείξουμε μερικές λέξεις.<br>Παρακαλείσθε να αποφασίσετε αν τις έχετε ήδη δει ή όχι.<br><br>Πατήστε "Συνέχεια" για να συνεχίσετε.',
+                continue: 'Συνέχεια',
+                outro: 'Τέλεια!<br>Έχετε ολοκληρώσει το παιχνίδι λέξεων, πατήστε "Συνέχεια" για να συνεχίσετε.'
             },
             testDescription: {
                 firstPage: {
-                    title: `Word game instructions`,
-                    firstParagraph: `The word game is next.`,
-                    secondParagraph: `Some speech is played now. 
-                    Please adjust the volume (if necessary) on your device to make the speech clearly audible.`,
-                    firstHint: ` You can use external speakers or headphones if necessary. `,
-                    secondHint: `Press "Continue" to start the test sound.`,
-                    thirdHint: `Press "Continue" when the speech is clearly audible.`,
-                    soundFile: 'TestMemorySound.gr.mp3'
+                    title: `Οδηγίες παιχνιδιού λέξεων`,
+                    firstParagraph: `Το παιχνίδι λέξεων είναι επόμενο.`,
+                    secondParagraph: `Κάποια ομιλία ακούγεται τώρα. 
+                    Ρυθμίστε την ένταση ήχου (εάν είναι απαραίτητο) στη συσκευή σας,  ώστε να ακούγεται καθαρά η ομιλία.`,
+                    firstHint: `Μπορείτε να χρησιμοποιήσετε εξωτερικά ηχεία ή ακουστικά εάν είναι απαραίτητο.`,
+                    secondHint: `Πατήστε "Συνέχεια" για να ξεκινήσετε τον ήχο δοκιμής.`,
+                    thirdHint: `Πατήστε "Συνέχεια" όταν η ομιλία ακούγεται καθαρά.`,
+                    soundFile: 'TestMemorySound.en.mp3'
                 },
                 secondPage: {
-                    title: `Word game instructions`,
-                    firstParagraph: `You are going to be presented with some words. Try to remember them. We will ask you to recall them later.`,
-                    firstHint: `Press "Continue" to begin the word game.`,
+                    title: `Οδηγίες παιχνιδιού λέξεων`,
+                    firstParagraph: `Θα σας παρουσιαστούν μερικές λέξεις. Προσπαθήστε να τις θυμηθείτε. Θα σας ζητήσουμε να τις ανακαλέσετε αργότερα.`,
+                    firstHint: `Πατήστε "Συνέχεια" για να ξεκινήσει το παιχνίδι λέξεων.`,
                 }
             },
             testResult: {},
             questionnaire: {},
             questionnaireDescription: {
                 firstPage: {
-                    title: `Memory questionnaire instructions`,
-                    firstParagraph: `This questionnaire should be completed by someone 
-                    who has known you for at least 10 years. It could be completed by a relative or a friend.<br> 
-                    If nobody is around to complete the questionnaire, please click on the “Skip” button above.<br> 
-                    If a relative or friend is able to complete the questionnaire for you, 
-                    please click “Continue” to begin the questionnaire.
+                    title: `Οδηγίες ερωτηματολογίου μνήμης`,
+                    firstParagraph: `Αυτό το ερωτηματολόγιο πρέπει να συμπληρωθεί από κάποιον που σας γνωρίζει τουλάχιστον 10 χρόνια. 
+                    Θα μπορούσε να συμπληρωθεί από έναν συγγενή ή έναν φίλο.<br> 
+                    Εάν κανείς δεν μπορεί να συμπληρώσει το ερωτηματολόγιο, παρακαλώ κάντε κλικ στο κουμπί "Παράλειψη" παραπάνω.<br> 
+                    Εάν κάποιος συγγενής ή φίλος μπορεί να συμπληρώσει το ερωτηματολόγιο για εσάς, 
+                    παρακαλώ κάντε κλικ στο κουμπί "Συνέχεια" για να ξεκινήσετε το ερωτηματολόγιο.
                     `
                 },
                 secondPage: {
-                    title: `Memory questionnaire instructions`,
-                    firstParagraph: `Tώρα θα θέλαμε να θυμηθείτε πως ήταν ο/η φίλος/η / συγγενής σας πριν 10 χρόνια 
-                    και να τον/την συγκρίνετε με το πως είναι τώρα. <br>
-                    Πιο κάτω βρίσκονται καταστάσεις στις οποίες το άτομο αυτό πρέπει 
-                    να χρησιμοποιήσει τη μνήμη του/της ή ευφυΐα του/της και θα
-                     θέλαμε να υποδείξετε κατά πόσο έχει βελτιωθεί, 
-                     έχει παραμείνει σταθερός/ή, ή έχει χειροτερέψει στην αντίστοιχη 
-                     κατάσταση τα τελευταία 10 χρόνια. <br>
-                     Σημειώστε ότι είναι πολύ σημαντικό να συγκρίνετε την απόδοση 
-                     του τότε (πριν 10 χρόνια) και τώρα. 
-                     Έτσι, αν πριν 10 χρόνια αυτό το άτομο πάντα ξεχνούσε που 
-                     άφηνε τα πράγματα του και ακόμη το κάνει, τότε θα πρέπει να εκληφθεί 
-                     ως «Όχι ιδιαίτερη αλλαγή». <br>
-                     Παρακαλώ σημειώστε τις αλλαγές που έχετε παρατηρήσει, 
-                     κυκλώνοντας την κατάλληλη απάντηση.`,
+                    title: `Οδηγίες ερωτηματολογίου μνήμης`,
+                    firstParagraph: `Τώρα θέλουμε να θυμηθείτε πως ήταν ο φίλος ή ο συγγενής σας πριν 
+                    από 10 χρόνια και να το συγκρίνετε με το πως είναι τώρα.<br> 
+                    Οι ακόλουθες ερωτήσεις αφορούν περιπτώσεις στις οποίες το άτομο 
+                    πρέπει να χρησιμοποιήσει τη μνήμη του ή την ευφυΐα του. 
+                    Θέλουμε να αναφέρετε εάν αυτό έχει βελτιωθεί, 
+                    εάν παρέμεινε το ίδιο ή εάν χειροτέρεψε τα τελευταία 10 χρόνια.<br> 
+                    Δώστε έμφαση στο πόσο σημαντική είναι η σύγκριση της σημερινής επίδοσης με πριν 
+                    δέκα χρόνια. Έτσι, αν πριν από 10 χρόνια αυτό το άτομο πάντα ξέχναγε πού 
+                    είχε αφήσει πράγματα του/της, και εξακολουθεί να το κάνει, 
+                    τότε αυτό θεωρείται "Όχι, ιδιαίτερη αλλαγή".<br> 
+                    Παρακαλώ υποδείξτε τις αλλαγές που έχετε παρατηρήσει 
+                    επισημαίνοντας την κατάλληλη απάντηση.`
                 }
             },
             questionnaireResult: {}
@@ -100,50 +98,50 @@ export const greek: ILanguageFile = {
         hearing: {
             chapterDescription: {
                 firstPage: {
-                    title: `Hearing test`,
-                    firstParagraph: `The hearing test includes a questionnaire and a speech test.`,
-                    secondParagraph: `The questionnaire asks questions about your hearing.`,
-                    thirdParagraph: `The speech test involves recognising spoken numbers in background noise.`,
-                    firstHint: `Press "Continue" to begin the questionnaire.`,
+                    title: `Τεστ ακοής`,
+                    firstParagraph: `Το τεστ ακοής περιλαμβάνει ένα ερωτηματολόγιο και ένα τεστ ομιλίας.`,
+                    secondParagraph: `Το ερωτηματολόγιο θα απαντήσετε ερωτήσεις σχετικά με την ακοή σας.`,
+                    thirdParagraph: `Το τεστ ομιλίας περιλαμβάνει την αναγνώριση αριθμών που παρουσιάζονται ταυτόχρονα με θόρυβο.`,
+                    firstHint: `Πατήστε "Συνέχεια" για να ξεκινήσετε το ερωτηματολόγιο.`,
                 }
             },
             test: {
-                startHint: 'Press "Continue" to begin the hearing test.',
-                continueHint: 'Enter the recognized digits with the number pad below.<br>Use &larr; button to delete a number.<br>If you are unsure about a number, please take a guess.',
-                continue: 'Continue'
+                startHint: 'Πατήστε "Συνέχεια" για να ξεκινήσει το τεστ ακοής.',
+                continueHint: 'Εισαγάγετε τα αναγνωρισμένα ψηφία με το αριθμητικό πληκτρολόγιο παρακάτω.<br>Χρησιμοποιήστε το &larr; κουμπί για να διαγράψετε έναν αριθμό.<br>Εάν δεν είστε βέβαιοι για έναν αριθμό, παρακαλούμε μαντέψετε.',
+                continue: 'Συνέχεια'
             },
             testDescription: {
                 firstPage: {
-                    title: `Speech test instructions`,
-                    firstParagraph: `The speech test is next.`,
-                    secondParagraph: `Some speech is played now. 
-                    Please adjust the volume (if necessary) on your device to make the speech clearly audible.`,
-                    firstHint: ` You can use external speakers or headphones if necessary. `,
-                    secondHint: `Press "Continue" to start the test sound.`,
-                    thirdHint: `Press "Continue" when the speech is clearly audible.`,
-                    soundFile: 'TestTripleSound.gr.mp3'
+                    title: `Οδηγίες τεστ ομιλίας`,
+                    firstParagraph: `Ακολουθεί το τεστ ομιλίας.`,
+                    secondParagraph: `Κάποια ομιλία ακούγεται τώρα. 
+                    Ρυθμίστε την ένταση ήχου (εάν είναι απαραίτητο) στη συσκευή σας, για να ακούγεται καθαρά η ομιλία.`,
+                    firstHint: `Μπορείτε να χρησιμοποιήσετε εξωτερικά ηχεία ή ακουστικά εάν είναι απαραίτητο.`,
+                    secondHint: `Πατήστε "Συνέχεια" για να ξεκινήσετε τον ήχο δοκιμής.`,
+                    thirdHint: `Πατήστε "Συνέχεια" όταν η ομιλία ακούγεται καθαρά.`,
+                    soundFile: 'TestTripleSound.en.mp3'
                 },
                 secondPage: {
-                    title: `Speech test instructions`,
-                    firstParagraph: `You will hear three spoken numbers, with noise in the background 
-                    (for example, “The digits one, five, three”). 
-                    Please enter the three numbers that you hear using the number pad on the screen 
-                    (for example, 1  5  3). 
-                    You may use the &larr; button to delete a number if you make a mistake.`,
-                    secondParagraph: `Some numbers will be hard to hear. 
-                    Please always enter three numbers. If you are unsure, please take a guess.`,
+                    title: `Οδηγίες τεστ ομιλίας`,
+                    firstParagraph: `Θα ακούσετε τρεις αριθμούς, που θα παρουσιαστούν ταυτόχρονα με θόρυβο  
+                    (για παράδειγμα, "Τα ψηφία ένα, πέντε, τρία"). 
+                    Πληκτρολογήστε τους τρεις αριθμούς που ακούτε χρησιμοποιώντας το αριθμητικό πληκτρολόγιο στην οθόνη  
+                    (για παράδειγμα, 1,5,3). 
+                    Μπορείτε να χρησιμοποιήσετε το &larr; κουμπί για να διαγράψετε έναν αριθμό εάν κάνετε κάποιο λάθος.`,
+                    secondParagraph: `Ορισμένοι αριθμοί μπορεί να είναι δύσκολο να ακουστούν. 
+                    Παρακαλούμε εισάγετε πάντα τρεις αριθμούς. Αν δεν είστε σίγουροι, παρακαλούμε να μαντέψετε.`,
                     thirdParagraph: ``,
-                    firstHint: `Press "Continue" to begin the hearing test.`,
+                    firstHint: `Πατήστε "Συνέχεια" για να ξεκινήσει το τεστ ακοής.`,
                 }
             },
             testResult: {},
             questionnaire: {},
             questionnaireDescription: {
                 firstPage: {
-                    title: `Hearing questionnaire instructions`,
-                    firstParagraph: `There are 12 questions about your hearing.<br> 
-                    Please choose the answer which best describes you.<br> 
-                    Please always select one of the responses and click “Continue”.`,
+                    title: `Οδηγίες ερωτηματολογίου ακοής`,
+                    firstParagraph: `Υπάρχουν 12 ερωτήσεις σχετικά με την ακοή σας.<br> 
+                    Επιλέξτε την απάντηση που σας περιγράφει καλύτερα.<br> 
+                    Παρακαλούμε πάντα να επιλέγετε μία από τις απαντήσεις και μετά κάντε κλικ στο "Συνέχεια".`,
                 }
             },
             questionnaireResult: {}
@@ -151,73 +149,73 @@ export const greek: ILanguageFile = {
         vision: {
             chapterDescription: {
                 firstPage: {
-                    title: `Vision test`,
-                    firstParagraph: `The vision test includes a questionnaire and an acuity test.`,
-                    secondParagraph: `The questionnaire asks questions about your vision.`,
-                    thirdParagraph: `In the acuity test, you will see squares of different sizes. 
-                    Each square has a gap on one side. 
-                    The test involves deciding which side of the square the gap is on.`,
-                    firstHint: `Press "Continue" to begin with the questionnaire.`,
+                    title: `Τεστ όρασης`,
+                    firstParagraph: `Το τεστ όρασης περιλαμβάνει ένα ερωτηματολόγιο και ένα τεστ οξύτητας.`,
+                    secondParagraph: `Το ερωτηματολόγιο θέτει ερωτήσεις σχετικά με την όραση σας.`,
+                    thirdParagraph: `Στο τεστ οξύτητας, θα δείτε τετράγωνα σε διαφορετικά μεγέθη. 
+                    Κάθε τετράγωνο έχει ένα κενό σε μία πλευρά. 
+                    Το τεστ περιλαμβάνει το να υποδείξετε σε ποια πλευρά του τετραγώνου βρίσκεται το κενό.`,
+                    firstHint: `Πατήστε "Συνέχεια" για να ξεκινήσετε με το ερωτηματολόγιο.`,
                 }
             },
             test: {
-                miniInstructions: '<h1>Press the arrow at the side of the gap, or guess if you are unsure.</h1>',
+                miniInstructions: '<h1>Πατήστε το βέλος στο πλάι του κενού, ή μαντέψτε εάν δεν είστε βέβαιοι.</h1>',
             },
             testDescription: {
                 firstPage: {
-                    title: `Vision test`,
-                    firstParagraph: `Before we start the vision test, we need to make sure that the screen is set correctly. 
-                    You will need a credit card (or a card that is the same size as a credit card).`,
-                    secondParagraph: `Please do NOT change the browser zoom from 100% to a different value.`,
-                    firstHint: `Press continue when you are ready to check the screen setting.`,
+                    title: `Τεστ όρασης`,
+                    firstParagraph: `Πριν ξεκινήσουμε το τεστ όρασης, πρέπει να βεβαιωθείτε ότι η οθόνη έχει ρυθμιστεί σωστά. 
+                    Θα χρειαστείτε μια πιστωτική κάρτα (ή μια κάρτα που έχει το ίδιο μέγεθος με μια πιστωτική κάρτα).`,
+                    secondParagraph: `Μην αλλάξετε το zoom (την μεγέθυνση) της οθόνης από 100% σε διαφορετική τιμή.`,
+                    firstHint: `Πατήστε συνέχεια όταν είστε έτοιμοι να ελέγξετε τη ρύθμιση της οθόνης.`,
                     secondHint: ``
                 },
                 secondPage: {
-                    title: `Vision test`,
-                    firstParagraph: `Now place your credit card against the screen. 
-                    Adjust the width of the rectangle below so that it is the same size as the credit card 
-                    using the small and large - and + buttons.`,
+                    title: `Τεστ όρασης`,
+                    firstParagraph: `Τώρα τοποθετήστε την πιστωτική σας κάρτα στην οθόνη. 
+                    Ρυθμίστε το πλάτος του ορθογωνίου πιο κάτω έτσι ώστε να έχει το ίδιο μέγεθος 
+                    με την πιστωτική κάρτα χρησιμοποιώντας τα κουμπιά μικρού και μεγάλου - και +.`,
                     secondParagraph: ``,
-                    firstHint: `Press continue when the rectangle is the same width as the card.`
+                    firstHint: `Πατήστε συνέχεια όταν το ορθογώνιο έχει το ίδιο πλάτος με την κάρτα.`
                 },
                 thirdPage: {
-                    title: `Vision test instructions`,
-                    firstParagraph: `Use a distance of at least minDistancecm. 
-                    A distance of optDistancecm would be best.`,
-                    secondParagraph: `Please enter the distance that you will use in cm:`,
-                    firstHint: `Please use a greater distance, at least minDistancecm.
-                    optDistancecm would be best. Please adjust the distance.`,
-                    secondHint: `You can do the test, but a distance of optDistancecm would be better. 
-                    Please press "Continue" to start or adjust the distance.`,
-                    thirdHint: `This distance is great. Please press "Continue" to start.`,
+                    title: `Οδηγίες τεστ όρασης`,
+                    firstParagraph: `Χρησιμοποιήστε απόσταση τουλάχιστον minDistance εκατοστών (εκ).   
+                    Μια απόσταση optDistance εκ θα ήταν η καλύτερη.`,
+                    secondParagraph: `Παρακαλούμε εισάγετε την απόσταση που θα χρησιμοποιήσετε σε εκ:`,
+                    firstHint: `Παρακαλούμε χρησιμοποιήστε μεγαλύτερη απόσταση, τουλάχιστον minDistance εκ. 
+                    optDistance εκ θα ήταν καλύτερα. Παρακαλούμε ρυθμίστε την απόσταση.`,
+                    secondHint: `Μπορείτε να κάνετε το τεστ, αλλά η απόσταση optDistance εκ θα ήταν καλύτερη.
+                    Πατήστε "Συνέχεια" για να ξεκινήσετε ή να ρυθμίσετε την απόσταση.`,
+                    thirdHint: `Αυτή η απόσταση είναι εξαιρετική. Πατήστε "Συνέχεια" για να ξεκινήσετε.`,
                 },
                 fourthPage: {
-                    title: `Vision test instructions`,
-                    firstParagraph: `You will see squares of different sizes. Each square has a gap on one side.`,
-                    secondParagraph: `Press the arrow button according to the side that the gap is on.`,
-                    thirdParagraph: `For example: If you saw this shape Π you would press the arrow &darr; below the symbol.`,
-                    fourthParagraph: `Some squares may be hard to see. 
-                    If you are unsure which side the gap is on, please take a guess.`,
+                    title: `Οδηγίες τεστ όρασης`,
+                    firstParagraph: `Θα δείτε τετράγωνα σε διαφορετικά μεγέθη. Κάθε τετράγωνο έχει ένα κενό στη μία πλευρά.`,
+                    secondParagraph: `Πατήστε το κουμπί με το βέλος ανάλογα με την πλευρά που βρίσκεται το κενό.`,
+                    thirdParagraph: `Για παράδειγμα: Εάν είδες αυτό το σχήμα Π θα πατήσεις το darr; βέλος κάτω από το σύμβολο.`,
+                    fourthParagraph: `Μερικά τετράγωνα μπορεί να είναι δύσκολο να τα δείτε. 
+                    Εάν δεν είστε σίγουροι σε ποια πλευρά βρίσκεται το κενό, παρακαλούμε να υποθέσετε.`,
                     fifthParagraph: ``,
-                    firstHint: `Press "Continue" to begin the vision test.`,
+                    firstHint: `Πατήστε "Συνέχεια" για να ξεκινήσει η εξέταση όρασης.`,
                 }
             },
             testResult: {
-                firstCase: 'No result, threshold greater than 6/$X$',
-                secondCase: 'Threshold is 6/X or less',
-                thirdCase: 'Threshold is 6/X'
+                firstCase: 'Δεν υπάρχει αποτέλεσμα, το όριο είναι μεγαλύτερο από 6/X',
+                secondCase: 'Το όριο είναι 6/X ή λιγότερο',
+                thirdCase: 'Το όριο είναι 6/X'
             },
             questionnaire: {},
             questionnaireDescription: {
                 firstPage: {
-                    title: `Vision questionnaire instructions`,
-                    firstParagraph: `There are about 20 questions about your vision.<br> 
-                    Please choose the answer which best describes you.<br> 
-                    Please always select one of the responses and click “Continue”.`,
+                    title: `Οδηγίες ερωτηματολογίου οράσεως`,
+                    firstParagraph: `Υπάρχουν 20 ερωτήσεις σχετικά με την όραση σας.<br> 
+                    Επιλέξτε την απάντηση που σας περιγράφει καλύτερα.<br> 
+                    Παρακαλούμε πάντα να επιλέγετε μία από τις απαντήσεις και μετά να κάνετε κλικ στο "Συνέχεια".`,
                 }
             },
             questionnaireResult: {
-                noResult: 'No result possible'
+                noResult: 'Δεν υπάρχει αποτέλεσμα'
             }
         }
     }
