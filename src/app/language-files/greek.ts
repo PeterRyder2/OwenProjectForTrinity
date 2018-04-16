@@ -176,6 +176,7 @@ export const greek: ILanguageFile = {
                     Ρυθμίστε το πλάτος του ορθογωνίου πιο κάτω έτσι ώστε να έχει το ίδιο μέγεθος 
                     με την πιστωτική κάρτα χρησιμοποιώντας τα κουμπιά μικρού και μεγάλου - και +.`,
                     secondParagraph: ``,
+                    bankCardHint: `Compare size with <\br> your bank card`,
                     firstHint: `Πατήστε συνέχεια όταν το ορθογώνιο έχει το ίδιο πλάτος με την κάρτα.`
                 },
                 thirdPage: {

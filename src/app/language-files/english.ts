@@ -176,6 +176,7 @@ export const english: ILanguageFile = {
                     Adjust the width of the rectangle below so that it is the same size as the credit card 
                     using the small and large - and + buttons.`,
                     secondParagraph: ``,
+                    bankCardHint: `Compare size with <br> your bank card`,
                     firstHint: `Press continue when the rectangle is the same width as the card.`
                 },
                 thirdPage: {

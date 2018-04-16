@@ -140,6 +140,7 @@ export class ILanguageFile {
                     title: string;
                     firstParagraph: string;
                     secondParagraph: string;
+                    bankCardHint: string;
                     firstHint: string;
                 },
                 thirdPage: {

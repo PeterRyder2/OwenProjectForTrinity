@@ -25,9 +25,8 @@
     <div>
       <canvas height="280" width="430" #CalibrationCanvas>
       </canvas>
-      <div *ngIf="this.calCanvas" class="label" [style.fontSize]="(3 + 30 * this.calibrationSize/this.calCanvas.width)+'px'" [style.lineHeight]="(3 + 35 * this.calibrationSize/this.calCanvas.width)+'px'">
-        Compare size with
-        <br> your bank card
+      <div *ngIf="this.calCanvas" class="label" [style.fontSize]="(3 + 30 * this.calibrationSize/this.calCanvas.width)+'px'" [style.lineHeight]="(3 + 35 * this.calibrationSize/this.calCanvas.width)+'px'" innerHTML="{{this.language.secondPage.bankCardHint}}">
+        
       </div>
     </div>
     <div class="btnCntr">
