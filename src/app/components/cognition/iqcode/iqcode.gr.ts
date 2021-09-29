@@ -3,7 +3,7 @@ import { IQuestionnaire } from '../../../interfaces/IQuestionnaire.interface';
 
 export let IQCODE_gr: IQuestionnaire = {
   id: 'IQCODE',
-  title: 'Ερωτηματολογίου μνήμης',
+  title: 'Ερωτηματολόγιο μνήμης',
   questions: [
     {
       question: 'Συγκρίνοντας με πριν 10 χρόνια, πως είναι αυτό το άτομο σχετικά με το να: Θυμάται πράγματα που αφορούν την οικογένεια και φίλους πχ. Επαγγέλματα, γενέθλια, διευθύνσεις.',

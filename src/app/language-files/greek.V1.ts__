@@ -1,6 +1,6 @@
 import { ILanguageFile } from '../interfaces/ILanguage.interface';
 
-export const english: ILanguageFile = {
+export const greek: ILanguageFile = {
     components: {
         navbar: {
             skip: `Skip`,
@@ -57,7 +57,7 @@ export const english: ILanguageFile = {
                     firstHint: ` You can use external speakers or headphones if necessary. `,
                     secondHint: `Press "Continue" to start the test sound.`,
                     thirdHint: `Press "Continue" when the speech is clearly audible.`,
-                    soundFile: 'TestMemorySound.en.mp3'
+                    soundFile: 'TestMemorySound.gr.mp3'
                 },
                 secondPage: {
                     title: `Word game instructions`,
@@ -79,18 +79,20 @@ export const english: ILanguageFile = {
                 },
                 secondPage: {
                     title: `Memory questionnaire instructions`,
-                    firstParagraph: `Now we want you to remember what your friend or relative was like 10 years ago and
-                    to compare it with what he/she is like now.<br> 
-                    The following questions refer to 
-                    situations where this person has to use his/her memory or intelligence. We want
-                    you to indicate whether this has improved, stayed the same or got worse in that
-                    situation over the past 10 years.<br> 
-                    Note the importance of comparing his/her present
-                    performance with 10 years ago. So if 10 years ago this person always forgot where
-                    he/she had left things, and he/she still does, then this would be considered "Hasn't
-                    changed much".<br> 
-                    Please indicate the changes you have observed by highlighting the
-                    appropriate answer.`
+                    firstParagraph: `Tώρα θα θέλαμε να θυμηθείτε πως ήταν ο/η φίλος/η / συγγενής σας πριν 10 χρόνια 
+                    και να τον/την συγκρίνετε με το πως είναι τώρα. <br>
+                    Πιο κάτω βρίσκονται καταστάσεις στις οποίες το άτομο αυτό πρέπει 
+                    να χρησιμοποιήσει τη μνήμη του/της ή ευφυΐα του/της και θα
+                     θέλαμε να υποδείξετε κατά πόσο έχει βελτιωθεί, 
+                     έχει παραμείνει σταθερός/ή, ή έχει χειροτερέψει στην αντίστοιχη 
+                     κατάσταση τα τελευταία 10 χρόνια. <br>
+                     Σημειώστε ότι είναι πολύ σημαντικό να συγκρίνετε την απόδοση 
+                     του τότε (πριν 10 χρόνια) και τώρα. 
+                     Έτσι, αν πριν 10 χρόνια αυτό το άτομο πάντα ξεχνούσε που 
+                     άφηνε τα πράγματα του και ακόμη το κάνει, τότε θα πρέπει να εκληφθεί 
+                     ως «Όχι ιδιαίτερη αλλαγή». <br>
+                     Παρακαλώ σημειώστε τις αλλαγές που έχετε παρατηρήσει, 
+                     κυκλώνοντας την κατάλληλη απάντηση.`,
                 }
             },
             questionnaireResult: {}
@@ -119,7 +121,7 @@ export const english: ILanguageFile = {
                     firstHint: ` You can use external speakers or headphones if necessary. `,
                     secondHint: `Press "Continue" to start the test sound.`,
                     thirdHint: `Press "Continue" when the speech is clearly audible.`,
-                    soundFile: 'TestTripleSound.en.mp3'
+                    soundFile: 'TestTripleSound.gr.mp3'
                 },
                 secondPage: {
                     title: `Speech test instructions`,
@@ -176,7 +178,6 @@ export const english: ILanguageFile = {
                     Adjust the width of the rectangle below so that it is the same size as the credit card 
                     using the small and large - and + buttons.`,
                     secondParagraph: ``,
-                    bankCardHint: `Compare size with<br>your bank card`,
                     firstHint: `Press continue when the rectangle is the same width as the card.`
                 },
                 thirdPage: {
@@ -202,7 +203,7 @@ export const english: ILanguageFile = {
                 }
             },
             testResult: {
-                firstCase: 'No result, threshold greater than 6/X',
+                firstCase: 'No result, threshold greater than 6/$X$',
                 secondCase: 'Threshold is 6/X or less',
                 thirdCase: 'Threshold is 6/X'
             },

@@ -3,7 +3,7 @@ import { IQuestionnaire } from '../../../interfaces/IQuestionnaire.interface';
 
 export let VF14_gr: IQuestionnaire = {
   id: 'VF-14',
-  title: 'Ερωτηματολογίου οράσεως',
+  title: 'Ερωτηματολόγιο οράσεως',
   forceResponse: true,
   questions: [
     {

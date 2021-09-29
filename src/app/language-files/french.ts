@@ -176,7 +176,7 @@ export const french: ILanguageFile = {
                     Ajustez la taille du rectangle ci-dessous afin qu’il fasse les mêmes dimensions que la carte de crédit,  
                     à l’aide des boutons – et +.`,
                     secondParagraph: ``,
-                    bankCardHint: `Compare size with <\br> your bank card`,
+                    bankCardHint: `Comparez la taille avec<br>votre carte bancaire`,
                     firstHint: `Appuyez sur « Continuer » lorsque le rectangle a la même largeur que la carte.`
                 },
                 thirdPage: {
